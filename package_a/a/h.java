@@ -1,5 +1,7 @@
 package package_a.a;
 
+import package_a.i.Translator;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Frame;
@@ -31,21 +33,21 @@ public final class h extends JDialog implements ActionListener, KeyListener, Doc
    private JButton b;
    private JTextArea c = new JTextArea();
    private JComboBox d;
-   private static String[] e = new String[]{a.i.c.a("abedDialogIOOutputNLNo"), a.i.c.a("abedDialogIOOutputNLYes")};
+   private static String[] e = new String[]{Translator.translate("abedDialogIOOutputNLNo"), Translator.translate("abedDialogIOOutputNLYes")};
    private String f;
    private String g;
    private package_a.c.b.j h;
    private static h i = null;
    private static boolean j = false;
 
-   private h(Window var1, a.c.b.j var2) {
-      super((Frame)var1, a.i.c.a("abedDialogIOOutputTitle"), true);
+   private h(Window var1, package_a.c.b.j var2) {
+      super((Frame)var1, Translator.translate("abedDialogIOOutputTitle"), true);
       this.h = var2;
-      this.a = a.c.a.a.d(a.i.c.a("dialogButtonOK"));
-      this.b = a.c.a.a.d(a.i.c.a("dialogButtonCancel"));
+      this.a = package_a.c.a.a.d(Translator.translate("dialogButtonOK"));
+      this.b = package_a.c.a.a.d(Translator.translate("dialogButtonCancel"));
       this.setModal(true);
       JTextArea var4;
-      (var4 = new JTextArea(a.i.c.a("abedDialogIOOutputLabel"))).setEditable(false);
+      (var4 = new JTextArea(Translator.translate("abedDialogIOOutputLabel"))).setEditable(false);
       var4.setEnabled(true);
       var4.setOpaque(false);
       var4.setFocusable(false);
@@ -66,7 +68,7 @@ public final class h extends JDialog implements ActionListener, KeyListener, Doc
       var6.add(var4, "North");
       JScrollPane var5 = new JScrollPane(this.c);
       var6.add(var5, "Center");
-      var3.add(new JLabel(a.i.c.a("abedDialogIOOutputNLLabel")));
+      var3.add(new JLabel(Translator.translate("abedDialogIOOutputNLLabel")));
       var3.add(this.d);
       var3.add(this.a);
       var3.add(this.b);
@@ -155,7 +157,7 @@ public final class h extends JDialog implements ActionListener, KeyListener, Doc
       this.h.a(this.c.getText());
    }
 
-   public static boolean a(Window var0, a.c.b.j var1) {
+   public static boolean a(Window var0, package_a.c.b.j var1) {
       Point var2;
       (var2 = MouseInfo.getPointerInfo().getLocation()).translate(15, 15);
       if (i == null) {

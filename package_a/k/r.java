@@ -1,5 +1,7 @@
 package package_a.k;
 
+import package_a.i.Translator;
+
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
@@ -14,7 +16,7 @@ final class r extends AbstractAction {
 
    public final void actionPerformed(ActionEvent var1) {
       try {
-         Desktop.getDesktop().browse(new URI(package_a.i.c.a("mnuHelpABSiteAddr")));
+         Desktop.getDesktop().browse(new URI(Translator.translate("mnuHelpABSiteAddr")));
       } catch (IOException var2) {
       } catch (URISyntaxException var3) {
       }

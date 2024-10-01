@@ -1,5 +1,7 @@
 package package_a.j.b;
 
+import package_a.i.Translator;
+
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -75,33 +77,33 @@ public final class f extends n {
       if (var2 == null) {
          JPopupMenu var4 = new JPopupMenu();
          JLabel var3;
-         (var3 = new JLabel(package_a.i.c.a("instructionConnectorNewMsg"))).setIcon(package_a.i.b.a("imgs/new_instruction.gif"));
+         (var3 = new JLabel(Translator.translate("instructionConnectorNewMsg"))).setIcon(package_a.i.b.a("imgs/new_instruction.gif"));
          var4.insert(var3, 0);
          JMenuItem var5;
-         (var5 = new JMenuItem(package_a.i.c.a("instructionConnectorNewAssign"), package_a.i.b.a("imgs/assign_icon.gif"))).addActionListener(this);
+         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewAssign"), package_a.i.b.a("imgs/assign_icon.gif"))).addActionListener(this);
          var4.add(var5);
-         (var5 = new JMenuItem(package_a.i.c.a("instructionConnectorNewInput"), package_a.i.b.a("imgs/input_icon.gif"))).addActionListener(this);
+         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewInput"), package_a.i.b.a("imgs/input_icon.gif"))).addActionListener(this);
          var4.add(var5);
-         (var5 = new JMenuItem(package_a.i.c.a("instructionConnectorNewOutput"), package_a.i.b.a("imgs/output_icon.gif"))).addActionListener(this);
+         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewOutput"), package_a.i.b.a("imgs/output_icon.gif"))).addActionListener(this);
          var4.add(var5);
-         (var5 = new JMenuItem(package_a.i.c.a("instructionConnectorNewIf"), package_a.i.b.a("imgs/if_icon.gif"))).addActionListener(this);
+         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewIf"), package_a.i.b.a("imgs/if_icon.gif"))).addActionListener(this);
          var4.add(var5);
-         (var5 = new JMenuItem(package_a.i.c.a("instructionConnectorNewFor"), package_a.i.b.a("imgs/for_icon.gif"))).addActionListener(this);
+         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewFor"), package_a.i.b.a("imgs/for_icon.gif"))).addActionListener(this);
          var4.add(var5);
-         (var5 = new JMenuItem(package_a.i.c.a("instructionConnectorNewWhile"), package_a.i.b.a("imgs/while_icon.gif"))).addActionListener(this);
+         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewWhile"), package_a.i.b.a("imgs/while_icon.gif"))).addActionListener(this);
          var4.add(var5);
-         (var5 = new JMenuItem(package_a.i.c.a("instructionConnectorNewDoWhile"), package_a.i.b.a("imgs/dowhile_icon.gif"))).addActionListener(this);
+         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewDoWhile"), package_a.i.b.a("imgs/dowhile_icon.gif"))).addActionListener(this);
          var4.add(var5);
-         (var5 = new JMenuItem(package_a.i.c.a("instructionConnectorNewComment"), package_a.i.b.a("imgs/comment_icon.gif"))).addActionListener(this);
+         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewComment"), package_a.i.b.a("imgs/comment_icon.gif"))).addActionListener(this);
          var4.add(var5);
-         (var5 = new JMenuItem(package_a.i.c.a("instructionConnectorNewCall"), package_a.i.b.a("imgs/call_icon.gif"))).addActionListener(this);
+         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewCall"), package_a.i.b.a("imgs/call_icon.gif"))).addActionListener(this);
          if (this.b.h().c() <= 1) {
             var5.setEnabled(false);
          }
 
          var4.add(var5);
          var4.addSeparator();
-         var5 = new JMenuItem(package_a.i.c.a("instructionConnectorPaste"));
+         var5 = new JMenuItem(Translator.translate("instructionConnectorPaste"));
          if (this.b.k() == null) {
             var5.setEnabled(false);
          }
@@ -120,7 +122,7 @@ public final class f extends n {
          int var5;
          f var13;
          String var19;
-         if (var12.equals(package_a.i.c.a("instructionConnectorPaste"))) {
+         if (var12.equals(Translator.translate("instructionConnectorPaste"))) {
             var13 = this;
             var2 = this.d();
             package_a.c.a.d var17 = this.b.k();
@@ -164,7 +166,7 @@ public final class f extends n {
 
                      try {
                         package_a.g.f var15;
-                        if (var2.equals(package_a.i.c.a("instructionConnectorNewAssign"))) {
+                        if (var2.equals(Translator.translate("instructionConnectorNewAssign"))) {
                            package_a.c.b.a var26 = new package_a.c.b.a("");
                            var13.b.a(var19, var5, var26);
                            var13.b.a((package_a.c.a.d)var26);
@@ -180,7 +182,7 @@ public final class f extends n {
                            return;
                         }
 
-                        if (var2.equals(package_a.i.c.a("instructionConnectorNewInput"))) {
+                        if (var2.equals(Translator.translate("instructionConnectorNewInput"))) {
                            package_a.c.b.i var25 = new package_a.c.b.i("");
                            var13.b.a(var19, var5, var25);
                            var13.b.a((package_a.c.a.d)var25);
@@ -196,7 +198,7 @@ public final class f extends n {
                            return;
                         }
 
-                        if (var2.equals(package_a.i.c.a("instructionConnectorNewOutput"))) {
+                        if (var2.equals(Translator.translate("instructionConnectorNewOutput"))) {
                            package_a.c.b.j var24 = new package_a.c.b.j("");
                            var13.b.a(var19, var5, var24);
                            var13.b.a((package_a.c.a.d)var24);
@@ -212,7 +214,7 @@ public final class f extends n {
                            return;
                         }
 
-                        if (var2.equals(package_a.i.c.a("instructionConnectorNewIf"))) {
+                        if (var2.equals(Translator.translate("instructionConnectorNewIf"))) {
                            package_a.c.b.l var22 = new package_a.c.b.l("");
                            var13.b.a(var19, var5, var22);
                            var13.b.a((package_a.c.a.d)var22);
@@ -228,7 +230,7 @@ public final class f extends n {
                            return;
                         }
 
-                        if (var2.equals(package_a.i.c.a("instructionConnectorNewFor"))) {
+                        if (var2.equals(Translator.translate("instructionConnectorNewFor"))) {
                            package_a.c.b.f var21 = new package_a.c.b.f("", "", "");
                            var13.b.a(var19, var5, var21);
                            var13.b.a((package_a.c.a.d)var21);
@@ -244,7 +246,7 @@ public final class f extends n {
                            return;
                         }
 
-                        if (var2.equals(package_a.i.c.a("instructionConnectorNewWhile"))) {
+                        if (var2.equals(Translator.translate("instructionConnectorNewWhile"))) {
                            package_a.c.b.g var20 = new package_a.c.b.g("");
                            var13.b.a(var19, var5, var20);
                            var13.b.a((package_a.c.a.d)var20);
@@ -260,7 +262,7 @@ public final class f extends n {
                            return;
                         }
 
-                        if (var2.equals(package_a.i.c.a("instructionConnectorNewDoWhile"))) {
+                        if (var2.equals(Translator.translate("instructionConnectorNewDoWhile"))) {
                            package_a.c.b.e var18 = new package_a.c.b.e("");
                            var13.b.a(var19, var5, var18);
                            var13.b.a((package_a.c.a.d)var18);
@@ -276,7 +278,7 @@ public final class f extends n {
                            return;
                         }
 
-                        if (var2.equals(package_a.i.c.a("instructionConnectorNewComment"))) {
+                        if (var2.equals(Translator.translate("instructionConnectorNewComment"))) {
                            package_a.c.b.d var16 = new package_a.c.b.d("");
                            var13.b.a(var19, var5, var16);
                            var13.b.a((package_a.c.a.d)var16);
@@ -292,7 +294,7 @@ public final class f extends n {
                            return;
                         }
 
-                        if (var2.equals(package_a.i.c.a("instructionConnectorNewCall"))) {
+                        if (var2.equals(Translator.translate("instructionConnectorNewCall"))) {
                            package_a.c.b.c var14 = new package_a.c.b.c("test");
                            var13.b.a(var19, var5, var14);
                            var13.b.a((package_a.c.a.d)var14);

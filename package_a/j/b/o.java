@@ -1,5 +1,7 @@
 package package_a.j.b;
 
+import package_a.i.Translator;
+
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
@@ -179,12 +181,12 @@ public class o extends n implements package_a.c.a.k {
    public void a(MouseEvent var1) {
       JPopupMenu var2 = new JPopupMenu();
       JMenuItem var3;
-      (var3 = new JMenuItem(package_a.i.c.a("instructionModify"))).addActionListener(this);
+      (var3 = new JMenuItem(Translator.translate("instructionModify"))).addActionListener(this);
       var2.add(var3);
       var2.addSeparator();
-      (var3 = new JMenuItem(package_a.i.c.a("instructionCopy"))).addActionListener(this);
+      (var3 = new JMenuItem(Translator.translate("instructionCopy"))).addActionListener(this);
       var2.add(var3);
-      (var3 = new JMenuItem(package_a.i.c.a("instructionCut"))).addActionListener(this);
+      (var3 = new JMenuItem(Translator.translate("instructionCut"))).addActionListener(this);
       var2.add(var3);
       var2.show(var1.getComponent(), var1.getX(), var1.getY());
    }
@@ -192,18 +194,18 @@ public class o extends n implements package_a.c.a.k {
    public void actionPerformed(ActionEvent var1) {
       String var7;
       if ((var7 = var1.getActionCommand()) != null && var7.length() > 0) {
-         if (var7.equals(package_a.i.c.a("instructionModify"))) {
+         if (var7.equals(Translator.translate("instructionModify"))) {
             this.b.a(this.i);
             this.a_();
             return;
          }
 
-         if (var7.equals(package_a.i.c.a("instructionCopy"))) {
+         if (var7.equals(Translator.translate("instructionCopy"))) {
             this.b.b(this.i);
             return;
          }
 
-         if (var7.equals(package_a.i.c.a("instructionCut"))) {
+         if (var7.equals(Translator.translate("instructionCut"))) {
             o var8 = this;
             String var2 = this.h();
 
