@@ -18,29 +18,30 @@ import javax.swing.JSplitPane;
 import javax.swing.Timer;
 
 public final class g extends JPanel implements j, ActionListener {
-   private package_a.k.c a;
+   private final package_a.k.c a;
    private package_a.c.a.b b;
-   private package_a.c.a.e c;
-   private Timer d;
+   private final package_a.c.a.e c;
+   private final Timer d;
    private boolean e = false;
    private JSplitPane f;
    private JSplitPane g;
-   private int h = 4;
-   private double i = 0.75D;
-   private double j = 0.75D;
+   private final int h = 4;
+   private final double i = 0.75D;
+   private final double j = 0.75D;
    private int k = -1;
-   private a l;
-   private c m;
-   private JScrollPane n;
-   private h o;
-   private JScrollPane p;
+   private final a l;
+   private final c m;
+   private final JScrollPane n;
+   private final h o;
+   private final JScrollPane p;
    private ABFrame q;
    private m r;
    private n s;
-   private Stack t;
-   private Stack u;
+   private final Stack t;
+   private final Stack u;
+    private package_a.c.a.d var1;
 
-   public g(package_a.k.c var1) {
+    public g(package_a.k.c var1) {
       this.a = var1;
       this.b = new package_a.c.a.b();
       this.c = new package_a.c.a.e(this.b);
@@ -49,7 +50,7 @@ public final class g extends JPanel implements j, ActionListener {
       this.setLayout(new BorderLayout());
       this.l = new a();
       this.l.a(this);
-      this.b.a((j)this);
+      this.b.a(this);
       this.b.a("main", 1);
       this.b.a(false);
       this.m = new c(this.b);
@@ -62,7 +63,7 @@ public final class g extends JPanel implements j, ActionListener {
       this.a.a("mnuEditRedo", false);
    }
 
-   public final void b(int var1) {
+   public void b(int var1) {
       this.getWidth();
       this.getHeight();
       if (1 != this.k) {
@@ -83,7 +84,7 @@ public final class g extends JPanel implements j, ActionListener {
 
    }
 
-   public final void a(ABFrame var1) {
+   public void a(ABFrame var1) {
       this.q = var1;
       if (this.l != null) {
          this.l.a(var1);
@@ -91,13 +92,13 @@ public final class g extends JPanel implements j, ActionListener {
 
    }
 
-   public final void c() {
+   public void c() {
       boolean var1 = false;
       if (!this.b.p()) {
          var1 = true;
       } else {
          int var2;
-         if ((var2 = JOptionPane.showConfirmDialog((Component)null, Translator.translate("modifiedSaveQuestion"), "AlgoBuild", 1)) == 0) {
+         if ((var2 = JOptionPane.showConfirmDialog(null, Translator.translate("modifiedSaveQuestion"), "AlgoBuild", 1)) == 0) {
             this.f();
             if (!this.b.p()) {
                var1 = true;
@@ -121,19 +122,19 @@ public final class g extends JPanel implements j, ActionListener {
 
    }
 
-   public final boolean d() {
+   public boolean d() {
       boolean var1 = this.b.p();
       this.a.a("mnuFileSave", var1);
       return var1;
    }
 
-   public final boolean e() {
+   public boolean e() {
       boolean var1 = false;
       if (!this.b.p()) {
          var1 = true;
       } else {
          int var2;
-         if ((var2 = JOptionPane.showConfirmDialog((Component)null, Translator.translate("modifiedSaveQuestion"), "AlgoBuild", 1)) == 0) {
+         if ((var2 = JOptionPane.showConfirmDialog(null, Translator.translate("modifiedSaveQuestion"), "AlgoBuild", 1)) == 0) {
             this.f();
             if (!this.b.p()) {
                var1 = true;
@@ -146,19 +147,15 @@ public final class g extends JPanel implements j, ActionListener {
       return var1;
    }
 
-   public final void f() {
-      boolean var1 = false;
-      if (this.b.p()) {
-         var1 = true;
-      }
+   public void f() {
+      boolean var1 = this.b.p();
 
-      if (var1) {
+       if (var1) {
          String var2;
          if ((var2 = this.b.o()) != null) {
             this.b.j(var2);
             if (!this.b.p()) {
                this.a.a("mnuFileSave", false);
-               return;
             }
          } else {
             this.g();
@@ -167,7 +164,7 @@ public final class g extends JPanel implements j, ActionListener {
 
    }
 
-   public final void g() {
+   public void g() {
       String var1;
       if ((var1 = this.a.a(this.b.o())) != null && !var1.isEmpty()) {
          this.b.j(var1);
@@ -178,7 +175,7 @@ public final class g extends JPanel implements j, ActionListener {
 
    }
 
-   public final void h() {
+   public void h() {
       int var1 = this.b.r().c();
       this.d.setDelay(var1);
       this.d.setInitialDelay(10);
@@ -200,7 +197,6 @@ public final class g extends JPanel implements j, ActionListener {
             this.a.a("execInstruction", !var2);
             this.a.a("execPause", var2);
             this.a.a("execInterrupt", var2);
-            return;
          }
       } else {
          if (this.b.r().b()) {
@@ -220,7 +216,7 @@ public final class g extends JPanel implements j, ActionListener {
 
    }
 
-   public final void i() {
+   public void i() {
       if (this.d.isRunning()) {
          this.d.stop();
       }
@@ -230,7 +226,7 @@ public final class g extends JPanel implements j, ActionListener {
       this.a.a("execInterrupt", this.c.b());
    }
 
-   public final void j() {
+   public void j() {
       if (this.c.b()) {
          this.c.a();
          boolean var1 = this.c.b();
@@ -241,16 +237,20 @@ public final class g extends JPanel implements j, ActionListener {
 
    }
 
-   public final void a(package_a.c.a.b var1) {
+   @Override
+   public void a(package_a.c.a.b var1) {
       this.b = var1;
       this.l.a = var1;
    }
 
-   public final void a(package_a.c.a.d var1) {
-      this.l.a(var1);
+   @Override
+   public void a(package_a.c.a.d var1) {
+       this.var1 = var1;
+       this.l.a(var1);
    }
 
-   public final void b(package_a.c.a.b var1) {
+   @Override
+   public void b(package_a.c.a.b var1) {
       this.d();
 
       try {
@@ -268,7 +268,7 @@ public final class g extends JPanel implements j, ActionListener {
       }
    }
 
-   public final void h(String var1) {
+   public void h(String var1) {
       int var2;
       if ((var2 = this.l.b.indexOfTab(var1)) >= 0) {
          this.l.b.setSelectedIndex(var2);
@@ -276,15 +276,18 @@ public final class g extends JPanel implements j, ActionListener {
 
    }
 
-   public final void a() {
+   @Override
+   public void a() {
       this.l.b();
    }
 
-   public final void a(int var1) {
+   @Override
+   public void a(int var1) {
       this.m.a(var1);
    }
 
-   public final String g(String var1) {
+   @Override
+   public String g(String var1) {
       if ((var1 = (new d(this.q, var1)).a()) == null) {
          this.e = true;
          var1 = "execPause";
@@ -293,39 +296,47 @@ public final class g extends JPanel implements j, ActionListener {
       return var1;
    }
 
-   public final void a(String var1) {
+   @Override
+   public void a(String var1) {
       this.m.a(var1, false, false, false);
    }
 
-   public final void b() {
+   @Override
+   public void b() {
       this.m.a("", true, false, false);
    }
 
-   public final void b(String var1) {
+   @Override
+   public void b(String var1) {
       this.m.a(var1, true, false, false);
    }
 
-   public final void c(String var1) {
+   @Override
+   public void c(String var1) {
       this.m.a(var1, true, true, false);
    }
 
-   public final void e(String var1) {
+   @Override
+   public void e(String var1) {
       this.m.a(var1, true, true, true);
    }
 
-   public final void d(String var1) {
+   @Override
+   public void d(String var1) {
       this.m.a(var1, false, true, false);
    }
 
-   public final void f(String var1) {
+   @Override
+   public void f(String var1) {
       this.o.setText(var1);
    }
 
-   public final void a(String var1, q var2) {
+   @Override
+   public void a(String var1, q var2) {
       this.l.a(var1, var2);
    }
 
-   public final void k() {
+   public void k() {
       if (this.r == null) {
          this.r = new m(this.q, this.b);
       }
@@ -336,7 +347,7 @@ public final class g extends JPanel implements j, ActionListener {
 
    }
 
-   public final void l() {
+   public void l() {
       if (this.s == null) {
          this.s = new n(this.q, this.b);
       }
@@ -347,7 +358,8 @@ public final class g extends JPanel implements j, ActionListener {
 
    }
 
-   public final void actionPerformed(ActionEvent var1) {
+   @Override
+   public void actionPerformed(ActionEvent var1) {
       if (var1.getSource() == this.d) {
          if (this.c.b()) {
             this.c.c();
@@ -370,7 +382,7 @@ public final class g extends JPanel implements j, ActionListener {
 
    }
 
-   public final void a(package_a.g.g var1) {
+   public void a(package_a.g.g var1) {
       this.t.push(var1);
       if (!this.u.empty()) {
          this.u.removeAllElements();
@@ -380,15 +392,15 @@ public final class g extends JPanel implements j, ActionListener {
       this.a.a("mnuEditRedo", false);
    }
 
-   public final boolean m() {
+   public boolean m() {
       return !this.t.empty();
    }
 
-   public final boolean n() {
+   public boolean n() {
       return !this.u.empty();
    }
 
-   public final void o() {
+   public void o() {
       if (this.m()) {
          package_a.g.g var1;
          (var1 = (package_a.g.g)this.t.pop()).b();
@@ -399,7 +411,7 @@ public final class g extends JPanel implements j, ActionListener {
 
    }
 
-   public final void p() {
+   public void p() {
       if (this.n()) {
          package_a.g.g var1;
          (var1 = (package_a.g.g)this.u.pop()).a();
@@ -410,19 +422,20 @@ public final class g extends JPanel implements j, ActionListener {
 
    }
 
-   public final void b(package_a.c.a.d var1) {
+   @Override
+   public void b(package_a.c.a.d var1) {
       this.l.b(var1);
    }
 
-   public final void q() {
+   public void q() {
       this.l.d();
    }
 
-   public final void r() {
+   public void r() {
       this.l.e();
    }
 
-   public final void s() {
+   public void s() {
       String var1 = this.b.s();
       JOptionPane.showMessageDialog(this.q, var1, Translator.translate("mnuHistoryInfo"), 1);
    }

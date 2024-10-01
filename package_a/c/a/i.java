@@ -27,8 +27,8 @@ public final class i {
    }
 
    public final void a() {
-      this.a = new Font("SansSerif", 0, (int)(12.0D * a.k.b.a()));
-      this.b = new Font("SansSerif", 0, (int)(12.0D * a.k.b.a()));
+      this.a = new Font("SansSerif", 0, (int)(12.0D * package_a.k.b.a()));
+      this.b = new Font("SansSerif", 0, (int)(12.0D * package_a.k.b.a()));
       this.c = Color.WHITE;
       this.d = Color.WHITE;
       this.e = Color.GREEN;
@@ -114,7 +114,7 @@ public final class i {
    }
 
    private void o() {
-      this.k = new BasicStroke((float)((double)this.g * a.k.b.a()), 1, 1);
+      this.k = new BasicStroke((float)((double)this.g * package_a.k.b.a()), 1, 1);
    }
 
    public final int m() {
@@ -139,7 +139,7 @@ public final class i {
       var1.b("fillingColorSelected", d(this.f));
       int var4 = this.g;
       String var3 = "lineWidth";
-      var1.b(var3, new Integer(var4));
+      var1.b(var3, var4);
       var1.b("lineColor", d(this.h));
       var1.b("lineColorRunning", d(this.i));
       var1.b("lineColorSelected", d(this.j));
@@ -174,7 +174,7 @@ public final class i {
    private static package_b.a.a c(Font var0) {
       package_b.a.a var1;
       (var1 = new a()).a(var0.getName());
-      var1.e((int)((double)var0.getSize() * a.k.b.a()));
+      var1.e((int)((double)var0.getSize() * package_a.k.b.a()));
       var1.e(var0.getStyle());
       return var1;
    }
@@ -192,7 +192,7 @@ public final class i {
       String var1 = (String)var0.a(0);
       int var2 = var0.b(1);
       int var3 = var0.b(2);
-      return new Font(var1, var3, (int)((double)var2 * a.k.b.a()));
+      return new Font(var1, var3, (int)((double)var2 * package_a.k.b.a()));
    }
 
    private static Color b(package_b.a.a var0) {

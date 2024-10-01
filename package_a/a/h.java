@@ -78,6 +78,7 @@ public final class h extends JDialog implements ActionListener, KeyListener, Doc
       this.pack();
    }
 
+   @Override
    public final void actionPerformed(ActionEvent var1) {
       if (var1.getSource() == this.a) {
          this.h.a(this.c.getText().trim());
@@ -95,6 +96,7 @@ public final class h extends JDialog implements ActionListener, KeyListener, Doc
       }
    }
 
+   @Override
    public final void changedUpdate(DocumentEvent var1) {
       String var2;
       if (!(var2 = this.c.getText()).equals(this.f)) {
@@ -104,6 +106,7 @@ public final class h extends JDialog implements ActionListener, KeyListener, Doc
 
    }
 
+   @Override
    public final void insertUpdate(DocumentEvent var1) {
       boolean var2 = false;
       boolean var3 = false;
@@ -153,6 +156,7 @@ public final class h extends JDialog implements ActionListener, KeyListener, Doc
       }
    }
 
+   @Override
    public final void removeUpdate(DocumentEvent var1) {
       this.h.a(this.c.getText());
    }
@@ -198,6 +202,7 @@ public final class h extends JDialog implements ActionListener, KeyListener, Doc
       return j;
    }
 
+   @Override
    public final void keyPressed(KeyEvent var1) {
       if (var1.getKeyCode() == 27) {
          this.h.a(this.g);
@@ -207,9 +212,11 @@ public final class h extends JDialog implements ActionListener, KeyListener, Doc
 
    }
 
+   @Override
    public final void keyReleased(KeyEvent var1) {
    }
 
+   @Override
    public final void keyTyped(KeyEvent var1) {
    }
 }

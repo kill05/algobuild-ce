@@ -4,7 +4,7 @@ import java.awt.Dimension;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 
-public final class s extends package_a.j.b.c {
+public final class s extends C_subclass {
    private String[] b;
    private int[] c;
    private int d;
@@ -15,7 +15,7 @@ public final class s extends package_a.j.b.c {
    private int i;
    private String j = "//";
 
-   public s(p var1, D var2) {
+   public s(p var1, D_subclass var2) {
       super(var2);
    }
 

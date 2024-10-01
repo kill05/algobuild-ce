@@ -5,15 +5,15 @@ import javax.swing.AbstractAction;
 import javax.swing.Icon;
 
 final class z extends AbstractAction {
-   // $FF: synthetic field
-   private c a;
+    private final c a;
 
-   z(c var1, String var2, Icon var3) {
-      this.a = var1;
-      super(var2, var3);
-   }
+    z(c var1, String var2, Icon var3) {
+        super(var2, var3);
+        this.a = var1;
+    }
 
-   public final void actionPerformed(ActionEvent var1) {
-      this.a.o();
-   }
+    @Override
+    public void actionPerformed(ActionEvent var1) {
+        this.a.o();
+    }
 }

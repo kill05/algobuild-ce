@@ -32,10 +32,12 @@ public final class d extends n {
       return this.n() + "- ABIComment: " + this.b + "\n";
    }
 
+   @Override
    protected final String g() {
       return "ABICOM";
    }
 
+   @Override
    public final package_a.f.g h() {
       package_a.f.g var1;
       (var1 = super.h()).a("label", this.b);
@@ -70,6 +72,7 @@ public final class d extends n {
       return false;
    }
 
+   @Override
    public final p i() {
       return new p(1, this.b.length());
    }

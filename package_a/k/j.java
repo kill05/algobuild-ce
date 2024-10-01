@@ -6,15 +6,16 @@ import javax.swing.AbstractAction;
 import javax.swing.Icon;
 
 final class j extends AbstractAction {
-   // $FF: synthetic field
-   private c a;
 
-   j(c var1, String var2, Icon var3) {
-      this.a = var1;
-      super(var2, var3);
-   }
+    private final c a;
 
-   public final void actionPerformed(ActionEvent var1) {
-      this.a.a(Locale.ITALIAN);
-   }
+    j(c var1, String var2, Icon var3) {
+        super(var2, var3);
+        this.a = var1;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent var1) {
+        this.a.a(Locale.ITALIAN);
+    }
 }

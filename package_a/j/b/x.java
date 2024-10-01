@@ -4,7 +4,7 @@ import java.awt.Dimension;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 
-public final class x extends package_a.j.b.c {
+public final class x extends C_subclass {
    private String[] b;
    private int[] c;
    private int d;
@@ -16,10 +16,11 @@ public final class x extends package_a.j.b.c {
    private String j = "WHILE ";
    private String k = "END WHILE ";
 
-   public x(p var1, D var2) {
+   public x(p var1, D_subclass var2) {
       super(var2);
    }
 
+   @Override
    public final void a(n var1, Graphics var2) {
       int var3 = var1.getWidth();
       var1.getHeight();
@@ -44,6 +45,7 @@ public final class x extends package_a.j.b.c {
       var2.drawString(this.k, 0, var5);
    }
 
+   @Override
    public final void a(n var1) {
       i var2;
       FontMetrics var4 = (var2 = (i)var1).getFontMetrics(var1.getFont());

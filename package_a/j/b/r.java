@@ -5,7 +5,7 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.util.Vector;
 
-public final class r extends c.C {
+public final class r extends C_subclass {
    private String[] b;
    private int[] c;
    private int d;
@@ -16,7 +16,7 @@ public final class r extends c.C {
    private int i;
    private String j = "CALL ";
 
-   public r(p var1, D var2) {
+   public r(p var1, D_subclass var2) {
       super(var2);
    }
 

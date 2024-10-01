@@ -5,7 +5,7 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-public final class q extends package_a.j.b.c {
+public final class q extends C_subclass {
    private String[] b;
    private int[] c;
    private int d;
@@ -16,10 +16,11 @@ public final class q extends package_a.j.b.c {
    private int i;
    private String j = "";
 
-   public q(p var1, D var2) {
+   public q(p var1, D_subclass var2) {
       super(var2);
    }
 
+   @Override
    public final void a(n var1, Graphics var2) {
       int var3 = var1.getWidth();
       var1.getHeight();
@@ -36,6 +37,7 @@ public final class q extends package_a.j.b.c {
 
    }
 
+   @Override
    public final void a(n var1) {
       a var2;
       FontMetrics var4 = (var2 = (a)var1).getFontMetrics(var1.getFont());

@@ -26,6 +26,7 @@ public class j extends o {
       this.q = var1;
    }
 
+   @Override
    public final void a(Graphics var1) {
       int var2 = this.getWidth();
       int var3 = this.getHeight();
@@ -50,6 +51,7 @@ public class j extends o {
 
    }
 
+   @Override
    public void a() {
       String var1 = ((package_a.c.b.k)this.i).k();
       this.a = var1.split("\\n");

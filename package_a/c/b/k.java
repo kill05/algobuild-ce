@@ -48,18 +48,21 @@ public abstract class k extends n {
       this.a(var2);
    }
 
+   @Override
    public package_b.a.c b(boolean var1) {
       package_b.a.c var2;
       (var2 = super.b(var1)).b("content", this.b);
       return var2;
    }
 
+   @Override
    public void a(package_b.a.c var1, boolean var2) {
       super.a(var1, var2);
       String var3 = var1.f("content");
       this.a(var3);
    }
 
+   @Override
    public final p i() {
       return new p(1, this.b.length());
    }

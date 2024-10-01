@@ -11,6 +11,7 @@ public final class i extends k {
       super((String)null);
    }
 
+   @Override
    public final int a(package_a.c.a.b var1, int var2) {
       String[] var13 = this.l();
 
@@ -70,10 +71,12 @@ public final class i extends k {
       return this.n() + "- ABIIOInput: " + this.k().replace("\n", ", ") + "\n";
    }
 
+   @Override
    public final package_a.c.a.d e() {
       return new i(this.k());
    }
 
+   @Override
    protected final String g() {
       return "ABIINP";
    }

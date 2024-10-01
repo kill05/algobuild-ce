@@ -13,6 +13,7 @@ public final class ABFrame extends JFrame implements WindowListener {
     private g b;
     private JToolBar c = null;
 
+    @Override
     public final void setJMenuBar(JMenuBar var1) {
         super.setJMenuBar(var1);
     }

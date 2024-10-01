@@ -21,6 +21,7 @@ public abstract class n extends package_a.c.a.d {
       return this.c;
    }
 
+   @Override
    public String c() {
       if (this.b != null) {
          String var1 = this.b.c();
@@ -30,6 +31,7 @@ public abstract class n extends package_a.c.a.d {
       }
    }
 
+   @Override
    public int a(package_a.c.a.b var1, int var2) {
       return 0;
    }
@@ -38,10 +40,12 @@ public abstract class n extends package_a.c.a.d {
       return "ABI_Base [parent=" + this.b + ", orderInParent=" + this.c + "]";
    }
 
+   @Override
    public String b() {
       return null;
    }
 
+   @Override
    public boolean b(int var1) {
       return true;
    }

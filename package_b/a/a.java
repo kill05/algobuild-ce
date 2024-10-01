@@ -25,7 +25,7 @@ public final class a implements Iterable {
          while(true) {
             if (var1.b() == ',') {
                var1.a();
-               this.a.add(c.a);
+               this.a.add(c.NULL);
             } else {
                var1.a();
                this.a.add(var1.c());
@@ -74,6 +74,7 @@ public final class a implements Iterable {
       }
    }
 
+   @Override
    public final Iterator iterator() {
       return this.a.iterator();
    }

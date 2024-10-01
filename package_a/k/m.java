@@ -4,15 +4,16 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 
 final class m extends AbstractAction {
-   // $FF: synthetic field
-   private c a;
 
-   m(c var1, String var2) {
-      this.a = var1;
-      super(var2);
-   }
+    private final c a;
 
-   public final void actionPerformed(ActionEvent var1) {
-      this.a.s();
-   }
+    m(c var1, String var2) {
+        super(var2);
+        this.a = var1;
+    }
+
+    public void actionPerformed(ActionEvent var1) {
+        this.a.s();
+    }
+
 }

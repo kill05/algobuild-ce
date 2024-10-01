@@ -12,10 +12,12 @@ public final class e extends g {
       this.b = var1.h();
    }
 
+   @Override
    public final void a() {
       this.a.a(this.c);
    }
 
+   @Override
    public final void b() {
       if (this.c == null) {
          this.c = this.a.h();

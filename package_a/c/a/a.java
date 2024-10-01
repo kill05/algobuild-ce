@@ -4,7 +4,7 @@ import package_a.c.b.p;
 import package_a.c.b.q;
 import package_a.f.l;
 import package_a.i.Translator;
-import package_a.k.Runnable_B;
+import package_a.k.B_innerclass;
 
 import java.awt.Component;
 import java.awt.Toolkit;
@@ -138,7 +138,7 @@ public class a {
                System.exit(var3);
             }
          } else {
-            SwingUtilities.invokeLater(new Runnable_B());
+            SwingUtilities.invokeLater(new B_innerclass());
          }
       } while(var3 == -1 && var11 < 2);
 

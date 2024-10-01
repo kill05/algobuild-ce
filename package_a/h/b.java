@@ -1,10 +1,12 @@
 package package_a.h;
 
 public final class b extends package_a.e.a {
+   @Override
    protected final int a() {
       return 9;
    }
 
+   @Override
    protected final char a(int var1) {
       char var2 = 0;
       switch(var1) {

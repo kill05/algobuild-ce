@@ -93,10 +93,12 @@ public final class f extends h {
       return "ABICycleFor  [ " + super.toString() + "]";
    }
 
+   @Override
    protected final String g() {
       return "ABIFOR";
    }
 
+   @Override
    public final package_a.f.g h() {
       package_a.f.g var1;
       (var1 = super.h()).a("initialization", this.b);
@@ -148,6 +150,7 @@ public final class f extends h {
       return var1 == 0 || var1 == 3;
    }
 
+   @Override
    public final p i() {
       p var1;
       (var1 = super.i()).a(0, this.b.length() + this.c.length());

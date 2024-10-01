@@ -90,6 +90,7 @@ public final class c extends JDialog implements ActionListener, DocumentListener
       this.pack();
    }
 
+   @Override
    public final void actionPerformed(ActionEvent var1) {
       int var2;
       String[] var3;
@@ -129,14 +130,17 @@ public final class c extends JDialog implements ActionListener, DocumentListener
       }
    }
 
+   @Override
    public final void changedUpdate(DocumentEvent var1) {
       this.a(var1);
    }
 
+   @Override
    public final void insertUpdate(DocumentEvent var1) {
       this.a(var1);
    }
 
+   @Override
    public final void removeUpdate(DocumentEvent var1) {
       this.a(var1);
    }

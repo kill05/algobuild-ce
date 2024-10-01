@@ -12,6 +12,7 @@ public final class b extends RuntimeException {
       this.a = var1;
    }
 
+   @Override
    public final Throwable getCause() {
       return this.a;
    }

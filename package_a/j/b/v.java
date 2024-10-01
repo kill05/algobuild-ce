@@ -4,7 +4,7 @@ import java.awt.Dimension;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 
-public final class v extends package_a.j.b.c {
+public final class v extends C_subclass {
    private String[] b;
    private int[] c;
    private int d;
@@ -13,25 +13,26 @@ public final class v extends package_a.j.b.c {
    private int g;
    private int h;
    private int i;
-   private String j = "DO ";
-   private String k = "END DO WHILE ";
+   private final String j = "DO ";
+   private final String k = "END DO WHILE ";
 
-   public v(p var1, D var2) {
+   public v(p var1, D_subclass var2) {
       super(var2);
    }
 
-   public final void a(n var1, Graphics var2) {
+   @Override
+   public void a(n var1, Graphics var2) {
       int var3 = var1.getWidth();
       var1.getHeight();
       Dimension var4 = ((g)var1).d().getMinimumSize();
-      var1.a((Graphics)var2, 2);
+      var1.a(var2, 2);
       var2.fillRect(0, 0, var3, 3 * var1.f);
       var2.fillRect(0, 0, var1.e, (int)(var4.getHeight() + (double)this.e + (double)(3 * var1.f)));
       var1.c(var2);
       int var5 = this.f;
       var2.drawString(this.j, 0, var5);
       var5 = (int)((double)(var5 + var1.f) + var4.getHeight());
-      var1.a((Graphics)var2, 1);
+      var1.a(var2, 1);
       var2.fillRect(0, var5, var3, this.e);
       var5 += 2 * var1.f;
       var1.d(var2);
@@ -44,7 +45,8 @@ public final class v extends package_a.j.b.c {
 
    }
 
-   public final void a(n var1) {
+   @Override
+   public void a(n var1) {
       g var2;
       FontMetrics var4 = (var2 = (g)var1).getFontMetrics(var1.getFont());
       String var3 = var2.i.b();
@@ -67,7 +69,7 @@ public final class v extends package_a.j.b.c {
       Dimension var5 = var2.d().getMinimumSize();
       var8.width = Math.max(var8.width, var5.width + 2 * var2.e) + 2 * var2.e;
       var8.height += var5.height + 4 * var2.f;
-      var2.a((Dimension)var8);
+      var2.a(var8);
       int var6 = 2 * var2.e;
       var2.d().setLocation(var6, 3 * var2.f);
       var2.revalidate();

@@ -2,7 +2,7 @@ package package_a.f;
 
 import java.io.IOException;
 
-public final class h extends IOException {
+public final class h extends RuntimeException {
    public h(String var1, Throwable var2) {
       super(var1, var2);
    }

@@ -5,11 +5,11 @@ import java.awt.event.ActionEvent;
 import java.util.Map;
 import java.util.TreeMap;
 
-public final class a {
+public final class ActionMap {
 
     private Map a = null;
 
-    public a() {
+    public ActionMap() {
         this.a = new TreeMap();
     }
 
@@ -17,7 +17,7 @@ public final class a {
         this.a.put(var1, var2);
     }
 
-    public final Action a(String var1) {
+    public final Action getAction(String var1) {
         Action var2 = null;
         if (var1 != null) {
             var2 = (Action) this.a.get(var1);
@@ -36,6 +36,7 @@ public final class a {
             this.a = var1;
         }
 
+        @Override
         public final void actionPerformed(ActionEvent var1) {
             this.a.q();
         }

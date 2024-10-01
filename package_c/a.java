@@ -1394,7 +1394,7 @@ public final class a {
       if (var10000 != null) {
          return var10000;
       } else {
-         int[] var0 = new int[package_c.c.a().length];
+         int[] var0 = new int[package_c.c.values().length];
 
          try {
             var0[package_c.c.k.ordinal()] = 11;
@@ -1472,7 +1472,7 @@ public final class a {
       if (var10000 != null) {
          return var10000;
       } else {
-         int[] var0 = new int[package_c.b.a().length];
+         int[] var0 = new int[package_c.b.values().length];
 
          try {
             var0[package_c.b.c.ordinal()] = 3;

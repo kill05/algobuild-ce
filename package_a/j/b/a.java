@@ -24,6 +24,7 @@ public final class a extends o {
         this.g();
     }
 
+    @Override
     public final void a(Graphics var1) {
         int var2 = this.getWidth();
         int var3 = this.getHeight();
@@ -42,6 +43,7 @@ public final class a extends o {
 
     }
 
+    @Override
     public final void a() {
         String var1 = this.i.b();
         FontMetrics var2 = this.getFontMetrics(this.getFont());
@@ -68,6 +70,7 @@ public final class a extends o {
         this.j = new Rectangle(this.getWidth() / 2 - this.n / 2, this.f, this.n, this.o);
     }
 
+    @Override
     protected final void a_() {
         e var1 = new e((n)this.i);
         if (package_a.a.a.a(this.c.a(), (package_a.c.b.a)this.i)) {

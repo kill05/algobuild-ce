@@ -6,19 +6,23 @@ import java.util.Vector;
 public final class o extends n {
    private Vector b = new Vector();
 
+   @Override
    public final boolean b(int var1) {
       return false;
    }
 
+   @Override
    public final boolean a(int var1) {
       int var2 = this.b.size();
       return var1 >= 0 && var1 < var2;
    }
 
+   @Override
    public final n c(int var1) {
       return (n)this.b.get(var1);
    }
 
+   @Override
    public final void a(n var1) {
       int var2 = this.b.size();
       var1.a((package_a.c.a.d)this, var2);
@@ -33,6 +37,7 @@ public final class o extends n {
 
    }
 
+   @Override
    public final void a(n var1, int var2) {
       for(int var3 = var2; var3 < this.b.size(); ++var3) {
          this.c(var3).f(1);
@@ -51,6 +56,7 @@ public final class o extends n {
       var1.f();
    }
 
+   @Override
    public final void d(int var1) {
       this.b.remove(var1);
 
@@ -75,10 +81,12 @@ public final class o extends n {
 
    }
 
+   @Override
    public final int d() {
       return this.b.size();
    }
 
+   @Override
    public final int a(package_a.c.a.b var1, int var2) {
       if (this.a(var2)) {
          int var3 = var2++;
@@ -95,10 +103,12 @@ public final class o extends n {
       return "ABICompound [getOrderInParent()=" + this.n() + "\ninstructions=" + this.b + "]";
    }
 
+   @Override
    public final boolean a() {
       return true;
    }
 
+   @Override
    public final void f() {
       if (this.a != null) {
          for(int var1 = 0; var1 < this.b.size(); ++var1) {
@@ -115,6 +125,7 @@ public final class o extends n {
 
    }
 
+   @Override
    public final p i() {
       p var1 = new p();
 

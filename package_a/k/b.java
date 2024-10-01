@@ -8,7 +8,7 @@ public final class b {
 
     static {
         a = Color.white;
-        String[] var10000 = new String[]{"AB0075"};
+        //String[] var10000 = new String[]{"AB0075"};
         b = 1.0;
     }
 

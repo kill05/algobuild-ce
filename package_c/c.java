@@ -15,9 +15,4 @@ enum c {
    l,
    m;
 
-   public static c[] a() {
-      c[] var0;
-      System.arraycopy(n, 0, var0 = new c[13], 0, 13);
-      return var0;
-   }
 }

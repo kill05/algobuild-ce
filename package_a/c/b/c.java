@@ -29,6 +29,7 @@ public final class c extends b {
       this.a(true);
    }
 
+   @Override
    public final int a(package_a.c.a.b var1, int var2) {
       f var3 = null;
       boolean var4 = false;
@@ -47,6 +48,7 @@ public final class c extends b {
       return var2;
    }
 
+   @Override
    public final package_a.f.g h() {
       package_a.f.g var1 = super.h();
       if (this.d != null) {
@@ -56,6 +58,7 @@ public final class c extends b {
       return var1;
    }
 
+   @Override
    public final void a(package_a.f.g var1) {
       super.a(var1);
       String var2;
@@ -65,6 +68,7 @@ public final class c extends b {
 
    }
 
+   @Override
    public final package_b.a.c b(boolean var1) {
       package_b.a.c var2 = super.b(var1);
       System.out.println("getAsJSONObject RETURN VARIABLE " + this.d);
@@ -75,6 +79,7 @@ public final class c extends b {
       return var2;
    }
 
+   @Override
    public final void a(package_b.a.c var1, boolean var2) {
       super.a(var1, var2);
       String var3 = var1.f("returnVariable");
@@ -85,6 +90,7 @@ public final class c extends b {
 
    }
 
+   @Override
    public final package_a.c.a.d e() {
       c var1;
       (var1 = new c(this.b, (Vector)this.c.clone())).b(this.d);

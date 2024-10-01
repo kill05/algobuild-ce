@@ -67,7 +67,7 @@ public final class d {
       return var9;
    }
 
-   private static String a(String var0, String var1, int var2, String var3, String var4, byte[] var5) {
+   private static String a(String var0, String var1, int var2, String var3, String var4, byte[] var5) throws i {
       String var6 = null;
 
       try {
@@ -141,7 +141,7 @@ public final class d {
             k.a().a(var0, var5);
          }
       } catch (i var6) {
-         JOptionPane.showMessageDialog((Component)null, "IMPOSSIBILE REGISTRARE " + var0 + "   " + var1);
+         JOptionPane.showMessageDialog(null, "IMPOSSIBILE REGISTRARE " + var0 + "   " + var1);
       }
 
       return var5;

@@ -1,5 +1,6 @@
 package package_a.f;
 
+import package_a.i.Translator;
 import package_b.a.g;
 
 import java.io.BufferedInputStream;
@@ -12,6 +13,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.UUID;
@@ -36,10 +38,11 @@ public final class f implements Runnable {
       (new Thread(this)).start();
    }
 
+   @Override
    public final void run() {
       System.currentTimeMillis();
-      File var1 = new File(j.e(), new String((new a.d.e()).b()));
-      File var2 = new File(j.e(), new String((new a.d.d()).b()));
+      File var1 = new File(j.e(), new String((new package_a.d.e()).b()));
+      File var2 = new File(j.e(), new String((new package_a.d.d()).b()));
       c var3 = new c(var1, 1);
       this.c = var3;
       var3 = new c(var2, 0);
@@ -154,13 +157,13 @@ public final class f implements Runnable {
                      c var24;
                      var19 = (var24 = new c(j.f(), 2, var7)).a(var5);
                      ByteArrayInputStream var22 = new ByteArrayInputStream(var19, 0, var24.b());
-                     InputStreamReader var26 = new InputStreamReader(var22, "UTF-8");
+                     InputStreamReader var26 = new InputStreamReader(var22, StandardCharsets.UTF_8);
                      package_b.a.f var13 = new package_b.a.f(var26);
                      var2 = new package_b.a.c(var13);
                   } else {
                      var19 = this.c.a(var5);
                      ByteArrayInputStream var25 = new ByteArrayInputStream(var19, 0, this.c.b());
-                     InputStreamReader var23 = new InputStreamReader(var25, "UTF-8");
+                     InputStreamReader var23 = new InputStreamReader(var25, StandardCharsets.UTF_8);
                      package_b.a.f var21 = new package_b.a.f(var23);
                      var2 = new package_b.a.c(var21);
                   }

@@ -11,6 +11,7 @@ public final class g extends h {
       super((String)null);
    }
 
+   @Override
    public final int a(package_a.c.a.b var1, int var2) {
       String var6 = this.l().replace('\n', ' ');
 
@@ -39,6 +40,7 @@ public final class g extends h {
       return "ABICycleWhile  [ " + super.toString() + "]";
    }
 
+   @Override
    public final package_a.c.a.d e() {
       g var1 = new g(this.l());
 
@@ -56,6 +58,7 @@ public final class g extends h {
       return var1;
    }
 
+   @Override
    protected final String g() {
       return "ABIWHI";
    }

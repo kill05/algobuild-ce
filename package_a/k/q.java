@@ -10,15 +10,15 @@ import java.net.URISyntaxException;
 import javax.swing.AbstractAction;
 
 final class q extends AbstractAction {
-   q(c var1, String var2) {
-      super(var2);
-   }
 
-   public final void actionPerformed(ActionEvent var1) {
-      try {
-         Desktop.getDesktop().browse(new URI(Translator.translate("mnuHelpOnlineFuncAddr")));
-      } catch (IOException var2) {
-      } catch (URISyntaxException var3) {
-      }
-   }
+    q(c var1, String var2) {
+        super(var2);
+    }
+
+    public void actionPerformed(ActionEvent var1) {
+        try {
+            Desktop.getDesktop().browse(new URI(Translator.translate("mnuHelpOnlineFuncAddr")));
+        } catch (IOException | URISyntaxException ignored) {
+        }
+    }
 }

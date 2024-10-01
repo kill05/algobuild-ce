@@ -14,6 +14,7 @@ final class p extends AbstractAction {
       super(var2);
    }
 
+   @Override
    public final void actionPerformed(ActionEvent var1) {
       try {
          Desktop.getDesktop().browse(new URI(Translator.translate("mnuHelpOnlineAddr")));

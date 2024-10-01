@@ -33,6 +33,7 @@ public final class j extends k {
       this.a(true);
    }
 
+   @Override
    public final int a(package_a.c.a.b var1, int var2) {
       String[] var7 = this.l();
 
@@ -80,34 +81,40 @@ public final class j extends k {
       return this.n() + "- ABIIOOutput: " + this.k().replace("\n", ", ") + "\n";
    }
 
+   @Override
    public final package_a.f.g h() {
       package_a.f.g var1;
       (var1 = super.h()).a("lineSeparators", Integer.toString(this.b));
       return var1;
    }
 
+   @Override
    public final void a(package_a.f.g var1) {
       super.a(var1);
       String var2 = var1.a("lineSeparators");
       this.b = Integer.parseInt(var2);
    }
 
+   @Override
    public final package_b.a.c b(boolean var1) {
       package_b.a.c var2;
       (var2 = super.b(var1)).b("lineSeparators", Integer.toString(this.b));
       return var2;
    }
 
+   @Override
    public final void a(package_b.a.c var1, boolean var2) {
       super.a(var1, var2);
       String var3 = var1.f("lineSeparators");
       this.e(Integer.parseInt(var3));
    }
 
+   @Override
    public final package_a.c.a.d e() {
       return new j(this.k(), this.b);
    }
 
+   @Override
    protected final String g() {
       return "ABIOUT";
    }

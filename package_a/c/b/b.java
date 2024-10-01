@@ -48,6 +48,7 @@ public class b extends n {
       return (String)this.c.get(var1);
    }
 
+   @Override
    public int a(package_a.c.a.b var1, int var2) {
       if (var2 == 0) {
          q var10;
@@ -104,10 +105,12 @@ public class b extends n {
       return "ABICall_Base [callName=" + this.b + ", actualParams=" + this.c + " orderInParent=" + this.n() + "]";
    }
 
+   @Override
    protected final String g() {
       return "ABICAL";
    }
 
+   @Override
    public package_a.f.g h() {
       package_a.f.g var1;
       (var1 = super.h()).a("callName", this.b);
@@ -125,6 +128,7 @@ public class b extends n {
       return var1;
    }
 
+   @Override
    public void a(package_a.f.g var1) {
       super.a(var1);
       String var2 = var1.a("callName");
@@ -141,6 +145,7 @@ public class b extends n {
 
    }
 
+   @Override
    public package_b.a.c b(boolean var1) {
       package_b.a.c var5;
       (var5 = super.b(var1)).b("callName", this.b);
@@ -156,6 +161,7 @@ public class b extends n {
       return var5;
    }
 
+   @Override
    public void a(package_b.a.c var1, boolean var2) {
       super.a(var1, var2);
       String var4 = var1.f("callName");
@@ -170,14 +176,17 @@ public class b extends n {
 
    }
 
+   @Override
    public package_a.c.a.d e() {
       return new b(this.b, (Vector)this.c.clone());
    }
 
+   @Override
    public final boolean b(int var1) {
       return var1 == 0;
    }
 
+   @Override
    public final p i() {
       p var1 = new p(1, this.b.length());
       int var2 = this.c.size();

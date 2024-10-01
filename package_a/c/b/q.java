@@ -59,6 +59,7 @@ public final class q extends n {
       this.f = var1;
    }
 
+   @Override
    public final int a(package_a.c.a.b var1, int var2) {
       if (var2 == 0) {
          var1.h("START:" + this.b);
@@ -96,6 +97,7 @@ public final class q extends n {
       }
    }
 
+   @Override
    public final void a(n var1) {
       int var2 = this.d.d();
       var1.a((package_a.c.a.d)this, var2);
@@ -112,6 +114,7 @@ public final class q extends n {
 
    }
 
+   @Override
    public final void a(n var1, int var2) {
       if (var2 < this.d.d()) {
          this.d.a(var1, var2);
@@ -132,6 +135,7 @@ public final class q extends n {
 
    }
 
+   @Override
    public final void d(int var1) {
       if (this.a != null) {
          Iterator var3 = this.a.iterator();
@@ -144,14 +148,17 @@ public final class q extends n {
       this.d.d(var1);
    }
 
+   @Override
    public final int d() {
       return this.d.d();
    }
 
+   @Override
    public final n c(int var1) {
       return this.d.c(var1);
    }
 
+   @Override
    public final String c() {
       return this.b;
    }
@@ -160,10 +167,12 @@ public final class q extends n {
       return "ABR_Base [name=" + this.b + ", body=" + this.d + ", formalParams=" + this.c + "]";
    }
 
+   @Override
    public final String b() {
       return this.b;
    }
 
+   @Override
    public final boolean a() {
       return true;
    }
@@ -180,6 +189,7 @@ public final class q extends n {
       this.c.clear();
    }
 
+   @Override
    public final package_a.f.g h() {
       package_a.f.g var1;
       (var1 = super.h()).a("codeType", Integer.toString(this.e));
@@ -202,6 +212,7 @@ public final class q extends n {
       return var1;
    }
 
+   @Override
    public final void a(package_a.f.g var1) {
       super.a(var1);
       String var2 = var1.a("codeType");
@@ -225,6 +236,7 @@ public final class q extends n {
       this.a(true);
    }
 
+   @Override
    public final package_b.a.c b(boolean var1) {
       package_b.a.c var2;
       (var2 = super.b(var1)).b("codeType", Integer.toString(this.e));
@@ -255,6 +267,7 @@ public final class q extends n {
       return var2;
    }
 
+   @Override
    public final void a(package_b.a.c var1, boolean var2) {
       super.a(var1, var2);
       Integer var3 = var1.a("codeType");
@@ -304,10 +317,12 @@ public final class q extends n {
       this.a(true);
    }
 
+   @Override
    protected final String g() {
       return "ABRCOD";
    }
 
+   @Override
    public final void f() {
       if (this.a != null) {
          for(int var1 = 0; var1 < this.d.d(); ++var1) {
@@ -324,6 +339,7 @@ public final class q extends n {
 
    }
 
+   @Override
    public final p i() {
       p var1;
       (var1 = new p(1, this.b.length())).a(this.d.i());

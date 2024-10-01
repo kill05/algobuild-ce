@@ -96,6 +96,7 @@ public final class e implements f {
       return this.b();
    }
 
+   @Override
    public final String a() {
       String var1 = "{";
       if (this.b != null) {
@@ -129,6 +130,7 @@ public final class e implements f {
       return var1 + "}";
    }
 
+   @Override
    public final String b() {
       String var1 = "{";
 
@@ -159,6 +161,7 @@ public final class e implements f {
       return var1 + "}";
    }
 
+   @Override
    public final f c() {
       return new e(this.a);
    }

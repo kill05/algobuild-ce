@@ -80,6 +80,7 @@ public final class e extends JDialog implements ActionListener, KeyListener, Doc
       this.pack();
    }
 
+   @Override
    public final void actionPerformed(ActionEvent var1) {
       if (var1.getSource() == this.a) {
          this.i.a(this.c.getText().trim());
@@ -99,6 +100,7 @@ public final class e extends JDialog implements ActionListener, KeyListener, Doc
       }
    }
 
+   @Override
    public final void changedUpdate(DocumentEvent var1) {
       String var4 = this.c.getText().trim();
       String var2 = this.d.getText().trim();
@@ -108,6 +110,7 @@ public final class e extends JDialog implements ActionListener, KeyListener, Doc
       this.i.b(var3);
    }
 
+   @Override
    public final void insertUpdate(DocumentEvent var1) {
       String var4 = this.c.getText().trim();
       String var2 = this.d.getText().trim();
@@ -117,6 +120,7 @@ public final class e extends JDialog implements ActionListener, KeyListener, Doc
       this.i.b(var3);
    }
 
+   @Override
    public final void removeUpdate(DocumentEvent var1) {
       String var4 = this.c.getText().trim();
       String var2 = this.d.getText().trim();
@@ -159,6 +163,7 @@ public final class e extends JDialog implements ActionListener, KeyListener, Doc
       return k;
    }
 
+   @Override
    public final void keyPressed(KeyEvent var1) {
       if (var1.getKeyCode() == 27) {
          this.i.a(this.f);
@@ -190,9 +195,11 @@ public final class e extends JDialog implements ActionListener, KeyListener, Doc
       }
    }
 
+   @Override
    public final void keyReleased(KeyEvent var1) {
    }
 
+   @Override
    public final void keyTyped(KeyEvent var1) {
    }
 }

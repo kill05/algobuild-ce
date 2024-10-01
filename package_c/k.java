@@ -15,10 +15,12 @@ public final class k implements l {
       this.a = "";
    }
 
+   @Override
    public final boolean a(l var1) {
       return var1 instanceof k && this.a.equals(((k)var1).a);
    }
 
+   @Override
    public final boolean b(l var1) {
       return var1 instanceof k && this.a.compareTo(((k)var1).a) < 0;
    }
@@ -27,14 +29,17 @@ public final class k implements l {
       return this.a;
    }
 
+   @Override
    public final String b() {
       return "(string)";
    }
 
+   @Override
    public final String c() {
       return "(string) \"" + this.a + "\"";
    }
 
+   @Override
    public final String d() {
       return "\"" + this.a + "\"";
    }

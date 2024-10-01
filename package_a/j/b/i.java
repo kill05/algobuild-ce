@@ -101,11 +101,11 @@ public final class i extends o {
       o var3 = this.b(var1);
       this.a.a(var3, var2);
       if (this.h != null) {
-         package_a.j.b.c var4 = this.h.a().a(var3);
-         var3.a((package_a.j.b.c)var4);
+         C_subclass var4 = this.h.a().a(var3);
+         var3.a(var4);
       }
 
-      var1.a((package_a.c.a.k)var3);
+      var1.a(var3);
       this.g();
       this.d = true;
       this.a(this.d);
@@ -119,9 +119,10 @@ public final class i extends o {
       this.revalidate();
    }
 
+   @Override
    protected final void a_() {
       package_a.g.e var1 = new package_a.g.e((package_a.c.b.n)this.i);
-      if (a.a.j.a(this.c.a(), (package_a.c.b.g)this.i)) {
+      if (package_a.a.j.a(this.c.a(), (package_a.c.b.g)this.i)) {
          this.c.c().a((package_a.g.g)var1);
          this.b.a(true);
       }
@@ -133,8 +134,9 @@ public final class i extends o {
       return this.a;
    }
 
-   public final void a(package_a.j.b.c var1) {
-      super.a((package_a.j.b.c)var1);
+   @Override
+   public final void a(C_subclass var1) {
+      super.a(var1);
       var1 = var1.a().a(this.a);
       this.a.a(var1);
    }

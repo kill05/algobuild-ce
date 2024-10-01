@@ -4,16 +4,16 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 
 final class f extends AbstractAction {
-   // $FF: synthetic field
-   private d a;
+    private final d a;
 
-   f(d var1) {
-      this.a = var1;
-      super();
-   }
+    f(d var1) {
+        super();
+        this.a = var1;
+    }
 
-   public final void actionPerformed(ActionEvent var1) {
-      d.a(this.a, d.a(this.a).getText());
-      this.a.setVisible(false);
-   }
+    @Override
+    public void actionPerformed(ActionEvent var1) {
+        d.a(this.a, d.a(this.a).getText());
+        this.a.setVisible(false);
+    }
 }

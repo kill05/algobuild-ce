@@ -13,6 +13,7 @@ public final class j extends i {
       this.a = 0.0D;
    }
 
+   @Override
    public final boolean a(l var1) {
       boolean var2 = false;
       if (var1 instanceof j) {
@@ -26,6 +27,7 @@ public final class j extends i {
       return var2;
    }
 
+   @Override
    public final boolean b(l var1) {
       boolean var2 = false;
       if (var1 instanceof j) {
@@ -43,14 +45,17 @@ public final class j extends i {
       return Long.toString(this.b);
    }
 
+   @Override
    public final String b() {
       return "(int)";
    }
 
+   @Override
    public final String c() {
       return "(int) " + Long.toString(this.b);
    }
 
+   @Override
    public final String d() {
       return Long.toString(this.b);
    }

@@ -26,6 +26,7 @@ public final class l extends m {
       return this.c;
    }
 
+   @Override
    public final n c(int var1) {
       if (var1 == 1) {
          return this.b;
@@ -36,6 +37,7 @@ public final class l extends m {
       }
    }
 
+   @Override
    public final int a(package_a.c.a.b var1, int var2) {
       if (var2 == 0) {
          String var6 = this.l().replace('\n', ' ');
@@ -75,6 +77,7 @@ public final class l extends m {
       return "ABISelectionIf " + this.l() + " [bodyTrue=" + this.b + ", bodyFalse=" + this.c + ", getOrderInParent()=" + this.n() + "]";
    }
 
+   @Override
    public final package_b.a.c b(boolean var1) {
       package_b.a.c var2 = super.b(var1);
       if (var1) {
@@ -91,6 +94,7 @@ public final class l extends m {
       return var2;
    }
 
+   @Override
    public final void a(package_b.a.c var1, boolean var2) {
       super.a(var1, var2);
       if (var2) {
@@ -122,6 +126,7 @@ public final class l extends m {
 
    }
 
+   @Override
    public final package_a.c.a.d e() {
       l var1 = new l(this.l());
 
@@ -140,6 +145,7 @@ public final class l extends m {
       return var1;
    }
 
+   @Override
    public final void f() {
       if (this.a != null) {
          this.b.f();
@@ -148,10 +154,12 @@ public final class l extends m {
 
    }
 
+   @Override
    protected final String g() {
       return "ABIIF_";
    }
 
+   @Override
    public final p i() {
       p var1;
       (var1 = super.i()).a(this.b.i());

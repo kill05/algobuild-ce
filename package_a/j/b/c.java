@@ -1,5 +1,10 @@
 package package_a.j.b;
 
+import package_a.c.a.b;
+import package_a.c.a.d;
+import package_a.c.b.q;
+import package_a.i.Translator;
+import package_a.j.a.a;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -20,15 +25,15 @@ public final class c extends o {
         super(var1, var2, var3);
         this.a((d)var3);
         this.setOpaque(true);
-        this.a = new e(var1, var2, (d)null);
+        this.a = new e(var1, var2, null);
         this.add(this.a);
         this.a.g();
         this.g();
         this.a(this.d);
         this.revalidate();
         int var4;
-        if ((var4 = ((q)var3).m()) != 3 && var4 != 2) {
-            this.setToolTipText((String)null);
+        if ((var4 = ((package_a.c.b.q)var3).m()) != 3 && var4 != 2) {
+            this.setToolTipText(null);
         } else {
             this.setToolTipText("clic Modifica / Copia / Taglia");
         }
@@ -71,9 +76,9 @@ public final class c extends o {
     }
 
     public final void a() {
-        q var1;
+        package_a.c.b.q var1;
         int var2;
-        if ((var1 = (q)this.i).m() == 2) {
+        if ((var1 = (package_a.c.b.q)this.i).m() == 2) {
             this.k = "PROC " + var1.j() + "(";
 
             for(var2 = 0; var2 < var1.k(); ++var2) {
@@ -120,7 +125,7 @@ public final class c extends o {
     public final void a(d var1, int var2) {
         o var3 = this.b(var1);
         if (this.h != null) {
-            C var4 = this.h.a().a(var3);
+            C_subclass var4 = this.h.a().a(var3);
             var3.a(var4);
         }
 
@@ -140,7 +145,7 @@ public final class c extends o {
 
     public final void a(d var1, boolean var2) {
         super.a(var1, var2);
-        a.c.a.c var3;
+        package_a.c.a.c var3;
         if (!var2 && (var3 = this.b.a()) != null && var3.d() == this.i && var3.c() == 0) {
             String var4 = ((q)this.i).j();
             this.c.c().h(var4);
@@ -148,9 +153,10 @@ public final class c extends o {
 
     }
 
+    @Override
     protected final void b_() {
         d var1 = null;
-        a.c.a.c var2;
+        package_a.c.a.c var2;
         if ((var2 = this.b.a()) != null) {
             var1 = this.b.a().d();
         }
@@ -167,37 +173,39 @@ public final class c extends o {
         this.scrollRectToVisible(this.j);
     }
 
+    @Override
     public final void a(MouseEvent var1) {
         if (((q)this.i).m() != 1) {
             JPopupMenu var2 = new JPopupMenu();
             JMenuItem var3;
-            (var3 = new JMenuItem(a.i.c.a("instructionModify"))).addActionListener(this);
+            (var3 = new JMenuItem(Translator.translate("instructionModify"))).addActionListener(this);
             var2.add(var3);
             var2.addSeparator();
-            (var3 = new JMenuItem(a.i.c.a("codeDuplicate"))).addActionListener(this);
+            (var3 = new JMenuItem(Translator.translate("codeDuplicate"))).addActionListener(this);
             var2.add(var3);
-            (var3 = new JMenuItem(a.i.c.a("codeDelete"))).addActionListener(this);
+            (var3 = new JMenuItem(Translator.translate("codeDelete"))).addActionListener(this);
             var2.add(var3);
             var2.show(var1.getComponent(), var1.getX(), var1.getY());
         }
 
     }
 
+    @Override
     public final void actionPerformed(ActionEvent var1) {
         String var2;
         if ((var2 = var1.getActionCommand()) != null && var2.length() > 0) {
-            if (var2.equals(a.i.c.a("instructionModify"))) {
+            if (var2.equals(Translator.translate("instructionModify"))) {
                 this.a_();
                 return;
             }
 
-            if (var2.equals(a.i.c.a("codeDuplicate"))) {
+            if (var2.equals(Translator.translate("codeDuplicate"))) {
                 JOptionPane.showMessageDialog(this.c.a(), "TO DO!");
                 return;
             }
 
-            if (var2.equals(a.i.c.a("codeDelete"))) {
-                a.g.c var3 = new a.g.c(this.b, (q)this.i);
+            if (var2.equals(Translator.translate("codeDelete"))) {
+                package_a.g.c var3 = new package_a.g.c(this.b, (q)this.i);
                 this.b.b(((q)this.i).j());
                 this.c.c().a(var3);
             }
@@ -205,10 +213,11 @@ public final class c extends o {
 
     }
 
+    @Override
     protected final void a_() {
         if (((q)this.i).m() != 1) {
-            a.g.d var1 = new a.g.d(this.b, (q)this.i);
-            if (a.a.c.a(this.c.a(), (q)this.i, this.b)) {
+            package_a.g.d var1 = new package_a.g.d(this.b, (q)this.i);
+            if (package_a.a.c.a(this.c.a(), (q)this.i, this.b)) {
                 this.c.c().a(var1);
                 this.b.a(true);
             }
@@ -218,7 +227,8 @@ public final class c extends o {
 
     }
 
-    public final void a(C var1) {
+    @Override
+    public final void a(C_subclass var1) {
         super.a(var1);
         var1 = var1.a().a(this.a);
         this.a.a(var1);

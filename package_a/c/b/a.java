@@ -15,6 +15,7 @@ public final class a extends n {
       this.a((String)null);
    }
 
+   @Override
    public final String b() {
       return this.b;
    }
@@ -30,6 +31,7 @@ public final class a extends n {
       this.a(true);
    }
 
+   @Override
    public final int a(package_a.c.a.b var1, int var2) {
       for(var2 = 0; this.c != null && var2 < this.c.length; ++var2) {
          String var3 = this.c[var2];
@@ -51,40 +53,47 @@ public final class a extends n {
       return this.n() + "- ABIAssign: " + this.b + "\n";
    }
 
+   @Override
    protected final String g() {
       return "ABIASS";
    }
 
+   @Override
    public final package_a.f.g h() {
       package_a.f.g var1;
       (var1 = super.h()).a("label", this.b);
       return var1;
    }
 
+   @Override
    public final void a(package_a.f.g var1) {
       super.a(var1);
       String var2 = var1.a("label");
       this.a(var2);
    }
 
+   @Override
    public final package_b.a.c b(boolean var1) {
       package_b.a.c var2;
       (var2 = super.b(var1)).b("label", this.b);
       return var2;
    }
 
+   @Override
    public final void a(package_b.a.c var1, boolean var2) {
       super.a(var1, var2);
       String var3 = var1.f("label");
       this.a(var3);
    }
 
+   @Override
    public final package_a.c.a.d e() {
       a var1;
       (var1 = new a()).a(this.b);
       return var1;
    }
 
+   @Override
    public final p i() {
       return new p(1, this.b.length());
    }

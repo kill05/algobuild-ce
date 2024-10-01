@@ -1,13 +1,15 @@
 package package_a.j.b;
 
-public final class p extends D {
-   public final package_a.j.b.c a(n var1) {
+public final class p extends D_subclass {
+
+   @Override
+   public final C_subclass a(n var1) {
       if (var1 instanceof a) {
          return new q(this, this);
       } else if (var1 instanceof b) {
          return new r(this, this);
       } else if (var1 instanceof c) {
-         return new B(this, this);
+         return new B_subclass(this, this);
       } else if (var1 instanceof d) {
          return new s(this, this);
       } else if (var1 instanceof e) {
@@ -25,7 +27,7 @@ public final class p extends D {
       } else if (var1 instanceof i) {
          return new x(this, this);
       } else {
-         return var1 instanceof m ? new A(this, this) : null;
+         return var1 instanceof m ? new A_subclass(this, this) : null;
       }
    }
 }

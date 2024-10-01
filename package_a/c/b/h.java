@@ -64,6 +64,7 @@ public abstract class h extends n {
 
    }
 
+   @Override
    public final void d(int var1) {
       if (this.a != null) {
          Iterator var3 = this.a.iterator();
@@ -92,6 +93,7 @@ public abstract class h extends n {
       return true;
    }
 
+   @Override
    public package_a.f.g h() {
       package_a.f.g var1;
       (var1 = super.h()).a("condition", this.c);
@@ -140,6 +142,7 @@ public abstract class h extends n {
 
    }
 
+   @Override
    public final void f() {
       if (this.a != null) {
          try {
@@ -162,6 +165,7 @@ public abstract class h extends n {
 
    }
 
+   @Override
    public p i() {
       p var1;
       (var1 = new p(1, this.c.length())).a(this.b.i());

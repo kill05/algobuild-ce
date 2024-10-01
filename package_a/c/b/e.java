@@ -11,6 +11,7 @@ public final class e extends h {
       super((String)null);
    }
 
+   @Override
    public final int a(package_a.c.a.b var1, int var2) {
       String var3 = this.l().replace('\n', ' ');
       if (var2 == 0) {
@@ -38,6 +39,7 @@ public final class e extends h {
       return "ABICycleDoWhile  [ " + super.toString() + "]";
    }
 
+   @Override
    public final package_a.c.a.d e() {
       e var1 = new e(this.l());
 
@@ -55,10 +57,12 @@ public final class e extends h {
       return var1;
    }
 
+   @Override
    public final boolean b(int var1) {
       return var1 == 1;
    }
 
+   @Override
    protected final String g() {
       return "ABIDOW";
    }

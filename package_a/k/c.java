@@ -12,26 +12,28 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Locale;
 
-public final class c {
-    private ABFrame b = new ABFrame();
-    protected a a;
+public class c {
+    private final ABFrame frame;
+    private final ActionMap actionMap;
     private JFileChooser c;
     private String d;
     private static c e = null;
 
     private c() {
+        this.frame = new ABFrame();
+
         Dimension var1 = Toolkit.getDefaultToolkit().getScreenSize();
-        this.b.setSize((int)(var1.getWidth() * 0.9), (int)(var1.getHeight() * 0.65));
-        this.b.setLocation((int)(var1.getWidth() * 0.05), (int)(var1.getHeight() * 0.05));
-        this.a = this.u();
-        this.b.setJMenuBar(this.v());
-        this.b.a(this.w());
-        this.b.setVisible(true);
-        this.b.a(new g(this));
-        this.a.a("mnuFileSaveAs").setEnabled(true);
-        this.a.a("execInstruction").setEnabled(true);
-        this.a.a("execOptions").setEnabled(true);
-        this.b.a(this);
+        this.frame.setSize((int)(var1.getWidth() * 0.9), (int)(var1.getHeight() * 0.65));
+        this.frame.setLocation((int)(var1.getWidth() * 0.05), (int)(var1.getHeight() * 0.05));
+        this.actionMap = this.u();
+        this.frame.setJMenuBar(this.v());
+        this.frame.a(this.w());
+        this.frame.setVisible(true);
+        this.frame.a(new package_a.j.a.g(this));
+        this.actionMap.getAction("mnuFileSaveAs").setEnabled(true);
+        this.actionMap.getAction("execInstruction").setEnabled(true);
+        this.actionMap.getAction("execOptions").setEnabled(true);
+        this.frame.a(this);
     }
 
     public static c a() {
@@ -43,11 +45,11 @@ public final class c {
     }
 
     public final ABFrame b() {
-        return this.b;
+        return this.frame;
     }
 
-    private a u() {
-        a var1 = new a();
+    private ActionMap u() {
+        ActionMap var1 = new ActionMap();
         String var2 = "mnuFileNew";
         String var3 = Translator.translate("mnuFileNew");
         ImageIcon var4 = package_a.i.b.a("imgs/new_icon.gif");
@@ -83,8 +85,8 @@ public final class c {
         var3 = Translator.translate("mnuEditUndo");
         var4 = package_a.i.b.a("imgs/undo_icon.gif");
         y var12 = new y(this, var3, var4);
-        if (this.b != null && this.b.a() != null) {
-            var12.setEnabled(this.b.a().m());
+        if (this.frame != null && this.frame.a() != null) {
+            var12.setEnabled(this.frame.a().m());
         }
 
         var1.a(var2, var12);
@@ -92,14 +94,14 @@ public final class c {
         var3 = Translator.translate("mnuEditRedo");
         var4 = package_a.i.b.a("imgs/redo_icon.gif");
         z var13 = new z(this, var3, var4);
-        if (this.b != null && this.b.a() != null) {
-            var13.setEnabled(this.b.a().n());
+        if (this.frame != null && this.frame.a() != null) {
+            var13.setEnabled(this.frame.a().n());
         }
 
         var1.a(var2, var13);
         var2 = "mnuEditCopyImage";
         var3 = Translator.translate("mnuEditCopyImage");
-        package_a.k.a var14 = new a(this, var3);
+        A_innerclass var14 = new A_innerclass(this, var3);
         var1.a(var2, var14);
         var2 = "fontAndLineOptions";
         var3 = Translator.translate("fontAndLineOptions");
@@ -184,7 +186,7 @@ public final class c {
 
     private JMenuItem c(String var1) {
         JMenuItem var2;
-        (var2 = new JMenuItem(Translator.translate(var1))).setAction(this.a.a(var1));
+        (var2 = new JMenuItem(Translator.translate(var1))).setAction(this.actionMap.getAction(var1));
         return var2;
     }
 
@@ -233,7 +235,7 @@ public final class c {
 
     private JButton d(String var1) {
         JButton var2;
-        (var2 = new JButton()).setAction(this.a.a(var1));
+        (var2 = new JButton()).setAction(this.actionMap.getAction(var1));
         var2.setToolTipText(var2.getText());
         var2.setText("");
         var2.setMargin(new Insets(0, 0, 0, 0));
@@ -261,26 +263,26 @@ public final class c {
     }
 
     public final void a(String var1, boolean var2) {
-        this.a.a(var1).setEnabled(var2);
+        this.actionMap.getAction(var1).setEnabled(var2);
     }
 
     public final void c() {
-        if (!this.b.b() || this.b.a().e()) {
-            this.b.a(new g(this));
-            this.a.a("execInstruction").setEnabled(true);
-            this.a.a("execOptions").setEnabled(true);
-            this.b.setTitle("");
+        if (!this.frame.b() || this.frame.a().e()) {
+            this.frame.a(new package_a.j.a.g(this));
+            this.actionMap.getAction("execInstruction").setEnabled(true);
+            this.actionMap.getAction("execOptions").setEnabled(true);
+            this.frame.setTitle("");
         }
 
     }
 
     public final void d() {
-        if (!this.b.b()) {
-            this.b.a(new g(this));
+        if (!this.frame.b()) {
+            this.frame.a(new package_a.j.a.g(this));
         }
 
-        if (this.b.b()) {
-            this.b.a().c();
+        if (this.frame.b()) {
+            this.frame.a().c();
         }
 
     }
@@ -295,7 +297,7 @@ public final class c {
             this.c.setFileSelectionMode(0);
         }
 
-        if (this.c.showOpenDialog(this.b) == 0) {
+        if (this.c.showOpenDialog(this.frame) == 0) {
             var1 = this.c.getSelectedFile().getAbsolutePath();
         }
 
@@ -307,7 +309,7 @@ public final class c {
         if (this.c == null) {
             this.d = package_a.f.j.c().getAbsolutePath();
             this.c = new JFileChooser(this.d);
-            FileNameExtensionFilter var3 = new FileNameExtensionFilter("AlgoBuild files *.algobuild", new String[]{"algobuild"});
+            FileNameExtensionFilter var3 = new FileNameExtensionFilter("AlgoBuild files *.algobuild", "algobuild");
             this.c.setFileFilter(var3);
             this.c.setFileSelectionMode(0);
         }
@@ -316,7 +318,7 @@ public final class c {
             this.c.setSelectedFile(new File(var1));
         }
 
-        if (this.c.showSaveDialog(this.b) == 0) {
+        if (this.c.showSaveDialog(this.frame) == 0) {
             var1 = this.c.getSelectedFile().getName();
             var2 = this.c.getSelectedFile().getAbsolutePath();
             FileFilter var4;
@@ -335,24 +337,24 @@ public final class c {
     }
 
     public final void f() {
-        if (this.b.b()) {
-            this.b.a().f();
+        if (this.frame.b()) {
+            this.frame.a().f();
         }
 
     }
 
     public final void g() {
-        if (this.b.b()) {
-            this.b.a().g();
+        if (this.frame.b()) {
+            this.frame.a().g();
         }
 
     }
 
     public final void h() {
         boolean var1 = true;
-        if (this.b.b() && !this.b.a().e()) {
+        if (this.frame.b() && !this.frame.a().e()) {
             var1 = false;
-            if (JOptionPane.showConfirmDialog(this.b, Translator.translate("modifiedSaveQuestion"), "AlgoBuild", 2, 3) == 0) {
+            if (JOptionPane.showConfirmDialog(this.frame, Translator.translate("modifiedSaveQuestion"), "AlgoBuild", 2, 3) == 0) {
                 var1 = true;
             }
         }
@@ -364,56 +366,56 @@ public final class c {
     }
 
     public final void i() {
-        if (this.b.b()) {
-            this.b.a().h();
+        if (this.frame.b()) {
+            this.frame.a().h();
         }
 
     }
 
     public final void j() {
-        if (this.b.b()) {
-            this.b.a().i();
+        if (this.frame.b()) {
+            this.frame.a().i();
         }
 
     }
 
     public final void k() {
-        if (this.b.b()) {
-            this.b.a().j();
+        if (this.frame.b()) {
+            this.frame.a().j();
         }
 
     }
 
     public final void l() {
-        if (this.b.b()) {
-            this.b.a().k();
+        if (this.frame.b()) {
+            this.frame.a().k();
         }
 
     }
 
     public final void m() {
-        if (this.b.b()) {
-            this.b.a().l();
+        if (this.frame.b()) {
+            this.frame.a().l();
         }
 
     }
 
     public final void n() {
-        if (this.b.b()) {
-            this.b.a().o();
+        if (this.frame.b()) {
+            this.frame.a().o();
         }
 
     }
 
     public final void o() {
-        if (this.b.b()) {
-            this.b.a().p();
+        if (this.frame.b()) {
+            this.frame.a().p();
         }
 
     }
 
     public final void a(Locale var1) {
-        Translator.translate(var1);
+        Translator.setLocale(var1);
         Translator.translate("mnuFileExit");
         Translator.translate("mnuEditUndo");
         SwingUtilities.invokeLater(new t(this));
@@ -421,13 +423,13 @@ public final class c {
 
     public final void p() {
         String var1;
-        if ((var1 = a.f.k.a().d()) == null) {
+        if ((var1 = package_a.f.k.a().d()) == null) {
             var1 = Translator.translate("authorNotRegistered");
         }
 
-        var1 = "AlgoBuild\n" + Translator.translate("infoVersion") + " 0" + ".85" + "\n" + Translator.translate("infoBuild") + " 00085_20200418_1930" + "\n(C) Paolo Santi 2011-2020" + "\n\n" + Translator.translate("authorRegisteredInfo") + "\n" + Translator.translate("infoSerial") + ": " + a.f.k.a().b() + "\n" + Translator.translate("authorName") + ": " + var1;
+        var1 = "AlgoBuild\n" + Translator.translate("infoVersion") + " 0" + ".85" + "\n" + Translator.translate("infoBuild") + " 00085_20200418_1930" + "\n(C) Paolo Santi 2011-2020" + "\n\n" + Translator.translate("authorRegisteredInfo") + "\n" + Translator.translate("infoSerial") + ": " + package_a.f.k.a().b() + "\n" + Translator.translate("authorName") + ": " + var1;
         Object[] var2 = new Object[]{"OK", Translator.translate("infoWebSite")};
-        if (JOptionPane.showOptionDialog(this.b, var1, Translator.translate("infoAbout"), 0, 1, new ImageIcon(this.b.getIconImage()), var2, var2[0]) == 1) {
+        if (JOptionPane.showOptionDialog(this.frame, var1, Translator.translate("infoAbout"), 0, 1, new ImageIcon(this.frame.getIconImage()), var2, var2[0]) == 1) {
             try {
                 Desktop.getDesktop().browse(new URI(Translator.translate("infoWebURL")));
                 return;
@@ -442,16 +444,16 @@ public final class c {
     }
 
     public final void q() {
-        g var1;
-        if (this.b != null && (var1 = this.b.a()) != null) {
+        package_a.j.a.g var1;
+        if (this.frame != null && (var1 = this.frame.a()) != null) {
             var1.q();
         }
 
     }
 
     public final void r() {
-        g var1;
-        if (this.b != null && (var1 = this.b.a()) != null) {
+        package_a.j.a.g var1;
+        if (this.frame != null && (var1 = this.frame.a()) != null) {
             var1.r();
         }
 
@@ -459,7 +461,7 @@ public final class c {
 
     public final void s() {
         package_a.f.k var1 = package_a.f.k.a();
-        if (this.b != null && var1 != null) {
+        if (this.frame != null && var1 != null) {
             String var2;
             String var5;
             if ((var5 = var1.d()) == null) {
@@ -471,7 +473,7 @@ public final class c {
 
             var5 = Translator.translate("authorName") + ": " + var5 + "\n\n" + var2;
             Object[] var6 = new Object[]{"OK", Translator.translate("authorCodeRequestInfo")};
-            if (JOptionPane.showOptionDialog(this.b, var5, Translator.translate("authorInfo"), 0, 1, new ImageIcon(this.b.getIconImage()), var6, var6[0]) == 1) {
+            if (JOptionPane.showOptionDialog(this.frame, var5, Translator.translate("authorInfo"), 0, 1, new ImageIcon(this.frame.getIconImage()), var6, var6[0]) == 1) {
                 try {
                     Desktop.getDesktop().browse(new URI(Translator.translate("authorCodeRequestPage")));
                     return;
@@ -487,8 +489,8 @@ public final class c {
     }
 
     public final void t() {
-        if (this.b != null) {
-            this.b.a().s();
+        if (this.frame != null) {
+            this.frame.a().s();
         }
 
     }

@@ -14,7 +14,7 @@ public final class f {
    private boolean g;
 
    public f(Reader var1) {
-      this.f = (Reader)(var1.markSupported() ? var1 : new BufferedReader(var1));
+      this.f = var1.markSupported() ? var1 : new BufferedReader(var1);
       this.b = false;
       this.g = false;
       this.e = 0;
@@ -155,7 +155,7 @@ public final class f {
 
          this.a();
          String var6 = var7.toString().trim();
-         if ("".equals(var6)) {
+         if (var6.isEmpty()) {
             throw this.a("Missing value");
          } else {
             return package_b.a.c.h(var6);

@@ -111,6 +111,7 @@ public final class b extends JDialog implements ActionListener, DocumentListener
       this.e.setMaximumSize(var9);
    }
 
+   @Override
    public final void actionPerformed(ActionEvent var1) {
       Object var4;
       if ((var4 = var1.getSource()) == this.c) {
@@ -189,14 +190,17 @@ public final class b extends JDialog implements ActionListener, DocumentListener
       this.l.a(true);
    }
 
+   @Override
    public final void changedUpdate(DocumentEvent var1) {
       this.a(var1);
    }
 
+   @Override
    public final void insertUpdate(DocumentEvent var1) {
       this.a(var1);
    }
 
+   @Override
    public final void removeUpdate(DocumentEvent var1) {
       this.a(var1);
    }
