@@ -1,4 +1,4 @@
-package b.a;
+package package_b.a;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -78,7 +78,7 @@ public final class g {
                this.e.write(44);
             }
 
-            this.e.write(b.a.c.g(var1));
+            this.e.write(package_b.a.c.g(var1));
             this.e.write(58);
             this.a = false;
             this.b = 'o';
@@ -114,6 +114,6 @@ public final class g {
    }
 
    public final g a(Object var1) {
-      return this.b(b.a.c.a(var1));
+      return this.b(package_b.a.c.a(var1));
    }
 }

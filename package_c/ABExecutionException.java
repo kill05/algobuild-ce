@@ -1,26 +1,26 @@
 package package_c;
 
-public final class ABAssignException extends Exception {
+public final class ABExecutionException extends RuntimeException {
    private int a;
    private String b;
 
-   public ABAssignException(int var1, String var2) {
+   public ABExecutionException(int var1, String var2) {
       this.a = var1;
       this.b = String.format(a(this.a), var2);
    }
 
-   public ABAssignException(int var1) {
+   public ABExecutionException(int var1) {
       this.a = 450;
       this.b = a(this.a);
    }
 
-   public ABAssignException(int var1, int var2, int var3, String var4) {
+   public ABExecutionException(int var1, int var2, int var3, String var4) {
       this.a = var3;
       String var5 = a(this.a);
       this.b = String.format(var5, var4);
    }
 
-   public ABAssignException(int var1, int var2, int var3) {
+   public ABExecutionException(int var1, int var2, int var3) {
       this.a = var3;
       this.b = a(this.a);
    }

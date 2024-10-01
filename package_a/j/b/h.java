@@ -103,8 +103,8 @@ public final class h extends o {
       o var3 = this.b(var1);
       this.a.a(var3, var2);
       if (this.h != null) {
-         C var4 = this.h.a().a(var3);
-         var3.a((C)var4);
+         package_a.j.b.c var4 = this.h.a().a(var3);
+         var3.a((package_a.j.b.c)var4);
       }
 
       var1.a((package_a.c.a.k)var3);
@@ -135,8 +135,8 @@ public final class h extends o {
       return this.a;
    }
 
-   public final void a(C var1) {
-      super.a((C)var1);
+   public final void a(package_a.j.b.c var1) {
+      super.a((package_a.j.b.c)var1);
       var1 = var1.a().a(this.a);
       this.a.a(var1);
    }

@@ -4,7 +4,7 @@ import java.awt.Dimension;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 
-public final class x extends C {
+public final class x extends package_a.j.b.c {
    private String[] b;
    private int[] c;
    private int d;

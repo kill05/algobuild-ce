@@ -5,7 +5,7 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.util.Vector;
 
-public final class r extends C {
+public final class r extends c.C {
    private String[] b;
    private int[] c;
    private int d;

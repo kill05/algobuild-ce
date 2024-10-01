@@ -1,4 +1,4 @@
-package b.a;
+package package_b.a;
 
 final class d {
    private d() {

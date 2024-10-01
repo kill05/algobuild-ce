@@ -54,23 +54,23 @@ public final class k {
          var1.f = new UUID(var12, var14);
          UUID var22 = UUID.nameUUIDFromBytes(System.getProperties().getProperty(new String((new a.h.b()).b())).getBytes("UTF-8"));
          if (var3 != -85) {
-            throw new e(a.i.c.a("abpErrorConfigFile") + " b1 " + var3);
+            throw new e(Translator.translate("abpErrorConfigFile") + " b1 " + var3);
          }
 
          if (var4 != -49) {
-            throw new e(a.i.c.a("abpErrorConfigFile") + " b2 " + var4);
+            throw new e(Translator.translate("abpErrorConfigFile") + " b2 " + var4);
          }
 
          if (var5 != 1) {
-            throw new e(a.i.c.a("abpErrorConfigFile") + " b3 " + var5);
+            throw new e(Translator.translate("abpErrorConfigFile") + " b3 " + var5);
          }
 
          if (var6 != 3) {
-            throw new e(a.i.c.a("abpErrorConfigFile") + " b4 " + var6);
+            throw new e(Translator.translate("abpErrorConfigFile") + " b4 " + var6);
          }
 
          if (!var1.f.equals(var22)) {
-            throw new e(a.i.c.a("abpErrorConfigFile") + " UUID2");
+            throw new e(Translator.translate("abpErrorConfigFile") + " UUID2");
          }
       } catch (FileNotFoundException var18) {
          var18.printStackTrace();
@@ -140,23 +140,23 @@ public final class k {
          this.f = new UUID(var7, var9);
          UUID var6 = UUID.nameUUIDFromBytes(System.getProperties().getProperty(new String((new a.h.b()).b())).getBytes("UTF-8"));
          if (var2 != -85) {
-            throw new e(a.i.c.a("abpErrorConfigFile") + " b1 " + var2);
+            throw new e(Translator.translate("abpErrorConfigFile") + " b1 " + var2);
          }
 
          if (var3 != -49) {
-            throw new e(a.i.c.a("abpErrorConfigFile") + " b2 " + var3);
+            throw new e(Translator.translate("abpErrorConfigFile") + " b2 " + var3);
          }
 
          if (var4 != 1) {
-            throw new e(a.i.c.a("abpErrorConfigFile") + " b3 " + var4);
+            throw new e(Translator.translate("abpErrorConfigFile") + " b3 " + var4);
          }
 
          if (var5 != 4) {
-            throw new e(a.i.c.a("abpErrorConfigFile") + " b4 " + var5);
+            throw new e(Translator.translate("abpErrorConfigFile") + " b4 " + var5);
          }
 
          if (!this.f.equals(var6)) {
-            throw new e(a.i.c.a("abpErrorConfigFile") + " UUID2");
+            throw new e(Translator.translate("abpErrorConfigFile") + " UUID2");
          }
 
          int var14;
@@ -295,23 +295,23 @@ public final class k {
          this.f = new UUID(var8, var10);
          UUID var7 = UUID.nameUUIDFromBytes(System.getProperties().getProperty(new String((new a.h.b()).b())).getBytes("UTF-8"));
          if (var3 != -85) {
-            throw new e(a.i.c.a("abpErrorConfigFile") + " b1 " + var3);
+            throw new e(Translator.translate("abpErrorConfigFile") + " b1 " + var3);
          }
 
          if (var4 != -49) {
-            throw new e(a.i.c.a("abpErrorConfigFile") + " b2 " + var4);
+            throw new e(Translator.translate("abpErrorConfigFile") + " b2 " + var4);
          }
 
          if (var5 != 1) {
-            throw new e(a.i.c.a("abpErrorConfigFile") + " b3 " + var5);
+            throw new e(Translator.translate("abpErrorConfigFile") + " b3 " + var5);
          }
 
          if (var6 != 5) {
-            throw new e(a.i.c.a("abpErrorConfigFile") + " b4 " + var6);
+            throw new e(Translator.translate("abpErrorConfigFile") + " b4 " + var6);
          }
 
          if (!this.f.equals(var7)) {
-            throw new e(a.i.c.a("abpErrorConfigFile") + " UUID2");
+            throw new e(Translator.translate("abpErrorConfigFile") + " UUID2");
          }
 
          int var15;
@@ -458,10 +458,10 @@ public final class k {
                break;
             }
          } catch (MalformedURLException var17) {
-            throw new h(a.i.c.a("abpErrorConfigFile"), var17);
+            throw new h(Translator.translate("abpErrorConfigFile"), var17);
          } catch (ConnectException var18) {
          } catch (IOException var19) {
-            throw new h(a.i.c.a("abpErrorConfigFile"), var19);
+            throw new h(Translator.translate("abpErrorConfigFile"), var19);
          }
       }
 
@@ -493,7 +493,7 @@ public final class k {
 
             var10.close();
          } catch (FileNotFoundException var8) {
-            throw new h(a.i.c.a("abpErrorConfigFile"), var8);
+            throw new h(Translator.translate("abpErrorConfigFile"), var8);
          }
       }
    }
@@ -526,7 +526,7 @@ public final class k {
 
             var11.close();
          } catch (FileNotFoundException var9) {
-            throw new h(a.i.c.a("abpErrorConfigFile"), var9);
+            throw new h(Translator.translate("abpErrorConfigFile"), var9);
          }
       }
    }
@@ -627,9 +627,9 @@ public final class k {
             return var2;
          }
       } catch (MalformedURLException var13) {
-         throw new h(a.i.c.a("abpErrorConfigFile"), var13);
+         throw new h(Translator.translate("abpErrorConfigFile"), var13);
       } catch (IOException var14) {
-         throw new h(a.i.c.a("abpErrorConfigFile"), var14);
+         throw new h(Translator.translate("abpErrorConfigFile"), var14);
       }
    }
 
@@ -656,7 +656,7 @@ public final class k {
          var3.close();
          var16.close();
          if (var7 != var14) {
-            throw new h(a.i.c.a("abpErrorConfigFile"));
+            throw new h(Translator.translate("abpErrorConfigFile"));
          }
 
          var2 = var4;

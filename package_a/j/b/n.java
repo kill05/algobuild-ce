@@ -16,11 +16,11 @@ public class n extends JPanel implements ActionListener, MouseListener {
    protected package_a.c.a.b b;
    protected package_a.j.a.a c;
    protected boolean d = false;
-   protected int e = (int)(6.0D * a.k.b.a());
-   protected int f = (int)(6.0D * a.k.b.a());
+   protected int e = (int)(6.0D * package_a.k.b.a());
+   protected int f = (int)(6.0D * package_a.k.b.a());
    private int a = -1;
    protected boolean g = false;
-   C h;
+   package_a.j.b.c h;
 
    public n(package_a.c.a.b var1, package_a.j.a.a var2) {
       this.b = var1;
@@ -164,7 +164,7 @@ public class n extends JPanel implements ActionListener, MouseListener {
    public void a() {
    }
 
-   public void a(C var1) {
+   public void a(package_a.j.b.c var1) {
       this.h = var1;
       if (var1 != null) {
          var1.b(this);

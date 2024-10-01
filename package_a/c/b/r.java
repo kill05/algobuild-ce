@@ -1,6 +1,6 @@
 package package_a.c.b;
 
-public final class r extends Exception {
+public final class r extends RuntimeException {
    public r() {
    }
 

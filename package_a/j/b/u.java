@@ -4,7 +4,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.geom.Rectangle2D;
 
-public final class u extends C {
+public final class u extends package_a.j.b.c {
    public u(p var1, D var2) {
       super(var2);
    }

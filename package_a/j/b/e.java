@@ -60,10 +60,10 @@ public final class e extends o {
          this.add(var3, var2 << 1);
          this.add(var1, (var2 << 1) + 1);
          if (this.h != null) {
-            C var4 = this.h.a().a(var3);
-            var3.a((C)var4);
+            package_a.j.b.c var4 = this.h.a().a(var3);
+            var3.a((package_a.j.b.c)var4);
             var4 = this.h.a().a(var1);
-            var1.a((C)var4);
+            var1.a((package_a.j.b.c)var4);
          }
 
          this.g();
@@ -86,14 +86,14 @@ public final class e extends o {
       this.invalidate();
    }
 
-   public final void a(C var1) {
-      super.a((C)var1);
+   public final void a(package_a.j.b.c var1) {
+      super.a((package_a.j.b.c)var1);
       Component[] var2 = this.getComponents();
 
       for(int var3 = 0; var3 < var2.length; ++var3) {
          if (var2[var3] instanceof n) {
             n var4 = (n)var2[var3];
-            C var5 = var1.a().a(var4);
+            package_a.j.b.c var5 = var1.a().a(var4);
             var4.a(var5);
          }
       }

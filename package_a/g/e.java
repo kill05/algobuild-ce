@@ -4,8 +4,8 @@ import package_a.c.b.n;
 
 public final class e extends g {
    private n a;
-   private a.f.g b = null;
-   private a.f.g c = null;
+   private package_a.f.g b = null;
+   private package_a.f.g c = null;
 
    public e(n var1) {
       this.a = var1;

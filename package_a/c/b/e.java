@@ -1,5 +1,7 @@
 package package_a.c.b;
 
+import package_c.ABExecutionException;
+
 public final class e extends h {
    public e(String var1) {
       super(var1);
@@ -9,21 +11,21 @@ public final class e extends h {
       super((String)null);
    }
 
-   public final int a(a.c.a.b var1, int var2) {
+   public final int a(package_a.c.a.b var1, int var2) {
       String var3 = this.l().replace('\n', ' ');
       if (var2 == 0) {
-         a.c.a.c var8 = new a.c.a.c(this.m(), var1);
+         package_a.c.a.c var8 = new package_a.c.a.c(this.m(), var1);
          var1.d().push(var8);
          return 1;
       } else {
          boolean var7;
          try {
             boolean var4;
-            c.l var6;
-            var7 = var4 = (var6 = var1.e().a(var3, var1.c())) instanceof c.h && ((c.h)var6).a();
+            package_c.l var6;
+            var7 = var4 = (var6 = var1.e().a(var3, var1.c())) instanceof package_c.h && ((package_c.h)var6).a();
             var1.h("DO-WHILE TEST:  " + var3 + "   RESULT: " + var4);
             var1.i();
-         } catch (c.g var5) {
+         } catch (ABExecutionException var5) {
             var1.i("DO-WHILE ERROR: " + var5 + " IN " + var3);
             return -2;
          }
@@ -36,7 +38,7 @@ public final class e extends h {
       return "ABICycleDoWhile  [ " + super.toString() + "]";
    }
 
-   public final a.c.a.d e() {
+   public final package_a.c.a.d e() {
       e var1 = new e(this.l());
 
       try {

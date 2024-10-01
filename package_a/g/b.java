@@ -5,12 +5,12 @@ import package_a.c.b.s;
 import package_a.c.b.t;
 
 public final class b extends g {
-   private a.c.a.b a;
+   private package_a.c.a.b a;
    private n b;
    private int c = 0;
    private String d = "";
 
-   public b(a.c.a.b var1, String var2) {
+   public b(package_a.c.a.b var1, String var2) {
       this.a = var1;
       int var3 = var2.lastIndexOf(46);
       this.c = Integer.parseInt(var2.substring(var3 + 1));
@@ -28,7 +28,7 @@ public final class b extends g {
    public final void b() {
       try {
          this.a.a(this.d, this.c, this.b);
-         this.a.a((a.c.a.d)this.b);
+         this.a.a(this.b);
       } catch (NumberFormatException var2) {
          var2.printStackTrace();
       } catch (s var3) {

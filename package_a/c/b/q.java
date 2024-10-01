@@ -1,5 +1,7 @@
 package package_a.c.b;
 
+import package_c.ABExecutionException;
+
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -14,7 +16,7 @@ public final class q extends n {
       this.b = var1;
       this.e = var2;
       this.d = new o();
-      this.d.a((a.c.a.d)this, -1);
+      this.d.a((package_a.c.a.d)this, -1);
       this.c = new Vector();
    }
 
@@ -22,7 +24,7 @@ public final class q extends n {
       this.b = null;
       this.e = 0;
       this.d = new o();
-      this.d.a((a.c.a.d)this, -1);
+      this.d.a((package_a.c.a.d)this, -1);
       this.c = new Vector();
    }
 
@@ -57,25 +59,25 @@ public final class q extends n {
       this.f = var1;
    }
 
-   public final int a(a.c.a.b var1, int var2) {
+   public final int a(package_a.c.a.b var1, int var2) {
       if (var2 == 0) {
          var1.h("START:" + this.b);
-         a.c.a.c var6 = new a.c.a.c(this.d, var1);
+         package_a.c.a.c var6 = new package_a.c.a.c(this.d, var1);
          var1.d().push(var6);
          return 1;
       } else if (var2 == 1) {
          if (this.f != null && this.f.length() > 0) {
-            c.f var4;
-            if ((var4 = (c.f)var1.c().get(this.f)) != null) {
+            package_c.f var4;
+            if ((var4 = (package_c.f)var1.c().get(this.f)) != null) {
                var4 = var4.c();
                var1.c().put("_RETVAL_", var4);
                var1.h("FUNCTION RETURN:" + this.f + " result:" + var4.toString());
             } else {
                try {
-                  c.l var5 = var1.e().a(this.f, var1.c());
-                  var1.c().put("_RETVAL_", new c.m(var5));
+                  package_c.l var5 = var1.e().a(this.f, var1.c());
+                  var1.c().put("_RETVAL_", new package_c.m(var5));
                   var1.h("FUNCTION RETURN:" + this.f + " result:" + var5);
-               } catch (c.g var3) {
+               } catch (ABExecutionException var3) {
                   var1.i("FUNCTION RETURN ERROR: " + var3 + " IN " + this.f);
                   return -2;
                }
@@ -96,13 +98,13 @@ public final class q extends n {
 
    public final void a(n var1) {
       int var2 = this.d.d();
-      var1.a((a.c.a.d)this, var2);
+      var1.a((package_a.c.a.d)this, var2);
       this.d.a(var1);
       if (this.a != null) {
          Iterator var4 = this.a.iterator();
 
          while(var4.hasNext()) {
-            ((a.c.a.k)var4.next()).a(var1, var2);
+            ((package_a.c.a.k)var4.next()).a(var1, var2);
          }
 
          var1.f();
@@ -113,12 +115,12 @@ public final class q extends n {
    public final void a(n var1, int var2) {
       if (var2 < this.d.d()) {
          this.d.a(var1, var2);
-         var1.a((a.c.a.d)this, var2);
+         var1.a((package_a.c.a.d)this, var2);
          if (this.a != null) {
             Iterator var4 = this.a.iterator();
 
             while(var4.hasNext()) {
-               ((a.c.a.k)var4.next()).a(var1, var2);
+               ((package_a.c.a.k)var4.next()).a(var1, var2);
             }
 
             var1.f();
@@ -135,7 +137,7 @@ public final class q extends n {
          Iterator var3 = this.a.iterator();
 
          while(var3.hasNext()) {
-            ((a.c.a.k)var3.next()).a(var1);
+            ((package_a.c.a.k)var3.next()).a(var1);
          }
       }
 
@@ -178,8 +180,8 @@ public final class q extends n {
       this.c.clear();
    }
 
-   public final a.f.g h() {
-      a.f.g var1;
+   public final package_a.f.g h() {
+      package_a.f.g var1;
       (var1 = super.h()).a("codeType", Integer.toString(this.e));
       var1.a("name", this.b);
       int var2;
@@ -200,7 +202,7 @@ public final class q extends n {
       return var1;
    }
 
-   public final void a(a.f.g var1) {
+   public final void a(package_a.f.g var1) {
       super.a(var1);
       String var2 = var1.a("codeType");
       this.e = Integer.parseInt(var2);
@@ -223,8 +225,8 @@ public final class q extends n {
       this.a(true);
    }
 
-   public final b.a.c b(boolean var1) {
-      b.a.c var2;
+   public final package_b.a.c b(boolean var1) {
+      package_b.a.c var2;
       (var2 = super.b(var1)).b("codeType", Integer.toString(this.e));
       var2.b("name", this.b);
       int var3;
@@ -241,7 +243,7 @@ public final class q extends n {
       var4 = this.d.d();
       if (var1) {
          for(int var7 = 0; var7 < var4; ++var7) {
-            b.a.c var6 = this.c(var7).b(true);
+            package_b.a.c var6 = this.c(var7).b(true);
             var2.a("body", (Object)var6);
          }
       }
@@ -253,14 +255,14 @@ public final class q extends n {
       return var2;
    }
 
-   public final void a(b.a.c var1, boolean var2) {
+   public final void a(package_b.a.c var1, boolean var2) {
       super.a(var1, var2);
       Integer var3 = var1.a("codeType");
       int var11 = var3;
       this.e = var11;
       String var12 = var1.f("name");
       this.b = var12;
-      b.a.a var13 = var1.d("formalParams");
+      package_b.a.a var13 = var1.d("formalParams");
       this.c.clear();
       if (var13 != null) {
          for(int var4 = 0; var4 < var13.a(); ++var4) {
@@ -281,7 +283,7 @@ public final class q extends n {
       }
 
       if (var2) {
-         b.a.a var17 = var1.d("body");
+         package_b.a.a var17 = var1.d("body");
 
          try {
             this.d.j();
@@ -291,7 +293,7 @@ public final class q extends n {
 
          if (var17 != null) {
             for(int var10 = 0; var10 < var17.a(); ++var10) {
-               b.a.c var14;
+               package_b.a.c var14;
                n var16;
                (var16 = n.a(var14 = var17.c(var10))).a(var14, var2);
                this.a(var16);
@@ -313,7 +315,7 @@ public final class q extends n {
             Iterator var4 = this.a.iterator();
 
             while(var4.hasNext()) {
-               ((a.c.a.k)var4.next()).a(var2, var1);
+               ((package_a.c.a.k)var4.next()).a(var2, var1);
             }
 
             var2.f();

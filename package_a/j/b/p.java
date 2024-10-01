@@ -1,7 +1,7 @@
 package package_a.j.b;
 
 public final class p extends D {
-   public final C a(n var1) {
+   public final package_a.j.b.c a(n var1) {
       if (var1 instanceof a) {
          return new q(this, this);
       } else if (var1 instanceof b) {

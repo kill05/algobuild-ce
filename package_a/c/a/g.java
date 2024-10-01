@@ -1,5 +1,7 @@
 package package_a.c.a;
 
+import package_b.a.c;
+
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.Vector;
@@ -11,8 +13,8 @@ public final class g {
    g() {
    }
 
-   public final b.a.c a() {
-      b.a.c var1 = new b.a.c();
+   public final c a() {
+      c var1 = new c();
       if (this.a != null) {
          Iterator var3 = this.a.iterator();
 
@@ -33,15 +35,15 @@ public final class g {
       this.b = new h(this, var1, var2, System.currentTimeMillis(), var3, var4);
    }
 
-   public final void a(b.a.c var1) {
-      b.a.a var5;
+   public final void a(c var1) {
+      package_b.a.a var5;
       if ((var5 = var1.d("saveHistoryItems")) != null) {
          int var2 = var5.a();
          this.a = new Vector(var2);
          this.b = null;
 
          for(var2 = 0; var2 < var5.a(); ++var2) {
-            b.a.c var3 = var5.c(var2);
+            c var3 = var5.c(var2);
             h var4;
             (var4 = new h(this)).a(var3);
             this.a.add(var4);
@@ -73,7 +75,7 @@ public final class g {
       }
 
       if (var1 == null) {
-         var1 = a.i.c.a("mnuHistoryIsEmpty");
+         var1 = Translator.translate("mnuHistoryIsEmpty");
       }
 
       return var1;

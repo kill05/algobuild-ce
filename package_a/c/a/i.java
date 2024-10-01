@@ -1,5 +1,8 @@
 package package_a.c.a;
 
+import package_b.a.a;
+import package_b.a.c;
+
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
@@ -125,9 +128,9 @@ public final class i {
 
    }
 
-   public final b.a.c n() {
-      b.a.c var1;
-      (var1 = new b.a.c()).b("abopt", "ViewOptions");
+   public final package_b.a.c n() {
+      package_b.a.c var1;
+      (var1 = new c()).b("abopt", "ViewOptions");
       var1.b("codeFont", c(this.a));
       var1.b("consoleFont", c(this.b));
       var1.b("backgroundColor", d(this.c));
@@ -143,7 +146,7 @@ public final class i {
       return var1;
    }
 
-   public final void a(b.a.c var1) {
+   public final void a(package_b.a.c var1) {
       if (var1.f("abopt").equals("ViewOptions")) {
          Font var3 = a(var1.b("codeFont"));
          this.a = var3;
@@ -168,31 +171,31 @@ public final class i {
 
    }
 
-   private static b.a.a c(Font var0) {
-      b.a.a var1;
-      (var1 = new b.a.a()).a(var0.getName());
+   private static package_b.a.a c(Font var0) {
+      package_b.a.a var1;
+      (var1 = new a()).a(var0.getName());
       var1.e((int)((double)var0.getSize() * a.k.b.a()));
       var1.e(var0.getStyle());
       return var1;
    }
 
-   private static b.a.a d(Color var0) {
-      b.a.a var1;
-      (var1 = new b.a.a()).e(var0.getRed());
+   private static package_b.a.a d(Color var0) {
+      package_b.a.a var1;
+      (var1 = new a()).e(var0.getRed());
       var1.e(var0.getGreen());
       var1.e(var0.getBlue());
       var1.e(var0.getAlpha());
       return var1;
    }
 
-   private static Font a(b.a.a var0) {
+   private static Font a(package_b.a.a var0) {
       String var1 = (String)var0.a(0);
       int var2 = var0.b(1);
       int var3 = var0.b(2);
       return new Font(var1, var3, (int)((double)var2 * a.k.b.a()));
    }
 
-   private static Color b(b.a.a var0) {
+   private static Color b(package_b.a.a var0) {
       int var1 = var0.b(0);
       int var2 = var0.b(1);
       int var3 = var0.b(2);

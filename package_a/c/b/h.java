@@ -31,12 +31,12 @@ public abstract class h extends n {
    public final void a(n var1) {
       int var2 = this.b.d();
       this.b.a(var1);
-      var1.a((a.c.a.d)this, var2);
+      var1.a((package_a.c.a.d)this, var2);
       if (this.a != null) {
          Iterator var4 = this.a.iterator();
 
          while(var4.hasNext()) {
-            ((a.c.a.k)var4.next()).a(var1, var2);
+            ((package_a.c.a.k)var4.next()).a(var1, var2);
          }
 
          var1.f();
@@ -47,12 +47,12 @@ public abstract class h extends n {
    public final void a(n var1, int var2) {
       if (var2 < this.b.d()) {
          this.b.a(var1, var2);
-         var1.a((a.c.a.d)this, var2);
+         var1.a((package_a.c.a.d)this, var2);
          if (this.a != null) {
             Iterator var4 = this.a.iterator();
 
             while(var4.hasNext()) {
-               ((a.c.a.k)var4.next()).a(var1, var2);
+               ((package_a.c.a.k)var4.next()).a(var1, var2);
             }
 
             var1.f();
@@ -69,7 +69,7 @@ public abstract class h extends n {
          Iterator var3 = this.a.iterator();
 
          while(var3.hasNext()) {
-            ((a.c.a.k)var3.next()).a(var1);
+            ((package_a.c.a.k)var3.next()).a(var1);
          }
       }
 
@@ -92,20 +92,20 @@ public abstract class h extends n {
       return true;
    }
 
-   public a.f.g h() {
-      a.f.g var1;
+   public package_a.f.g h() {
+      package_a.f.g var1;
       (var1 = super.h()).a("condition", this.c);
       return var1;
    }
 
-   public void a(a.f.g var1) {
+   public void a(package_a.f.g var1) {
       super.a(var1);
       String var2 = var1.a("condition");
       this.c(var2);
    }
 
-   public b.a.c b(boolean var1) {
-      b.a.c var2;
+   public package_b.a.c b(boolean var1) {
+      package_b.a.c var2;
       (var2 = super.b(var1)).b("condition", this.c);
       if (var1) {
          for(int var3 = 0; var3 < this.b.d(); ++var3) {
@@ -116,7 +116,7 @@ public abstract class h extends n {
       return var2;
    }
 
-   public void a(b.a.c var1, boolean var2) {
+   public void a(package_b.a.c var1, boolean var2) {
       super.a(var1, var2);
       String var3 = var1.f("condition");
       this.c(var3);
@@ -127,10 +127,10 @@ public abstract class h extends n {
             var6.printStackTrace();
          }
 
-         b.a.a var8;
+         package_b.a.a var8;
          if ((var8 = var1.d("body")) != null) {
             for(int var7 = 0; var7 < var8.a(); ++var7) {
-               b.a.c var4;
+               package_b.a.c var4;
                n var5;
                (var5 = n.a(var4 = var8.c(var7))).a(var4, var2);
                this.a(var5);
@@ -148,7 +148,7 @@ public abstract class h extends n {
                Iterator var4 = this.a.iterator();
 
                while(var4.hasNext()) {
-                  ((a.c.a.k)var4.next()).a(var2, var1);
+                  ((package_a.c.a.k)var4.next()).a(var2, var1);
                }
 
                var2.f();

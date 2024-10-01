@@ -1,5 +1,7 @@
 package package_a.c.b;
 
+import package_c.ABExecutionException;
+
 public final class l extends m {
    private o b;
    private o c;
@@ -7,9 +9,9 @@ public final class l extends m {
    public l(String var1) {
       super(var1);
       this.b = new o();
-      this.b.a((a.c.a.d)this, 1);
+      this.b.a((package_a.c.a.d)this, 1);
       this.c = new o();
-      this.c.a((a.c.a.d)this, 2);
+      this.c.a((package_a.c.a.d)this, 2);
    }
 
    public l() {
@@ -34,31 +36,31 @@ public final class l extends m {
       }
    }
 
-   public final int a(a.c.a.b var1, int var2) {
+   public final int a(package_a.c.a.b var1, int var2) {
       if (var2 == 0) {
          String var6 = this.l().replace('\n', ' ');
 
          boolean var7;
          try {
-            c.l var3;
+            package_c.l var3;
             boolean var4;
-            var7 = var4 = (var3 = var1.e().a(var6, var1.c())) instanceof c.h && ((c.h)var3).a();
+            var7 = var4 = (var3 = var1.e().a(var6, var1.c())) instanceof package_c.h && ((package_c.h)var3).a();
             var1.h("IF TEST:  " + var6 + "   RESULT: " + var4);
             var1.i();
-         } catch (c.g var5) {
+         } catch (ABExecutionException var5) {
             var1.i("IF ERROR: " + var5 + " IN " + var6);
             return -2;
          }
 
-         a.c.a.c var8;
+         package_a.c.a.c var8;
          if (var7) {
             var1.d().pop();
-            var8 = new a.c.a.c(this.b, var1);
+            var8 = new package_a.c.a.c(this.b, var1);
             var1.d().push(var8);
             return 1;
          } else {
             var1.d().pop();
-            var8 = new a.c.a.c(this.c, var1);
+            var8 = new package_a.c.a.c(this.c, var1);
             var1.d().push(var8);
             return 2;
          }
@@ -73,8 +75,8 @@ public final class l extends m {
       return "ABISelectionIf " + this.l() + " [bodyTrue=" + this.b + ", bodyFalse=" + this.c + ", getOrderInParent()=" + this.n() + "]";
    }
 
-   public final b.a.c b(boolean var1) {
-      b.a.c var2 = super.b(var1);
+   public final package_b.a.c b(boolean var1) {
+      package_b.a.c var2 = super.b(var1);
       if (var1) {
          int var3;
          for(var3 = 0; var3 < this.c.d(); ++var3) {
@@ -89,7 +91,7 @@ public final class l extends m {
       return var2;
    }
 
-   public final void a(b.a.c var1, boolean var2) {
+   public final void a(package_b.a.c var1, boolean var2) {
       super.a(var1, var2);
       if (var2) {
          try {
@@ -99,9 +101,9 @@ public final class l extends m {
             var7.printStackTrace();
          }
 
-         b.a.a var3;
+         package_b.a.a var3;
          int var4;
-         b.a.c var5;
+         package_b.a.c var5;
          n var6;
          if ((var3 = var1.d("0")) != null) {
             for(var4 = 0; var4 < var3.a(); ++var4) {
@@ -120,7 +122,7 @@ public final class l extends m {
 
    }
 
-   public final a.c.a.d e() {
+   public final package_a.c.a.d e() {
       l var1 = new l(this.l());
 
       int var2;

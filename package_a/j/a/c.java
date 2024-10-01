@@ -10,7 +10,7 @@ import java.util.Vector;
 import javax.swing.JPanel;
 
 public final class c extends JPanel {
-   private a.c.a.b a;
+   private package_a.c.a.b a;
    private Vector b;
    private int c;
    private int d;
@@ -21,7 +21,7 @@ public final class c extends JPanel {
    private int i;
    private static Color[] j;
 
-   public c(a.c.a.b var1) {
+   public c(package_a.c.a.b var1) {
       (j = new Color[6])[0] = new Color(191, 255, 255);
       j[1] = new Color(255, 191, 255);
       j[2] = new Color(255, 255, 191);

@@ -1,5 +1,7 @@
 package package_a.c.b;
 
+import package_c.ABExecutionException;
+
 public final class g extends h {
    public g(String var1) {
       super(var1);
@@ -9,23 +11,23 @@ public final class g extends h {
       super((String)null);
    }
 
-   public final int a(a.c.a.b var1, int var2) {
+   public final int a(package_a.c.a.b var1, int var2) {
       String var6 = this.l().replace('\n', ' ');
 
       boolean var7;
       try {
-         c.l var3;
+         package_c.l var3;
          boolean var4;
-         var7 = var4 = (var3 = var1.e().a(var6, var1.c())) instanceof c.h && ((c.h)var3).a();
+         var7 = var4 = (var3 = var1.e().a(var6, var1.c())) instanceof package_c.h && ((package_c.h)var3).a();
          var1.h("WHILE TEST:  " + var6 + "   RESULT: " + var4);
          var1.i();
-      } catch (c.g var5) {
+      } catch (ABExecutionException var5) {
          var1.i("WHILE ERROR: " + var5 + " IN " + var6);
          return -2;
       }
 
       if (var7) {
-         a.c.a.c var8 = new a.c.a.c(this.m(), var1);
+         package_a.c.a.c var8 = new package_a.c.a.c(this.m(), var1);
          var1.d().push(var8);
          return 0;
       } else {
@@ -37,7 +39,7 @@ public final class g extends h {
       return "ABICycleWhile  [ " + super.toString() + "]";
    }
 
-   public final a.c.a.d e() {
+   public final package_a.c.a.d e() {
       g var1 = new g(this.l());
 
       try {

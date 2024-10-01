@@ -3,14 +3,14 @@ package package_a.g;
 import package_a.c.b.q;
 
 public final class d extends g {
-   private a.c.a.b a;
+   private package_a.c.a.b a;
    private q b;
-   private a.f.g c = null;
-   private a.f.g d = null;
+   private package_a.f.g c = null;
+   private package_a.f.g d = null;
    private String e = null;
    private String f = null;
 
-   public d(a.c.a.b var1, q var2) {
+   public d(package_a.c.a.b var1, q var2) {
       this.a = var1;
       this.b = var2;
       this.f = var2.j();

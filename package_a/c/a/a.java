@@ -3,7 +3,9 @@ package package_a.c.a;
 import package_a.c.b.p;
 import package_a.c.b.q;
 import package_a.f.l;
-import package_a.k.B;
+import package_a.i.Translator;
+import package_a.k.Runnable_B;
+
 import java.awt.Component;
 import java.awt.Toolkit;
 import java.util.Collection;
@@ -80,17 +82,12 @@ public class a {
    public static void a(String[] var0) {
       try {
          UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-      } catch (ClassNotFoundException var6) {
+      } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
+               UnsupportedLookAndFeelException var6) {
          var6.printStackTrace();
-      } catch (InstantiationException var7) {
-         var7.printStackTrace();
-      } catch (IllegalAccessException var8) {
-         var8.printStackTrace();
-      } catch (UnsupportedLookAndFeelException var9) {
-         var9.printStackTrace();
       }
 
-      double var1 = 0.0D;
+       double var1 = 0.0D;
 
       int var3;
       for(var3 = 0; var3 < var0.length; ++var3) {
@@ -108,7 +105,7 @@ public class a {
 
                System.out.println("FONT ZOOM " + var1);
                a(var1);
-               a.k.b.a(var1);
+               package_a.k.b.a(var1);
             } catch (NumberFormatException var5) {
                System.out.println("INVALID NUMBER FORMAT: " + var4);
             }
@@ -116,17 +113,17 @@ public class a {
       }
 
       if (var1 == 0.0D && (var1 = e()) != 0.0D && var1 != 1.0D) {
-         a.k.b.a(var1);
+         package_a.k.b.a(var1);
       }
 
       int var11 = 0;
 
       do {
          ++var11;
-         if ((var3 = a.f.j.a()) != 0) {
+         if ((var3 = package_a.f.j.a()) != 0) {
             String var10;
             if (var3 == 1) {
-               var10 = a.i.c.a("abpFirstRunQuestion");
+               var10 = Translator.translate("abpFirstRunQuestion");
                if (JOptionPane.showConfirmDialog((Component)null, var10, "AlgoBuild", 0, 3) == 0) {
                   l.a();
                   var3 = -1;
@@ -136,12 +133,12 @@ public class a {
             }
 
             if (var3 == 2) {
-               var10 = a.i.c.a("abpConfigurationWrong");
+               var10 = Translator.translate("abpConfigurationWrong");
                JOptionPane.showMessageDialog((Component)null, var10, "AlgoBuild", 0);
                System.exit(var3);
             }
          } else {
-            SwingUtilities.invokeLater(new B());
+            SwingUtilities.invokeLater(new Runnable_B());
          }
       } while(var3 == -1 && var11 < 2);
 

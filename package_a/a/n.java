@@ -1,5 +1,7 @@
 package package_a.a;
 
+import package_a.i.Translator;
+
 import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -15,14 +17,15 @@ import javax.swing.SpinnerListModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+// settings class
 public final class n extends JDialog implements ActionListener, ChangeListener {
    private JCheckBox a;
    private JCheckBox b;
    private JSpinner c;
-   private a.c.a.b d;
+   private package_a.c.a.b d;
 
-   public n(Frame var1, a.c.a.b var2) {
-      super(var1, a.i.c.a("abedDialogRunOptionsTitle"));
+   public n(Frame var1, package_a.c.a.b var2) {
+      super(var1, Translator.translate("abedDialogRunOptionsTitle"));
       this.d = var2;
       JPanel var4;
       (var4 = new JPanel()).setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -40,7 +43,7 @@ public final class n extends JDialog implements ActionListener, ChangeListener {
       var5.gridwidth = 1;
       var5.gridx = 0;
       var5.gridy = 0;
-      this.add(new JLabel(a.i.c.a("execTrace")), var5);
+      this.add(new JLabel(Translator.translate("execTrace")), var5);
       var5.gridx = 1;
       this.add(this.a, var5);
       this.b = new JCheckBox();
@@ -49,10 +52,10 @@ public final class n extends JDialog implements ActionListener, ChangeListener {
       var5.gridwidth = 1;
       var5.gridx = 0;
       var5.gridy = 1;
-      this.add(new JLabel(a.i.c.a("execOneStep")), var5);
+      this.add(new JLabel(Translator.translate("execOneStep")), var5);
       var5.gridx = 1;
       this.add(this.b, var5);
-      Integer[] var6 = new Integer[]{new Integer(5), new Integer(10), new Integer(20), new Integer(50), new Integer(100), new Integer(200), new Integer(500), new Integer(1000), new Integer(2000), new Integer(5000)};
+      Integer[] var6 = new Integer[]{5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000};
       SpinnerListModel var3 = new SpinnerListModel(var6);
       this.c = new JSpinner(var3);
       this.c.setValue(var6[9]);
@@ -62,7 +65,7 @@ public final class n extends JDialog implements ActionListener, ChangeListener {
       var5.gridwidth = 1;
       var5.gridx = 0;
       var5.gridy = 2;
-      this.add(new JLabel(a.i.c.a("execStepTime")), var5);
+      this.add(new JLabel(Translator.translate("execStepTime")), var5);
       var5.gridx = 1;
       this.add(this.c, var5);
       this.c.setEnabled(!this.d.r().b());
@@ -87,7 +90,7 @@ public final class n extends JDialog implements ActionListener, ChangeListener {
 
    public final void stateChanged(ChangeEvent var1) {
       if (var1.getSource() == this.c) {
-         this.d.r().a(new Integer(this.c.getValue().toString()));
+         this.d.r().a(Integer.parseInt(this.c.getValue().toString()));
          this.d.a(true);
       }
 

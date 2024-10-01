@@ -1,5 +1,7 @@
 package package_a.c.a;
 
+import package_b.a.c;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -26,9 +28,9 @@ public final class h {
       this.e = var7;
    }
 
-   public final b.a.c a() {
-      b.a.c var1;
-      (var1 = new b.a.c()).b("s", this.a);
+   public final package_b.a.c a() {
+      package_b.a.c var1;
+      (var1 = new c()).b("s", this.a);
       var1.b("package_a", this.b);
       long var4 = this.c;
       String var3 = "t";
@@ -38,7 +40,7 @@ public final class h {
       return var1;
    }
 
-   public final void a(b.a.c var1) {
+   public final void a(package_b.a.c var1) {
       this.a = var1.f("s");
       this.b = var1.f("package_a");
       String var3 = "t";

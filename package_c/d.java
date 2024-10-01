@@ -25,7 +25,7 @@ public final class d implements f {
          return var2;
       } else {
          System.out.println("INDEX - OUT - OF - BOUND " + var1);
-         throw new ABAssignException(450);
+         throw new ABExecutionException(450);
       }
    }
 

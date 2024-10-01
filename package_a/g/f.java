@@ -5,12 +5,12 @@ import package_a.c.b.s;
 import package_a.c.b.t;
 
 public final class f extends g {
-   private a.c.a.b a;
+   private package_a.c.a.b a;
    private String b;
    private int c;
    private n d;
 
-   public f(a.c.a.b var1, String var2, int var3, n var4) {
+   public f(package_a.c.a.b var1, String var2, int var3, n var4) {
       this.a = var1;
       this.b = var2;
       this.c = var3;

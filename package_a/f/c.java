@@ -1,5 +1,7 @@
 package package_a.f;
 
+import package_a.i.Translator;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -50,7 +52,7 @@ public final class c {
    public c(File var1, int var2, String var3) {
       this.i = var1;
       this.h = 2;
-      this.k = "tmp-" + Integer.toString(a.f.k.a(var3), 9);
+      this.k = "tmp-" + Integer.toString(package_a.f.k.a(var3), 9);
       this.l = var3;
       this.c();
    }
@@ -81,13 +83,13 @@ public final class c {
             var8 = var2.readLong();
             var10 = var2.readLong();
             var24 = new UUID(var8, var10);
-            var9 = a.f.k.a().e();
-            var25 = a.f.k.a().f();
+            var9 = package_a.f.k.a().e();
+            var25 = package_a.f.k.a().f();
             var11 = new byte[(int)this.i.length() - 36];
             var2.read(var11);
             var2.close();
             if (var3 != -85 || var4 != -49 || var5 != 1 || var6 != 2 || !var7.equals(var9) || !var24.equals(var25)) {
-               throw new e(a.i.c.a("abpErrorConfigFile"));
+               throw new e(Translator.translate("abpErrorConfigFile"));
             }
 
             var15 = KeyFactory.getInstance(a);
@@ -107,13 +109,13 @@ public final class c {
             var8 = var2.readLong();
             var10 = var2.readLong();
             var24 = new UUID(var8, var10);
-            var9 = a.f.k.a().e();
-            var25 = a.f.k.a().f();
+            var9 = package_a.f.k.a().e();
+            var25 = package_a.f.k.a().f();
             var11 = new byte[(int)this.i.length() - 36];
             var2.read(var11);
             var2.close();
             if (var3 != -85 || var4 != -49 || var5 != 1 || var6 != 1 || !var7.equals(var9) || !var24.equals(var25)) {
-               throw new e(a.i.c.a("abpErrorConfigFile"));
+               throw new e(Translator.translate("abpErrorConfigFile"));
             }
 
             var15 = KeyFactory.getInstance(a);
@@ -130,7 +132,7 @@ public final class c {
                var19 = new byte[(int)var17.length()];
                var21.read(var19);
                var21.close();
-            } else if ((var19 = a.f.d.a(a.f.k.a().b(), this.l)) != null && var19.length > 0) {
+            } else if ((var19 = package_a.f.d.a(package_a.f.k.a().b(), this.l)) != null && var19.length > 0) {
                FileOutputStream var20;
                (var20 = new FileOutputStream(var17)).write(var19);
                var20.close();
@@ -145,18 +147,15 @@ public final class c {
                this.a(true);
             }
          }
-      } catch (NoSuchAlgorithmException var12) {
+      } catch (NoSuchAlgorithmException | InvalidKeySpecException var12) {
          var12.printStackTrace();
-      } catch (InvalidKeySpecException var13) {
-         var13.printStackTrace();
-      } catch (IOException var14) {
+      }  catch (IOException ignored) {
       }
 
       if (this.d()) {
          if (this.h == 0) {
             byte[] var1 = new byte[]{1, 1, 1};
             this.a(var1);
-            return;
          }
       } else {
          System.out.println("ERROR: Key not loaded!!! " + this.i.getAbsolutePath());

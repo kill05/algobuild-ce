@@ -1,4 +1,6 @@
-package a.a;
+package package_a.a;
+
+import package_a.i.Translator;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -32,18 +34,18 @@ public final class e extends JDialog implements ActionListener, KeyListener, Doc
    private String f;
    private String g;
    private String h;
-   private a.c.b.f i;
+   private package_a.c.b.f i;
    private static e j = null;
    private static boolean k = false;
 
-   private e(Window var1, a.c.b.f var2, Point var3) {
-      super((Frame)var1, a.i.c.a("abedDialogCycleForTitle"), true);
+   private e(Window var1, package_a.c.b.f var2, Point var3) {
+      super((Frame)var1, Translator.translate("abedDialogCycleForTitle"), true);
       this.setLocation(var3);
       this.i = var2;
-      this.a = a.c.a.a.d(a.i.c.a("dialogButtonOK"));
-      this.b = a.c.a.a.d(a.i.c.a("dialogButtonCancel"));
+      this.a = package_a.c.a.a.d(Translator.translate("dialogButtonOK"));
+      this.b = package_a.c.a.a.d(Translator.translate("dialogButtonCancel"));
       JTextArea var4;
-      (var4 = new JTextArea(a.i.c.a("abedDialogCycleForLabel"))).setEditable(false);
+      (var4 = new JTextArea(Translator.translate("abedDialogCycleForLabel"))).setEditable(false);
       var4.setEnabled(true);
       var4.setOpaque(false);
       var4.setFocusable(false);
@@ -61,11 +63,11 @@ public final class e extends JDialog implements ActionListener, KeyListener, Doc
       this.e.addKeyListener(this);
       JPanel var6;
       (var6 = new JPanel()).setLayout(new GridLayout(4, 2, 10, 10));
-      var6.add(new JLabel(a.i.c.a("abedDialogCycleForInitialization")));
+      var6.add(new JLabel(Translator.translate("abedDialogCycleForInitialization")));
       var6.add(this.c);
-      var6.add(new JLabel(a.i.c.a("abedDialogCycleForCondition")));
+      var6.add(new JLabel(Translator.translate("abedDialogCycleForCondition")));
       var6.add(this.d);
-      var6.add(new JLabel(a.i.c.a("abedDialogCycleForUpdate")));
+      var6.add(new JLabel(Translator.translate("abedDialogCycleForUpdate")));
       var6.add(this.e);
       this.a.addActionListener(this);
       this.b.addActionListener(this);
@@ -124,7 +126,7 @@ public final class e extends JDialog implements ActionListener, KeyListener, Doc
       this.i.b(var3);
    }
 
-   public static boolean a(Window var0, a.c.b.f var1) {
+   public static boolean a(Window var0, package_a.c.b.f var1) {
       Point var2;
       (var2 = MouseInfo.getPointerInfo().getLocation()).translate(15, 15);
       if (j == null) {

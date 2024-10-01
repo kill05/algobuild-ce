@@ -125,9 +125,9 @@ public final class m extends o {
       this.j = new Rectangle(this.getWidth() / 2 - var14 / 2, this.o, var14, var3);
    }
 
-   public final void a(C var1) {
-      super.a((C)var1);
-      C var2 = var1.a().a(this.k);
+   public final void a(package_a.j.b.c var1) {
+      super.a((package_a.j.b.c)var1);
+      package_a.j.b.c var2 = var1.a().a(this.k);
       this.k.a(var2);
       var2 = var1.a().a(this.a);
       this.a.a(var2);

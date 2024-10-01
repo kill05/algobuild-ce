@@ -2,8 +2,7 @@ package package_a.j.b;
 
 import package_a.i.Translator;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import javax.swing.JMenuItem;
@@ -171,11 +170,12 @@ public class o extends n implements package_a.c.a.k {
    }
 
    public final String h() {
-      while(this.i == null) {
-         this = (o)this.getParent();
+      o parent = this;
+      while(parent.i == null) {
+         parent = (o)this.getParent();
       }
 
-      return this.i.c();
+      return parent.i.c();
    }
 
    public void a(MouseEvent var1) {

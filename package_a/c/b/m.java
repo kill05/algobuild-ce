@@ -28,25 +28,25 @@ public abstract class m extends n {
       return true;
    }
 
-   public final a.f.g h() {
-      a.f.g var1;
+   public final package_a.f.g h() {
+      package_a.f.g var1;
       (var1 = super.h()).a("condition", this.b);
       return var1;
    }
 
-   public final void a(a.f.g var1) {
+   public final void a(package_a.f.g var1) {
       super.a(var1);
       String var2 = var1.a("condition");
       this.a(var2);
    }
 
-   public b.a.c b(boolean var1) {
-      b.a.c var2;
+   public package_b.a.c b(boolean var1) {
+      package_b.a.c var2;
       (var2 = super.b(var1)).b("condition", this.b);
       return var2;
    }
 
-   public void a(b.a.c var1, boolean var2) {
+   public void a(package_b.a.c var1, boolean var2) {
       super.a(var1, var2);
       String var3 = var1.f("condition");
       this.a(var3);

@@ -1,5 +1,7 @@
 package package_a.a;
 
+import package_a.i.Translator;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Frame;
@@ -30,17 +32,17 @@ public final class a extends JDialog implements ActionListener, KeyListener, Doc
    private JTextArea textArea = new JTextArea();
    private String d;
    private String e;
-   private a.c.b.a f;
+   private package_a.c.b.a f;
    private static a g = null;
    private static boolean h = false;
 
    private a(Window var1, Point var2) {
-      super((Frame)var1, a.i.c.a("abedDialogAssignTitle"), true);
+      super((Frame)var1, Translator.translate("abedDialogAssignTitle"), true);
       this.setLocation(var2);
-      this.buttonA = a.c.a.a.d(a.i.c.a("dialogButtonOK"));
-      this.buttonB = a.c.a.a.d(a.i.c.a("dialogButtonCancel"));
+      this.buttonA = package_a.c.a.a.d(Translator.translate("dialogButtonOK"));
+      this.buttonB = package_a.c.a.a.d(Translator.translate("dialogButtonCancel"));
       JTextArea var4;
-      (var4 = new JTextArea(a.i.c.a("abedDialogAssignLabel"))).setEditable(false);
+      (var4 = new JTextArea(Translator.translate("abedDialogAssignLabel"))).setEditable(false);
       var4.setEnabled(true);
       var4.setOpaque(false);
       var4.setFocusable(false);
@@ -144,7 +146,7 @@ public final class a extends JDialog implements ActionListener, KeyListener, Doc
       this.f.a(this.textArea.getText());
    }
 
-   public static boolean a(Window var0, a.c.b.a var1) {
+   public static boolean a(Window var0, package_a.c.b.a var1) {
       Point var2;
       (var2 = MouseInfo.getPointerInfo().getLocation()).translate(15, 15);
       if (g == null) {

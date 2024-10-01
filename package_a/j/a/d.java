@@ -27,7 +27,7 @@ public final class d extends JDialog implements ActionListener {
    private String d = null;
 
    public d(Window var1, String var2) {
-      super((Frame)var1, a.i.c.a("abvDialogInputVariable"), true);
+      super((Frame)var1, Translator.translate("abvDialogInputVariable"), true);
       Point var7;
       (var7 = MouseInfo.getPointerInfo().getLocation()).translate(15, 15);
       this.setLocation(var7);

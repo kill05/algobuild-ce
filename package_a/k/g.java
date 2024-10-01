@@ -9,8 +9,8 @@ final class g extends AbstractAction {
    private c a;
 
    g(c var1, String var2, Icon var3) {
-      this.a = var1;
       super(var2, var3);
+      this.a = var1;
    }
 
    public final void actionPerformed(ActionEvent var1) {

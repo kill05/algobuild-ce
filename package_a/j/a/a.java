@@ -3,9 +3,9 @@ package package_a.j.a;
 import package_a.c.a.k;
 import package_a.c.b.q;
 import package_a.f.j;
-import package_a.j.b.D;
+import package_a.i.Translator;
 import package_a.j.b.p;
-import package_a.k.C;
+import package_a.k.ABFrame;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -35,34 +35,34 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public final class a extends JPanel implements ActionListener, ChangeListener {
-   protected a.c.a.b a;
+   protected package_a.c.a.b a;
    private g c;
    protected JTabbedPane b;
    private int d = -1;
-   private C e;
-   private a.i.a f;
-   private a.i.a g;
+   private ABFrame e;
+   private package_a.i.a f;
+   private package_a.i.a g;
    private D h;
    private Vector i = new Vector();
 
    public a() {
       this.setLayout(new BorderLayout());
       this.h = new p();
-      ImageIcon var1 = a.i.b.a("imgs/logo2_arancio_small.png");
-      this.f = new a.i.a(var1);
-      var1 = a.i.b.a("imgs/logo2_arancio_small.png");
-      this.g = new a.i.a(var1);
+      ImageIcon var1 = package_a.i.b.a("imgs/logo2_arancio_small.png");
+      this.f = new package_a.i.a(var1);
+      var1 = package_a.i.b.a("imgs/logo2_arancio_small.png");
+      this.g = new package_a.i.a(var1);
       this.b = new JTabbedPane();
       this.add(this.b, "Center");
       this.b.addTab("+", new JPanel());
       this.b.addChangeListener(this);
    }
 
-   public final C a() {
+   public final ABFrame a() {
       return this.e;
    }
 
-   public final void a(C var1) {
+   public final void a(ABFrame var1) {
       this.e = var1;
    }
 
@@ -70,44 +70,44 @@ public final class a extends JPanel implements ActionListener, ChangeListener {
       if (var1.getSource() == null) {
          JPopupMenu var5 = new JPopupMenu();
          JMenuItem var6;
-         (var6 = new JMenuItem(a.i.c.a("instructionConnectorNewMsg"))).setEnabled(false);
+         (var6 = new JMenuItem(Translator.translate("instructionConnectorNewMsg"))).setEnabled(false);
          var5.add(var6);
          JMenuItem var3;
-         (var3 = new JMenuItem(a.i.c.a("abvfcAddCodePopupNewProcedure"))).addActionListener(this);
+         (var3 = new JMenuItem(Translator.translate("abvfcAddCodePopupNewProcedure"))).addActionListener(this);
          var5.add(var3);
-         (var3 = new JMenuItem(a.i.c.a("abvfcAddCodePopupNewFunction"))).addActionListener(this);
+         (var3 = new JMenuItem(Translator.translate("abvfcAddCodePopupNewFunction"))).addActionListener(this);
          var5.add(var3);
-         var5.show(this, null.getX(), null.getY());
+         var5.show(this, this.getX(), this.getY()); //todo: figure out why getX and getY were called on 'null'
       } else {
          String var2;
          String var4;
-         if ((var4 = var1.getActionCommand()) != null && var4.equals(a.i.c.a("abvfcAddCodePopupNewProcedure"))) {
-            var2 = JOptionPane.showInputDialog(this, a.i.c.a("abvfcAddCodeNewProcedureNameMsg"));
+         if ((var4 = var1.getActionCommand()) != null && var4.equals(Translator.translate("abvfcAddCodePopupNewProcedure"))) {
+            var2 = JOptionPane.showInputDialog(this, Translator.translate("abvfcAddCodeNewProcedureNameMsg"));
             if (this.a.a(var2) == null) {
                this.a.a(var2, 2);
             } else {
-               JOptionPane.showMessageDialog(this, a.i.c.a("abvfcAddCodeNameAlreadyPresentMsg"), a.i.c.a("abvfcAddCodePopupNewMsg"), 0);
+               JOptionPane.showMessageDialog(this, Translator.translate("abvfcAddCodeNameAlreadyPresentMsg"), Translator.translate("abvfcAddCodePopupNewMsg"), 0);
             }
          } else {
-            if (var4 != null && var4.equals(a.i.c.a("abvfcAddCodePopupNewFunction"))) {
-               var2 = JOptionPane.showInputDialog(this, a.i.c.a("abvfcAddCodeNewFunctionNameMsg"));
+            if (var4 != null && var4.equals(Translator.translate("abvfcAddCodePopupNewFunction"))) {
+               var2 = JOptionPane.showInputDialog(this, Translator.translate("abvfcAddCodeNewFunctionNameMsg"));
                if (this.a.a(var2) == null) {
                   this.a.a(var2, 3);
                   return;
                }
 
-               JOptionPane.showMessageDialog(this, a.i.c.a("abvfcAddCodeNameAlreadyPresentMsg"), a.i.c.a("abvfcAddCodePopupNewMsg"), 0);
+               JOptionPane.showMessageDialog(this, Translator.translate("abvfcAddCodeNameAlreadyPresentMsg"), Translator.translate("abvfcAddCodePopupNewMsg"), 0);
             }
 
          }
       }
    }
 
-   public final void a(a.c.a.d var1) {
+   public final void a(package_a.c.a.d var1) {
       int var2 = this.b.getTabCount();
       String var3 = var1.b();
-      a.j.b.c var4;
-      (var4 = new a.j.b.c(this.a, this, var1)).setBackground(Color.YELLOW);
+      package_a.j.b.c var4;
+      (var4 = new package_a.j.b.c(this.a, this, var1)).setBackground(Color.YELLOW);
       var1.a((k)var4);
       var4.g();
       var4.setAlignmentX(0.5F);
@@ -116,7 +116,7 @@ public final class a extends JPanel implements ActionListener, ChangeListener {
       JScrollPane var11;
       (var11 = new JScrollPane(var5)).getHorizontalScrollBar().setUnitIncrement(15);
       var11.getVerticalScrollBar().setUnitIncrement(15);
-      a.j.b.c var6 = new a.j.b.c(this.a, this, var1);
+      package_a.j.b.c var6 = new package_a.j.b.c(this.a, this, var1);
       var1.a((k)var6);
       var6.g();
       var6.setAlignmentX(0.5F);
@@ -125,7 +125,7 @@ public final class a extends JPanel implements ActionListener, ChangeListener {
       JScrollPane var9 = new JScrollPane(var8);
       var11.getHorizontalScrollBar().setUnitIncrement(15);
       var11.getVerticalScrollBar().setUnitIncrement(15);
-      a.j.b.C var7 = this.h.a(var6);
+      package_a.j.b.C var7 = this.h.a(var6);
       var6.a(var7);
       JSplitPane var10;
       (var10 = new JSplitPane(1, var11, var9)).setResizeWeight(0.5D);
@@ -205,7 +205,7 @@ public final class a extends JPanel implements ActionListener, ChangeListener {
 
    }
 
-   public final void b(a.c.a.d var1) {
+   public final void b(package_a.c.a.d var1) {
       String var2 = ((q)var1).j();
       int var3 = this.b.indexOfTab(var2);
       this.d = 0;
@@ -219,8 +219,8 @@ public final class a extends JPanel implements ActionListener, ChangeListener {
 
    public final void d() {
       int var1 = this.b.getSelectedIndex();
-      a.j.b.c var5 = (a.j.b.c)this.i.elementAt(var1);
-      a.i.d var2 = new a.i.d(var5);
+      package_a.j.b.c var5 = (package_a.j.b.c)this.i.elementAt(var1);
+      package_a.i.d var2 = new package_a.i.d(var5);
       int var3 = var5.getWidth();
       int var4 = var5.getHeight();
       BufferedImage var7;
@@ -228,7 +228,7 @@ public final class a extends JPanel implements ActionListener, ChangeListener {
       (var8 = (var7 = new BufferedImage(var3, var4, 1)).createGraphics()).setFont(this.a.q().b());
       var2.a(var8, var5);
       var8.dispose();
-      a.i.e var6 = new a.i.e(var7);
+      package_a.i.e var6 = new package_a.i.e(var7);
       Toolkit.getDefaultToolkit().getSystemClipboard().setContents(var6, (ClipboardOwner)null);
    }
 
@@ -254,8 +254,8 @@ public final class a extends JPanel implements ActionListener, ChangeListener {
 
          String var10 = var11.substring(var11.lastIndexOf(46) + 1);
          int var3 = this.b.getSelectedIndex();
-         a.j.b.c var12 = (a.j.b.c)this.i.elementAt(var3);
-         a.i.d var4 = new a.i.d(var12);
+         package_a.j.b.c var12 = (package_a.j.b.c)this.i.elementAt(var3);
+         package_a.i.d var4 = new package_a.i.d(var12);
          int var5 = var12.getWidth();
          int var6 = var12.getHeight();
          BufferedImage var14;

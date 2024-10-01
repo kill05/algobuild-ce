@@ -1,4 +1,4 @@
-package b.a;
+package package_b.a;
 
 import java.io.IOException;
 import java.io.StringWriter;

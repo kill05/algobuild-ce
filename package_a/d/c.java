@@ -1,6 +1,6 @@
 package package_a.d;
 
-public final class c extends a.e.a {
+public final class c extends package_a.e.a {
    protected final int a() {
       return 19;
    }

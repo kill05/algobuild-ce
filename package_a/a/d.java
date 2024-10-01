@@ -1,5 +1,7 @@
 package package_a.a;
 
+import package_a.i.Translator;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Frame;
@@ -30,18 +32,18 @@ public final class d extends JDialog implements ActionListener, KeyListener, Doc
    private JTextArea c = new JTextArea();
    private String d;
    private String e;
-   private a.c.b.d f;
+   private package_a.c.b.d f;
    private static d g = null;
    private static boolean h = false;
 
-   private d(Window var1, a.c.b.d var2, Point var3) {
-      super((Frame)var1, a.i.c.a("abedDialogCommentTitle"), true);
+   private d(Window var1, package_a.c.b.d var2, Point var3) {
+      super((Frame)var1, Translator.translate("abedDialogCommentTitle"), true);
       this.setLocation(var3);
       this.f = var2;
-      this.a = a.c.a.a.d(a.i.c.a("dialogButtonOK"));
-      this.b = a.c.a.a.d(a.i.c.a("dialogButtonCancel"));
+      this.a = package_a.c.a.a.d(Translator.translate("dialogButtonOK"));
+      this.b = package_a.c.a.a.d(Translator.translate("dialogButtonCancel"));
       JTextArea var4;
-      (var4 = new JTextArea(a.i.c.a("abedDialogCommentLabel"))).setEditable(false);
+      (var4 = new JTextArea(Translator.translate("abedDialogCommentLabel"))).setEditable(false);
       var4.setEnabled(true);
       var4.setOpaque(false);
       var4.setFocusable(false);
@@ -144,7 +146,7 @@ public final class d extends JDialog implements ActionListener, KeyListener, Doc
       this.f.a(this.c.getText());
    }
 
-   public static boolean a(Window var0, a.c.b.d var1) {
+   public static boolean a(Window var0, package_a.c.b.d var1) {
       Point var2;
       (var2 = MouseInfo.getPointerInfo().getLocation()).translate(15, 15);
       if (g == null) {

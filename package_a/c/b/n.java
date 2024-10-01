@@ -60,16 +60,16 @@ public abstract class n extends package_a.c.a.d {
    public void a(package_a.f.g var1) {
    }
 
-   public b.a.c b(boolean var1) {
-      b.a.c var2;
-      (var2 = new b.a.c()).b("abiid", this.g());
+   public package_b.a.c b(boolean var1) {
+      package_b.a.c var2;
+      (var2 = new package_b.a.c()).b("abiid", this.g());
       return var2;
    }
 
-   public void a(b.a.c var1, boolean var2) {
+   public void a(package_b.a.c var1, boolean var2) {
    }
 
-   public static n a(b.a.c var0) {
+   public static n a(package_b.a.c var0) {
       String var2 = (String)var0.c("abiid");
       Object var1 = null;
       if (var2.equals("ABIASS")) {

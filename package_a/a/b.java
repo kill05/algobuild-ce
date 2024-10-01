@@ -1,6 +1,8 @@
 package package_a.a;
 
 import package_a.c.b.q;
+import package_a.i.Translator;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Frame;
@@ -40,32 +42,32 @@ public final class b extends JDialog implements ActionListener, DocumentListener
    private String i;
    private String j;
    private String k;
-   private a.c.b.c l;
-   private a.c.a.b m;
+   private package_a.c.b.c l;
+   private package_a.c.a.b m;
    private static b n = null;
    private static boolean o = false;
 
-   private b(Window var1, a.c.b.c var2, Point var3, a.c.a.b var4) {
-      super((Frame)var1, a.i.c.a("abedDialogCallFuncTitle"), true);
+   private b(Window var1, package_a.c.b.c var2, Point var3, package_a.c.a.b var4) {
+      super((Frame)var1, Translator.translate("abedDialogCallFuncTitle"), true);
       this.setLocation(var3);
       this.l = var2;
       this.m = var4;
-      this.a = a.c.a.a.d(a.i.c.a("dialogButtonOK"));
-      this.b = a.c.a.a.d(a.i.c.a("dialogButtonCancel"));
+      this.a = package_a.c.a.a.d(Translator.translate("dialogButtonOK"));
+      this.b = package_a.c.a.a.d(Translator.translate("dialogButtonCancel"));
       JPanel var5;
       (var5 = new JPanel()).setLayout(new GridLayout(5, 1, 10, 10));
-      JLabel var8 = new JLabel(a.i.c.a("abedDialogCallFuncCodename"));
+      JLabel var8 = new JLabel(Translator.translate("abedDialogCallFuncCodename"));
       var5.add(var8);
       var5.add(this.c);
       this.c.addActionListener(this);
-      var8 = new JLabel(a.i.c.a("abedDialogCodeCodetype"));
+      var8 = new JLabel(Translator.translate("abedDialogCodeCodetype"));
       var5.add(var8);
       this.d.setEditable(false);
       this.d.setEnabled(true);
       this.d.setOpaque(false);
       this.d.setFocusable(false);
       var5.add(this.d);
-      var8 = new JLabel(a.i.c.a("abedDialogCallFuncActualParameters"));
+      var8 = new JLabel(Translator.translate("abedDialogCallFuncActualParameters"));
       var5.add(var8);
       JPanel var10;
       (var10 = new JPanel()).setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -88,7 +90,7 @@ public final class b extends JDialog implements ActionListener, DocumentListener
       (var5 = new JPanel()).setLayout(new GridLayout(3, 1, 10, 10));
       JPanel var11;
       (var11 = new JPanel()).setLayout(new GridLayout(1, 2, 10, 10));
-      var5.add(new JLabel(a.i.c.a("abedDialogCallFuncReturnVar")));
+      var5.add(new JLabel(Translator.translate("abedDialogCallFuncReturnVar")));
       this.g.setText(this.k);
       var5.add(this.g);
       this.g.getDocument().addDocumentListener(this);
@@ -227,7 +229,7 @@ public final class b extends JDialog implements ActionListener, DocumentListener
       this.l.a(true);
    }
 
-   public static boolean a(Window var0, a.c.b.c var1, a.c.a.b var2) {
+   public static boolean a(Window var0, package_a.c.b.c var1, package_a.c.a.b var2) {
       Point var3;
       (var3 = MouseInfo.getPointerInfo().getLocation()).translate(15, 15);
       if (n == null) {

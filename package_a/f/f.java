@@ -1,5 +1,7 @@
 package package_a.f;
 
+import package_b.a.g;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
@@ -45,17 +47,17 @@ public final class f implements Runnable {
       System.currentTimeMillis();
    }
 
-   public final void a(String var1, b.a.c var2) {
+   public final void a(String var1, package_b.a.c var2) {
       k var3;
       if ((var3 = k.a()) == null) {
-         throw new h(a.i.c.a("abpErrorConfigFile") + " system configuration NON LOADED");
+         throw new h(Translator.translate("abpErrorConfigFile") + " system configuration NON LOADED");
       } else if (var1 == null) {
-         throw new h(a.i.c.a("abpErrorWritingFile") + " file name is NULL");
+         throw new h(Translator.translate("abpErrorWritingFile") + " file name is NULL");
       } else if (this.b == null) {
-         throw new h(a.i.c.a("abpErrorWritingFile") + " ENCODER not READY");
+         throw new h(Translator.translate("abpErrorWritingFile") + " ENCODER not READY");
       } else {
-         b.a.c var4;
-         (var4 = new b.a.c()).b("abuid", var3.e().toString());
+         package_b.a.c var4;
+         (var4 = new package_b.a.c()).b("abuid", var3.e().toString());
          String var5;
          if ((var5 = var3.b()) != null) {
             var4.b("abusn", var5);
@@ -92,12 +94,12 @@ public final class f implements Runnable {
       }
    }
 
-   public final b.a.c a(String var1) {
-      b.a.c var2 = null;
+   public final package_b.a.c a(String var1) {
+      package_b.a.c var2 = null;
       if (var1 == null) {
-         throw new h(a.i.c.a("abpErrorReadingFile") + " NULL");
+         throw new h(Translator.translate("abpErrorReadingFile") + " NULL");
       } else if (this.c == null) {
-         throw new h(a.i.c.a("abpErrorReadingFile") + " DECODER not READY");
+         throw new h(Translator.translate("abpErrorReadingFile") + " DECODER not READY");
       } else {
          try {
             a var3 = new a(var1);
@@ -117,21 +119,21 @@ public final class f implements Runnable {
 
                      if (var4.getName().equals("fd")) {
                         InputStreamReader var8 = new InputStreamReader(var14);
-                        b.a.f var9 = new b.a.f(var8);
-                        b.a.c var15;
-                        String var18 = (var15 = new b.a.c(var9)).a("abuid", (String)null);
+                        package_b.a.f var9 = new package_b.a.f(var8);
+                        package_b.a.c var15;
+                        String var18 = (var15 = new package_b.a.c(var9)).a("abuid", (String)null);
                         String var10 = var15.a("abuan", (String)null);
                         if ((var7 = var15.a("abusn", (String)null)) != null) {
                            var6 = k.a(var7);
                         }
 
                         if (var18 == null) {
-                           throw new h(a.i.c.a("abpErrorReadingFile") + " ID not present");
+                           throw new h(Translator.translate("abpErrorReadingFile") + " ID not present");
                         }
 
                         UUID var16 = UUID.fromString(var18);
                         if (!k.a().e().equals(var16) && var10 == null) {
-                           throw new h(a.i.c.a("abpCannotReadOtherUserPrivateFile"));
+                           throw new h(Translator.translate("abpCannotReadOtherUserPrivateFile"));
                         }
                      }
                   } while(!var4.getName().equals("fc"));
@@ -153,32 +155,32 @@ public final class f implements Runnable {
                      var19 = (var24 = new c(j.f(), 2, var7)).a(var5);
                      ByteArrayInputStream var22 = new ByteArrayInputStream(var19, 0, var24.b());
                      InputStreamReader var26 = new InputStreamReader(var22, "UTF-8");
-                     b.a.f var13 = new b.a.f(var26);
-                     var2 = new b.a.c(var13);
+                     package_b.a.f var13 = new package_b.a.f(var26);
+                     var2 = new package_b.a.c(var13);
                   } else {
                      var19 = this.c.a(var5);
                      ByteArrayInputStream var25 = new ByteArrayInputStream(var19, 0, this.c.b());
                      InputStreamReader var23 = new InputStreamReader(var25, "UTF-8");
-                     b.a.f var21 = new b.a.f(var23);
-                     var2 = new b.a.c(var21);
+                     package_b.a.f var21 = new package_b.a.f(var23);
+                     var2 = new package_b.a.c(var21);
                   }
                }
             }
          } catch (h var11) {
             throw var11;
          } catch (Exception var12) {
-            throw new h(a.i.c.a("abpErrorReadingFile") + var1);
+            throw new h(Translator.translate("abpErrorReadingFile") + var1);
          }
       }
    }
 
-   private static byte[] a(b.a.c var0) {
+   private static byte[] a(package_b.a.c var0) {
       ByteArrayOutputStream var1 = new ByteArrayOutputStream(1000);
 
       try {
          OutputStreamWriter var2 = new OutputStreamWriter(var1, "UTF-8");
-         b.a.g var3;
-         (var3 = new b.a.g(var2)).b();
+         g var3;
+         (var3 = new g(var2)).b();
          Iterator var5 = var0.a().iterator();
 
          while(var5.hasNext()) {
@@ -192,9 +194,9 @@ public final class f implements Runnable {
          byte[] var8 = var1.toByteArray();
          return var8;
       } catch (UnsupportedEncodingException var6) {
-         throw new h(a.i.c.a("abpErrorWritingFile"), var6);
+         throw new h(Translator.translate("abpErrorWritingFile"), var6);
       } catch (IOException var7) {
-         throw new h(a.i.c.a("abpErrorWritingFile"));
+         throw new h(Translator.translate("abpErrorWritingFile"));
       }
    }
 

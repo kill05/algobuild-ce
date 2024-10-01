@@ -16,6 +16,7 @@ public final class d extends JComponent implements Printable {
       this.a = var1;
    }
 
+   @Override
    public final int print(Graphics var1, PageFormat var2, int var3) {
       if (var3 > 0) {
          return 1;

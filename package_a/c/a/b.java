@@ -51,8 +51,8 @@ public final class b {
          File var3 = package_a.f.j.c();
          File var5 = new File(var3, var2);
          FileReader var8 = new FileReader(var5);
-         b.a.f var6 = new b.a.f(var8);
-         b.a.c var7 = (new b.a.c(var6)).e("opt");
+         package_b.a.f var6 = new package_b.a.f(var8);
+         package_b.a.c var7 = (new package_b.a.c(var6)).e("opt");
          var8.close();
          var1.a(var7);
       } catch (IOException var4) {
@@ -419,13 +419,13 @@ public final class b {
       }
    }
 
-   private b.a.c t() {
-      b.a.c var1;
-      (var1 = new b.a.c()).b("abiid", "ABEENV");
+   private package_b.a.c t() {
+      package_b.a.c var1;
+      (var1 = new package_b.a.c()).b("abiid", "ABEENV");
       Iterator var2 = this.d.a().iterator();
 
       while(var2.hasNext()) {
-         b.a.c var3 = ((q)var2.next()).b(true);
+         package_b.a.c var3 = ((q)var2.next()).b(true);
          var1.a("codepool", (Object)var3);
       }
 
@@ -445,7 +445,7 @@ public final class b {
          this.p.a(var4, var3, var9.getName(), var6);
       }
 
-      b.a.c var8 = this.t();
+      package_b.a.c var8 = this.t();
 
       try {
          var2.a(var1, var8);
@@ -466,7 +466,7 @@ public final class b {
       package_a.f.f var2 = package_a.f.f.a();
 
       try {
-         b.a.c var9;
+         package_b.a.c var9;
          if ((var9 = var2.a(var1)) != null) {
             if (this.f != null) {
                Iterator var5 = this.f.iterator();
@@ -478,9 +478,9 @@ public final class b {
 
             this.b();
             this.d.b();
-            b.a.c var4 = var9;
+            package_b.a.c var4 = var9;
             b var3 = this;
-            b.a.c var13 = var9.e("saveHistory");
+            package_b.a.c var13 = var9.e("saveHistory");
             this.p.c();
             if (var13 != null) {
                this.p.a(var13);
@@ -490,7 +490,7 @@ public final class b {
                this.k.a(var9);
             }
 
-            b.a.a var10;
+            package_b.a.a var10;
             if ((var10 = var4.d("codepool")) != null) {
                for(int var12 = 0; var12 < var10.a(); ++var12) {
                   n var6;

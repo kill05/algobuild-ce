@@ -1,5 +1,7 @@
 package package_a.a;
 
+import package_a.i.Translator;
+
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Frame;
@@ -27,7 +29,7 @@ public final class k extends JDialog implements ActionListener {
    private JButton f;
 
    private k(Frame var1) {
-      super(var1, a.i.c.a("abedAuthorRegistrationTitle"));
+      super(var1, Translator.translate("abedAuthorRegistrationTitle"));
       this.a = var1;
       JPanel var4;
       (var4 = new JPanel()).setLayout(new GridBagLayout());
@@ -50,18 +52,18 @@ public final class k extends JDialog implements ActionListener {
       var4.add(this.f, var2);
       var2.gridx = 0;
       var2.gridy = 1;
-      var4.add(new JLabel(a.i.c.a("abedAuthorRegistrationName")), var2);
+      var4.add(new JLabel(Translator.translate("abedAuthorRegistrationName")), var2);
       var2.gridx = 1;
       var4.add(this.b, var2);
       this.c = new JTextField(30);
       var2.gridx = 0;
       ++var2.gridy;
-      var4.add(new JLabel(a.i.c.a("abedAuthorRegistrationSubsCode")), var2);
+      var4.add(new JLabel(Translator.translate("abedAuthorRegistrationSubsCode")), var2);
       var2.gridx = 1;
       var4.add(this.c, var2);
-      this.d = a.c.a.a.d(a.i.c.a("dialogButtonOK"));
+      this.d = package_a.c.a.a.d(Translator.translate("dialogButtonOK"));
       this.d.addActionListener(this);
-      this.e = a.c.a.a.d(a.i.c.a("dialogButtonCancel"));
+      this.e = package_a.c.a.a.d(Translator.translate("dialogButtonCancel"));
       this.e.addActionListener(this);
       JPanel var5;
       (var5 = new JPanel()).setLayout(new GridLayout(1, 2, 10, 10));
@@ -84,9 +86,9 @@ public final class k extends JDialog implements ActionListener {
          String var5 = this.b.getText();
          String var2 = this.c.getText();
          if (var5 != null && var5.length() > 0 && !var5.contains("'") && !var5.contains("\"") && var2 != null && var2.length() > 0 && !var2.contains("'") && !var2.contains("\"")) {
-            if (a.f.d.b(var5, var2) != null) {
+            if (package_a.f.d.b(var5, var2) != null) {
                JOptionPane.showMessageDialog((Component)null, "REGISTRATO " + var5 + "   " + var2);
-               a.k.c.a().a("mnuAuthorRegistration", false);
+               package_a.k.c.a().a("mnuAuthorRegistration", false);
             }
 
             this.setVisible(false);
@@ -99,7 +101,7 @@ public final class k extends JDialog implements ActionListener {
    }
 
    public static void a() {
-      new k(a.k.c.a().b());
+      new k(package_a.k.c.a().b());
    }
 
    private static boolean b() {

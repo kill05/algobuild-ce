@@ -1,6 +1,8 @@
 package package_a.a;
 
 import package_a.c.b.q;
+import package_a.i.Translator;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Frame;
@@ -35,36 +37,36 @@ public final class c extends JDialog implements ActionListener, DocumentListener
    private String h;
    private String i;
    private String j;
-   private a.c.a.b k;
+   private package_a.c.a.b k;
    private q l;
    private static c m = null;
    private static boolean n = false;
 
-   private c(Window var1, q var2, a.c.a.b var3) {
-      super((Frame)var1, a.i.c.a("abedDialogCodeTitle"), true);
+   private c(Window var1, q var2, package_a.c.a.b var3) {
+      super((Frame)var1, Translator.translate("abedDialogCodeTitle"), true);
       this.l = var2;
       this.k = var3;
       this.g = var2.j();
-      this.a = a.c.a.a.d(a.i.c.a("dialogButtonOK"));
-      this.b = a.c.a.a.d(a.i.c.a("dialogButtonCancel"));
+      this.a = package_a.c.a.a.d(Translator.translate("dialogButtonOK"));
+      this.b = package_a.c.a.a.d(Translator.translate("dialogButtonCancel"));
       this.setModal(true);
       JPanel var4;
       (var4 = new JPanel()).setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
       var4.setLayout(new BorderLayout(10, 10));
       JPanel var5;
       (var5 = new JPanel()).setLayout(new GridLayout(5, 1, 10, 10));
-      JLabel var7 = new JLabel(a.i.c.a("abedDialogCodeCodename"));
+      JLabel var7 = new JLabel(Translator.translate("abedDialogCodeCodename"));
       var5.add(var7);
       var5.add(this.c);
       this.c.getDocument().addDocumentListener(this);
-      var7 = new JLabel(a.i.c.a("abedDialogCodeCodetype"));
+      var7 = new JLabel(Translator.translate("abedDialogCodeCodetype"));
       var5.add(var7);
       this.d.setEditable(false);
       this.d.setEnabled(true);
       this.d.setOpaque(false);
       this.d.setFocusable(false);
       var5.add(this.d);
-      var7 = new JLabel(a.i.c.a("abedDialogCodeFormalParameters"));
+      var7 = new JLabel(Translator.translate("abedDialogCodeFormalParameters"));
       var5.add(var7);
       var4.add(var5, "North");
       this.e.setText("CIAOCIAOCIAOCIAOCIAO\na\nb\nc\nd\ne");
@@ -76,7 +78,7 @@ public final class c extends JDialog implements ActionListener, DocumentListener
       (var5 = new JPanel()).setLayout(new GridLayout(3, 1, 10, 10));
       JPanel var8;
       (var8 = new JPanel()).setLayout(new GridLayout(1, 2, 10, 10));
-      var5.add(new JLabel(a.i.c.a("abedDialogCodeReturnExpr")));
+      var5.add(new JLabel(Translator.translate("abedDialogCodeReturnExpr")));
       var5.add(this.f);
       this.f.getDocument().addDocumentListener(this);
       var8.add(this.a);
@@ -168,7 +170,7 @@ public final class c extends JDialog implements ActionListener, DocumentListener
       this.l.a(true);
    }
 
-   public static boolean a(Window var0, q var1, a.c.a.b var2) {
+   public static boolean a(Window var0, q var1, package_a.c.a.b var2) {
       Point var3;
       (var3 = MouseInfo.getPointerInfo().getLocation()).translate(15, 15);
       if (m == null) {

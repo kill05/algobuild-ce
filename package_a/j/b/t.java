@@ -4,7 +4,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
-public final class t extends C {
+public final class t extends package_a.j.b.c {
    public t(p var1, D var2) {
       super(var2);
    }

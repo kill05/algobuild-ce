@@ -5,7 +5,7 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-public final class q extends C {
+public final class q extends package_a.j.b.c {
    private String[] b;
    private int[] c;
    private int d;

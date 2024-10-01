@@ -21,7 +21,7 @@ public final class l extends j {
    protected final void a_() {
       package_a.g.e var1 = new package_a.g.e((package_a.c.b.n)this.i);
       if (package_a.a.h.a(this.c.a(), (package_a.c.b.j)this.i)) {
-         this.c.c().a((package_a.g.g)var1);
+         this.c.c().a(var1);
          this.b.a(true);
       }
 

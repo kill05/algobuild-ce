@@ -1,4 +1,4 @@
-package b.a;
+package package_b.a;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -158,7 +158,7 @@ public final class f {
          if ("".equals(var6)) {
             throw this.a("Missing value");
          } else {
-            return b.a.c.h(var6);
+            return package_b.a.c.h(var6);
          }
       }
    }

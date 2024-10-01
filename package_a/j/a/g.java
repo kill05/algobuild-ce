@@ -4,7 +4,8 @@ import package_a.a.m;
 import package_a.a.n;
 import package_a.c.a.j;
 import package_a.c.b.q;
-import package_a.k.C;
+import package_a.i.Translator;
+import package_a.k.ABFrame;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -17,9 +18,9 @@ import javax.swing.JSplitPane;
 import javax.swing.Timer;
 
 public final class g extends JPanel implements j, ActionListener {
-   private a.k.c a;
-   private a.c.a.b b;
-   private a.c.a.e c;
+   private package_a.k.c a;
+   private package_a.c.a.b b;
+   private package_a.c.a.e c;
    private Timer d;
    private boolean e = false;
    private JSplitPane f;
@@ -33,16 +34,16 @@ public final class g extends JPanel implements j, ActionListener {
    private JScrollPane n;
    private h o;
    private JScrollPane p;
-   private C q;
+   private ABFrame q;
    private m r;
    private n s;
    private Stack t;
    private Stack u;
 
-   public g(a.k.c var1) {
+   public g(package_a.k.c var1) {
       this.a = var1;
-      this.b = new a.c.a.b();
-      this.c = new a.c.a.e(this.b);
+      this.b = new package_a.c.a.b();
+      this.c = new package_a.c.a.e(this.b);
       this.d = new Timer(1000, this);
       this.d.setInitialDelay(10);
       this.setLayout(new BorderLayout());
@@ -82,7 +83,7 @@ public final class g extends JPanel implements j, ActionListener {
 
    }
 
-   public final void a(C var1) {
+   public final void a(ABFrame var1) {
       this.q = var1;
       if (this.l != null) {
          this.l.a(var1);
@@ -96,7 +97,7 @@ public final class g extends JPanel implements j, ActionListener {
          var1 = true;
       } else {
          int var2;
-         if ((var2 = JOptionPane.showConfirmDialog((Component)null, a.i.c.a("modifiedSaveQuestion"), "AlgoBuild", 1)) == 0) {
+         if ((var2 = JOptionPane.showConfirmDialog((Component)null, Translator.translate("modifiedSaveQuestion"), "AlgoBuild", 1)) == 0) {
             this.f();
             if (!this.b.p()) {
                var1 = true;
@@ -132,7 +133,7 @@ public final class g extends JPanel implements j, ActionListener {
          var1 = true;
       } else {
          int var2;
-         if ((var2 = JOptionPane.showConfirmDialog((Component)null, a.i.c.a("modifiedSaveQuestion"), "AlgoBuild", 1)) == 0) {
+         if ((var2 = JOptionPane.showConfirmDialog((Component)null, Translator.translate("modifiedSaveQuestion"), "AlgoBuild", 1)) == 0) {
             this.f();
             if (!this.b.p()) {
                var1 = true;
@@ -240,16 +241,16 @@ public final class g extends JPanel implements j, ActionListener {
 
    }
 
-   public final void a(a.c.a.b var1) {
+   public final void a(package_a.c.a.b var1) {
       this.b = var1;
       this.l.a = var1;
    }
 
-   public final void a(a.c.a.d var1) {
+   public final void a(package_a.c.a.d var1) {
       this.l.a(var1);
    }
 
-   public final void b(a.c.a.b var1) {
+   public final void b(package_a.c.a.b var1) {
       this.d();
 
       try {
@@ -369,7 +370,7 @@ public final class g extends JPanel implements j, ActionListener {
 
    }
 
-   public final void a(a.g.g var1) {
+   public final void a(package_a.g.g var1) {
       this.t.push(var1);
       if (!this.u.empty()) {
          this.u.removeAllElements();
@@ -389,8 +390,8 @@ public final class g extends JPanel implements j, ActionListener {
 
    public final void o() {
       if (this.m()) {
-         a.g.g var1;
-         (var1 = (a.g.g)this.t.pop()).b();
+         package_a.g.g var1;
+         (var1 = (package_a.g.g)this.t.pop()).b();
          this.u.push(var1);
          this.a.a("mnuEditUndo", this.m());
          this.a.a("mnuEditRedo", this.n());
@@ -400,8 +401,8 @@ public final class g extends JPanel implements j, ActionListener {
 
    public final void p() {
       if (this.n()) {
-         a.g.g var1;
-         (var1 = (a.g.g)this.u.pop()).a();
+         package_a.g.g var1;
+         (var1 = (package_a.g.g)this.u.pop()).a();
          this.t.push(var1);
          this.a.a("mnuEditUndo", this.m());
          this.a.a("mnuEditRedo", this.n());
@@ -409,7 +410,7 @@ public final class g extends JPanel implements j, ActionListener {
 
    }
 
-   public final void b(a.c.a.d var1) {
+   public final void b(package_a.c.a.d var1) {
       this.l.b(var1);
    }
 
@@ -423,6 +424,6 @@ public final class g extends JPanel implements j, ActionListener {
 
    public final void s() {
       String var1 = this.b.s();
-      JOptionPane.showMessageDialog(this.q, var1, a.i.c.a("mnuHistoryInfo"), 1);
+      JOptionPane.showMessageDialog(this.q, var1, Translator.translate("mnuHistoryInfo"), 1);
    }
 }

@@ -1,5 +1,7 @@
 package package_a.c.b;
 
+import package_c.ABExecutionException;
+
 public final class f extends h {
    private String b;
    private String c;
@@ -38,8 +40,8 @@ public final class f extends h {
       this.a(true);
    }
 
-   public final int a(a.c.a.b var1, int var2) {
-      c.l var3;
+   public final int a(package_a.c.a.b var1, int var2) {
+      package_c.l var3;
       String var8;
       if (var2 == 0) {
          var8 = this.b;
@@ -48,7 +50,7 @@ public final class f extends h {
             var3 = var1.e().a(var8, var1.c());
             var1.h("FOR INITIALIZATION: " + var8 + "   RESULT: " + var3);
             return 1;
-         } catch (c.g var5) {
+         } catch (ABExecutionException var5) {
             var1.i("FOR INITIALIZATION ERROR: " + var5 + " IN " + var8);
             return -2;
          }
@@ -58,17 +60,17 @@ public final class f extends h {
          boolean var10;
          try {
             boolean var4;
-            var10 = var4 = (var3 = var1.e().a(var8, var1.c())) instanceof c.h && ((c.h)var3).a();
+            var10 = var4 = (var3 = var1.e().a(var8, var1.c())) instanceof package_c.h && ((package_c.h)var3).a();
             var1.h("FOR TEST:  " + var8 + "   RESULT: " + var4);
             var1.i();
-         } catch (c.g var7) {
+         } catch (ABExecutionException var7) {
             var1.i("FOR TEST ERROR: " + var7 + " IN " + var8);
             return -2;
          }
 
          return var10 ? 2 : -1;
       } else if (var2 == 2) {
-         a.c.a.c var9 = new a.c.a.c(this.m(), var1);
+         package_a.c.a.c var9 = new package_a.c.a.c(this.m(), var1);
          var1.d().push(var9);
          return 3;
       } else if (var2 == 3) {
@@ -78,7 +80,7 @@ public final class f extends h {
             var3 = var1.e().a(var8, var1.c());
             var1.h("FOR INCREMENT: " + var8 + "   RESULT: " + var3);
             return 1;
-         } catch (c.g var6) {
+         } catch (ABExecutionException var6) {
             var1.i("FOR INCREMENT ERROR: " + var6 + " IN " + var8);
             return -2;
          }
@@ -95,14 +97,14 @@ public final class f extends h {
       return "ABIFOR";
    }
 
-   public final a.f.g h() {
-      a.f.g var1;
+   public final package_a.f.g h() {
+      package_a.f.g var1;
       (var1 = super.h()).a("initialization", this.b);
       var1.a("increment", this.c);
       return var1;
    }
 
-   public final void a(a.f.g var1) {
+   public final void a(package_a.f.g var1) {
       super.a(var1);
       String var2 = var1.a("initialization");
       this.a(var2);
@@ -110,14 +112,14 @@ public final class f extends h {
       this.b(var2);
    }
 
-   public final b.a.c b(boolean var1) {
-      b.a.c var2;
+   public final package_b.a.c b(boolean var1) {
+      package_b.a.c var2;
       (var2 = super.b(var1)).b("initialization", this.b);
       var2.b("increment", this.c);
       return var2;
    }
 
-   public final void a(b.a.c var1, boolean var2) {
+   public final void a(package_b.a.c var1, boolean var2) {
       super.a(var1, var2);
       String var3 = var1.f("initialization");
       this.a(var3);
@@ -125,7 +127,7 @@ public final class f extends h {
       this.b(var3);
    }
 
-   public final a.c.a.d e() {
+   public final package_a.c.a.d e() {
       f var1 = new f(this.b, this.l(), this.c);
 
       try {

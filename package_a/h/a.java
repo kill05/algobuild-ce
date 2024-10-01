@@ -1,6 +1,6 @@
 package package_a.h;
 
-public final class a extends a.e.a {
+public final class a extends package_a.e.a {
    protected final int a() {
       return 9;
    }

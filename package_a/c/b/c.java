@@ -29,7 +29,7 @@ public final class c extends b {
       this.a(true);
    }
 
-   public final int a(a.c.a.b var1, int var2) {
+   public final int a(package_a.c.a.b var1, int var2) {
       f var3 = null;
       boolean var4 = false;
       if (var2 == 1 && this.d != null && this.d.length() > 0) {
@@ -47,8 +47,8 @@ public final class c extends b {
       return var2;
    }
 
-   public final a.f.g h() {
-      a.f.g var1 = super.h();
+   public final package_a.f.g h() {
+      package_a.f.g var1 = super.h();
       if (this.d != null) {
          var1.a("returnVariable", this.d);
       }
@@ -56,7 +56,7 @@ public final class c extends b {
       return var1;
    }
 
-   public final void a(a.f.g var1) {
+   public final void a(package_a.f.g var1) {
       super.a(var1);
       String var2;
       if ((var2 = var1.a("returnVariable")) != null) {
@@ -65,8 +65,8 @@ public final class c extends b {
 
    }
 
-   public final b.a.c b(boolean var1) {
-      b.a.c var2 = super.b(var1);
+   public final package_b.a.c b(boolean var1) {
+      package_b.a.c var2 = super.b(var1);
       System.out.println("getAsJSONObject RETURN VARIABLE " + this.d);
       if (this.d != null) {
          var2.b("returnVariable", this.d);
@@ -75,7 +75,7 @@ public final class c extends b {
       return var2;
    }
 
-   public final void a(b.a.c var1, boolean var2) {
+   public final void a(package_b.a.c var1, boolean var2) {
       super.a(var1, var2);
       String var3 = var1.f("returnVariable");
       System.out.println("getAsJSONObject RETURN VARIABLE " + var3);
@@ -85,7 +85,7 @@ public final class c extends b {
 
    }
 
-   public final a.c.a.d e() {
+   public final package_a.c.a.d e() {
       c var1;
       (var1 = new c(this.b, (Vector)this.c.clone())).b(this.d);
       return var1;

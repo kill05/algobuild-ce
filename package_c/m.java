@@ -19,7 +19,7 @@ public final class m implements f {
          i var5 = new i((var4 = (j)var1).a);
          this.a = var5;
       } else if (!var3.equals(var2)) {
-         throw new ABAssignException(105, " try to assign " + var1.b() + " to " + this.a.b());
+         throw new ABExecutionException(105, " try to assign " + var1.b() + " to " + this.a.b());
       } else {
          this.a = var1;
       }

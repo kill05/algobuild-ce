@@ -1,4 +1,4 @@
-package b.a;
+package package_b.a;
 
 public final class b extends RuntimeException {
    private Throwable a;
