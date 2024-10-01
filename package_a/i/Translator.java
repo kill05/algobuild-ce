@@ -4,23 +4,23 @@ import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
-public final class c {
+public final class Translator {
    private static ResourceBundle a = null;
    private static ResourceBundle b = null;
    private static ResourceBundle c = null;
-   private static Locale d;
+   private static Locale locale;
 
-   public static Locale a() {
-      if (d == null) {
-         d = Locale.getDefault();
+   public static Locale getLocale() {
+      if (locale == null) {
+         locale = Locale.getDefault();
       }
 
-      return d;
+      return locale;
    }
 
-   public static void a(Locale var0) {
-      if (var0 != null && !var0.equals(d)) {
-         d = var0;
+   public static void setLocale(Locale locale) {
+      if (locale != null && !locale.equals(Translator.locale)) {
+         Translator.locale = locale;
          if (c != null) {
             c = null;
          }
@@ -28,7 +28,7 @@ public final class c {
 
    }
 
-   public static String a(String var0) {
+   public static String translate(String translationKey) {
       String var1;
       try {
          if (b == null) {
@@ -40,16 +40,16 @@ public final class c {
          }
 
          if (c == null) {
-            if (a().getLanguage().equals(Locale.ITALIAN.getLanguage())) {
+            if (getLocale().getLanguage().equals(Locale.ITALIAN.getLanguage())) {
                c = a;
             } else {
                c = b;
             }
          }
 
-         var1 = c.getString(var0);
+         var1 = c.getString(translationKey);
       } catch (MissingResourceException var2) {
-         var1 = var0 + " TO TRANSLATE";
+         var1 = translationKey + " TO TRANSLATE";
          System.err.println(var1);
       } catch (NullPointerException var3) {
          var1 = "null given TO TRANSLATE";
