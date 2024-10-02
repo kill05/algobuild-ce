@@ -27,9 +27,6 @@ public final class ExecutionOptions {
     }
 
     public void setClockSpeed(int clockSpeed) {
-        if (clockSpeed > 0 && clockSpeed < 10000) {
-            this.clockSpeed = clockSpeed;
-            System.out.println("New clock speed: " + clockSpeed);
-        }
+        this.clockSpeed = Math.min(10000, Math.max(1, clockSpeed));
     }
 }

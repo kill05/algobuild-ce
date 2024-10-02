@@ -14,23 +14,23 @@ public final class ExecutionOptionsDialogue extends JDialog implements ActionLis
 
     public static final int[] CLOCK_SPEEDS = new int[]{1, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000};
 
-    private final ABProgram d;
+    private final ABProgram program;
     private final JCheckBox traceCheckBox;
     private final JCheckBox singleStepCheckBox;
     private final JSpinner clockSpeedSpinner;
 
-    public ExecutionOptionsDialogue(Frame frame, ABProgram var2) {
+    public ExecutionOptionsDialogue(Frame frame, ABProgram program) {
         super(frame, Translator.translate("abedDialogRunOptionsTitle"));
-        this.d = var2;
-        JPanel var4;
-        (var4 = new JPanel()).setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        this.program = program;
+        JPanel var4 = new JPanel();
+        var4.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         this.setContentPane(var4);
         var4.setLayout(new GridBagLayout());
         this.setVisible(false);
         this.setLocation(100, 100);
         this.setResizable(false);
 
-        ExecutionOptions options = this.d.getExecutionOptions();
+        ExecutionOptions options = this.program.getExecutionOptions();
 
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.anchor = 21;
@@ -78,15 +78,15 @@ public final class ExecutionOptionsDialogue extends JDialog implements ActionLis
     public void actionPerformed(ActionEvent event) {
         Object source = event.getSource();
         if (source == this.traceCheckBox) {
-            this.d.getExecutionOptions().setTraceEnabled(this.traceCheckBox.isSelected());
-            this.d.update(true);
+            this.program.getExecutionOptions().setTraceEnabled(this.traceCheckBox.isSelected());
+            this.program.update(true);
         }
 
         if (source == this.singleStepCheckBox) {
             boolean var3 = this.singleStepCheckBox.isSelected();
             this.clockSpeedSpinner.setEnabled(!var3);
-            this.d.getExecutionOptions().setStepEnabled(var3);
-            this.d.update(true);
+            this.program.getExecutionOptions().setStepEnabled(var3);
+            this.program.update(true);
         }
     }
 
@@ -103,14 +103,15 @@ public final class ExecutionOptionsDialogue extends JDialog implements ActionLis
         @Override
         public void setValue(Object value) {
             try {
-                d.getExecutionOptions().setClockSpeed(value instanceof Number ? ((Number) value).intValue() : Integer.parseInt(value.toString()));
-                d.update(true);
+                program.getExecutionOptions().setClockSpeed(value instanceof Number ? ((Number) value).intValue() : Integer.parseInt(value.toString()));
+                program.update(true);
 
-                this.value = d.getExecutionOptions().getClockSpeed();
-                ((ClockSpeedEditor) clockSpeedSpinner.getEditor()).setText(String.valueOf(this.value));
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid clock speed: " + value);
+                this.value = program.getExecutionOptions().getClockSpeed();
+            } catch (NumberFormatException ignored) {
             }
+
+            ClockSpeedEditor editor = (ClockSpeedEditor) clockSpeedSpinner.getEditor();
+            editor.setText(String.valueOf(this.value));
         }
 
         @Override
