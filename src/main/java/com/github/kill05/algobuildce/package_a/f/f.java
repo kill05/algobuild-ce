@@ -56,9 +56,9 @@ public final class f implements Runnable {
     }
 
     @SuppressWarnings("ConstantValue")
-    public void a(@NotNull String fileName, JsonObject jsonObject) throws ABSerializationException {
-        k var3 = k.getInstance();
-        if (var3 == null) {
+    public void writeProgram(@NotNull String fileName, JsonObject jsonObject) throws ABSerializationException {
+        k kInstance = k.getInstance();
+        if (kInstance == null) {
             throw new ABSerializationException(Translator.translate("abpErrorConfigFile") + " system configuration NON LOADED");
         }
 
@@ -70,15 +70,14 @@ public final class f implements Runnable {
             throw new ABSerializationException(Translator.translate("abpErrorWritingFile") + " ENCODER not READY");
         }
 
-
         JsonObject var4 = new JsonObject();
-        var4.put(AB_UUID, var3.e().toString());
-        String var5 = var3.b();
+        var4.put(AB_UUID, kInstance.e().toString());
+        String var5 = kInstance.b();
         if (var5 != null) {
             var4.put("abusn", var5);
         }
 
-        String var11 = var3.d();
+        String var11 = kInstance.d();
         if (var11 != null) {
             var4.put("abuan", var11);
         }
@@ -95,9 +94,6 @@ public final class f implements Runnable {
             out.putNextEntry(var14);
             fcData = this.encoder.a(fcData);
             out.write(fcData, 0, fcData.length);
-
-        } catch (FileNotFoundException var6) {
-            var6.printStackTrace();
         } catch (IOException var7) {
             var7.printStackTrace();
         }
@@ -113,9 +109,7 @@ public final class f implements Runnable {
             throw new ABSerializationException(Translator.translate("abpErrorReadingFile") + " DECODER not READY");
         }
 
-        try {
-            ABFileInputStream var3 = new ABFileInputStream(filePath);
-            ZipInputStream zipIn = new ZipInputStream(new BufferedInputStream(var3));
+        try (ZipInputStream zipIn = new ZipInputStream(new BufferedInputStream(new ABFileInputStream(filePath)))) {
             byte[] var5 = new byte['썐'];
             int var6 = 0;
             String var7 = null;
@@ -124,7 +118,6 @@ public final class f implements Runnable {
                 ZipEntry var4;
                 do {
                     if ((var4 = zipIn.getNextEntry()) == null) {
-                        zipIn.close();
                         return var2;
                     }
 
@@ -197,12 +190,13 @@ public final class f implements Runnable {
             }
 
             jsonWriter.end();
-            return baos.toByteArray();
         } catch (UnsupportedEncodingException e) {
             throw new ABSerializationException(Translator.translate("abpErrorWritingFile"), e);
         } catch (IOException e) {
             throw new ABSerializationException(Translator.translate("abpErrorWritingFile"));
         }
+
+        return baos.toByteArray();
     }
 
     public byte[] b() {

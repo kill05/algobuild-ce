@@ -414,12 +414,12 @@ public final class ABProgram {
         }
     }
 
-    private JsonObject t() {
+    private JsonObject serialize() {
         JsonObject var1 = new JsonObject();
         var1.put("abiid", "ABEENV");
 
-        for (Object object : this.algobuild.a()) {
-            JsonObject var3 = ((q) object).b(true);
+        for (q object : this.algobuild.a()) {
+            JsonObject var3 = object.b(true);
             var1.a("codepool", var3);
         }
 
@@ -428,23 +428,23 @@ public final class ABProgram {
         return var1;
     }
 
-    public void j(String var1) {
+    public void saveProgram(String filePath) {
         com.github.kill05.algobuildce.package_a.f.f var2 = com.github.kill05.algobuildce.package_a.f.f.getInstance();
         String author = com.github.kill05.algobuildce.package_a.f.k.getInstance().d();
         if (author != null) {
             String serial = com.github.kill05.algobuildce.package_a.f.k.getInstance().b();
             p var5 = this.algobuild.d();
             String sizeDescription = var5.a() + "/" + var5.b();
-            File file = new File(var1);
+            File file = new File(filePath);
             this.saveHistory.setActualSessionSave(serial, author, file.getName(), sizeDescription);
         }
 
-        JsonObject var8 = this.t();
+        JsonObject jsonObject = this.serialize();
 
         try {
-            var2.a(var1, var8);
+            var2.writeProgram(filePath, jsonObject);
             this.j = false;
-            this.i = var1;
+            this.i = filePath;
 
             for (j object : this.f) {
                 object.b(this);

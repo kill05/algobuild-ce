@@ -152,7 +152,7 @@ public final class g extends JPanel implements j, ActionListener {
         if (var1) {
             String var2;
             if ((var2 = this.b.o()) != null) {
-                this.b.j(var2);
+                this.b.saveProgram(var2);
                 if (!this.b.p()) {
                     this.abFrameHolder.a("mnuFileSave", false);
                 }
@@ -166,7 +166,7 @@ public final class g extends JPanel implements j, ActionListener {
     public void g() {
         String var1;
         if ((var1 = this.abFrameHolder.a(this.b.o())) != null && !var1.isEmpty()) {
-            this.b.j(var1);
+            this.b.saveProgram(var1);
             if (!this.b.p()) {
                 this.abFrameHolder.a("mnuFileSave", false);
             }
