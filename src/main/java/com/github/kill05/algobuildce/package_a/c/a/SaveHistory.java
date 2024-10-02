@@ -1,8 +1,8 @@
 package com.github.kill05.algobuildce.package_a.c.a;
 
-import com.github.kill05.algobuildce.json.JSONArray;
+import com.github.kill05.algobuildce.json.JsonArray;
 import com.github.kill05.algobuildce.package_a.i.Translator;
-import com.github.kill05.algobuildce.json.JSONObject;
+import com.github.kill05.algobuildce.json.JsonObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Vector;
@@ -14,8 +14,8 @@ public final class SaveHistory {
     SaveHistory() {
     }
 
-    public JSONObject serialize() {
-        JSONObject var1 = new JSONObject();
+    public JsonObject serialize() {
+        JsonObject var1 = new JsonObject();
         if (this.entries != null) {
 
             for (SaveHistoryEntry var2 : this.entries) {
@@ -34,15 +34,15 @@ public final class SaveHistory {
         this.actualSessionSave = new SaveHistoryEntry(serial, authorName, System.currentTimeMillis(), fileName, sizeDescription);
     }
 
-    public void deserialize(JSONObject var1) {
-        JSONArray items = var1.getAsJsonArray("saveHistoryItems");
+    public void deserialize(JsonObject var1) {
+        JsonArray items = var1.getAsJsonArray("saveHistoryItems");
         if (items == null) return;
 
         this.entries = new Vector<>(items.size());
         this.actualSessionSave = null;
 
         for (int i = 0; i < items.size(); i++) {
-            JSONObject jsonEntry = items.getAsJsonObject(i);
+            JsonObject jsonEntry = items.getAsJsonObject(i);
             SaveHistoryEntry entry = new SaveHistoryEntry();
             entry.deserialize(jsonEntry);
             this.entries.add(entry);

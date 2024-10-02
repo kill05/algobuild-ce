@@ -5,6 +5,7 @@ import com.github.kill05.algobuildce.package_a.c.b.q;
 import com.github.kill05.algobuildce.package_a.f.ABFiles;
 import com.github.kill05.algobuildce.package_a.f.l;
 import com.github.kill05.algobuildce.package_a.i.Translator;
+import com.github.kill05.algobuildce.package_a.k.ABFrameHolder;
 import com.github.kill05.algobuildce.package_a.k.B_innerclass;
 import com.github.kill05.algobuildce.package_a.k.GlobalVariables;
 
@@ -50,7 +51,7 @@ public class AlgoBuild {
     }
 
     void c(String var1) {
-        q var2 = (q) this.map.remove(var1);
+        q var2 = this.map.remove(var1);
         this.map.put(var2.j(), var2);
     }
 
@@ -135,7 +136,12 @@ public class AlgoBuild {
                     System.exit(var3);
                 }
             } else {
-                SwingUtilities.invokeLater(new B_innerclass());
+                // Initialize singletons
+                SwingUtilities.invokeLater(() -> {
+                    com.github.kill05.algobuildce.package_a.f.k.getInstance();
+                    com.github.kill05.algobuildce.package_a.f.f.getInstance();
+                    ABFrameHolder.getInstance();
+                });
             }
         } while (var3 == -1 && var11 < 2);
 

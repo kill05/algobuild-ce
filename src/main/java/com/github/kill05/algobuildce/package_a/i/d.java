@@ -1,6 +1,6 @@
 package com.github.kill05.algobuildce.package_a.i;
 
-import com.github.kill05.algobuildce.package_a.j.b.n;
+import com.github.kill05.algobuildce.package_a.j.b.ABBasePanel;
 
 import java.awt.Component;
 import java.awt.Graphics;
@@ -71,8 +71,8 @@ public final class d extends JComponent implements Printable {
     }
 
     public final void a(Graphics var1, JComponent var2) {
-        if (var2 instanceof n) {
-            ((n) var2).printComponent(var1);
+        if (var2 instanceof ABBasePanel) {
+            ((ABBasePanel) var2).printComponent(var1);
         }
 
         Graphics2D var3;

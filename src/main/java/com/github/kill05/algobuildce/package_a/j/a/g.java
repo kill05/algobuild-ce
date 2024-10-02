@@ -1,7 +1,8 @@
 package com.github.kill05.algobuildce.package_a.j.a;
 
 import com.github.kill05.algobuildce.package_a.a.m;
-import com.github.kill05.algobuildce.package_a.a.n;
+import com.github.kill05.algobuildce.package_a.a.ExecutionOptionsDialogue;
+import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.a.j;
 import com.github.kill05.algobuildce.package_a.c.b.q;
 import com.github.kill05.algobuildce.package_a.i.Translator;
@@ -15,7 +16,7 @@ import java.awt.event.ActionListener;
 import java.util.Stack;
 
 public final class g extends JPanel implements j, ActionListener {
-    private final ABFrameHolder a;
+    private final ABFrameHolder abFrameHolder;
     private com.github.kill05.algobuildce.package_a.c.a.b b;
     private final com.github.kill05.algobuildce.package_a.c.a.e c;
     private final Timer d;
@@ -33,13 +34,13 @@ public final class g extends JPanel implements j, ActionListener {
     private final JScrollPane p;
     private ABFrame q;
     private m r;
-    private n s;
-    private final Stack t;
-    private final Stack u;
-    private com.github.kill05.algobuildce.package_a.c.a.d var1;
+    private ExecutionOptionsDialogue s;
+    private final Stack<com.github.kill05.algobuildce.package_a.g.g> t;
+    private final Stack<com.github.kill05.algobuildce.package_a.g.g> u;
+    private ABExecutable var1;
 
     public g(ABFrameHolder var1) {
-        this.a = var1;
+        this.abFrameHolder = var1;
         this.b = new com.github.kill05.algobuildce.package_a.c.a.b();
         this.c = new com.github.kill05.algobuildce.package_a.c.a.e(this.b);
         this.d = new Timer(1000, this);
@@ -49,15 +50,15 @@ public final class g extends JPanel implements j, ActionListener {
         this.l.a(this);
         this.b.a(this);
         this.b.a("main", 1);
-        this.b.a(false);
+        this.b.update(false);
         this.m = new c(this.b);
         this.n = new JScrollPane(this.m);
         this.o = new h();
         this.p = new JScrollPane(this.o);
         this.t = new Stack();
         this.u = new Stack();
-        this.a.a("mnuEditUndo", false);
-        this.a.a("mnuEditRedo", false);
+        this.abFrameHolder.a("mnuEditUndo", false);
+        this.abFrameHolder.a("mnuEditRedo", false);
     }
 
     public void b(int var1) {
@@ -95,7 +96,7 @@ public final class g extends JPanel implements j, ActionListener {
             var1 = true;
         } else {
             int var2;
-            if ((var2 = JOptionPane.showConfirmDialog(null, Translator.translate("modifiedSaveQuestion"), "AlgoBuild", 1)) == 0) {
+            if ((var2 = JOptionPane.showConfirmDialog(null, Translator.translate("modifiedSaveQuestion"), "AlgoBuild", JOptionPane.YES_NO_CANCEL_OPTION)) == 0) {
                 this.f();
                 if (!this.b.p()) {
                     var1 = true;
@@ -106,11 +107,11 @@ public final class g extends JPanel implements j, ActionListener {
         }
 
         String var3;
-        if (var1 && (var3 = this.a.e()) != null && !var3.isEmpty()) {
+        if (var1 && (var3 = this.abFrameHolder.e()) != null && !var3.isEmpty()) {
             this.b.k(var3);
-            if (!this.b.p() && this.a != null) {
-                this.a.a("execInstruction", true);
-                this.a.a("execOptions", true);
+            if (!this.b.p()) {
+                this.abFrameHolder.a("execInstruction", true);
+                this.abFrameHolder.a("execOptions", true);
             }
 
             this.l.b.setSelectedIndex(0);
@@ -121,7 +122,7 @@ public final class g extends JPanel implements j, ActionListener {
 
     public boolean d() {
         boolean var1 = this.b.p();
-        this.a.a("mnuFileSave", var1);
+        this.abFrameHolder.a("mnuFileSave", var1);
         return var1;
     }
 
@@ -152,7 +153,7 @@ public final class g extends JPanel implements j, ActionListener {
             if ((var2 = this.b.o()) != null) {
                 this.b.j(var2);
                 if (!this.b.p()) {
-                    this.a.a("mnuFileSave", false);
+                    this.abFrameHolder.a("mnuFileSave", false);
                 }
             } else {
                 this.g();
@@ -163,17 +164,17 @@ public final class g extends JPanel implements j, ActionListener {
 
     public void g() {
         String var1;
-        if ((var1 = this.a.a(this.b.o())) != null && !var1.isEmpty()) {
+        if ((var1 = this.abFrameHolder.a(this.b.o())) != null && !var1.isEmpty()) {
             this.b.j(var1);
             if (!this.b.p()) {
-                this.a.a("mnuFileSave", false);
+                this.abFrameHolder.a("mnuFileSave", false);
             }
         }
 
     }
 
     public void h() {
-        int var1 = this.b.r().c();
+        int var1 = this.b.getExecutionOptions().getClockSpeed();
         this.d.setDelay(var1);
         this.d.setInitialDelay(10);
         boolean var2;
@@ -188,27 +189,27 @@ public final class g extends JPanel implements j, ActionListener {
             this.o.setText("");
             this.c.a("main");
             var2 = this.c.b();
-            this.a.a("execInterrupt", var2);
-            if (!this.b.r().b()) {
+            this.abFrameHolder.a("execInterrupt", var2);
+            if (!this.b.getExecutionOptions().isStepEnabled()) {
                 this.d.start();
-                this.a.a("execInstruction", !var2);
-                this.a.a("execPause", var2);
-                this.a.a("execInterrupt", var2);
+                this.abFrameHolder.a("execInstruction", !var2);
+                this.abFrameHolder.a("execPause", var2);
+                this.abFrameHolder.a("execInterrupt", var2);
             }
         } else {
-            if (this.b.r().b()) {
+            if (this.b.getExecutionOptions().isStepEnabled()) {
                 this.c.c();
                 var2 = this.c.b();
-                this.a.a("execInstruction", true);
-                this.a.a("execPause", false);
-                this.a.a("execInterrupt", var2);
+                this.abFrameHolder.a("execInstruction", true);
+                this.abFrameHolder.a("execPause", false);
+                this.abFrameHolder.a("execInterrupt", var2);
                 return;
             }
 
             this.d.start();
-            this.a.a("execInstruction", false);
-            this.a.a("execPause", true);
-            this.a.a("execInterrupt", true);
+            this.abFrameHolder.a("execInstruction", false);
+            this.abFrameHolder.a("execPause", true);
+            this.abFrameHolder.a("execInterrupt", true);
         }
 
     }
@@ -218,18 +219,18 @@ public final class g extends JPanel implements j, ActionListener {
             this.d.stop();
         }
 
-        this.a.a("execInstruction", true);
-        this.a.a("execPause", false);
-        this.a.a("execInterrupt", this.c.b());
+        this.abFrameHolder.a("execInstruction", true);
+        this.abFrameHolder.a("execPause", false);
+        this.abFrameHolder.a("execInterrupt", this.c.b());
     }
 
     public void j() {
         if (this.c.b()) {
             this.c.a();
             boolean var1 = this.c.b();
-            this.a.a("execInstruction", true);
-            this.a.a("execPause", var1);
-            this.a.a("execInterrupt", var1);
+            this.abFrameHolder.a("execInstruction", true);
+            this.abFrameHolder.a("execPause", var1);
+            this.abFrameHolder.a("execInterrupt", var1);
         }
 
     }
@@ -241,7 +242,7 @@ public final class g extends JPanel implements j, ActionListener {
     }
 
     @Override
-    public void a(com.github.kill05.algobuildce.package_a.c.a.d var1) {
+    public void a(ABExecutable var1) {
         this.var1 = var1;
         this.l.a(var1);
     }
@@ -254,7 +255,7 @@ public final class g extends JPanel implements j, ActionListener {
             this.m.setFont(this.b.getViewOptions().getConsoleFont());
             this.m.a();
             this.o.setFont(this.b.getViewOptions().getConsoleFont());
-            int var2 = this.b.r().c();
+            int var2 = this.b.getExecutionOptions().getClockSpeed();
             if (this.d.getDelay() != var2) {
                 this.d.setDelay(var2);
                 this.d.setInitialDelay(var2);
@@ -338,20 +339,16 @@ public final class g extends JPanel implements j, ActionListener {
             this.r = new m(this.q, this.b);
         }
 
-        if (this.r != null) {
-            this.r.setVisible(!this.r.isVisible());
-        }
+        this.r.setVisible(!this.r.isVisible());
 
     }
 
     public void l() {
         if (this.s == null) {
-            this.s = new n(this.q, this.b);
+            this.s = new ExecutionOptionsDialogue(this.q, this.b);
         }
 
-        if (this.s != null) {
-            this.s.setVisible(!this.s.isVisible());
-        }
+        this.s.setVisible(!this.s.isVisible());
 
     }
 
@@ -366,10 +363,10 @@ public final class g extends JPanel implements j, ActionListener {
 
             if (!this.e) {
                 boolean var3 = this.c.b();
-                boolean var2 = this.b.r().b();
-                this.a.a("execInstruction", !var3 || var2);
-                this.a.a("execPause", var3 && !var2);
-                this.a.a("execInterrupt", var3);
+                boolean var2 = this.b.getExecutionOptions().isStepEnabled();
+                this.abFrameHolder.a("execInstruction", !var3 || var2);
+                this.abFrameHolder.a("execPause", var3 && !var2);
+                this.abFrameHolder.a("execInterrupt", var3);
                 return;
             }
 
@@ -385,8 +382,8 @@ public final class g extends JPanel implements j, ActionListener {
             this.u.removeAllElements();
         }
 
-        this.a.a("mnuEditUndo", true);
-        this.a.a("mnuEditRedo", false);
+        this.abFrameHolder.a("mnuEditUndo", true);
+        this.abFrameHolder.a("mnuEditRedo", false);
     }
 
     public boolean m() {
@@ -399,11 +396,11 @@ public final class g extends JPanel implements j, ActionListener {
 
     public void o() {
         if (this.m()) {
-            com.github.kill05.algobuildce.package_a.g.g var1;
-            (var1 = (com.github.kill05.algobuildce.package_a.g.g) this.t.pop()).b();
+            com.github.kill05.algobuildce.package_a.g.g var1 = this.t.pop();
+            var1.b();
             this.u.push(var1);
-            this.a.a("mnuEditUndo", this.m());
-            this.a.a("mnuEditRedo", this.n());
+            this.abFrameHolder.a("mnuEditUndo", this.m());
+            this.abFrameHolder.a("mnuEditRedo", this.n());
         }
 
     }
@@ -411,16 +408,16 @@ public final class g extends JPanel implements j, ActionListener {
     public void p() {
         if (this.n()) {
             com.github.kill05.algobuildce.package_a.g.g var1;
-            (var1 = (com.github.kill05.algobuildce.package_a.g.g) this.u.pop()).a();
+            (var1 = this.u.pop()).a();
             this.t.push(var1);
-            this.a.a("mnuEditUndo", this.m());
-            this.a.a("mnuEditRedo", this.n());
+            this.abFrameHolder.a("mnuEditUndo", this.m());
+            this.abFrameHolder.a("mnuEditRedo", this.n());
         }
 
     }
 
     @Override
-    public void b(com.github.kill05.algobuildce.package_a.c.a.d var1) {
+    public void b(ABExecutable var1) {
         this.l.b(var1);
     }
 

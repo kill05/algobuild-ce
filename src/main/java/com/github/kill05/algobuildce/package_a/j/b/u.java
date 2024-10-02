@@ -1,5 +1,7 @@
 package com.github.kill05.algobuildce.package_a.j.b;
 
+import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
+
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.geom.Rectangle2D;
@@ -11,10 +13,10 @@ public final class u extends C_subclass {
     }
 
     @Override
-    public final void a(n var1, Graphics var2) {
+    public final void a(ABBasePanel var1, Graphics var2) {
         int var3 = var1.getWidth();
         int var4 = var1.getHeight();
-        com.github.kill05.algobuildce.package_a.c.a.d var5 = null;
+        ABExecutable var5 = null;
         if (var1.b.a() != null) {
             var5 = var1.b.a().d();
         }
@@ -38,7 +40,7 @@ public final class u extends C_subclass {
     }
 
     @Override
-    public final void a(n var1) {
+    public final void a(ABBasePanel var1) {
         var1.a(new Dimension(10 * var1.e, 1 * var1.f));
     }
 }

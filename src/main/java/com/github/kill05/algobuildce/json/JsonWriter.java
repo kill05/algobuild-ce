@@ -6,7 +6,7 @@ import java.io.Writer;
 public final class JsonWriter {
     private boolean a = false;
     private char b = 'i';
-    private final JSONObject[] c = new JSONObject[200];
+    private final JsonObject[] c = new JsonObject[200];
     private int d = 0;
     private final Writer e;
 
@@ -80,7 +80,7 @@ public final class JsonWriter {
                     this.e.write(44);
                 }
 
-                this.e.write(JSONObject.g(var1));
+                this.e.write(JsonObject.g(var1));
                 this.e.write(58);
                 this.a = false;
                 this.b = 'o';
@@ -102,7 +102,7 @@ public final class JsonWriter {
             throw new JsonParseException("Misplaced object.");
         } else {
             this.b("{");
-            JSONObject var2 = new JSONObject();
+            JsonObject var2 = new JsonObject();
             if (this.d >= 200) {
                 throw new JsonParseException("Nesting too deep.");
             } else {
@@ -116,6 +116,6 @@ public final class JsonWriter {
     }
 
     public JsonWriter writeValue(Object var1) {
-        return this.b(JSONObject.toJsonString(var1));
+        return this.b(JsonObject.toJsonString(var1));
     }
 }

@@ -1,12 +1,16 @@
 package com.github.kill05.algobuildce.package_a.j.b;
 
+import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
+import com.github.kill05.algobuildce.package_a.c.b.ABIfBlock;
+import com.github.kill05.algobuildce.package_a.c.b.ABInstructionBlock;
+
 import java.awt.Dimension;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 
-public final class m extends o {
+public final class m extends ABInstructionPanel {
     private final e a;
     private final e k;
     private String[] l;
@@ -16,10 +20,10 @@ public final class m extends o {
     private int p;
     private int q;
 
-    public m(com.github.kill05.algobuildce.package_a.c.a.b var1, com.github.kill05.algobuildce.package_a.j.a.a var2, com.github.kill05.algobuildce.package_a.c.a.d var3) {
+    public m(com.github.kill05.algobuildce.package_a.c.a.b var1, com.github.kill05.algobuildce.package_a.j.a.a var2, ABExecutable var3) {
         super(var1, var2, var3);
         this.a(var3);
-        com.github.kill05.algobuildce.package_a.c.b.l var4 = (com.github.kill05.algobuildce.package_a.c.b.l) var3;
+        ABIfBlock var4 = (ABIfBlock) var3;
         this.k = new e(var1, var2, null);
         this.add(this.k);
         var4.j().a(this.k);
@@ -145,13 +149,13 @@ public final class m extends o {
     }
 
     @Override
-    protected void a_() {
-        com.github.kill05.algobuildce.package_a.g.e var1 = new com.github.kill05.algobuildce.package_a.g.e((com.github.kill05.algobuildce.package_a.c.b.n) this.i);
-        if (com.github.kill05.algobuildce.package_a.a.i.a(this.c.a(), (com.github.kill05.algobuildce.package_a.c.b.l) this.i)) {
+    protected void modifyInstruction() {
+        com.github.kill05.algobuildce.package_a.g.e var1 = new com.github.kill05.algobuildce.package_a.g.e((ABInstructionBlock) this.i);
+        if (com.github.kill05.algobuildce.package_a.a.i.a(this.c.a(), (ABIfBlock) this.i)) {
             this.c.c().a(var1);
-            this.b.a(true);
+            this.b.update(true);
         }
 
-        this.b.a((com.github.kill05.algobuildce.package_a.c.a.d) null);
+        this.b.a((ABExecutable) null);
     }
 }

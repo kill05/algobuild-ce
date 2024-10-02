@@ -1,12 +1,13 @@
 package com.github.kill05.algobuildce.package_a.g;
 
 import com.github.kill05.algobuildce.package_a.c.b.q;
+import com.github.kill05.algobuildce.package_a.f.ABBlockDataHolder;
 
 public final class d extends g {
    private com.github.kill05.algobuildce.package_a.c.a.b a;
    private q b;
-   private com.github.kill05.algobuildce.package_a.f.g c = null;
-   private com.github.kill05.algobuildce.package_a.f.g d = null;
+   private ABBlockDataHolder c = null;
+   private ABBlockDataHolder d = null;
    private String e = null;
    private String f = null;
 

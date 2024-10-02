@@ -1,6 +1,7 @@
 package com.github.kill05.algobuildce.package_a.j.b;
 
-import com.github.kill05.algobuildce.package_a.c.a.d;
+import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
+import com.github.kill05.algobuildce.package_a.c.a.ABExecutionFragment;
 import com.github.kill05.algobuildce.package_a.c.b.q;
 import com.github.kill05.algobuildce.package_a.i.Translator;
 
@@ -10,19 +11,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
 
-public final class c extends o {
+public final class c extends ABInstructionPanel {
     e a;
     private String k;
     private String l;
     private Rectangle m;
 
-    public final void a(Rectangle var1) {
+    public void a(Rectangle var1) {
         this.m = var1;
     }
 
-    public c(com.github.kill05.algobuildce.package_a.c.a.b var1, com.github.kill05.algobuildce.package_a.j.a.a var2, com.github.kill05.algobuildce.package_a.c.a.d var3) {
+    public c(com.github.kill05.algobuildce.package_a.c.a.b var1, com.github.kill05.algobuildce.package_a.j.a.a var2, ABExecutable var3) {
         super(var1, var2, var3);
-        this.a((d)var3);
+        this.a(var3);
         this.setOpaque(true);
         this.a = new e(var1, var2, null);
         this.add(this.a);
@@ -38,7 +39,7 @@ public final class c extends o {
         }
     }
 
-    public final void a(Graphics var1) {
+    public void a(Graphics var1) {
         super.a(var1);
         this.i.b();
         Dimension var2;
@@ -49,11 +50,11 @@ public final class c extends o {
         var1.setColor(this.b.getViewOptions().getBackgroundColor());
         var1.fillRect(0, 0, var4, var5);
         this.a(var1, 0);
-        var1.fillOval(var3 / 2 - 10 * this.e, 1 * this.f, 20 * this.e, 4 * this.f - 1);
+        var1.fillOval(var3 / 2 - 10 * this.e, this.f, 20 * this.e, 4 * this.f - 1);
         this.d(var1);
         String var9 = this.k;
         FontMetrics var10 = var1.getFontMetrics();
-        var1.drawOval(var3 / 2 - 10 * this.e, 1 * this.f, 20 * this.e, 4 * this.f - 1);
+        var1.drawOval(var3 / 2 - 10 * this.e, this.f, 20 * this.e, 4 * this.f - 1);
         var1.drawLine(var3 / 2, 5 * this.f, var3 / 2, 6 * this.f);
         Rectangle2D var6;
         int var7 = (int)((var6 = var10.getStringBounds(var9, var1)).getWidth() / 2.0);
@@ -74,7 +75,7 @@ public final class c extends o {
         var1.drawString(var9, var7, var11);
     }
 
-    public final void a() {
+    public void a() {
         com.github.kill05.algobuildce.package_a.c.b.q var1;
         int var2;
         if ((var1 = (com.github.kill05.algobuildce.package_a.c.b.q)this.i).m() == 2) {
@@ -113,7 +114,7 @@ public final class c extends o {
         Dimension var3 = this.a.getMinimumSize();
         var5.width = Math.max(var5.width, var3.width);
         var5.height += var3.height;
-        this.a((Dimension)var5);
+        this.a(var5);
         int var4 = (int)(var5.getWidth() - var3.getWidth()) / 2;
         this.a.setLocation(var4, 6 * this.f);
         this.j = new Rectangle(var4, this.f, 20 * this.e, 4 * this.f);
@@ -121,8 +122,8 @@ public final class c extends o {
         this.revalidate();
     }
 
-    public final void a(d var1, int var2) {
-        o var3 = this.b(var1);
+    public void a(ABExecutable var1, int var2) {
+        ABInstructionPanel var3 = this.b(var1);
         if (this.h != null) {
             C_subclass var4 = this.h.a().a(var3);
             var3.a(var4);
@@ -136,15 +137,15 @@ public final class c extends o {
         this.revalidate();
     }
 
-    public final void a(int var1) {
+    public void a(int var1) {
         this.a.b(var1);
         this.g();
         this.invalidate();
     }
 
-    public final void a(d var1, boolean var2) {
+    public void a(ABExecutable var1, boolean var2) {
         super.a(var1, var2);
-        com.github.kill05.algobuildce.package_a.c.a.c var3;
+        ABExecutionFragment var3;
         if (!var2 && (var3 = this.b.a()) != null && var3.d() == this.i && var3.c() == 0) {
             String var4 = ((q)this.i).j();
             this.c.c().h(var4);
@@ -153,9 +154,9 @@ public final class c extends o {
     }
 
     @Override
-    protected final void b_() {
-        d var1 = null;
-        com.github.kill05.algobuildce.package_a.c.a.c var2;
+    protected void b_() {
+        ABExecutable var1 = null;
+        ABExecutionFragment var2;
         if ((var2 = this.b.a()) != null) {
             var1 = this.b.a().d();
         }
@@ -173,7 +174,7 @@ public final class c extends o {
     }
 
     @Override
-    public final void a(MouseEvent var1) {
+    public void a(MouseEvent var1) {
         if (((q)this.i).m() != 1) {
             JPopupMenu var2 = new JPopupMenu();
             JMenuItem var3;
@@ -190,11 +191,11 @@ public final class c extends o {
     }
 
     @Override
-    public final void actionPerformed(ActionEvent var1) {
+    public void actionPerformed(ActionEvent var1) {
         String var2;
         if ((var2 = var1.getActionCommand()) != null && var2.length() > 0) {
             if (var2.equals(Translator.translate("instructionModify"))) {
-                this.a_();
+                this.modifyInstruction();
                 return;
             }
 
@@ -213,21 +214,21 @@ public final class c extends o {
     }
 
     @Override
-    protected final void a_() {
+    protected void modifyInstruction() {
         if (((q)this.i).m() != 1) {
             com.github.kill05.algobuildce.package_a.g.d var1 = new com.github.kill05.algobuildce.package_a.g.d(this.b, (q)this.i);
             if (com.github.kill05.algobuildce.package_a.a.c.a(this.c.a(), (q)this.i, this.b)) {
                 this.c.c().a(var1);
-                this.b.a(true);
+                this.b.update(true);
             }
 
-            this.b.a((d)null);
+            this.b.a((ABExecutable)null);
         }
 
     }
 
     @Override
-    public final void a(C_subclass var1) {
+    public void a(C_subclass var1) {
         super.a(var1);
         var1 = var1.a().a(this.a);
         this.a.a(var1);

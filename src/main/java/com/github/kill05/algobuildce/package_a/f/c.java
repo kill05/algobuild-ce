@@ -2,24 +2,13 @@ package com.github.kill05.algobuildce.package_a.f;
 
 import com.github.kill05.algobuildce.package_a.i.Translator;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.security.Key;
-import java.security.KeyFactory;
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.NoSuchAlgorithmException;
-import java.security.PrivateKey;
-import java.security.PublicKey;
+import javax.crypto.Cipher;
+import java.io.*;
+import java.security.*;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.UUID;
-import javax.crypto.Cipher;
 
 public final class c {
     private static final String a = "RSA";
@@ -95,7 +84,7 @@ public final class c {
                 var15 = KeyFactory.getInstance(a);
                 PKCS8EncodedKeySpec var16 = new PKCS8EncodedKeySpec(var11);
                 this.f = var15.generatePrivate(var16);
-                this.a(true);
+                this.markLoaded();
             }
 
             if (this.h == 1) {
@@ -121,7 +110,7 @@ public final class c {
                 var15 = KeyFactory.getInstance(a);
                 X509EncodedKeySpec var18 = new X509EncodedKeySpec(var11);
                 this.f = var15.generatePublic(var18);
-                this.a(true);
+                this.markLoaded();
             }
 
             if (this.h == 2) {
@@ -137,14 +126,14 @@ public final class c {
                     (var20 = new FileOutputStream(var17)).write(var19);
                     var20.close();
                 } else {
-                    System.out.println("EWRROR DOWNLOADING PUBLIC_EXTERNAL_KEY key: " + this.l);
+                    System.out.println("ERROR DOWNLOADING PUBLIC_EXTERNAL_KEY key: " + this.l);
                 }
 
                 if (var19 != null && var19.length > 0) {
                     KeyFactory var22 = KeyFactory.getInstance(a);
                     X509EncodedKeySpec var23 = new X509EncodedKeySpec(var19);
                     this.f = var22.generatePublic(var23);
-                    this.a(true);
+                    this.markLoaded();
                 }
             }
         } catch (NoSuchAlgorithmException | InvalidKeySpecException var12) {
@@ -152,7 +141,7 @@ public final class c {
         } catch (IOException ignored) {
         }
 
-        if (this.d()) {
+        if (this.isLoaded()) {
             if (this.h == 0) {
                 byte[] var1 = new byte[]{1, 1, 1};
                 this.a(var1);
@@ -209,13 +198,13 @@ public final class c {
         }
     }
 
-    private boolean d() {
+    private boolean isLoaded() {
         synchronized (this) {
             return this.e;
         }
     }
 
-    private void a(boolean var1) {
+    private void markLoaded() {
         synchronized (this) {
             this.e = true;
         }
@@ -226,7 +215,7 @@ public final class c {
             return null;
         }
 
-        if (!this.d()) {
+        if (!this.isLoaded()) {
             return null;
         }
 

@@ -21,7 +21,7 @@ public final class x extends C_subclass {
    }
 
    @Override
-   public final void a(n var1, Graphics var2) {
+   public final void a(ABBasePanel var1, Graphics var2) {
       int var3 = var1.getWidth();
       var1.getHeight();
       Dimension var4 = ((i)var1).d().getMinimumSize();
@@ -46,7 +46,7 @@ public final class x extends C_subclass {
    }
 
    @Override
-   public final void a(n var1) {
+   public final void a(ABBasePanel var1) {
       i var2;
       FontMetrics var4 = (var2 = (i)var1).getFontMetrics(var1.getFont());
       String var3 = var2.i.b();

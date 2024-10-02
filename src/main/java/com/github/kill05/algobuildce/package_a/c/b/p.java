@@ -10,7 +10,7 @@ public final class p {
     }
 
     public p(int var1, int var2) {
-        this.a(1);
+        this.a(var1);
         this.b(var2);
     }
 

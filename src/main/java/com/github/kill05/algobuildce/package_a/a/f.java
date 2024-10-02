@@ -1,6 +1,7 @@
 package com.github.kill05.algobuildce.package_a.a;
 
 import com.github.kill05.algobuildce.package_a.c.a.AlgoBuild;
+import com.github.kill05.algobuildce.package_a.c.b.ABDoWhileBlock;
 import com.github.kill05.algobuildce.package_a.i.Translator;
 
 import java.awt.BorderLayout;
@@ -33,11 +34,11 @@ public final class f extends JDialog implements ActionListener, KeyListener, Doc
    private final JTextArea c = new JTextArea();
    private String d;
    private String e;
-   private com.github.kill05.algobuildce.package_a.c.b.e f;
+   private ABDoWhileBlock f;
    private static f g = null;
    private static boolean h = false;
 
-   private f(Window var1, com.github.kill05.algobuildce.package_a.c.b.e var2, Point var3) {
+   private f(Window var1, ABDoWhileBlock var2, Point var3) {
       super((Frame)var1, Translator.translate("abedDialogCycleDoWhileTitle"), true);
       this.setLocation(var3);
       this.f = var2;
@@ -151,7 +152,7 @@ public final class f extends JDialog implements ActionListener, KeyListener, Doc
       this.f.c(this.c.getText());
    }
 
-   public static boolean a(Window var0, com.github.kill05.algobuildce.package_a.c.b.e var1) {
+   public static boolean a(Window var0, ABDoWhileBlock var1) {
       Point var2;
       (var2 = MouseInfo.getPointerInfo().getLocation()).translate(15, 15);
       if (g == null) {

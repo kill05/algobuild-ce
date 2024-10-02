@@ -1,6 +1,7 @@
 package com.github.kill05.algobuildce.package_a.a;
 
 import com.github.kill05.algobuildce.package_a.c.a.AlgoBuild;
+import com.github.kill05.algobuildce.package_a.c.b.ABAssignInstructionBlock;
 import com.github.kill05.algobuildce.package_a.i.Translator;
 
 import java.awt.BorderLayout;
@@ -33,7 +34,7 @@ public final class a extends JDialog implements ActionListener, KeyListener, Doc
     private JTextArea textArea = new JTextArea();
     private String d;
     private String e;
-    private com.github.kill05.algobuildce.package_a.c.b.a f;
+    private ABAssignInstructionBlock f;
     private static a g = null;
     private static boolean h = false;
 
@@ -151,7 +152,7 @@ public final class a extends JDialog implements ActionListener, KeyListener, Doc
         this.f.a(this.textArea.getText());
     }
 
-    public static boolean a(Window var0, com.github.kill05.algobuildce.package_a.c.b.a var1) {
+    public static boolean a(Window var0, ABAssignInstructionBlock var1) {
         Point var2;
         (var2 = MouseInfo.getPointerInfo().getLocation()).translate(15, 15);
         if (g == null) {

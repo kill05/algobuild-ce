@@ -1,6 +1,6 @@
 package com.github.kill05.algobuildce.package_a.f;
 
-import com.github.kill05.algobuildce.package_a.d.TestModelCoreCharArrayFactory;
+import com.github.kill05.algobuildce.package_a.charfactory.*;
 import com.github.kill05.algobuildce.package_a.h.UserNameCharArrayFactory;
 
 import java.io.DataOutputStream;
@@ -111,17 +111,17 @@ public final class l {
         String var1 = System.getProperties().getProperty(new String((new UserNameCharArrayFactory()).createArray()));
 
         UUID var5 = UUID.nameUUIDFromBytes(var1.getBytes(StandardCharsets.UTF_8));
-        File var2 = new File(ABFiles.getCoreFolder(), new String((new com.github.kill05.algobuildce.package_a.d.e()).createArray()));
-        File var3 = new File(ABFiles.getCoreFolder(), new String((new com.github.kill05.algobuildce.package_a.d.d()).createArray()));
+        File var2 = new File(ABFiles.getCoreFolder(), new String((new BootModelCoreCharArrayFactory()).createArray()));
+        File var3 = new File(ABFiles.getCoreFolder(), new String((new WorkModelCoreCharArrayFactory()).createArray()));
         c.a(var0, var5, var2, var3);
         a(50);
-        var2 = new File(ABFiles.getCoreFolder(), new String((new com.github.kill05.algobuildce.package_a.d.g()).createArray()));
+        var2 = new File(ABFiles.getCoreFolder(), new String((new LoadModelCoreCharArrayFactory()).createArray()));
         a(var0, var5, var2);
         a(60);
-        var2 = new File(ABFiles.getCoreFolder(), new String((new com.github.kill05.algobuildce.package_a.d.b()).createArray()));
+        var2 = new File(ABFiles.getCoreFolder(), new String((new ExecModelCoreCharArrayFactory()).createArray()));
         a(var0, var5, var2);
         a(70);
-        var2 = new File(ABFiles.getCoreFolder(), new String((new com.github.kill05.algobuildce.package_a.d.c()).createArray()));
+        var2 = new File(ABFiles.getCoreFolder(), new String((new DumpModelCoreCharArrayFactory()).createArray()));
         a(var0, var5, var2);
         a(80);
         var2 = new File(ABFiles.getCoreFolder(), new String((new TestModelCoreCharArrayFactory()).createArray()));

@@ -143,10 +143,10 @@ public final class JsonReader {
                 }
             case '[':
                 this.stepBack();
-                return new JSONArray(this);
+                return new JsonArray(this);
             case '{':
                 this.stepBack();
-                return new JSONObject(this);
+                return new JsonObject(this);
             default:
                 StringBuilder var7;
                 for (var7 = new StringBuilder(); var1 >= ' ' && ",:]}/\\\"[{;=#".indexOf(var1) < 0; var1 = this.d()) {
@@ -158,7 +158,7 @@ public final class JsonReader {
                 if (var6.isEmpty()) {
                     throw this.throwJsonException("Missing value");
                 } else {
-                    return JSONObject.h(var6);
+                    return JsonObject.h(var6);
                 }
         }
     }

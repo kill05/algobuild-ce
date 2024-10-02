@@ -1,6 +1,6 @@
 package com.github.kill05.algobuildce.package_a.c.a;
 
-import com.github.kill05.algobuildce.json.JSONObject;
+import com.github.kill05.algobuildce.json.JsonObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -28,8 +28,8 @@ public final class SaveHistoryEntry {
         this.sizeDescription = sizeDescription;
     }
 
-    public JSONObject serialize() {
-        JSONObject jsonObject = new JSONObject();
+    public JsonObject serialize() {
+        JsonObject jsonObject = new JsonObject();
         jsonObject.put("s", this.serial);
         jsonObject.put("a", this.authorName);
         jsonObject.put("t", this.saveTime);
@@ -39,7 +39,7 @@ public final class SaveHistoryEntry {
     }
 
     //todo: check if package_a is wrong
-    public void deserialize(JSONObject jsonObject) {
+    public void deserialize(JsonObject jsonObject) {
         this.serial = jsonObject.getAsString("s");
         this.authorName = jsonObject.getAsString("a");
         this.saveTime = jsonObject.getAsLong("t", 0L);

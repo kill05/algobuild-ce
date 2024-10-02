@@ -1,10 +1,14 @@
 package com.github.kill05.algobuildce.package_a.c.b;
 
+import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
+import com.github.kill05.algobuildce.package_a.c.a.ABExecutionFragment;
+import com.github.kill05.algobuildce.package_a.c.a.IInstructionPanel;
+
 import java.util.Iterator;
 import java.util.Vector;
 
-public final class o extends n {
-    private final Vector<n> b = new Vector<>();
+public final class o extends ABInstructionBlock {
+    private final Vector<ABInstructionBlock> instructions = new Vector<>();
 
     @Override
     public boolean b(int var1) {
@@ -13,79 +17,79 @@ public final class o extends n {
 
     @Override
     public boolean a(int var1) {
-        int var2 = this.b.size();
+        int var2 = this.instructions.size();
         return var1 >= 0 && var1 < var2;
     }
 
     @Override
-    public n c(int var1) {
-        return this.b.get(var1);
+    public ABInstructionBlock getInstruction(int index) {
+        return this.instructions.get(index);
     }
 
     @Override
-    public void a(n var1) {
-        int var2 = this.b.size();
-        var1.a((com.github.kill05.algobuildce.package_a.c.a.d) this, var2);
-        this.b.add(var1);
+    public void addInstruction(ABInstructionBlock instruction) {
+        int var2 = this.instructions.size();
+        instruction.a((ABExecutable) this, var2);
+        this.instructions.add(instruction);
         if (this.a != null) {
-            for (com.github.kill05.algobuildce.package_a.c.a.k k : this.a) {
-                k.a(var1, var2);
+            for (IInstructionPanel k : this.a) {
+                k.a(instruction, var2);
             }
         }
 
     }
 
     @Override
-    public void a(n var1, int var2) {
-        for (int var3 = var2; var3 < this.b.size(); ++var3) {
-            this.c(var3).f(1);
+    public void addInstruction(ABInstructionBlock instruction, int index) {
+        for (int var3 = index; var3 < this.instructions.size(); ++var3) {
+            this.getInstruction(var3).f(1);
         }
 
-        var1.a((com.github.kill05.algobuildce.package_a.c.a.d) this, var2);
-        this.b.add(var2, var1);
+        instruction.a((ABExecutable) this, index);
+        this.instructions.add(index, instruction);
         if (this.a != null) {
 
-            for (com.github.kill05.algobuildce.package_a.c.a.k k : this.a) {
-                k.a(var1, var2);
+            for (IInstructionPanel k : this.a) {
+                k.a(instruction, index);
             }
         }
 
-        var1.f();
+        instruction.f();
     }
 
     @Override
-    public void d(int var1) {
-        this.b.remove(var1);
+    public void removeInstruction(int index) {
+        this.instructions.remove(index);
 
-        for (int var2 = var1; var2 < this.b.size(); ++var2) {
-            this.c(var2).f(-1);
+        for (int var2 = index; var2 < this.instructions.size(); ++var2) {
+            this.getInstruction(var2).f(-1);
         }
 
         if (this.a != null) {
-            for (com.github.kill05.algobuildce.package_a.c.a.k k : this.a) {
-                k.a(var1);
+            for (IInstructionPanel k : this.a) {
+                k.a(index);
             }
         }
 
     }
 
     public void j() {
-        while (!this.b.isEmpty()) {
-            this.d(0);
+        while (!this.instructions.isEmpty()) {
+            this.removeInstruction(0);
         }
 
     }
 
     @Override
-    public int d() {
-        return this.b.size();
+    public int getInstructionAmount() {
+        return this.instructions.size();
     }
 
     @Override
     public int a(com.github.kill05.algobuildce.package_a.c.a.b var1, int var2) {
         if (this.a(var2)) {
             int var3 = var2++;
-            com.github.kill05.algobuildce.package_a.c.a.c var4 = new com.github.kill05.algobuildce.package_a.c.a.c((com.github.kill05.algobuildce.package_a.c.a.d) this.b.get(var3), var1);
+            ABExecutionFragment var4 = new ABExecutionFragment((ABExecutable) this.instructions.get(var3), var1);
             var1.d().push(var4);
         } else {
             var2 = -1;
@@ -95,7 +99,7 @@ public final class o extends n {
     }
 
     public String toString() {
-        return "ABICompound [getOrderInParent()=" + this.n() + "\ninstructions=" + this.b + "]";
+        return "ABICompound [getOrderInParent()=" + this.getOrderInParent() + "\ninstructions=" + this.instructions + "]";
     }
 
     @Override
@@ -106,12 +110,12 @@ public final class o extends n {
     @Override
     public void f() {
         if (this.a != null) {
-            for (int var1 = 0; var1 < this.b.size(); ++var1) {
-                n var2 = this.c(var1);
+            for (int var1 = 0; var1 < this.instructions.size(); ++var1) {
+                ABInstructionBlock var2 = this.getInstruction(var1);
                 Iterator var4 = this.a.iterator();
 
                 while (var4.hasNext()) {
-                    ((com.github.kill05.algobuildce.package_a.c.a.k) var4.next()).a(var2, var1);
+                    ((IInstructionPanel) var4.next()).a(var2, var1);
                 }
 
                 var2.f();
@@ -124,8 +128,8 @@ public final class o extends n {
     public p i() {
         p var1 = new p();
 
-        for (int var2 = 0; var2 < this.b.size(); ++var2) {
-            n var3 = this.c(var2);
+        for (int var2 = 0; var2 < this.instructions.size(); ++var2) {
+            ABInstructionBlock var3 = this.getInstruction(var2);
             var1.a(var3.i());
         }
 

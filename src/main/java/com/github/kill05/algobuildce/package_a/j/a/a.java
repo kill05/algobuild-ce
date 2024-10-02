@@ -1,5 +1,6 @@
 package com.github.kill05.algobuildce.package_a.j.a;
 
+import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.b.q;
 import com.github.kill05.algobuildce.package_a.f.ABFiles;
 import com.github.kill05.algobuildce.package_a.i.ImageUtils;
@@ -100,7 +101,7 @@ public final class a extends JPanel implements ActionListener, ChangeListener {
         }
     }
 
-    public void a(com.github.kill05.algobuildce.package_a.c.a.d var1) {
+    public void a(ABExecutable var1) {
         int var2 = this.b.getTabCount();
         String var3 = var1.b();
         com.github.kill05.algobuildce.package_a.j.b.c var4;
@@ -203,7 +204,7 @@ public final class a extends JPanel implements ActionListener, ChangeListener {
 
     }
 
-    public void b(com.github.kill05.algobuildce.package_a.c.a.d var1) {
+    public void b(ABExecutable var1) {
         String var2 = ((q) var1).j();
         int var3 = this.b.indexOfTab(var2);
         this.d = 0;

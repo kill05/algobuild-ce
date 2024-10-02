@@ -20,7 +20,7 @@ public final class y extends C_subclass {
     }
 
     @Override
-    public final void a(n var1, Graphics var2) {
+    public final void a(ABBasePanel var1, Graphics var2) {
         int var3 = var1.getWidth();
         var1.getHeight();
         var1.b(var2);
@@ -37,7 +37,7 @@ public final class y extends C_subclass {
     }
 
     @Override
-    public final void a(n var1) {
+    public final void a(ABBasePanel var1) {
         k var2;
         FontMetrics var4 = (var2 = (k) var1).getFontMetrics(var1.getFont());
         String var3 = ((com.github.kill05.algobuildce.package_a.c.b.k) var2.i).k();

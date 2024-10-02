@@ -1,5 +1,7 @@
 package com.github.kill05.algobuildce.package_a.j.b;
 
+import com.github.kill05.algobuildce.package_a.c.b.ABBaseCallInstructionBlock;
+
 import java.awt.Dimension;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
@@ -20,7 +22,7 @@ public final class r extends C_subclass {
       super(var2);
    }
 
-   public final void a(n var1, Graphics var2) {
+   public final void a(ABBasePanel var1, Graphics var2) {
       int var3 = var1.getWidth();
       var1.getHeight();
       var1.b(var2);
@@ -36,12 +38,12 @@ public final class r extends C_subclass {
 
    }
 
-   public final void a(n var1) {
+   public final void a(ABBasePanel var1) {
       b var2;
       FontMetrics var7 = (var2 = (b)var1).getFontMetrics(var1.getFont());
       this.i = var7.charsWidth(this.j.toCharArray(), 0, this.j.length());
-      com.github.kill05.algobuildce.package_a.c.b.b var3;
-      Vector var4 = (var3 = (com.github.kill05.algobuildce.package_a.c.b.b)var2.i).k();
+      ABBaseCallInstructionBlock var3;
+      Vector var4 = (var3 = (ABBaseCallInstructionBlock)var2.i).k();
       String var8 = var3.j() + "(";
       int var5 = var4.size();
 

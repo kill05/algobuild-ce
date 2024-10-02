@@ -1,6 +1,8 @@
 package com.github.kill05.algobuildce.package_a.f;
 
-import com.github.kill05.algobuildce.package_a.d.TestModelCoreCharArrayFactory;
+import com.github.kill05.algobuildce.package_a.charfactory.LoadModelCoreCharArrayFactory;
+import com.github.kill05.algobuildce.package_a.charfactory.TestModelCoreCharArrayFactory;
+import com.github.kill05.algobuildce.package_a.charfactory.ToolModelCoreCharArrayFactory;
 import com.github.kill05.algobuildce.package_a.h.UserNameCharArrayFactory;
 import com.github.kill05.algobuildce.package_a.i.Translator;
 
@@ -44,7 +46,7 @@ public final class k {
 
     private k() {
         k var1 = this;
-        File var2 = new File(ABFiles.getCoreFolder(), new String((new com.github.kill05.algobuildce.package_a.d.g()).createArray()));
+        File var2 = new File(ABFiles.getCoreFolder(), new String((new LoadModelCoreCharArrayFactory()).createArray()));
 
         try {
             DataInputStream var21;
@@ -241,7 +243,7 @@ public final class k {
 
     private boolean a(int var1) {
         boolean var2 = false;
-        File var3 = new File(ABFiles.getCoreFolder(), new String((new com.github.kill05.algobuildce.package_a.d.f()).createArray()));
+        File var3 = new File(ABFiles.getCoreFolder(), new String((new ToolModelCoreCharArrayFactory()).createArray()));
 
         try {
             DataOutputStream var7;
@@ -275,7 +277,7 @@ public final class k {
     }
 
     private int h() {
-        File var1 = new File(ABFiles.getCoreFolder(), new String((new com.github.kill05.algobuildce.package_a.d.f()).createArray()));
+        File var1 = new File(ABFiles.getCoreFolder(), new String((new ToolModelCoreCharArrayFactory()).createArray()));
         int var2 = 0;
 
         try {

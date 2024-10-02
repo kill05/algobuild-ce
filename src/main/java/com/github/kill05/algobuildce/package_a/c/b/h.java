@@ -1,11 +1,14 @@
 package com.github.kill05.algobuildce.package_a.c.b;
 
-import com.github.kill05.algobuildce.json.JSONArray;
-import com.github.kill05.algobuildce.json.JSONObject;
+import com.github.kill05.algobuildce.json.JsonArray;
+import com.github.kill05.algobuildce.json.JsonObject;
+import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
+import com.github.kill05.algobuildce.package_a.c.a.IInstructionPanel;
+import com.github.kill05.algobuildce.package_a.f.ABBlockDataHolder;
 
 import java.util.Iterator;
 
-public abstract class h extends n {
+public abstract class h extends ABInstructionBlock {
     private o b;
     private String c;
 
@@ -31,65 +34,63 @@ public abstract class h extends n {
         return this.b;
     }
 
-    public final void a(n var1) {
-        int var2 = this.b.d();
-        this.b.a(var1);
-        var1.a((com.github.kill05.algobuildce.package_a.c.a.d) this, var2);
+    public final void addInstruction(ABInstructionBlock instruction) {
+        int var2 = this.b.getInstructionAmount();
+        this.b.addInstruction(instruction);
+        instruction.a((ABExecutable) this, var2);
         if (this.a != null) {
-            Iterator var4 = this.a.iterator();
-
-            while (var4.hasNext()) {
-                ((com.github.kill05.algobuildce.package_a.c.a.k) var4.next()).a(var1, var2);
+            for (IInstructionPanel k : this.a) {
+                k.a(instruction, var2);
             }
 
-            var1.f();
+            instruction.f();
         }
 
     }
 
-    public final void a(n var1, int var2) {
-        if (var2 < this.b.d()) {
-            this.b.a(var1, var2);
-            var1.a((com.github.kill05.algobuildce.package_a.c.a.d) this, var2);
+    public final void addInstruction(ABInstructionBlock instruction, int index) {
+        if (index < this.b.getInstructionAmount()) {
+            this.b.addInstruction(instruction, index);
+            instruction.a((ABExecutable) this, index);
             if (this.a != null) {
                 Iterator var4 = this.a.iterator();
 
                 while (var4.hasNext()) {
-                    ((com.github.kill05.algobuildce.package_a.c.a.k) var4.next()).a(var1, var2);
+                    ((IInstructionPanel) var4.next()).a(instruction, index);
                 }
 
-                var1.f();
+                instruction.f();
                 return;
             }
         } else {
-            this.a(var1);
+            this.addInstruction(instruction);
         }
 
     }
 
     @Override
-    public final void d(int var1) {
+    public final void removeInstruction(int index) {
         if (this.a != null) {
             Iterator var3 = this.a.iterator();
 
             while (var3.hasNext()) {
-                ((com.github.kill05.algobuildce.package_a.c.a.k) var3.next()).a(var1);
+                ((IInstructionPanel) var3.next()).a(index);
             }
         }
 
-        this.b.d(var1);
+        this.b.removeInstruction(index);
     }
 
-    public final int d() {
-        return this.b.d();
+    public final int getInstructionAmount() {
+        return this.b.getInstructionAmount();
     }
 
-    public final n c(int var1) {
-        return this.b.c(var1);
+    public final ABInstructionBlock getInstruction(int index) {
+        return this.b.getInstruction(index);
     }
 
     public String toString() {
-        return "ABICycle_Base [getOrderInParent()=" + this.n() + ", condition=" + this.c + "\nbody=" + this.b + ", condition=" + this.c + "]";
+        return "ABICycle_Base [getOrderInParent()=" + this.getOrderInParent() + ", condition=" + this.c + "\nbody=" + this.b + ", condition=" + this.c + "]";
     }
 
     public final boolean a() {
@@ -97,31 +98,31 @@ public abstract class h extends n {
     }
 
     @Override
-    public com.github.kill05.algobuildce.package_a.f.g h() {
-        com.github.kill05.algobuildce.package_a.f.g var1;
-        (var1 = super.h()).a("condition", this.c);
+    public ABBlockDataHolder h() {
+        ABBlockDataHolder var1;
+        (var1 = super.h()).putData("condition", this.c);
         return var1;
     }
 
-    public void a(com.github.kill05.algobuildce.package_a.f.g var1) {
+    public void a(ABBlockDataHolder var1) {
         super.a(var1);
-        String var2 = var1.a("condition");
+        String var2 = var1.getData("condition");
         this.c(var2);
     }
 
-    public JSONObject b(boolean var1) {
-        JSONObject var2;
+    public JsonObject b(boolean var1) {
+        JsonObject var2;
         (var2 = super.b(var1)).put("condition", this.c);
         if (var1) {
-            for (int var3 = 0; var3 < this.b.d(); ++var3) {
-                var2.a("body", (Object) this.b.c(var3).b(true));
+            for (int var3 = 0; var3 < this.b.getInstructionAmount(); ++var3) {
+                var2.a("body", (Object) this.b.getInstruction(var3).b(true));
             }
         }
 
         return var2;
     }
 
-    public void a(JSONObject var1, boolean var2) {
+    public void a(JsonObject var1, boolean var2) {
         super.a(var1, var2);
         String var3 = var1.getAsString("condition");
         this.c(var3);
@@ -132,13 +133,13 @@ public abstract class h extends n {
                 var6.printStackTrace();
             }
 
-            JSONArray var8;
+            JsonArray var8;
             if ((var8 = var1.getAsJsonArray("body")) != null) {
                 for (int var7 = 0; var7 < var8.size(); ++var7) {
-                    JSONObject var4;
-                    n var5;
-                    (var5 = n.a(var4 = var8.getAsJsonObject(var7))).a(var4, var2);
-                    this.a(var5);
+                    JsonObject var4;
+                    ABInstructionBlock var5;
+                    (var5 = ABInstructionBlock.deserialize(var4 = var8.getAsJsonObject(var7))).a(var4, var2);
+                    this.addInstruction(var5);
                 }
             }
         }
@@ -149,18 +150,16 @@ public abstract class h extends n {
     public final void f() {
         if (this.a != null) {
             try {
-                for (int var1 = 0; var1 < this.b.d(); ++var1) {
-                    n var2 = this.c(var1);
-                    Iterator var4 = this.a.iterator();
+                for (int var1 = 0; var1 < this.b.getInstructionAmount(); ++var1) {
+                    ABInstructionBlock var2 = this.getInstruction(var1);
 
-                    while (var4.hasNext()) {
-                        ((com.github.kill05.algobuildce.package_a.c.a.k) var4.next()).a(var2, var1);
+                    for (IInstructionPanel panel : this.a) {
+                        panel.a(var2, var1);
                     }
 
                     var2.f();
                 }
 
-                return;
             } catch (r var5) {
                 var5.printStackTrace();
             }

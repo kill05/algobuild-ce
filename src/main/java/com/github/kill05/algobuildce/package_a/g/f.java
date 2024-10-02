@@ -1,6 +1,6 @@
 package com.github.kill05.algobuildce.package_a.g;
 
-import com.github.kill05.algobuildce.package_a.c.b.n;
+import com.github.kill05.algobuildce.package_a.c.b.ABInstructionBlock;
 import com.github.kill05.algobuildce.package_a.c.b.s;
 import com.github.kill05.algobuildce.package_a.c.b.t;
 
@@ -8,9 +8,9 @@ public final class f extends g {
    private com.github.kill05.algobuildce.package_a.c.a.b a;
    private String b;
    private int c;
-   private n d;
+   private ABInstructionBlock d;
 
-   public f(com.github.kill05.algobuildce.package_a.c.a.b var1, String var2, int var3, n var4) {
+   public f(com.github.kill05.algobuildce.package_a.c.a.b var1, String var2, int var3, ABInstructionBlock var4) {
       this.a = var1;
       this.b = var2;
       this.c = var3;

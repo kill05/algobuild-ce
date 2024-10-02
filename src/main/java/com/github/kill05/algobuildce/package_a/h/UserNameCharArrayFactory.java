@@ -1,6 +1,6 @@
 package com.github.kill05.algobuildce.package_a.h;
 
-import com.github.kill05.algobuildce.package_a.e.CharArrayFactory;
+import com.github.kill05.algobuildce.package_a.charfactory.CharArrayFactory;
 
 public final class UserNameCharArrayFactory extends CharArrayFactory {
    @Override

@@ -1,6 +1,7 @@
 package com.github.kill05.algobuildce.package_a.a;
 
 import com.github.kill05.algobuildce.package_a.c.a.AlgoBuild;
+import com.github.kill05.algobuildce.package_a.c.b.ABForBlock;
 import com.github.kill05.algobuildce.package_a.i.Translator;
 
 import java.awt.BorderLayout;
@@ -35,11 +36,11 @@ public final class e extends JDialog implements ActionListener, KeyListener, Doc
    private String f;
    private String g;
    private String h;
-   private com.github.kill05.algobuildce.package_a.c.b.f i;
+   private ABForBlock i;
    private static e j = null;
    private static boolean k = false;
 
-   private e(Window var1, com.github.kill05.algobuildce.package_a.c.b.f var2, Point var3) {
+   private e(Window var1, ABForBlock var2, Point var3) {
       super((Frame)var1, Translator.translate("abedDialogCycleForTitle"), true);
       this.setLocation(var3);
       this.i = var2;
@@ -131,7 +132,7 @@ public final class e extends JDialog implements ActionListener, KeyListener, Doc
       this.i.b(var3);
    }
 
-   public static boolean a(Window var0, com.github.kill05.algobuildce.package_a.c.b.f var1) {
+   public static boolean a(Window var0, ABForBlock var1) {
       Point var2;
       (var2 = MouseInfo.getPointerInfo().getLocation()).translate(15, 15);
       if (j == null) {

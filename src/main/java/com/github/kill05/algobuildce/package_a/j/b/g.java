@@ -1,12 +1,16 @@
 package com.github.kill05.algobuildce.package_a.j.b;
 
+import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
+import com.github.kill05.algobuildce.package_a.c.b.ABDoWhileBlock;
+import com.github.kill05.algobuildce.package_a.c.b.ABInstructionBlock;
+
 import java.awt.Dimension;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 
-public final class g extends o {
+public final class g extends ABInstructionPanel {
    private final e a;
    private String[] k;
    private int[] l;
@@ -15,7 +19,7 @@ public final class g extends o {
    private int o;
    private int p;
 
-   public g(com.github.kill05.algobuildce.package_a.c.a.b var1, com.github.kill05.algobuildce.package_a.j.a.a var2, com.github.kill05.algobuildce.package_a.c.a.d var3) {
+   public g(com.github.kill05.algobuildce.package_a.c.a.b var1, com.github.kill05.algobuildce.package_a.j.a.a var2, ABExecutable var3) {
       super(var1, var2, var3);
       this.a(var3);
       this.a = new e(var1, var2, null);
@@ -94,8 +98,8 @@ public final class g extends o {
    }
 
    @Override
-   public void a(com.github.kill05.algobuildce.package_a.c.a.d var1, int var2) {
-      o var3 = this.b(var1);
+   public void a(ABExecutable var1, int var2) {
+      ABInstructionPanel var3 = this.b(var1);
       this.a.a(var3, var2);
       if (this.h != null) {
          C_subclass var4 = this.h.a().a(var3);
@@ -118,12 +122,12 @@ public final class g extends o {
    }
 
    @Override
-   protected void a_() {
-      com.github.kill05.algobuildce.package_a.g.e var1 = new com.github.kill05.algobuildce.package_a.g.e((com.github.kill05.algobuildce.package_a.c.b.n)this.i);
-      com.github.kill05.algobuildce.package_a.a.f.a(this.c.a(), (com.github.kill05.algobuildce.package_a.c.b.e)this.i);
+   protected void modifyInstruction() {
+      com.github.kill05.algobuildce.package_a.g.e var1 = new com.github.kill05.algobuildce.package_a.g.e((ABInstructionBlock)this.i);
+      com.github.kill05.algobuildce.package_a.a.f.a(this.c.a(), (ABDoWhileBlock)this.i);
       this.c.c().a(var1);
-      this.b.a(true);
-      this.b.a((com.github.kill05.algobuildce.package_a.c.a.d)null);
+      this.b.update(true);
+      this.b.a((ABExecutable)null);
    }
 
    public e d() {

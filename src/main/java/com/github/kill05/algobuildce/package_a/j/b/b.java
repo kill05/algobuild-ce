@@ -1,21 +1,24 @@
 package com.github.kill05.algobuildce.package_a.j.b;
 
+import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
+import com.github.kill05.algobuildce.package_a.c.a.ABExecutionFragment;
+import com.github.kill05.algobuildce.package_a.c.b.ABBaseCallInstructionBlock;
 import com.github.kill05.algobuildce.package_a.c.b.c;
-import com.github.kill05.algobuildce.package_a.c.b.n;
+import com.github.kill05.algobuildce.package_a.c.b.ABInstructionBlock;
 import com.github.kill05.algobuildce.package_a.g.e;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.util.Vector;
 
-public final class b extends o {
+public final class b extends ABInstructionPanel {
     private int a;
     private int k;
     private int l;
     private int m;
     private String n;
 
-    public b(com.github.kill05.algobuildce.package_a.c.a.b var1, com.github.kill05.algobuildce.package_a.j.a.a var2, com.github.kill05.algobuildce.package_a.c.a.d var3) {
+    public b(com.github.kill05.algobuildce.package_a.c.a.b var1, com.github.kill05.algobuildce.package_a.j.a.a var2, ABExecutable var3) {
         super(var1, var2, var3);
         var3.a(this);
         this.g();
@@ -39,8 +42,8 @@ public final class b extends o {
 
     @Override
     public void a() {
-        com.github.kill05.algobuildce.package_a.c.b.b var1;
-        Vector var2 = (var1 = (com.github.kill05.algobuildce.package_a.c.b.b) this.i).k();
+        ABBaseCallInstructionBlock var1;
+        Vector var2 = (var1 = (ABBaseCallInstructionBlock) this.i).k();
         this.n = var1.j() + "(";
         FontMetrics var5 = this.getFontMetrics(this.getFont());
         int var3 = var2.size();
@@ -70,12 +73,12 @@ public final class b extends o {
         this.j = new Rectangle(this.getWidth() / 2 - this.l / 2, this.f, this.l, this.m);
     }
 
-    public void a(com.github.kill05.algobuildce.package_a.c.a.d var1, boolean var2) {
-        super.a(var1, var2);
+    public void a(ABExecutable executable, boolean var2) {
+        super.a(executable, var2);
         String var3;
-        com.github.kill05.algobuildce.package_a.c.a.c var4;
+        ABExecutionFragment var4;
         int var5;
-        if (!var2 && (var4 = this.b.a()) != null && var4.d() == this.i && var4.c() == 1 && (var5 = (var3 = var1.c()).indexOf(46)) > 0) {
+        if (!var2 && (var4 = this.b.a()) != null && var4.d() == this.i && var4.c() == 1 && (var5 = (var3 = executable.c()).indexOf(46)) > 0) {
             var3 = var3.substring(0, var5);
             this.c.c().h(var3);
         }
@@ -83,13 +86,13 @@ public final class b extends o {
     }
 
     @Override
-    protected void a_() {
-        e var1 = new e((n) this.i);
+    protected void modifyInstruction() {
+        e var1 = new e((ABInstructionBlock) this.i);
         if (com.github.kill05.algobuildce.package_a.a.b.a(this.c.a(), (c) this.i, this.b)) {
             this.c.c().a(var1);
-            this.b.a(true);
+            this.b.update(true);
         }
 
-        this.b.a((com.github.kill05.algobuildce.package_a.c.a.d) null);
+        this.b.a((ABExecutable) null);
     }
 }

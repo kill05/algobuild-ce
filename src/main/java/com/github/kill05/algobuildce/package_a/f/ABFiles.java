@@ -1,5 +1,7 @@
 package com.github.kill05.algobuildce.package_a.f;
 
+import com.github.kill05.algobuildce.package_a.charfactory.*;
+
 import java.io.File;
 
 public final class ABFiles {
@@ -24,7 +26,7 @@ public final class ABFiles {
         a = 0;
         byte var2 = -1;
         File var3;
-        if ((var3 = new File(getCoreFolder(), new String((new com.github.kill05.algobuildce.package_a.d.d()).createArray()))).exists()) {
+        if ((var3 = new File(getCoreFolder(), new String((new WorkModelCoreCharArrayFactory()).createArray()))).exists()) {
             if (!var3.isDirectory() && var3.length() > 0L) {
                 var2 = 1;
             }
@@ -43,7 +45,7 @@ public final class ABFiles {
         }
 
         var2 = -1;
-        if ((var3 = new File(getCoreFolder(), new String((new com.github.kill05.algobuildce.package_a.d.e()).createArray()))).exists()) {
+        if ((var3 = new File(getCoreFolder(), new String((new BootModelCoreCharArrayFactory()).createArray()))).exists()) {
             if (!var3.isDirectory() && var3.length() > 0L) {
                 var2 = 1;
             }
@@ -62,7 +64,7 @@ public final class ABFiles {
         }
 
         var2 = -1;
-        if ((var3 = new File(getCoreFolder(), new String((new com.github.kill05.algobuildce.package_a.d.g()).createArray()))).exists()) {
+        if ((var3 = new File(getCoreFolder(), new String((new LoadModelCoreCharArrayFactory()).createArray()))).exists()) {
             if (!var3.isDirectory() && var3.length() > 0L) {
                 var2 = 1;
             }
@@ -81,7 +83,7 @@ public final class ABFiles {
         }
 
         var2 = -1;
-        if ((var3 = new File(getCoreFolder(), "ExecModelCore.class")).exists()) {
+        if ((var3 = new File(getCoreFolder(), new String((new ExecModelCoreCharArrayFactory()).createArray()))).exists()) {
             if (!var3.isDirectory() && var3.length() > 0L) {
                 var2 = 1;
             }
@@ -100,7 +102,7 @@ public final class ABFiles {
         }
 
         var2 = -1;
-        if ((var3 = new File(getCoreFolder(), new String((new com.github.kill05.algobuildce.package_a.d.c()).createArray()))).exists()) {
+        if ((var3 = new File(getCoreFolder(), new String((new DumpModelCoreCharArrayFactory()).createArray()))).exists()) {
             if (!var3.isDirectory() && var3.length() > 0L) {
                 var2 = 1;
             }

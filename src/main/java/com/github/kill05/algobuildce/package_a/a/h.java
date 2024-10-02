@@ -1,6 +1,7 @@
 package com.github.kill05.algobuildce.package_a.a;
 
 import com.github.kill05.algobuildce.package_a.c.a.AlgoBuild;
+import com.github.kill05.algobuildce.package_a.c.b.ABOutputBlock;
 import com.github.kill05.algobuildce.package_a.i.Translator;
 
 import java.awt.BorderLayout;
@@ -37,11 +38,11 @@ public final class h extends JDialog implements ActionListener, KeyListener, Doc
    private static String[] e = new String[]{Translator.translate("abedDialogIOOutputNLNo"), Translator.translate("abedDialogIOOutputNLYes")};
    private String f;
    private String g;
-   private com.github.kill05.algobuildce.package_a.c.b.j h;
+   private ABOutputBlock h;
    private static h i = null;
    private static boolean j = false;
 
-   private h(Window var1, com.github.kill05.algobuildce.package_a.c.b.j var2) {
+   private h(Window var1, ABOutputBlock var2) {
       super((Frame)var1, Translator.translate("abedDialogIOOutputTitle"), true);
       this.h = var2;
       this.a = AlgoBuild.d(Translator.translate("dialogButtonOK"));
@@ -162,7 +163,7 @@ public final class h extends JDialog implements ActionListener, KeyListener, Doc
       this.h.a(this.c.getText());
    }
 
-   public static boolean a(Window var0, com.github.kill05.algobuildce.package_a.c.b.j var1) {
+   public static boolean a(Window var0, ABOutputBlock var1) {
       Point var2;
       (var2 = MouseInfo.getPointerInfo().getLocation()).translate(15, 15);
       if (i == null) {

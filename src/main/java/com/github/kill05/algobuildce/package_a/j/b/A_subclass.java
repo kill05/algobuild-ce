@@ -23,7 +23,7 @@ public final class A_subclass extends C_subclass {
     }
 
     @Override
-    public final void a(n var1, Graphics var2) {
+    public final void a(ABBasePanel var1, Graphics var2) {
         int var3 = var1.getWidth();
         var1.getHeight();
         Dimension var4 = ((m)var1).e().getMinimumSize();
@@ -31,7 +31,7 @@ public final class A_subclass extends C_subclass {
         boolean var6 = false;
 
         try {
-            if (((m)var1).d().i().d() > 0) {
+            if (((m)var1).d().i().getInstructionAmount() > 0) {
                 var6 = true;
             }
         } catch (r var8) {
@@ -74,7 +74,7 @@ public final class A_subclass extends C_subclass {
     }
 
     @Override
-    public final void a(n var1) {
+    public final void a(ABBasePanel var1) {
         m var2;
         FontMetrics var7 = (var2 = (m)var1).getFontMetrics(var1.getFont());
         String var3 = var2.i.b();
@@ -104,7 +104,7 @@ public final class A_subclass extends C_subclass {
         int var11 = 0;
 
         try {
-            if (var2.d().i().d() > 0) {
+            if (var2.d().i().getInstructionAmount() > 0) {
                 var10.height += 6 * var2.f;
                 var11 = 3 * var2.f;
             } else {

@@ -1,6 +1,7 @@
 package com.github.kill05.algobuildce.package_a.a;
 
 import com.github.kill05.algobuildce.package_a.c.a.AlgoBuild;
+import com.github.kill05.algobuildce.package_a.c.b.ABIfBlock;
 import com.github.kill05.algobuildce.package_a.i.Translator;
 
 import java.awt.BorderLayout;
@@ -33,11 +34,11 @@ public final class i extends JDialog implements ActionListener, KeyListener, Doc
    private JTextArea c = new JTextArea();
    private String d;
    private String e;
-   private com.github.kill05.algobuildce.package_a.c.b.l f;
+   private ABIfBlock f;
    private static i g = null;
    private static boolean h = false;
 
-   private i(Window var1, com.github.kill05.algobuildce.package_a.c.b.l var2, Point var3) {
+   private i(Window var1, ABIfBlock var2, Point var3) {
       super((Frame)var1, Translator.translate("abedDialogSelectionIfTitle"), true);
       this.setLocation(var3);
       this.f = var2;
@@ -73,12 +74,12 @@ public final class i extends JDialog implements ActionListener, KeyListener, Doc
    @Override
    public final void actionPerformed(ActionEvent var1) {
       if (var1.getSource() == this.a) {
-         this.f.a(this.c.getText().trim());
+         this.f.setCondition(this.c.getText().trim());
          this.setVisible(false);
          h = true;
       } else {
          if (var1.getSource() == this.b) {
-            this.f.a(this.e);
+            this.f.setCondition(this.e);
             this.setVisible(false);
             h = false;
          }
@@ -90,7 +91,7 @@ public final class i extends JDialog implements ActionListener, KeyListener, Doc
    public final void changedUpdate(DocumentEvent var1) {
       String var2;
       if (!(var2 = this.c.getText()).equals(this.d)) {
-         this.f.a(var2);
+         this.f.setCondition(var2);
          this.d = var2;
       }
 
@@ -131,27 +132,27 @@ public final class i extends JDialog implements ActionListener, KeyListener, Doc
             for(var9 = (var11 = this.c.getText()).length(); var9 > 1 && var11.charAt(var9 - 1) == '\n' && var11.charAt(var9 - 2) == '\n'; --var9) {
             }
 
-            this.f.a(this.c.getText(0, var9));
+            this.f.setCondition(this.c.getText(0, var9));
          } catch (BadLocationException var7) {
          }
 
          this.setVisible(false);
          h = true;
       } else if (var3) {
-         this.f.a(this.e);
+         this.f.setCondition(this.e);
          this.setVisible(false);
          h = false;
       } else {
-         this.f.a(this.c.getText());
+         this.f.setCondition(this.c.getText());
       }
    }
 
    @Override
    public final void removeUpdate(DocumentEvent var1) {
-      this.f.a(this.c.getText());
+      this.f.setCondition(this.c.getText());
    }
 
-   public static boolean a(Window var0, com.github.kill05.algobuildce.package_a.c.b.l var1) {
+   public static boolean a(Window var0, ABIfBlock var1) {
       Point var2;
       (var2 = MouseInfo.getPointerInfo().getLocation()).translate(15, 15);
       if (g == null) {
@@ -159,7 +160,7 @@ public final class i extends JDialog implements ActionListener, KeyListener, Doc
       }
 
       i var6;
-      (var6 = g).e = var1.l();
+      (var6 = g).e = var1.getCondition();
       var6.d = var6.e;
       var6.f = var1;
       Dimension var7 = Toolkit.getDefaultToolkit().getScreenSize();
@@ -185,7 +186,7 @@ public final class i extends JDialog implements ActionListener, KeyListener, Doc
    @Override
    public final void keyPressed(KeyEvent var1) {
       if (var1.getKeyCode() == 27) {
-         this.f.a(this.e);
+         this.f.setCondition(this.e);
          this.setVisible(false);
          h = false;
       }

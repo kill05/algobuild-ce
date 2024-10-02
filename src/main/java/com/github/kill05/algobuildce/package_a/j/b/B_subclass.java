@@ -19,7 +19,7 @@ public final class B_subclass extends C_subclass {
     }
 
     @Override
-    public final void a(n var1, Graphics var2) {
+    public final void a(ABBasePanel var1, Graphics var2) {
         c var3;
         int var4 = (var3 = (c)var1).getWidth();
         int var5 = var3.getHeight();
@@ -41,7 +41,7 @@ public final class B_subclass extends C_subclass {
     }
 
     @Override
-    public final void a(n var1) {
+    public final void a(ABBasePanel var1) {
         q var2;
         int var3;
         c var5;

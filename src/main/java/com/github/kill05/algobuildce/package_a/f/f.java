@@ -1,8 +1,10 @@
 package com.github.kill05.algobuildce.package_a.f;
 
 import com.github.kill05.algobuildce.json.JsonReader;
+import com.github.kill05.algobuildce.package_a.charfactory.BootModelCoreCharArrayFactory;
+import com.github.kill05.algobuildce.package_a.charfactory.WorkModelCoreCharArrayFactory;
 import com.github.kill05.algobuildce.package_a.i.Translator;
-import com.github.kill05.algobuildce.json.JSONObject;
+import com.github.kill05.algobuildce.json.JsonObject;
 import com.github.kill05.algobuildce.json.JsonWriter;
 import org.jetbrains.annotations.NotNull;
 
@@ -45,15 +47,15 @@ public final class f implements Runnable {
     @Override
     public void run() {
         System.currentTimeMillis();
-        File var1 = new File(ABFiles.getCoreFolder(), new String((new com.github.kill05.algobuildce.package_a.d.e()).createArray()));
-        File var2 = new File(ABFiles.getCoreFolder(), new String((new com.github.kill05.algobuildce.package_a.d.d()).createArray()));
+        File var1 = new File(ABFiles.getCoreFolder(), new String((new BootModelCoreCharArrayFactory()).createArray()));
+        File var2 = new File(ABFiles.getCoreFolder(), new String((new WorkModelCoreCharArrayFactory()).createArray()));
         this.c = new c(var1, 1);
         this.encoder = new c(var2, 0);
         System.currentTimeMillis();
     }
 
     @SuppressWarnings("ConstantValue")
-    public void a(@NotNull String fileName, JSONObject jsonObject) throws ABSerializationException {
+    public void a(@NotNull String fileName, JsonObject jsonObject) throws ABSerializationException {
         k var3 = k.getInstance();
         if (var3 == null) {
             throw new ABSerializationException(Translator.translate("abpErrorConfigFile") + " system configuration NON LOADED");
@@ -68,7 +70,7 @@ public final class f implements Runnable {
         }
 
 
-        JSONObject var4 = new JSONObject();
+        JsonObject var4 = new JsonObject();
         var4.put("abuid", var3.e().toString());
         String var5 = var3.b();
         if (var5 != null) {
@@ -100,8 +102,8 @@ public final class f implements Runnable {
         }
     }
 
-    public JSONObject a(String filePath) throws ABSerializationException {
-        JSONObject var2 = null;
+    public JsonObject readProgram(String filePath) throws ABSerializationException {
+        JsonObject var2 = null;
         if (filePath == null) {
             throw new ABSerializationException(Translator.translate("abpErrorReadingFile") + " NULL");
         }
@@ -129,8 +131,8 @@ public final class f implements Runnable {
                         if (var4.getName().equals("fd")) {
                             InputStreamReader var8 = new InputStreamReader(var14);
                             JsonReader var9 = new JsonReader(var8);
-                            JSONObject var15;
-                            String var18 = (var15 = new JSONObject(var9)).getAsString("abuid", null);
+                            JsonObject var15;
+                            String var18 = (var15 = new JsonObject(var9)).getAsString("abuid", null);
                             String var10 = var15.getAsString("abuan", null);
                             if ((var7 = var15.getAsString("abusn", null)) != null) {
                                 var6 = k.a(var7);
@@ -164,13 +166,13 @@ public final class f implements Runnable {
                         ByteArrayInputStream var22 = new ByteArrayInputStream(data, 0, var24.b());
                         InputStreamReader var26 = new InputStreamReader(var22, StandardCharsets.UTF_8);
                         JsonReader var13 = new JsonReader(var26);
-                        var2 = new JSONObject(var13);
+                        var2 = new JsonObject(var13);
                     } else {
                         data = this.c.a(var5);
                         ByteArrayInputStream var25 = new ByteArrayInputStream(data, 0, this.c.b());
                         InputStreamReader var23 = new InputStreamReader(var25, StandardCharsets.UTF_8);
                         JsonReader var21 = new JsonReader(var23);
-                        var2 = new JSONObject(var21);
+                        var2 = new JsonObject(var21);
                     }
                 }
             }
@@ -183,7 +185,7 @@ public final class f implements Runnable {
         }
     }
 
-    private static byte[] jsonObjectToBytes(JSONObject jsonObject) throws ABSerializationException {
+    private static byte[] jsonObjectToBytes(JsonObject jsonObject) throws ABSerializationException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream(1000);
 
         try (OutputStreamWriter writer = new OutputStreamWriter(baos, StandardCharsets.UTF_8)) {

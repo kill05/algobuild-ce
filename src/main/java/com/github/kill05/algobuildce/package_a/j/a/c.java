@@ -52,7 +52,7 @@ public final class c extends JPanel {
          int var10;
          if (!var6.d()) {
             var9 = 0;
-            if (this.a.r().a()) {
+            if (this.a.getExecutionOptions().isTraceEnabled()) {
                var10 = (int)(0.25D * (double)var2.getHeight());
                var9 = var6.b() * var2.getHeight();
                var1.setColor(j[var6.b() % j.length]);
@@ -66,10 +66,10 @@ public final class c extends JPanel {
                var4 = 0;
             }
 
-            if (var6.c() || this.a.r().a()) {
+            if (var6.c() || this.a.getExecutionOptions().isTraceEnabled()) {
                var3 += (int)var8.getHeight();
             }
-         } else if (this.a.r().a()) {
+         } else if (this.a.getExecutionOptions().isTraceEnabled()) {
             var9 = (int)(0.25D * (double)var2.getHeight());
             var10 = var6.b() * var2.getHeight();
             var1.setColor(j[var6.b() % j.length]);
@@ -175,7 +175,7 @@ public final class c extends JPanel {
          this.f = this.b.size() * (int)var8.getHeight();
          this.revalidate();
          if (var8 != null) {
-            if (!this.a.r().a()) {
+            if (!this.a.getExecutionOptions().isTraceEnabled()) {
                this.scrollRectToVisible(new Rectangle(this.h, this.i, (int)var8.getWidth(), (int)var8.getHeight()));
             } else {
                this.scrollRectToVisible(new Rectangle(var6 + this.h, this.f - (int)var8.getHeight(), (int)var8.getWidth(), (int)var8.getHeight()));
@@ -208,7 +208,7 @@ public final class c extends JPanel {
 
    public final Dimension getPreferredSize() {
       Dimension var1;
-      if (!this.a.r().a()) {
+      if (!this.a.getExecutionOptions().isTraceEnabled()) {
          var1 = new Dimension(this.d, this.c);
       } else {
          var1 = new Dimension(this.g, this.f);

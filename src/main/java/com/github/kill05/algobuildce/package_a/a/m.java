@@ -3,7 +3,7 @@ package com.github.kill05.algobuildce.package_a.a;
 import com.github.kill05.algobuildce.package_a.c.a.ViewOptions;
 import com.github.kill05.algobuildce.package_a.f.ABFiles;
 import com.github.kill05.algobuildce.package_a.i.Translator;
-import com.github.kill05.algobuildce.json.JSONObject;
+import com.github.kill05.algobuildce.json.JsonObject;
 import com.github.kill05.algobuildce.json.JsonWriter;
 import com.github.kill05.algobuildce.package_a.k.GlobalVariables;
 
@@ -186,24 +186,24 @@ public final class m extends JDialog implements ActionListener, ChangeListener {
                 if ((var6 = JColorChooser.showDialog(this.a, Translator.translate("btnBackgroundColor"), this.m.getViewOptions().getBackgroundColor())) != null) {
                     this.h.setBackground(var6);
                     this.m.getViewOptions().setBackgroundColor(var6);
-                    this.m.a(true);
+                    this.m.update(true);
                 }
             } else if (var5 == this.i) {
                 if ((var6 = JColorChooser.showDialog(this.a, Translator.translate("btnFillingColor"), this.m.getViewOptions().getFillingColor())) != null) {
                     this.i.setBackground(var6);
                     this.m.getViewOptions().setFillingColor(var6);
-                    this.m.a(true);
+                    this.m.update(true);
                 }
             } else if (var5 == this.j) {
                 if ((var6 = JColorChooser.showDialog(this.a, Translator.translate("btnPenColor"), this.m.getViewOptions().getLineColor())) != null) {
                     this.j.setBackground(var6);
                     this.m.getViewOptions().setLineColor(var6);
-                    this.m.a(true);
+                    this.m.update(true);
                 }
             } else {
                 if (var5 == this.k) {
                     try {
-                        JSONObject optionsJson = this.m.getViewOptions().serialize();
+                        JsonObject optionsJson = this.m.getViewOptions().serialize();
                         File var11 = new File(ABFiles.getABFolder(), "ViewOptions.abopt");
 
                         try (FileWriter var12 = new FileWriter(var11)) {
@@ -231,7 +231,7 @@ public final class m extends JDialog implements ActionListener, ChangeListener {
                     this.i.setBackground(var7.getFillingColor());
                     this.j.setBackground(var7.getBackgroundColor());
                     this.g.setValue(var7.getLineWidth());
-                    this.m.a(true);
+                    this.m.update(true);
                 }
             }
 
@@ -243,7 +243,7 @@ public final class m extends JDialog implements ActionListener, ChangeListener {
             int var1 = (int) (Double.parseDouble(this.f.getValue().toString()) * GlobalVariables.getFontZoomRatio());
             Font var3 = new Font((String) this.comboBox.getSelectedItem(), Font.PLAIN, var1);
             this.m.getViewOptions().setConsoleFont(var3);
-            this.m.a(true);
+            this.m.update(true);
         } catch (Exception ignored) {
         }
     }
@@ -254,7 +254,7 @@ public final class m extends JDialog implements ActionListener, ChangeListener {
             Font var2 = new Font((String) this.comboBox.getSelectedItem(), Font.PLAIN, var1);
             this.m.getViewOptions().setCodeFont(var2);
             this.m.getViewOptions().b((var1 + 1) / 2);
-            this.m.a(true);
+            this.m.update(true);
         } catch (Exception ignored) {
         }
     }
@@ -268,7 +268,7 @@ public final class m extends JDialog implements ActionListener, ChangeListener {
         } else {
             if (var2 == this.g) {
                 this.m.getViewOptions().setLineWidth(Integer.parseInt(this.g.getValue().toString()));
-                this.m.a(true);
+                this.m.update(true);
             }
 
         }

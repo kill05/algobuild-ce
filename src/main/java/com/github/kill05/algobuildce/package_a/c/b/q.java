@@ -1,76 +1,79 @@
 package com.github.kill05.algobuildce.package_a.c.b;
 
-import com.github.kill05.algobuildce.json.JSONArray;
-import com.github.kill05.algobuildce.package_a.c.a.k;
-import com.github.kill05.algobuildce.json.JSONObject;
-import com.github.kill05.algobuildce.package_c.ABExecutionException;
+import com.github.kill05.algobuildce.json.JsonArray;
+import com.github.kill05.algobuildce.package_a.c.a.ABExecutionFragment;
+import com.github.kill05.algobuildce.package_a.c.a.IInstructionPanel;
+import com.github.kill05.algobuildce.json.JsonObject;
+import com.github.kill05.algobuildce.package_a.f.ABBlockDataHolder;
+import com.github.kill05.algobuildce.package_c.ABInstructionException;
 
 import java.util.Iterator;
 import java.util.Vector;
 
-public final class q extends n {
-    String b;
-    private o d;
+public final class q extends ABInstructionBlock {
+
+    String name;
+    private final o body;
     private int e;
-    Vector<String> c;
+    Vector<String> parameters;
     private String f = null;
 
     public q(String var1, int var2) {
-        this.b = var1;
+        this.name = var1;
         this.e = var2;
-        this.d = new o();
-        this.d.a((com.github.kill05.algobuildce.package_a.c.a.d) this, -1);
-        this.c = new Vector();
+        this.body = new o();
+        this.body.a(this, -1);
+        this.parameters = new Vector<>();
     }
 
     public q() {
-        this.b = null;
+        this.name = null;
         this.e = 0;
-        this.d = new o();
-        this.d.a((com.github.kill05.algobuildce.package_a.c.a.d) this, -1);
-        this.c = new Vector();
+        this.body = new o();
+        this.body.a(this, -1);
+        this.parameters = new Vector<>();
     }
 
-    public final String j() {
-        return this.b;
+    public String j() {
+        return this.name;
     }
 
-    public final void a(String var1) {
-        this.b = var1;
+    public void a(String var1) {
+        this.name = var1;
     }
 
-    public final void b(String var1) {
-        if (!this.c.contains(var1)) {
-            this.c.add(var1);
+    public void b(String var1) {
+        if (!this.parameters.contains(var1)) {
+            this.parameters.add(var1);
         }
 
     }
 
-    public final int k() {
-        return this.c.size();
+    public int k() {
+        return this.parameters.size();
     }
 
-    public final String e(int var1) {
-        return (String) this.c.get(var1);
+    public String e(int var1) {
+        return this.parameters.get(var1);
     }
 
-    public final String l() {
+    public String l() {
         return this.f;
     }
 
-    public final void c(String var1) {
+    public void c(String var1) {
         this.f = var1;
     }
 
     @Override
-    public final int a(com.github.kill05.algobuildce.package_a.c.a.b var1, int var2) {
+    public int a(com.github.kill05.algobuildce.package_a.c.a.b var1, int var2) {
         if (var2 == 0) {
-            var1.h("START:" + this.b);
-            com.github.kill05.algobuildce.package_a.c.a.c var6 = new com.github.kill05.algobuildce.package_a.c.a.c(this.d, var1);
+            var1.h("START:" + this.name);
+            ABExecutionFragment var6 = new ABExecutionFragment(this.body, var1);
             var1.d().push(var6);
             return 1;
         } else if (var2 == 1) {
-            if (this.f != null && this.f.length() > 0) {
+            if (this.f != null && !this.f.isEmpty()) {
                 com.github.kill05.algobuildce.package_c.f var4;
                 if ((var4 = (com.github.kill05.algobuildce.package_c.f) var1.c().get(this.f)) != null) {
                     var4 = var4.c();
@@ -81,7 +84,7 @@ public final class q extends n {
                         com.github.kill05.algobuildce.package_c.l var5 = var1.e().a(this.f, var1.c());
                         var1.c().put("_RETVAL_", new com.github.kill05.algobuildce.package_c.m(var5));
                         var1.h("FUNCTION RETURN:" + this.f + " result:" + var5);
-                    } catch (ABExecutionException var3) {
+                    } catch (ABInstructionException var3) {
                         var1.i("FUNCTION RETURN ERROR: " + var3 + " IN " + this.f);
                         return -2;
                     }
@@ -89,9 +92,9 @@ public final class q extends n {
             }
 
             if (this.e == 1) {
-                var1.h("END:" + this.b);
+                var1.h("END:" + this.name);
             } else {
-                var1.h("RET:" + this.b);
+                var1.h("RET:" + this.name);
             }
 
             return -1;
@@ -101,129 +104,128 @@ public final class q extends n {
     }
 
     @Override
-    public final void a(n var1) {
-        int var2 = this.d.d();
-        var1.a((com.github.kill05.algobuildce.package_a.c.a.d) this, var2);
-        this.d.a(var1);
+    public void addInstruction(ABInstructionBlock instruction) {
+        int var2 = this.body.getInstructionAmount();
+        instruction.a(this, var2);
+        this.body.addInstruction(instruction);
         if (this.a != null) {
             Iterator var4 = this.a.iterator();
 
             while (var4.hasNext()) {
-                ((com.github.kill05.algobuildce.package_a.c.a.k) var4.next()).a(var1, var2);
+                ((IInstructionPanel) var4.next()).a(instruction, var2);
             }
 
-            var1.f();
+            instruction.f();
         }
 
     }
 
     @Override
-    public final void a(n var1, int var2) {
-        if (var2 < this.d.d()) {
-            this.d.a(var1, var2);
-            var1.a((com.github.kill05.algobuildce.package_a.c.a.d) this, var2);
+    public void addInstruction(ABInstructionBlock instruction, int index) {
+        if (index < this.body.getInstructionAmount()) {
+            this.body.addInstruction(instruction, index);
+            instruction.a(this, index);
             if (this.a != null) {
                 Iterator var4 = this.a.iterator();
 
                 while (var4.hasNext()) {
-                    ((com.github.kill05.algobuildce.package_a.c.a.k) var4.next()).a(var1, var2);
+                    ((IInstructionPanel) var4.next()).a(instruction, index);
                 }
 
-                var1.f();
-                return;
+                instruction.f();
             }
         } else {
-            this.a(var1);
+            this.addInstruction(instruction);
         }
 
     }
 
     @Override
-    public final void d(int var1) {
+    public void removeInstruction(int index) {
         if (this.a != null) {
             Iterator var3 = this.a.iterator();
 
             while (var3.hasNext()) {
-                ((com.github.kill05.algobuildce.package_a.c.a.k) var3.next()).a(var1);
+                ((IInstructionPanel) var3.next()).a(index);
             }
         }
 
-        this.d.d(var1);
+        this.body.removeInstruction(index);
     }
 
     @Override
-    public final int d() {
-        return this.d.d();
+    public int getInstructionAmount() {
+        return this.body.getInstructionAmount();
     }
 
     @Override
-    public final n c(int var1) {
-        return this.d.c(var1);
+    public ABInstructionBlock getInstruction(int index) {
+        return this.body.getInstruction(index);
     }
 
     @Override
-    public final String c() {
-        return this.b;
+    public String c() {
+        return this.name;
     }
 
-    public final String toString() {
-        return "ABR_Base [name=" + this.b + ", body=" + this.d + ", formalParams=" + this.c + "]";
-    }
-
-    @Override
-    public final String b() {
-        return this.b;
+    public String toString() {
+        return "ABR_Base [name=" + this.name + ", body=" + this.body + ", formalParams=" + this.parameters + "]";
     }
 
     @Override
-    public final boolean a() {
+    public String b() {
+        return this.name;
+    }
+
+    @Override
+    public boolean a() {
         return true;
     }
 
-    public final int m() {
+    public int m() {
         return this.e;
     }
 
-    public final void g(int var1) {
+    public void g(int var1) {
         this.e = var1;
     }
 
-    public final void o() {
-        this.c.clear();
+    public void o() {
+        this.parameters.clear();
     }
 
     @Override
-    public final com.github.kill05.algobuildce.package_a.f.g h() {
-        com.github.kill05.algobuildce.package_a.f.g var1;
-        (var1 = super.h()).a("codeType", Integer.toString(this.e));
-        var1.a("name", this.b);
+    public ABBlockDataHolder h() {
+        ABBlockDataHolder var1;
+        (var1 = super.h()).putData("codeType", Integer.toString(this.e));
+        var1.putData("name", this.name);
         int var2;
-        if ((var2 = this.c.size()) > 0) {
+        if ((var2 = this.parameters.size()) > 0) {
             String var3 = this.e(0);
 
             for (int var4 = 1; var4 < var2; ++var4) {
                 var3 = var3 + "\n" + this.e(var4);
             }
 
-            var1.a("formalParams", var3);
+            var1.putData("formalParams", var3);
         }
 
         if (this.f != null) {
-            var1.a("returnExpr", this.f);
+            var1.putData("returnExpr", this.f);
         }
 
         return var1;
     }
 
     @Override
-    public final void a(com.github.kill05.algobuildce.package_a.f.g var1) {
+    public void a(ABBlockDataHolder var1) {
         super.a(var1);
-        String var2 = var1.a("codeType");
+        String var2 = var1.getData("codeType");
         this.e = Integer.parseInt(var2);
-        var2 = var1.a("name");
-        this.b = var2;
-        var2 = var1.a("formalParams");
-        this.c.clear();
+        var2 = var1.getData("name");
+        this.name = var2;
+        var2 = var1.getData("formalParams");
+        this.parameters.clear();
         if (var2 != null) {
             String[] var4 = var2.split("\\n");
 
@@ -232,7 +234,7 @@ public final class q extends n {
             }
         }
 
-        if ((var2 = var1.a("returnExpr")) != null) {
+        if ((var2 = var1.getData("returnExpr")) != null) {
             this.f = var2;
         }
 
@@ -240,26 +242,26 @@ public final class q extends n {
     }
 
     @Override
-    public final JSONObject b(boolean var1) {
-        JSONObject var2;
+    public JsonObject b(boolean var1) {
+        JsonObject var2;
         (var2 = super.b(var1)).put("codeType", Integer.toString(this.e));
-        var2.put("name", this.b);
+        var2.put("name", this.name);
         int var3;
         int var4;
-        if ((var3 = this.c.size()) > 0) {
+        if ((var3 = this.parameters.size()) > 0) {
             for (var4 = 0; var4 < var3; ++var4) {
                 String var5;
                 if (!(var5 = this.e(var4).trim()).isEmpty()) {
-                    var2.a("formalParams", (Object) var5);
+                    var2.a("formalParams", var5);
                 }
             }
         }
 
-        var4 = this.d.d();
+        var4 = this.body.getInstructionAmount();
         if (var1) {
             for (int var7 = 0; var7 < var4; ++var7) {
-                JSONObject var6 = this.c(var7).b(true);
-                var2.a("body", (Object) var6);
+                JsonObject var6 = this.getInstruction(var7).b(true);
+                var2.a("body", var6);
             }
         }
 
@@ -271,20 +273,20 @@ public final class q extends n {
     }
 
     @Override
-    public void a(JSONObject var1, boolean var2) {
+    public void a(JsonObject var1, boolean var2) {
         super.a(var1, var2);
         this.e = var1.getAsInt("codeType");
-        this.b = var1.getAsString("name");
-        JSONArray var13 = var1.getAsJsonArray("formalParams");
-        this.c.clear();
+        this.name = var1.getAsString("name");
+        JsonArray var13 = var1.getAsJsonArray("formalParams");
+        this.parameters.clear();
 
         if (var13 != null) {
             for (int var4 = 0; var4 < var13.size(); ++var4) {
                 String var5 = var13.getAsString(var4);
-                if (var4 < this.c.size()) {
-                    this.c.set(var4, var5);
+                if (var4 < this.parameters.size()) {
+                    this.parameters.set(var4, var5);
                 } else {
-                    this.c.add(var5);
+                    this.parameters.add(var5);
                 }
 
                 System.out.println("SET PARAMETER  i=" + var4 + " par=" + var5);
@@ -297,20 +299,20 @@ public final class q extends n {
         }
 
         if (var2) {
-            JSONArray var17 = var1.getAsJsonArray("body");
+            JsonArray var17 = var1.getAsJsonArray("body");
 
             try {
-                this.d.j();
+                this.body.j();
             } catch (t var9) {
                 var9.printStackTrace();
             }
 
             if (var17 != null) {
                 for (int var10 = 0; var10 < var17.size(); ++var10) {
-                    JSONObject var14;
-                    n var16;
-                    (var16 = n.a(var14 = var17.getAsJsonObject(var10))).a(var14, var2);
-                    this.a(var16);
+                    JsonObject var14;
+                    ABInstructionBlock var16;
+                    (var16 = ABInstructionBlock.deserialize(var14 = var17.getAsJsonObject(var10))).a(var14, var2);
+                    this.addInstruction(var16);
                 }
             }
         }
@@ -319,17 +321,17 @@ public final class q extends n {
     }
 
     @Override
-    protected String g() {
+    protected String getName() {
         return "ABRCOD";
     }
 
     @Override
     public void f() {
         if (this.a != null) {
-            for (int var1 = 0; var1 < this.d.d(); ++var1) {
-                n var2 = this.c(var1);
+            for (int var1 = 0; var1 < this.body.getInstructionAmount(); ++var1) {
+                ABInstructionBlock var2 = this.getInstruction(var1);
 
-                for (k value : this.a) {
+                for (IInstructionPanel value : this.a) {
                     value.a(var2, var1);
                 }
 
@@ -342,8 +344,8 @@ public final class q extends n {
     @Override
     public p i() {
         p var1;
-        (var1 = new p(1, this.b.length())).a(this.d.i());
-        int var2 = this.c.size();
+        (var1 = new p(1, this.name.length())).a(this.body.i());
+        int var2 = this.parameters.size();
 
         for (int var3 = 0; var3 < var2; ++var3) {
             var1.a(0, this.e(var3).length());

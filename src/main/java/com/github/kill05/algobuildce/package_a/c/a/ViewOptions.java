@@ -1,7 +1,7 @@
 package com.github.kill05.algobuildce.package_a.c.a;
 
-import com.github.kill05.algobuildce.json.JSONArray;
-import com.github.kill05.algobuildce.json.JSONObject;
+import com.github.kill05.algobuildce.json.JsonArray;
+import com.github.kill05.algobuildce.json.JsonObject;
 import com.github.kill05.algobuildce.package_a.k.GlobalVariables;
 
 import java.awt.BasicStroke;
@@ -128,8 +128,8 @@ public final class ViewOptions {
 
     }
 
-    public JSONObject serialize() {
-        JSONObject jsonObject = new JSONObject();
+    public JsonObject serialize() {
+        JsonObject jsonObject = new JsonObject();
         jsonObject.put("abopt", "ViewOptions");
         jsonObject.put("codeFont", serializeFont(this.codeFont));
         jsonObject.put("consoleFont", serializeFont(this.consoleFont));
@@ -144,7 +144,7 @@ public final class ViewOptions {
         return jsonObject;
     }
 
-    public void deserializeOptions(JSONObject jsonObject) {
+    public void deserializeOptions(JsonObject jsonObject) {
         if (jsonObject.getAsString("abopt").equals("ViewOptions")) {
             codeFont = deserializeFont(jsonObject.getAsArray("codeFont"));
             consoleFont = deserializeFont(jsonObject.getAsArray("consoleFont"));
@@ -163,8 +163,8 @@ public final class ViewOptions {
 
     }
 
-    private static JSONArray serializeFont(Font font) {
-        JSONArray var1 = new JSONArray();
+    private static JsonArray serializeFont(Font font) {
+        JsonArray var1 = new JsonArray();
         var1.add(font.getName());
         var1.add((int) ((double) font.getSize() * GlobalVariables.getFontZoomRatio()));
         var1.add(font.getStyle());
@@ -173,7 +173,7 @@ public final class ViewOptions {
 
     //todo: fix opening file messing up the zoom
     @SuppressWarnings("MagicConstant")
-    private static Font deserializeFont(JSONArray jsonArray) {
+    private static Font deserializeFont(JsonArray jsonArray) {
         String fontName = (String) jsonArray.get(0);
         int zoom = jsonArray.getAsInt(1);
         int style = jsonArray.getAsInt(2);
@@ -181,8 +181,8 @@ public final class ViewOptions {
     }
 
 
-    private static JSONArray serializeColor(Color color) {
-        JSONArray jsonArray = new JSONArray();
+    private static JsonArray serializeColor(Color color) {
+        JsonArray jsonArray = new JsonArray();
         jsonArray.add(color.getRed());
         jsonArray.add(color.getGreen());
         jsonArray.add(color.getBlue());
@@ -190,7 +190,7 @@ public final class ViewOptions {
         return jsonArray;
     }
 
-    private static Color deserializeColor(JSONArray jsonArray) {
+    private static Color deserializeColor(JsonArray jsonArray) {
         int r = jsonArray.getAsInt(0);
         int g = jsonArray.getAsInt(1);
         int b = jsonArray.getAsInt(2);

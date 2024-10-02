@@ -1,5 +1,7 @@
 package com.github.kill05.algobuildce.package_a.j.b;
 
+import com.github.kill05.algobuildce.package_a.c.b.ABOutputBlock;
+
 import java.awt.Dimension;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
@@ -21,7 +23,7 @@ public final class z extends C_subclass {
     }
 
     @Override
-    public final void a(n var1, Graphics var2) {
+    public void a(ABBasePanel var1, Graphics var2) {
         int var3 = var1.getWidth();
         var1.getHeight();
         var1.b(var2);
@@ -38,10 +40,10 @@ public final class z extends C_subclass {
     }
 
     @Override
-    public final void a(n var1) {
+    public void a(ABBasePanel var1) {
         l var2;
         int var3;
-        if ((var3 = ((com.github.kill05.algobuildce.package_a.c.b.j) (var2 = (l) var1).i).j()) == 0) {
+        if ((var3 = ((ABOutputBlock) (var2 = (l) var1).i).j()) == 0) {
             this.j = "OUT ";
         } else if (var3 == 1) {
             this.j = "OUTLN ";

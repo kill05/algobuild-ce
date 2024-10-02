@@ -11,19 +11,19 @@ public final class t extends C_subclass {
     }
 
     @Override
-    public final void a(n var1, Graphics var2) {
+    public final void a(ABBasePanel var1, Graphics var2) {
     }
 
     @Override
-    public final void a(n var1) {
+    public final void a(ABBasePanel var1) {
         e var6 = (e) var1;
         Dimension var2 = new Dimension(2 * var6.e, 0 * var6.f);
         Component[] var3 = var6.getComponents();
 
         int var4;
         for (var4 = 0; var4 < var3.length; ++var4) {
-            if (var3[var4] instanceof n) {
-                ((n) var3[var4]).g();
+            if (var3[var4] instanceof ABBasePanel) {
+                ((ABBasePanel) var3[var4]).g();
             }
 
             Dimension var5;

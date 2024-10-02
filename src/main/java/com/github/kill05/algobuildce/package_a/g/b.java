@@ -1,12 +1,12 @@
 package com.github.kill05.algobuildce.package_a.g;
 
-import com.github.kill05.algobuildce.package_a.c.b.n;
+import com.github.kill05.algobuildce.package_a.c.b.ABInstructionBlock;
 import com.github.kill05.algobuildce.package_a.c.b.s;
 import com.github.kill05.algobuildce.package_a.c.b.t;
 
 public final class b extends g {
    private com.github.kill05.algobuildce.package_a.c.a.b a;
-   private n b;
+   private ABInstructionBlock b;
    private int c = 0;
    private String d = "";
 

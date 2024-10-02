@@ -1,12 +1,16 @@
 package com.github.kill05.algobuildce.package_a.j.b;
 
+import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
+import com.github.kill05.algobuildce.package_a.c.b.ABInstructionBlock;
+import com.github.kill05.algobuildce.package_a.c.b.ABWhileBlock;
+
 import java.awt.Dimension;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 
-public final class i extends o {
+public final class i extends ABInstructionPanel {
    private e a;
    private String[] k;
    private int[] l;
@@ -15,10 +19,10 @@ public final class i extends o {
    private int o;
    private int p;
 
-   public i(com.github.kill05.algobuildce.package_a.c.a.b var1, com.github.kill05.algobuildce.package_a.j.a.a var2, com.github.kill05.algobuildce.package_a.c.a.d var3) {
+   public i(com.github.kill05.algobuildce.package_a.c.a.b var1, com.github.kill05.algobuildce.package_a.j.a.a var2, ABExecutable var3) {
       super(var1, var2, var3);
-      this.a((com.github.kill05.algobuildce.package_a.c.a.d)var3);
-      this.a = new e(var1, var2, (com.github.kill05.algobuildce.package_a.c.a.d)null);
+      this.a((ABExecutable)var3);
+      this.a = new e(var1, var2, (ABExecutable)null);
       this.add(this.a);
       this.g();
    }
@@ -97,8 +101,8 @@ public final class i extends o {
       this.j = new Rectangle(this.getWidth() / 2 - var12 / 2, this.n, var12, var3);
    }
 
-   public final void a(com.github.kill05.algobuildce.package_a.c.a.d var1, int var2) {
-      o var3 = this.b(var1);
+   public final void a(ABExecutable var1, int var2) {
+      ABInstructionPanel var3 = this.b(var1);
       this.a.a(var3, var2);
       if (this.h != null) {
          C_subclass var4 = this.h.a().a(var3);
@@ -120,14 +124,14 @@ public final class i extends o {
    }
 
    @Override
-   protected final void a_() {
-      com.github.kill05.algobuildce.package_a.g.e var1 = new com.github.kill05.algobuildce.package_a.g.e((com.github.kill05.algobuildce.package_a.c.b.n)this.i);
-      if (com.github.kill05.algobuildce.package_a.a.j.a(this.c.a(), (com.github.kill05.algobuildce.package_a.c.b.g)this.i)) {
+   protected final void modifyInstruction() {
+      com.github.kill05.algobuildce.package_a.g.e var1 = new com.github.kill05.algobuildce.package_a.g.e((ABInstructionBlock)this.i);
+      if (com.github.kill05.algobuildce.package_a.a.j.a(this.c.a(), (ABWhileBlock)this.i)) {
          this.c.c().a((com.github.kill05.algobuildce.package_a.g.g)var1);
-         this.b.a(true);
+         this.b.update(true);
       }
 
-      this.b.a((com.github.kill05.algobuildce.package_a.c.a.d)null);
+      this.b.a((ABExecutable)null);
    }
 
    public final e d() {

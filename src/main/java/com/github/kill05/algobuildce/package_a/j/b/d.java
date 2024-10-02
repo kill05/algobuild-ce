@@ -1,12 +1,14 @@
 package com.github.kill05.algobuildce.package_a.j.b;
 
-import com.github.kill05.algobuildce.package_a.c.b.n;
+import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
+import com.github.kill05.algobuildce.package_a.c.b.ABInstructionBlock;
+import com.github.kill05.algobuildce.package_a.c.b.ABCommentBlock;
 import com.github.kill05.algobuildce.package_a.g.e;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
-public final class d extends o {
+public final class d extends ABInstructionPanel {
     private String[] a;
     private int[] k;
     private int l;
@@ -14,7 +16,7 @@ public final class d extends o {
     private int n;
     private int o;
 
-    public d(com.github.kill05.algobuildce.package_a.c.a.b var1, com.github.kill05.algobuildce.package_a.j.a.a var2, com.github.kill05.algobuildce.package_a.c.a.d var3) {
+    public d(com.github.kill05.algobuildce.package_a.c.a.b var1, com.github.kill05.algobuildce.package_a.j.a.a var2, ABExecutable var3) {
         super(var1, var2, var3);
         var3.a(this);
         this.g();
@@ -66,14 +68,14 @@ public final class d extends o {
     }
 
     @Override
-    protected void a_() {
-        e var1 = new com.github.kill05.algobuildce.package_a.g.e((n) this.i);
-        if (com.github.kill05.algobuildce.package_a.a.d.a(this.c.a(), (com.github.kill05.algobuildce.package_a.c.b.d) this.i)) {
+    protected void modifyInstruction() {
+        e var1 = new com.github.kill05.algobuildce.package_a.g.e((ABInstructionBlock) this.i);
+        if (com.github.kill05.algobuildce.package_a.a.d.a(this.c.a(), (ABCommentBlock) this.i)) {
             this.c.c().a(var1);
-            this.b.a(true);
+            this.b.update(true);
         }
 
-        this.b.a((com.github.kill05.algobuildce.package_a.c.a.d) null);
+        this.b.a((ABExecutable) null);
     }
 }
 
