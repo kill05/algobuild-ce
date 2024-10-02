@@ -2,6 +2,7 @@ package com.github.kill05.algobuildce.package_a.j.b;
 
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutionFragment;
+import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.c.b.ABBaseCallInstructionBlock;
 import com.github.kill05.algobuildce.package_a.c.b.c;
 import com.github.kill05.algobuildce.package_a.c.b.ABInstructionBlock;
@@ -18,7 +19,7 @@ public final class b extends ABInstructionPanel {
     private int m;
     private String n;
 
-    public b(com.github.kill05.algobuildce.package_a.c.a.b var1, com.github.kill05.algobuildce.package_a.j.a.a var2, ABExecutable var3) {
+    public b(ABProgram var1, com.github.kill05.algobuildce.package_a.j.a.a var2, ABExecutable var3) {
         super(var1, var2, var3);
         var3.a(this);
         this.g();
@@ -78,7 +79,7 @@ public final class b extends ABInstructionPanel {
         String var3;
         ABExecutionFragment var4;
         int var5;
-        if (!var2 && (var4 = this.b.a()) != null && var4.d() == this.i && var4.c() == 1 && (var5 = (var3 = executable.c()).indexOf(46)) > 0) {
+        if (!var2 && (var4 = this.b.getNextFragment()) != null && var4.d() == this.i && var4.c() == 1 && (var5 = (var3 = executable.c()).indexOf(46)) > 0) {
             var3 = var3.substring(0, var5);
             this.c.c().h(var3);
         }

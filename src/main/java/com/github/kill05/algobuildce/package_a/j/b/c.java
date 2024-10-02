@@ -2,6 +2,7 @@ package com.github.kill05.algobuildce.package_a.j.b;
 
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutionFragment;
+import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.c.b.q;
 import com.github.kill05.algobuildce.package_a.i.Translator;
 
@@ -21,7 +22,7 @@ public final class c extends ABInstructionPanel {
         this.m = var1;
     }
 
-    public c(com.github.kill05.algobuildce.package_a.c.a.b var1, com.github.kill05.algobuildce.package_a.j.a.a var2, ABExecutable var3) {
+    public c(ABProgram var1, com.github.kill05.algobuildce.package_a.j.a.a var2, ABExecutable var3) {
         super(var1, var2, var3);
         this.a(var3);
         this.setOpaque(true);
@@ -146,7 +147,7 @@ public final class c extends ABInstructionPanel {
     public void a(ABExecutable var1, boolean var2) {
         super.a(var1, var2);
         ABExecutionFragment var3;
-        if (!var2 && (var3 = this.b.a()) != null && var3.d() == this.i && var3.c() == 0) {
+        if (!var2 && (var3 = this.b.getNextFragment()) != null && var3.d() == this.i && var3.c() == 0) {
             String var4 = ((q)this.i).j();
             this.c.c().h(var4);
         }
@@ -157,8 +158,8 @@ public final class c extends ABInstructionPanel {
     protected void b_() {
         ABExecutable var1 = null;
         ABExecutionFragment var2;
-        if ((var2 = this.b.a()) != null) {
-            var1 = this.b.a().d();
+        if ((var2 = this.b.getNextFragment()) != null) {
+            var1 = this.b.getNextFragment().d();
         }
 
         if (var1 == null) {

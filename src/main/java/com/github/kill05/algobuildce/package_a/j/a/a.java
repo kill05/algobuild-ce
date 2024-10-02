@@ -1,6 +1,7 @@
 package com.github.kill05.algobuildce.package_a.j.a;
 
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
+import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.c.b.q;
 import com.github.kill05.algobuildce.package_a.f.ABFiles;
 import com.github.kill05.algobuildce.package_a.i.ImageUtils;
@@ -36,7 +37,7 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public final class a extends JPanel implements ActionListener, ChangeListener {
-    com.github.kill05.algobuildce.package_a.c.a.b a;
+    ABProgram a;
     private g c;
     JTabbedPane b;
     private int d = -1;

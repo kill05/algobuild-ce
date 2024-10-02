@@ -1,28 +1,25 @@
 package com.github.kill05.algobuildce.package_a.a;
 
 import com.github.kill05.algobuildce.package_a.c.a.ExecutionOptions;
-import com.github.kill05.algobuildce.package_a.c.a.b;
+import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.i.Translator;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
-import java.util.Objects;
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 public final class ExecutionOptionsDialogue extends JDialog implements ActionListener {
 
     public static final int[] CLOCK_SPEEDS = new int[]{1, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000};
 
-    private final b d;
+    private final ABProgram d;
     private final JCheckBox traceCheckBox;
     private final JCheckBox singleStepCheckBox;
     private final JSpinner clockSpeedSpinner;
 
-    public ExecutionOptionsDialogue(Frame frame, b var2) {
+    public ExecutionOptionsDialogue(Frame frame, ABProgram var2) {
         super(frame, Translator.translate("abedDialogRunOptionsTitle"));
         this.d = var2;
         JPanel var4;

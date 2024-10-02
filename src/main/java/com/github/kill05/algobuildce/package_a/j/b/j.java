@@ -1,6 +1,7 @@
 package com.github.kill05.algobuildce.package_a.j.b;
 
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
+import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 
 import java.awt.Dimension;
 import java.awt.FontMetrics;
@@ -19,7 +20,7 @@ public class j extends ABInstructionPanel {
     private int p;
     private String q = "I/O";
 
-    public j(com.github.kill05.algobuildce.package_a.c.a.b var1, com.github.kill05.algobuildce.package_a.j.a.a var2, ABExecutable var3) {
+    public j(ABProgram var1, com.github.kill05.algobuildce.package_a.j.a.a var2, ABExecutable var3) {
         super(var1, var2, var3);
         this.a(var3);
         this.g();

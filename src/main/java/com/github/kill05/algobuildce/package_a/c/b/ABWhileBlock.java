@@ -2,6 +2,7 @@ package com.github.kill05.algobuildce.package_a.c.b;
 
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutionFragment;
+import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_c.ABInstructionException;
 
 public final class ABWhileBlock extends h {
@@ -14,7 +15,7 @@ public final class ABWhileBlock extends h {
    }
 
    @Override
-   public final int a(com.github.kill05.algobuildce.package_a.c.a.b var1, int var2) {
+   public final int a(ABProgram var1, int var2) {
       String var6 = this.l().replace('\n', ' ');
 
       boolean var7;

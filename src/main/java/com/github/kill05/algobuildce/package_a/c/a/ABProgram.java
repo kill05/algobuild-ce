@@ -20,9 +20,9 @@ import java.util.Vector;
 import java.util.Map.Entry;
 import javax.swing.JOptionPane;
 
-public final class b {
-    private Map a;
-    private final Stack<ABExecutionFragment> b;
+public final class ABProgram {
+    private Map<String, Object> a;
+    private final Stack<ABExecutionFragment> fragmentStack;
     private final com.github.kill05.algobuildce.package_c.a c;
     private final AlgoBuild algobuild;
     private final Stack<Map<String, Object>> stack;
@@ -38,13 +38,13 @@ public final class b {
     private boolean o = false;
     private final SaveHistory saveHistory;
 
-    public ABExecutionFragment a() {
-        return this.b != null && !this.b.isEmpty() ? this.b.peek() : null;
+    public ABExecutionFragment getNextFragment() {
+        return !this.fragmentStack.isEmpty() ? this.fragmentStack.peek() : null;
     }
 
-    public b() {
+    public ABProgram() {
         this.a = new TreeMap<>();
-        this.b = new Stack<>();
+        this.fragmentStack = new Stack<>();
         this.c = new com.github.kill05.algobuildce.package_c.a();
         this.algobuild = new AlgoBuild();
         this.stack = new Stack<>();
@@ -71,7 +71,7 @@ public final class b {
     }
 
     public void reset() {
-        this.b.clear();
+        this.fragmentStack.clear();
         this.stack.clear();
         this.a.clear();
         this.m = "";
@@ -85,7 +85,7 @@ public final class b {
     }
 
     public Stack<ABExecutionFragment> d() {
-        return this.b;
+        return this.fragmentStack;
     }
 
     public com.github.kill05.algobuildce.package_c.a e() {
@@ -470,7 +470,7 @@ public final class b {
                 this.reset();
                 this.algobuild.b();
                 JsonObject var4 = var9;
-                b var3 = this;
+                ABProgram var3 = this;
                 JsonObject saveHistoryJson = var9.getAsJsonObject("saveHistory");
                 this.saveHistory.clear();
                 if (saveHistoryJson != null) {

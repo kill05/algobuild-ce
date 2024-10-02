@@ -3,6 +3,7 @@ package com.github.kill05.algobuildce.package_a.c.b;
 import com.github.kill05.algobuildce.json.JsonObject;
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutionFragment;
+import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.f.ABBlockDataHolder;
 import com.github.kill05.algobuildce.package_c.ABInstructionException;
 
@@ -44,7 +45,7 @@ public final class ABForBlock extends h {
         this.a(true);
     }
 
-    public int a(com.github.kill05.algobuildce.package_a.c.a.b var1, int var2) {
+    public int a(ABProgram var1, int var2) {
         com.github.kill05.algobuildce.package_c.l var3;
         String var8;
         if (var2 == 0) {

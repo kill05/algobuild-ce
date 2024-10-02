@@ -1,17 +1,18 @@
 package com.github.kill05.algobuildce.package_a.g;
 
+import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.c.b.q;
 import com.github.kill05.algobuildce.package_a.f.ABBlockDataHolder;
 
 public final class d extends g {
-   private com.github.kill05.algobuildce.package_a.c.a.b a;
+   private ABProgram a;
    private q b;
    private ABBlockDataHolder c = null;
    private ABBlockDataHolder d = null;
    private String e = null;
    private String f = null;
 
-   public d(com.github.kill05.algobuildce.package_a.c.a.b var1, q var2) {
+   public d(ABProgram var1, q var2) {
       this.a = var1;
       this.b = var2;
       this.f = var2.j();

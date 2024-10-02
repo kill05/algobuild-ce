@@ -1,5 +1,6 @@
 package com.github.kill05.algobuildce.package_a.a;
 
+import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.c.a.ViewOptions;
 import com.github.kill05.algobuildce.package_a.f.ABFiles;
 import com.github.kill05.algobuildce.package_a.i.Translator;
@@ -44,9 +45,9 @@ public final class m extends JDialog implements ActionListener, ChangeListener {
     private final JButton j;
     private final JButton k;
     private final JButton l;
-    private final com.github.kill05.algobuildce.package_a.c.a.b m;
+    private final ABProgram m;
 
-    public m(Frame var1, com.github.kill05.algobuildce.package_a.c.a.b var2) {
+    public m(Frame var1, ABProgram var2) {
         super(var1, Translator.translate("fontDialogTitle"));
         this.a = var1;
         this.m = var2;

@@ -12,7 +12,7 @@ public abstract class ABExecutable {
     protected Vector<IInstructionPanel> a = null;
 
 
-    public abstract int a(b var1, int var2);
+    public abstract int a(ABProgram var1, int var2);
 
     public boolean a(int var1) {
         return var1 != -1;

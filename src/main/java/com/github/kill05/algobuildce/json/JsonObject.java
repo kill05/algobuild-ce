@@ -235,8 +235,10 @@ public final class JsonObject {
 
     public String getAsString(String key, String def) {
         Object value = this.getNullable(key);
-        return JsonNull.INSTANCE.equals(value) ? def : String.valueOf(key);
+        return isJsonNull(value) ? def : String.valueOf(value);
     }
+
+
 
     public JsonObject put(String key, Object value) {
         if (key == null) {
@@ -444,7 +446,7 @@ public final class JsonObject {
                 return JsonNull.INSTANCE;
             } else if (!(object instanceof JsonObject) &&
                     !(object instanceof JsonArray) &&
-                    !JsonNull.INSTANCE.equals(object) &&
+                    !isJsonNull(object) &&
                     !(object instanceof JsonSerializable) &&
                     !(object instanceof Byte) &&
                     !(object instanceof Character) &&
@@ -515,6 +517,12 @@ public final class JsonObject {
 
         return writer;
     }
+
+
+    private static boolean isJsonNull(Object value) {
+        return JsonNull.INSTANCE.equals(value);
+    }
+
 
     static void a(Writer var0, int var1) throws IOException {
         for (int var2 = 0; var2 < var1; ++var2) {

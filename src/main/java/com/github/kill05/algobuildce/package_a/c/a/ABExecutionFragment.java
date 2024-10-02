@@ -3,9 +3,9 @@ package com.github.kill05.algobuildce.package_a.c.a;
 public final class ABExecutionFragment {
     private int a = -1;
     private final ABExecutable executable;
-    private final b c;
+    private final ABProgram c;
 
-    public ABExecutionFragment(ABExecutable var1, b var2) {
+    public ABExecutionFragment(ABExecutable var1, ABProgram var2) {
         this.executable = var1;
         this.c = var2;
         if (this.executable != null) {

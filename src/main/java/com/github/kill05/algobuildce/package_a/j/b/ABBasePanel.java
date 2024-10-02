@@ -1,5 +1,6 @@
 package com.github.kill05.algobuildce.package_a.j.b;
 
+import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.k.GlobalVariables;
 
 import javax.swing.*;
@@ -11,7 +12,7 @@ import java.awt.event.MouseListener;
 
 public class ABBasePanel extends JPanel implements ActionListener, MouseListener {
 
-    protected com.github.kill05.algobuildce.package_a.c.a.b b;
+    protected ABProgram b;
     protected com.github.kill05.algobuildce.package_a.j.a.a c;
     protected boolean d = false;
     protected int e = (int) (6.0D * GlobalVariables.getFontZoomRatio());
@@ -20,7 +21,7 @@ public class ABBasePanel extends JPanel implements ActionListener, MouseListener
     protected boolean g = false;
     C_subclass h;
 
-    public ABBasePanel(com.github.kill05.algobuildce.package_a.c.a.b var1, com.github.kill05.algobuildce.package_a.j.a.a var2) {
+    public ABBasePanel(ABProgram var1, com.github.kill05.algobuildce.package_a.j.a.a var2) {
         this.b = var1;
         this.c = var2;
         this.setLayout(null);

@@ -2,6 +2,7 @@ package com.github.kill05.algobuildce.package_a.c.b;
 
 import com.github.kill05.algobuildce.json.JsonObject;
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
+import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.f.ABBlockDataHolder;
 
 public final class ABCommentBlock extends ABInstructionBlock {
@@ -30,7 +31,7 @@ public final class ABCommentBlock extends ABInstructionBlock {
     }
 
     @Override
-    public int a(com.github.kill05.algobuildce.package_a.c.a.b var1, int var2) {
+    public int a(ABProgram var1, int var2) {
         return -1;
     }
 

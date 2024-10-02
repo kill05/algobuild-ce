@@ -2,6 +2,7 @@ package com.github.kill05.algobuildce.package_a.j.b;
 
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutionFragment;
+import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.c.a.IInstructionPanel;
 import com.github.kill05.algobuildce.package_a.c.b.*;
 import com.github.kill05.algobuildce.package_a.c.b.s;
@@ -17,7 +18,7 @@ public class ABInstructionPanel extends ABBasePanel implements IInstructionPanel
     protected ABExecutable i;
     protected Rectangle j;
 
-    public ABInstructionPanel(com.github.kill05.algobuildce.package_a.c.a.b var1, com.github.kill05.algobuildce.package_a.j.a.a var2, ABExecutable var3) {
+    public ABInstructionPanel(ABProgram var1, com.github.kill05.algobuildce.package_a.j.a.a var2, ABExecutable var3) {
         super(var1, var2);
         this.i = var3;
         this.setToolTipText("clic Modifica / Copia / Taglia");
@@ -37,7 +38,7 @@ public class ABInstructionPanel extends ABBasePanel implements IInstructionPanel
         if (this.j != null) {
             boolean var2 = false;
             ABExecutable var3 = null;
-            ABExecutionFragment a = this.b.a();
+            ABExecutionFragment a = this.b.getNextFragment();
             if (a != null) {
                 var3 = a.d();
             }
@@ -60,7 +61,7 @@ public class ABInstructionPanel extends ABBasePanel implements IInstructionPanel
     @Override
     protected final void b(Graphics var1) {
         ABExecutable var2 = null;
-        ABExecutionFragment a = this.b.a();
+        ABExecutionFragment a = this.b.getNextFragment();
         if (a != null) {
             var2 = a.d();
         }
@@ -81,7 +82,7 @@ public class ABInstructionPanel extends ABBasePanel implements IInstructionPanel
     @Override
     protected final void c(Graphics var1) {
         ABExecutable var2 = null;
-        ABExecutionFragment a = this.b.a();
+        ABExecutionFragment a = this.b.getNextFragment();
         if (a != null) {
             var2 = a.d();
         }
@@ -102,7 +103,7 @@ public class ABInstructionPanel extends ABBasePanel implements IInstructionPanel
     @Override
     protected final void a(Graphics var1, int var2) {
         ABExecutionFragment var3;
-        if ((var3 = this.b.a()) == null) {
+        if ((var3 = this.b.getNextFragment()) == null) {
             if (!this.g && this.b.j() != this.i) {
                 var1.setColor(this.b.getViewOptions().getFillingColor());
             } else {
@@ -122,7 +123,7 @@ public class ABInstructionPanel extends ABBasePanel implements IInstructionPanel
     @Override
     protected final void d(Graphics var1) {
         ABExecutionFragment var2;
-        if ((var2 = this.b.a()) == null) {
+        if ((var2 = this.b.getNextFragment()) == null) {
             if (!this.g && this.b.j() != this.i) {
                 var1.setColor(this.b.getViewOptions().getLineColor());
             } else {

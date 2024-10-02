@@ -1,6 +1,7 @@
 package com.github.kill05.algobuildce.package_a.j.b;
 
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
+import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.c.b.*;
 import com.github.kill05.algobuildce.package_a.c.b.s;
 import com.github.kill05.algobuildce.package_a.i.ImageUtils;
@@ -19,7 +20,7 @@ import javax.swing.JPopupMenu;
 
 public final class f extends ABBasePanel {
 
-    public f(com.github.kill05.algobuildce.package_a.c.a.b var1, com.github.kill05.algobuildce.package_a.j.a.a var2) {
+    public f(ABProgram var1, com.github.kill05.algobuildce.package_a.j.a.a var2) {
         super(var1, var2);
         this.a(new Dimension(6 * this.e, 2 * this.f));
         this.setLocation(10, 10);
@@ -28,8 +29,8 @@ public final class f extends ABBasePanel {
 
     public void a(Graphics var1) {
         ABExecutable var2 = null;
-        if (this.b.a() != null) {
-            var2 = this.b.a().d();
+        if (this.b.getNextFragment() != null) {
+            var2 = this.b.getNextFragment().d();
         }
 
         int var3 = this.getWidth();
@@ -76,8 +77,8 @@ public final class f extends ABBasePanel {
 
     public void a(MouseEvent var1) {
         ABExecutable var2 = null;
-        if (this.b.a() != null) {
-            var2 = this.b.a().d();
+        if (this.b.getNextFragment() != null) {
+            var2 = this.b.getNextFragment().d();
         }
 
         if (var2 == null) {

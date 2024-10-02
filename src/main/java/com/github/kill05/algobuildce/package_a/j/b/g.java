@@ -1,6 +1,7 @@
 package com.github.kill05.algobuildce.package_a.j.b;
 
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
+import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.c.b.ABDoWhileBlock;
 import com.github.kill05.algobuildce.package_a.c.b.ABInstructionBlock;
 
@@ -19,7 +20,7 @@ public final class g extends ABInstructionPanel {
    private int o;
    private int p;
 
-   public g(com.github.kill05.algobuildce.package_a.c.a.b var1, com.github.kill05.algobuildce.package_a.j.a.a var2, ABExecutable var3) {
+   public g(ABProgram var1, com.github.kill05.algobuildce.package_a.j.a.a var2, ABExecutable var3) {
       super(var1, var2, var3);
       this.a(var3);
       this.a = new e(var1, var2, null);

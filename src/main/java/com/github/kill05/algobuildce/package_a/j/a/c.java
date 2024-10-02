@@ -1,5 +1,7 @@
 package com.github.kill05.algobuildce.package_a.j.a;
 
+import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FontMetrics;
@@ -10,7 +12,7 @@ import java.util.Vector;
 import javax.swing.JPanel;
 
 public final class c extends JPanel {
-   private com.github.kill05.algobuildce.package_a.c.a.b a;
+   private ABProgram a;
    private Vector b;
    private int c;
    private int d;
@@ -21,7 +23,7 @@ public final class c extends JPanel {
    private int i;
    private static Color[] j;
 
-   public c(com.github.kill05.algobuildce.package_a.c.a.b var1) {
+   public c(ABProgram var1) {
       (j = new Color[6])[0] = new Color(191, 255, 255);
       j[1] = new Color(255, 191, 255);
       j[2] = new Color(255, 255, 191);

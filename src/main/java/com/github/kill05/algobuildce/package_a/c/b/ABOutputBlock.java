@@ -2,6 +2,7 @@ package com.github.kill05.algobuildce.package_a.c.b;
 
 import com.github.kill05.algobuildce.json.JsonObject;
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
+import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.f.ABBlockDataHolder;
 import com.github.kill05.algobuildce.package_c.ABInstructionException;
 
@@ -37,7 +38,7 @@ public final class ABOutputBlock extends k {
     }
 
     @Override
-    public final int a(com.github.kill05.algobuildce.package_a.c.a.b var1, int var2) {
+    public final int a(ABProgram var1, int var2) {
         String[] var7 = this.l();
 
         for (int var3 = 0; var7 != null && var3 < var7.length; ++var3) {

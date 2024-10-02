@@ -1,6 +1,7 @@
 package com.github.kill05.algobuildce.package_a.c.b;
 
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
+import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_c.ABInstructionException;
 
 public final class ABInputBlock extends k {
@@ -13,7 +14,7 @@ public final class ABInputBlock extends k {
    }
 
    @Override
-   public final int a(com.github.kill05.algobuildce.package_a.c.a.b var1, int var2) {
+   public final int a(ABProgram var1, int var2) {
       String[] var13 = this.l();
 
       for(int var3 = 0; var13 != null && var3 < var13.length; ++var3) {

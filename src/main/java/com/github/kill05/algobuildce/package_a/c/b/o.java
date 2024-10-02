@@ -2,6 +2,7 @@ package com.github.kill05.algobuildce.package_a.c.b;
 
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutionFragment;
+import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.c.a.IInstructionPanel;
 
 import java.util.Iterator;
@@ -86,7 +87,7 @@ public final class o extends ABInstructionBlock {
     }
 
     @Override
-    public int a(com.github.kill05.algobuildce.package_a.c.a.b var1, int var2) {
+    public int a(ABProgram var1, int var2) {
         if (this.a(var2)) {
             int var3 = var2++;
             ABExecutionFragment var4 = new ABExecutionFragment((ABExecutable) this.instructions.get(var3), var1);

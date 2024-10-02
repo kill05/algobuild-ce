@@ -17,8 +17,8 @@ public final class u extends C_subclass {
         int var3 = var1.getWidth();
         int var4 = var1.getHeight();
         ABExecutable var5 = null;
-        if (var1.b.a() != null) {
-            var5 = var1.b.a().d();
+        if (var1.b.getNextFragment() != null) {
+            var5 = var1.b.getNextFragment().d();
         }
 
         var1.c(var2);

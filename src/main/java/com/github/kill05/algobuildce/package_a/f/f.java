@@ -26,6 +26,7 @@ import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 public final class f implements Runnable {
+    public static final String AB_UUID = "abuid";
     private static f INSTANCE = null;
 
     private c encoder = null;
@@ -71,7 +72,7 @@ public final class f implements Runnable {
 
 
         JsonObject var4 = new JsonObject();
-        var4.put("abuid", var3.e().toString());
+        var4.put(AB_UUID, var3.e().toString());
         String var5 = var3.b();
         if (var5 != null) {
             var4.put("abusn", var5);
@@ -114,66 +115,64 @@ public final class f implements Runnable {
 
         try {
             ABFileInputStream var3 = new ABFileInputStream(filePath);
-            ZipInputStream var14 = new ZipInputStream(new BufferedInputStream(var3));
+            ZipInputStream zipIn = new ZipInputStream(new BufferedInputStream(var3));
             byte[] var5 = new byte['썐'];
             int var6 = 0;
             String var7 = null;
 
             while (true) {
-                while (true) {
-                    ZipEntry var4;
-                    do {
-                        if ((var4 = var14.getNextEntry()) == null) {
-                            var14.close();
-                            return var2;
-                        }
-
-                        if (var4.getName().equals("fd")) {
-                            InputStreamReader var8 = new InputStreamReader(var14);
-                            JsonReader var9 = new JsonReader(var8);
-                            JsonObject var15;
-                            String var18 = (var15 = new JsonObject(var9)).getAsString("abuid", null);
-                            String var10 = var15.getAsString("abuan", null);
-                            if ((var7 = var15.getAsString("abusn", null)) != null) {
-                                var6 = k.a(var7);
-                            }
-
-                            if (var18 == null) {
-                                throw new ABSerializationException(Translator.translate("abpErrorReadingFile") + " ID not present");
-                            }
-
-                            UUID var16 = UUID.fromString(var18);
-                            if (!k.getInstance().e().equals(var16) && var10 == null) {
-                                throw new ABSerializationException(Translator.translate("abpCannotReadOtherUserPrivateFile"));
-                            }
-                        }
-                    } while (!var4.getName().equals("fc"));
-
-                    int var20 = 0;
-
-                    int var17;
-                    do {
-                        if ((var17 = var14.read(var5, var20, '썐' - var20)) > 0) {
-                            var20 += var17;
-                        }
-                    } while (var17 > 0);
-
-                    var5 = Arrays.copyOf(var5, var20);
-                    byte[] data;
-                    if (var6 > 0 && var6 != k.getInstance().c()) {
-                        c var24 = new c(ABFiles.getCacheFolder(), 2, var7);
-                        data = var24.a(var5);
-                        ByteArrayInputStream var22 = new ByteArrayInputStream(data, 0, var24.b());
-                        InputStreamReader var26 = new InputStreamReader(var22, StandardCharsets.UTF_8);
-                        JsonReader var13 = new JsonReader(var26);
-                        var2 = new JsonObject(var13);
-                    } else {
-                        data = this.c.a(var5);
-                        ByteArrayInputStream var25 = new ByteArrayInputStream(data, 0, this.c.b());
-                        InputStreamReader var23 = new InputStreamReader(var25, StandardCharsets.UTF_8);
-                        JsonReader var21 = new JsonReader(var23);
-                        var2 = new JsonObject(var21);
+                ZipEntry var4;
+                do {
+                    if ((var4 = zipIn.getNextEntry()) == null) {
+                        zipIn.close();
+                        return var2;
                     }
+
+                    if (var4.getName().equals("fd")) {
+                        InputStreamReader reader = new InputStreamReader(zipIn);
+                        JsonObject jsonObject = new JsonObject(new JsonReader(reader));
+                        String userId = jsonObject.getAsString(AB_UUID, null);
+                        String var10 = jsonObject.getAsString("abuan", null);
+                        if ((var7 = jsonObject.getAsString("abusn", null)) != null) {
+                            var6 = k.a(var7);
+                        }
+
+                        if (userId == null) {
+                            throw new ABSerializationException(Translator.translate("abpErrorReadingFile") + " ID not present");
+                        }
+
+                        UUID var16 = UUID.fromString(userId);
+                        if (!k.getInstance().e().equals(var16) && var10 == null) {
+                            throw new ABSerializationException(Translator.translate("abpCannotReadOtherUserPrivateFile"));
+                        }
+
+                    }
+                } while (!var4.getName().equals("fc"));
+
+                int var20 = 0;
+
+                int var17;
+                do {
+                    if ((var17 = zipIn.read(var5, var20, '썐' - var20)) > 0) {
+                        var20 += var17;
+                    }
+                } while (var17 > 0);
+
+                var5 = Arrays.copyOf(var5, var20);
+                byte[] data;
+                if (var6 > 0 && var6 != k.getInstance().c()) {
+                    c var24 = new c(ABFiles.getCacheFolder(), 2, var7);
+                    data = var24.a(var5);
+                    ByteArrayInputStream var22 = new ByteArrayInputStream(data, 0, var24.b());
+                    InputStreamReader var26 = new InputStreamReader(var22, StandardCharsets.UTF_8);
+                    JsonReader var13 = new JsonReader(var26);
+                    var2 = new JsonObject(var13);
+                } else {
+                    data = this.c.a(var5);
+                    ByteArrayInputStream var25 = new ByteArrayInputStream(data, 0, this.c.b());
+                    InputStreamReader var23 = new InputStreamReader(var25, StandardCharsets.UTF_8);
+                    JsonReader var21 = new JsonReader(var23);
+                    var2 = new JsonObject(var21);
                 }
             }
         } catch (ABSerializationException var11) {

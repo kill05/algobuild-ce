@@ -1,16 +1,17 @@
 package com.github.kill05.algobuildce.package_a.g;
 
+import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.c.b.ABInstructionBlock;
 import com.github.kill05.algobuildce.package_a.c.b.s;
 import com.github.kill05.algobuildce.package_a.c.b.t;
 
 public final class b extends g {
-   private com.github.kill05.algobuildce.package_a.c.a.b a;
+   private ABProgram a;
    private ABInstructionBlock b;
    private int c = 0;
    private String d = "";
 
-   public b(com.github.kill05.algobuildce.package_a.c.a.b var1, String var2) {
+   public b(ABProgram var1, String var2) {
       this.a = var1;
       int var3 = var2.lastIndexOf(46);
       this.c = Integer.parseInt(var2.substring(var3 + 1));

@@ -4,9 +4,9 @@ import com.github.kill05.algobuildce.package_a.c.b.ABInstructionBlock;
 import com.github.kill05.algobuildce.package_a.c.b.q;
 
 public final class e {
-   private b a;
+   private ABProgram a;
 
-   public e(b var1) {
+   public e(ABProgram var1) {
       this.a = var1;
    }
 

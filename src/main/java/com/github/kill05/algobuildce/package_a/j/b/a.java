@@ -1,6 +1,6 @@
 package com.github.kill05.algobuildce.package_a.j.b;
 
-import com.github.kill05.algobuildce.package_a.c.a.b;
+import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.b.ABAssignInstructionBlock;
 import com.github.kill05.algobuildce.package_a.c.b.ABInstructionBlock;
@@ -19,7 +19,7 @@ public final class a extends ABInstructionPanel {
     private int n;
     private int o;
 
-    public a(b var1, com.github.kill05.algobuildce.package_a.j.a.a var2, ABExecutable var3) {
+    public a(ABProgram var1, com.github.kill05.algobuildce.package_a.j.a.a var2, ABExecutable var3) {
         super(var1, var2, var3);
         var3.a(this);
         this.g();

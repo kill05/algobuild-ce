@@ -3,6 +3,7 @@ package com.github.kill05.algobuildce.package_a.j.a;
 import com.github.kill05.algobuildce.package_a.a.m;
 import com.github.kill05.algobuildce.package_a.a.ExecutionOptionsDialogue;
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
+import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.c.a.j;
 import com.github.kill05.algobuildce.package_a.c.b.q;
 import com.github.kill05.algobuildce.package_a.i.Translator;
@@ -17,7 +18,7 @@ import java.util.Stack;
 
 public final class g extends JPanel implements j, ActionListener {
     private final ABFrameHolder abFrameHolder;
-    private com.github.kill05.algobuildce.package_a.c.a.b b;
+    private ABProgram b;
     private final com.github.kill05.algobuildce.package_a.c.a.e c;
     private final Timer d;
     private boolean e = false;
@@ -41,7 +42,7 @@ public final class g extends JPanel implements j, ActionListener {
 
     public g(ABFrameHolder var1) {
         this.abFrameHolder = var1;
-        this.b = new com.github.kill05.algobuildce.package_a.c.a.b();
+        this.b = new ABProgram();
         this.c = new com.github.kill05.algobuildce.package_a.c.a.e(this.b);
         this.d = new Timer(1000, this);
         this.d.setInitialDelay(10);
@@ -236,7 +237,7 @@ public final class g extends JPanel implements j, ActionListener {
     }
 
     @Override
-    public void a(com.github.kill05.algobuildce.package_a.c.a.b var1) {
+    public void a(ABProgram var1) {
         this.b = var1;
         this.l.a = var1;
     }
@@ -248,7 +249,7 @@ public final class g extends JPanel implements j, ActionListener {
     }
 
     @Override
-    public void b(com.github.kill05.algobuildce.package_a.c.a.b var1) {
+    public void b(ABProgram var1) {
         this.d();
 
         try {

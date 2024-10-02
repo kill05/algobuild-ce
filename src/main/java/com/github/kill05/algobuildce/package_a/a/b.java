@@ -1,5 +1,6 @@
 package com.github.kill05.algobuildce.package_a.a;
 
+import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.c.a.AlgoBuild;
 import com.github.kill05.algobuildce.package_a.c.b.q;
 import com.github.kill05.algobuildce.package_a.i.Translator;
@@ -44,11 +45,11 @@ public final class b extends JDialog implements ActionListener, DocumentListener
    private String j;
    private String k;
    private com.github.kill05.algobuildce.package_a.c.b.c l;
-   private com.github.kill05.algobuildce.package_a.c.a.b m;
+   private ABProgram m;
    private static b n = null;
    private static boolean o = false;
 
-   private b(Window var1, com.github.kill05.algobuildce.package_a.c.b.c var2, Point var3, com.github.kill05.algobuildce.package_a.c.a.b var4) {
+   private b(Window var1, com.github.kill05.algobuildce.package_a.c.b.c var2, Point var3, ABProgram var4) {
       super((Frame)var1, Translator.translate("abedDialogCallFuncTitle"), true);
       this.setLocation(var3);
       this.l = var2;
@@ -234,7 +235,7 @@ public final class b extends JDialog implements ActionListener, DocumentListener
       this.l.a(true);
    }
 
-   public static boolean a(Window var0, com.github.kill05.algobuildce.package_a.c.b.c var1, com.github.kill05.algobuildce.package_a.c.a.b var2) {
+   public static boolean a(Window var0, com.github.kill05.algobuildce.package_a.c.b.c var1, ABProgram var2) {
       Point var3;
       (var3 = MouseInfo.getPointerInfo().getLocation()).translate(15, 15);
       if (n == null) {

@@ -4,6 +4,7 @@ import com.github.kill05.algobuildce.json.JsonArray;
 import com.github.kill05.algobuildce.json.JsonObject;
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutionFragment;
+import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.f.ABBlockDataHolder;
 import com.github.kill05.algobuildce.package_c.ABInstructionException;
 
@@ -54,7 +55,7 @@ public class ABBaseCallInstructionBlock extends ABInstructionBlock {
     }
 
     @Override
-    public int a(com.github.kill05.algobuildce.package_a.c.a.b var1, int var2) {
+    public int a(ABProgram var1, int var2) {
         if (var2 == 0) {
             q var10;
             if ((var10 = var1.a(this.callName)) != null) {

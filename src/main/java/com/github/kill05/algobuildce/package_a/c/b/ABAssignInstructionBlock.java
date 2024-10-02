@@ -2,6 +2,7 @@ package com.github.kill05.algobuildce.package_a.c.b;
 
 import com.github.kill05.algobuildce.json.JsonObject;
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
+import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.f.ABBlockDataHolder;
 import com.github.kill05.algobuildce.package_c.l;
 import com.github.kill05.algobuildce.package_c.ABInstructionException;
@@ -35,7 +36,7 @@ public final class ABAssignInstructionBlock extends ABInstructionBlock {
     }
 
     @Override
-    public int a(com.github.kill05.algobuildce.package_a.c.a.b var1, int var2) {
+    public int a(ABProgram var1, int var2) {
         for (var2 = 0; this.c != null && var2 < this.c.length; ++var2) {
             String var3 = this.c[var2];
 
