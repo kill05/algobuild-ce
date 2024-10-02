@@ -16,6 +16,6 @@ final class j extends AbstractAction {
 
     @Override
     public void actionPerformed(ActionEvent var1) {
-        this.a.a(Locale.ITALIAN);
+        this.a.setLocale(Locale.ITALIAN);
     }
 }

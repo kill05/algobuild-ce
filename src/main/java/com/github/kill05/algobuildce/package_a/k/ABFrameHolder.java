@@ -4,6 +4,7 @@ import com.github.kill05.algobuildce.package_a.f.ABFiles;
 import com.github.kill05.algobuildce.package_a.f.ABUserData;
 import com.github.kill05.algobuildce.package_a.i.ImageUtils;
 import com.github.kill05.algobuildce.package_a.i.Translator;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
@@ -21,15 +22,14 @@ public class ABFrameHolder {
 
     private final ABFrame frame;
     private final ActionMap actionMap;
-    private JFileChooser fileChooser;
-    private String d;
+    private final JFileChooser fileChooser;
 
     private ABFrameHolder() {
         this.frame = new ABFrame();
 
         Dimension var1 = Toolkit.getDefaultToolkit().getScreenSize();
-        this.frame.setSize((int)(var1.getWidth() * 0.9), (int)(var1.getHeight() * 0.65));
-        this.frame.setLocation((int)(var1.getWidth() * 0.05), (int)(var1.getHeight() * 0.05));
+        this.frame.setSize((int) (var1.getWidth() * 0.9), (int) (var1.getHeight() * 0.65));
+        this.frame.setLocation((int) (var1.getWidth() * 0.05), (int) (var1.getHeight() * 0.05));
         this.actionMap = this.u();
         this.frame.setJMenuBar(this.v());
         this.frame.a(this.w());
@@ -39,6 +39,10 @@ public class ABFrameHolder {
         this.actionMap.getAction("execInstruction").setEnabled(true);
         this.actionMap.getAction("execOptions").setEnabled(true);
         this.frame.a(this);
+
+        this.fileChooser = new JFileChooser(ABFiles.getABFolder().getAbsolutePath()); // todo: save last path selected
+        this.fileChooser.setFileFilter(new FileNameExtensionFilter("AlgoBuild files *.algobuild", "algobuild"));
+        this.fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
     }
 
     public static ABFrameHolder getInstance() {
@@ -292,50 +296,43 @@ public class ABFrameHolder {
 
     }
 
-    public final String getSelectedFilePath() {
-        if (this.fileChooser == null) {
-            this.d = ABFiles.getABFolder().getAbsolutePath();
-            this.fileChooser = new JFileChooser(this.d);
-            this.fileChooser.setFileFilter(new FileNameExtensionFilter("AlgoBuild files *.algobuild", "algobuild"));
-            this.fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        }
-
-        if (this.fileChooser.showOpenDialog(this.frame) == 0) {
-            return this.fileChooser.getSelectedFile().getAbsolutePath();
+    @Nullable
+    public File selectFile(String approveButtonText) {
+        if (this.fileChooser.showDialog(this.frame, approveButtonText) == JFileChooser.APPROVE_OPTION) {
+            return this.fileChooser.getSelectedFile();
         }
 
         return null;
     }
 
-    public final String a(String var1) {
-        String var2 = null;
-        if (this.fileChooser == null) {
-            this.d = ABFiles.getABFolder().getAbsolutePath();
-            this.fileChooser = new JFileChooser(this.d);
-            FileNameExtensionFilter var3 = new FileNameExtensionFilter("AlgoBuild files *.algobuild", "algobuild");
-            this.fileChooser.setFileFilter(var3);
-            this.fileChooser.setFileSelectionMode(0);
+    @Nullable
+    public String selectFilePath(String approveButtonText) {
+        File file = selectFile(approveButtonText);
+        return file != null ? file.getAbsolutePath() : null;
+    }
+
+    public final String saveFile(String name) {
+        if (name != null) {
+            this.fileChooser.setSelectedFile(new File(name));
         }
 
-        if (var1 != null) {
-            this.fileChooser.setSelectedFile(new File(var1));
-        }
+        File file = selectFile(Translator.translate("mnuFileSave"));
+        if (file == null) return null;
 
-        if (this.fileChooser.showSaveDialog(this.frame) == 0) {
-            var1 = this.fileChooser.getSelectedFile().getName();
-            var2 = this.fileChooser.getSelectedFile().getAbsolutePath();
-            FileFilter var4;
-            if ((var4 = this.fileChooser.getFileFilter()) != null && var4 instanceof FileNameExtensionFilter) {
-                String[] var5 = ((FileNameExtensionFilter)var4).getExtensions();
-                if (!var1.contains(".") && var5.length > 0 && var5[0] != null) {
-                    var2 = var2 + "." + var5[0];
-                }
+        name = file.getName();
+        String path = file.getAbsolutePath();
+
+        FileFilter filter = this.fileChooser.getFileFilter();
+        if (filter instanceof FileNameExtensionFilter) {
+            String[] extensions = ((FileNameExtensionFilter) filter).getExtensions();
+            if (!name.contains(".") && extensions.length > 0 && extensions[0] != null) {
+                path = path + "." + extensions[0];
             }
-
-            this.d = this.fileChooser.getSelectedFile().getParent();
         }
 
-        return var2;
+        fileChooser.setSelectedFile(this.fileChooser.getSelectedFile().getParentFile());
+
+        return path;
     }
 
     public final void f() {
@@ -413,7 +410,7 @@ public class ABFrameHolder {
 
     }
 
-    public final void a(Locale var1) {
+    public final void setLocale(Locale var1) {
         Translator.setLocale(var1);
         Translator.translate("mnuFileExit");
         Translator.translate("mnuEditUndo");
@@ -431,12 +428,8 @@ public class ABFrameHolder {
         if (JOptionPane.showOptionDialog(this.frame, var1, Translator.translate("infoAbout"), 0, 1, new ImageIcon(this.frame.getIconImage()), var2, var2[0]) == 1) {
             try {
                 Desktop.getDesktop().browse(new URI(Translator.translate("infoWebURL")));
-                return;
-            } catch (IOException var3) {
-                var3.printStackTrace();
-                return;
-            } catch (URISyntaxException var4) {
-                var4.printStackTrace();
+            } catch (IOException | URISyntaxException e) {
+                e.printStackTrace();
             }
         }
 

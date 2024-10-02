@@ -18,7 +18,7 @@ import java.util.Stack;
 
 public final class g extends JPanel implements j, ActionListener {
     private final ABFrameHolder abFrameHolder;
-    private ABProgram b;
+    private ABProgram abProgram;
     private final com.github.kill05.algobuildce.package_a.c.a.e c;
     private final Timer d;
     private boolean e = false;
@@ -38,21 +38,20 @@ public final class g extends JPanel implements j, ActionListener {
     private ExecutionOptionsDialogue s;
     private final Stack<com.github.kill05.algobuildce.package_a.g.g> t;
     private final Stack<com.github.kill05.algobuildce.package_a.g.g> u;
-    private ABExecutable var1;
 
     public g(ABFrameHolder var1) {
         this.abFrameHolder = var1;
-        this.b = new ABProgram();
-        this.c = new com.github.kill05.algobuildce.package_a.c.a.e(this.b);
+        this.abProgram = new ABProgram();
+        this.c = new com.github.kill05.algobuildce.package_a.c.a.e(this.abProgram);
         this.d = new Timer(1000, this);
         this.d.setInitialDelay(10);
         this.setLayout(new BorderLayout());
         this.l = new a();
         this.l.a(this);
-        this.b.a(this);
-        this.b.a("main", 1);
-        this.b.update(false);
-        this.m = new c(this.b);
+        this.abProgram.a(this);
+        this.abProgram.a("main", 1);
+        this.abProgram.update(false);
+        this.m = new c(this.abProgram);
         this.n = new JScrollPane(this.m);
         this.o = new h();
         this.p = new JScrollPane(this.o);
@@ -93,13 +92,13 @@ public final class g extends JPanel implements j, ActionListener {
 
     public void c() {
         boolean var1 = false;
-        if (!this.b.p()) {
+        if (!this.abProgram.p()) {
             var1 = true;
         } else {
             int var2;
             if ((var2 = JOptionPane.showConfirmDialog(null, Translator.translate("modifiedSaveQuestion"), "AlgoBuild", JOptionPane.YES_NO_CANCEL_OPTION)) == 0) {
                 this.f();
-                if (!this.b.p()) {
+                if (!this.abProgram.p()) {
                     var1 = true;
                 }
             } else if (var2 == 1) {
@@ -107,10 +106,10 @@ public final class g extends JPanel implements j, ActionListener {
             }
         }
 
-        String filePath = this.abFrameHolder.getSelectedFilePath();
+        String filePath = this.abFrameHolder.selectFilePath(Translator.translate("mnuFileOpen1"));
         if (var1 && filePath != null && !filePath.isEmpty()) {
-            this.b.load(filePath);
-            if (!this.b.p()) {
+            this.abProgram.load(filePath);
+            if (!this.abProgram.p()) {
                 this.abFrameHolder.setActionEnabled("execInstruction", true);
                 this.abFrameHolder.setActionEnabled("execOptions", true);
             }
@@ -122,20 +121,20 @@ public final class g extends JPanel implements j, ActionListener {
     }
 
     public boolean d() {
-        boolean var1 = this.b.p();
+        boolean var1 = this.abProgram.p();
         this.abFrameHolder.setActionEnabled("mnuFileSave", var1);
         return var1;
     }
 
     public boolean e() {
         boolean var1 = false;
-        if (!this.b.p()) {
+        if (!this.abProgram.p()) {
             var1 = true;
         } else {
             int var2;
             if ((var2 = JOptionPane.showConfirmDialog(null, Translator.translate("modifiedSaveQuestion"), "AlgoBuild", JOptionPane.YES_NO_CANCEL_OPTION)) == 0) {
                 this.f();
-                if (!this.b.p()) {
+                if (!this.abProgram.p()) {
                     var1 = true;
                 }
             } else if (var2 == 1) {
@@ -147,13 +146,13 @@ public final class g extends JPanel implements j, ActionListener {
     }
 
     public void f() {
-        boolean var1 = this.b.p();
+        boolean var1 = this.abProgram.p();
 
         if (var1) {
             String var2;
-            if ((var2 = this.b.o()) != null) {
-                this.b.saveProgram(var2);
-                if (!this.b.p()) {
+            if ((var2 = this.abProgram.o()) != null) {
+                this.abProgram.saveProgram(var2);
+                if (!this.abProgram.p()) {
                     this.abFrameHolder.setActionEnabled("mnuFileSave", false);
                 }
             } else {
@@ -165,9 +164,9 @@ public final class g extends JPanel implements j, ActionListener {
 
     public void g() {
         String var1;
-        if ((var1 = this.abFrameHolder.a(this.b.o())) != null && !var1.isEmpty()) {
-            this.b.saveProgram(var1);
-            if (!this.b.p()) {
+        if ((var1 = this.abFrameHolder.saveFile(this.abProgram.o())) != null && !var1.isEmpty()) {
+            this.abProgram.saveProgram(var1);
+            if (!this.abProgram.p()) {
                 this.abFrameHolder.setActionEnabled("mnuFileSave", false);
             }
         }
@@ -175,7 +174,7 @@ public final class g extends JPanel implements j, ActionListener {
     }
 
     public void h() {
-        int var1 = this.b.getExecutionOptions().getClockSpeed();
+        int var1 = this.abProgram.getExecutionOptions().getClockSpeed();
         this.d.setDelay(var1);
         this.d.setInitialDelay(10);
         boolean var2;
@@ -191,14 +190,14 @@ public final class g extends JPanel implements j, ActionListener {
             this.c.a("main");
             var2 = this.c.b();
             this.abFrameHolder.setActionEnabled("execInterrupt", var2);
-            if (!this.b.getExecutionOptions().isStepEnabled()) {
+            if (!this.abProgram.getExecutionOptions().isStepEnabled()) {
                 this.d.start();
                 this.abFrameHolder.setActionEnabled("execInstruction", !var2);
                 this.abFrameHolder.setActionEnabled("execPause", var2);
                 this.abFrameHolder.setActionEnabled("execInterrupt", var2);
             }
         } else {
-            if (this.b.getExecutionOptions().isStepEnabled()) {
+            if (this.abProgram.getExecutionOptions().isStepEnabled()) {
                 this.c.c();
                 var2 = this.c.b();
                 this.abFrameHolder.setActionEnabled("execInstruction", true);
@@ -238,13 +237,12 @@ public final class g extends JPanel implements j, ActionListener {
 
     @Override
     public void a(ABProgram var1) {
-        this.b = var1;
+        this.abProgram = var1;
         this.l.a = var1;
     }
 
     @Override
     public void a(ABExecutable var1) {
-        this.var1 = var1;
         this.l.a(var1);
     }
 
@@ -253,17 +251,17 @@ public final class g extends JPanel implements j, ActionListener {
         this.d();
 
         try {
-            this.m.setFont(this.b.getViewOptions().getConsoleFont());
+            this.m.setFont(this.abProgram.getViewOptions().getConsoleFont());
             this.m.a();
-            this.o.setFont(this.b.getViewOptions().getConsoleFont());
-            int var2 = this.b.getExecutionOptions().getClockSpeed();
+            this.o.setFont(this.abProgram.getViewOptions().getConsoleFont());
+            int var2 = this.abProgram.getExecutionOptions().getClockSpeed();
             if (this.d.getDelay() != var2) {
                 this.d.setDelay(var2);
                 this.d.setInitialDelay(var2);
             }
 
             this.q.setTitle(var1.o());
-        } catch (Exception var3) {
+        } catch (Exception ignored) {
         }
     }
 
@@ -337,7 +335,7 @@ public final class g extends JPanel implements j, ActionListener {
 
     public void k() {
         if (this.r == null) {
-            this.r = new m(this.q, this.b);
+            this.r = new m(this.q, this.abProgram);
         }
 
         this.r.setVisible(!this.r.isVisible());
@@ -346,7 +344,7 @@ public final class g extends JPanel implements j, ActionListener {
 
     public void l() {
         if (this.s == null) {
-            this.s = new ExecutionOptionsDialogue(this.q, this.b);
+            this.s = new ExecutionOptionsDialogue(this.q, this.abProgram);
         }
 
         this.s.setVisible(!this.s.isVisible());
@@ -364,7 +362,7 @@ public final class g extends JPanel implements j, ActionListener {
 
             if (!this.e) {
                 boolean var3 = this.c.b();
-                boolean var2 = this.b.getExecutionOptions().isStepEnabled();
+                boolean var2 = this.abProgram.getExecutionOptions().isStepEnabled();
                 this.abFrameHolder.setActionEnabled("execInstruction", !var3 || var2);
                 this.abFrameHolder.setActionEnabled("execPause", var3 && !var2);
                 this.abFrameHolder.setActionEnabled("execInterrupt", var3);
@@ -431,7 +429,7 @@ public final class g extends JPanel implements j, ActionListener {
     }
 
     public void s() {
-        String var1 = this.b.s();
-        JOptionPane.showMessageDialog(this.q, var1, Translator.translate("mnuHistoryInfo"), 1);
+        String var1 = this.abProgram.s();
+        JOptionPane.showMessageDialog(this.q, var1, Translator.translate("mnuHistoryInfo"), JOptionPane.INFORMATION_MESSAGE);
     }
 }
