@@ -42,8 +42,8 @@ public final class f extends JDialog implements ActionListener, KeyListener, Doc
       super((Frame)var1, Translator.translate("abedDialogCycleDoWhileTitle"), true);
       this.setLocation(var3);
       this.f = var2;
-      this.a = AlgoBuild.d(Translator.translate("dialogButtonOK"));
-      this.b = AlgoBuild.d(Translator.translate("dialogButtonCancel"));
+      this.a = AlgoBuild.createButton(Translator.translate("dialogButtonOK"));
+      this.b = AlgoBuild.createButton(Translator.translate("dialogButtonCancel"));
       JTextArea var4;
       (var4 = new JTextArea(Translator.translate("abedDialogCycleDoWhileCondition"))).setEditable(false);
       var4.setEnabled(true);

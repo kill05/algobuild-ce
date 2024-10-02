@@ -3,10 +3,11 @@ package com.github.kill05.algobuildce.package_a.c.a;
 import com.github.kill05.algobuildce.package_a.c.b.p;
 import com.github.kill05.algobuildce.package_a.c.b.q;
 import com.github.kill05.algobuildce.package_a.f.ABFiles;
-import com.github.kill05.algobuildce.package_a.f.l;
+import com.github.kill05.algobuildce.package_a.f.ABProgramIO;
+import com.github.kill05.algobuildce.package_a.f.ABUserData;
+import com.github.kill05.algobuildce.package_a.f.ABConfigurator;
 import com.github.kill05.algobuildce.package_a.i.Translator;
 import com.github.kill05.algobuildce.package_a.k.ABFrameHolder;
-import com.github.kill05.algobuildce.package_a.k.B_innerclass;
 import com.github.kill05.algobuildce.package_a.k.GlobalVariables;
 
 import java.awt.Toolkit;
@@ -123,7 +124,7 @@ public class AlgoBuild {
                 if (var3 == 1) {
                     var10 = Translator.translate("abpFirstRunQuestion");
                     if (JOptionPane.showConfirmDialog(null, var10, "AlgoBuild", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
-                        l.runFirstConfiguration();
+                        ABConfigurator.runFirstConfiguration();
                         var3 = -1;
                     } else {
                         System.exit(var3);
@@ -138,8 +139,8 @@ public class AlgoBuild {
             } else {
                 // Initialize singletons
                 SwingUtilities.invokeLater(() -> {
-                    com.github.kill05.algobuildce.package_a.f.k.getInstance();
-                    com.github.kill05.algobuildce.package_a.f.f.getInstance();
+                    ABUserData.getInstance();
+                    ABProgramIO.getInstance();
                     ABFrameHolder.getInstance();
                 });
             }
@@ -202,22 +203,22 @@ public class AlgoBuild {
         return var0;
     }
 
-    public static JButton d(String var0) {
+    public static JButton createButton(String label) {
         char var1 = 0;
-        if (var0.contains("&&")) {
+        if (label.contains("&&")) {
             int var2;
-            if ((var2 = var0.indexOf("&&")) + 2 < var0.length()) {
-                var1 = var0.charAt(var2 + 2);
+            if ((var2 = label.indexOf("&&")) + 2 < label.length()) {
+                var1 = label.charAt(var2 + 2);
             }
 
-            var0 = var0.replace("&&", "");
+            label = label.replace("&&", "");
         }
 
-        JButton var3 = new JButton(var0);
+        JButton button = new JButton(label);
         if (var1 != 0) {
-            var3.setMnemonic(var1);
+            button.setMnemonic(var1);
         }
 
-        return var3;
+        return button;
     }
 }

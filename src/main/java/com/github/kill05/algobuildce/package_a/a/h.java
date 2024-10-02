@@ -45,8 +45,8 @@ public final class h extends JDialog implements ActionListener, KeyListener, Doc
    private h(Window var1, ABOutputBlock var2) {
       super((Frame)var1, Translator.translate("abedDialogIOOutputTitle"), true);
       this.h = var2;
-      this.a = AlgoBuild.d(Translator.translate("dialogButtonOK"));
-      this.b = AlgoBuild.d(Translator.translate("dialogButtonCancel"));
+      this.a = AlgoBuild.createButton(Translator.translate("dialogButtonOK"));
+      this.b = AlgoBuild.createButton(Translator.translate("dialogButtonCancel"));
       this.setModal(true);
       JTextArea var4;
       (var4 = new JTextArea(Translator.translate("abedDialogIOOutputLabel"))).setEditable(false);

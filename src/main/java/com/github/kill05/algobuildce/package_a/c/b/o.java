@@ -30,7 +30,7 @@ public final class o extends ABInstructionBlock {
     @Override
     public void addInstruction(ABInstructionBlock instruction) {
         int var2 = this.instructions.size();
-        instruction.a((ABExecutable) this, var2);
+        instruction.a(this, var2);
         this.instructions.add(instruction);
         if (this.a != null) {
             for (IInstructionPanel k : this.a) {
@@ -46,7 +46,7 @@ public final class o extends ABInstructionBlock {
             this.getInstruction(var3).f(1);
         }
 
-        instruction.a((ABExecutable) this, index);
+        instruction.a(this, index);
         this.instructions.add(index, instruction);
         if (this.a != null) {
 
@@ -90,7 +90,7 @@ public final class o extends ABInstructionBlock {
     public int a(ABProgram var1, int var2) {
         if (this.a(var2)) {
             int var3 = var2++;
-            ABExecutionFragment var4 = new ABExecutionFragment((ABExecutable) this.instructions.get(var3), var1);
+            ABExecutionFragment var4 = new ABExecutionFragment(this.instructions.get(var3), var1);
             var1.d().push(var4);
         } else {
             var2 = -1;

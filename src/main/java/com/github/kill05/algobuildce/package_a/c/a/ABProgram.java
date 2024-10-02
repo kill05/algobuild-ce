@@ -8,6 +8,8 @@ import com.github.kill05.algobuildce.package_a.c.b.q;
 import com.github.kill05.algobuildce.json.JsonObject;
 import com.github.kill05.algobuildce.package_a.f.ABFiles;
 import com.github.kill05.algobuildce.package_a.f.ABSerializationException;
+import com.github.kill05.algobuildce.package_a.f.ABProgramIO;
+import com.github.kill05.algobuildce.package_a.f.ABUserData;
 
 import java.io.File;
 import java.io.FileReader;
@@ -429,10 +431,10 @@ public final class ABProgram {
     }
 
     public void saveProgram(String filePath) {
-        com.github.kill05.algobuildce.package_a.f.f var2 = com.github.kill05.algobuildce.package_a.f.f.getInstance();
-        String author = com.github.kill05.algobuildce.package_a.f.k.getInstance().d();
+        ABProgramIO var2 = ABProgramIO.getInstance();
+        String author = ABUserData.getInstance().d();
         if (author != null) {
-            String serial = com.github.kill05.algobuildce.package_a.f.k.getInstance().b();
+            String serial = ABUserData.getInstance().getSerial();
             p var5 = this.algobuild.d();
             String sizeDescription = var5.a() + "/" + var5.b();
             File file = new File(filePath);
@@ -455,51 +457,52 @@ public final class ABProgram {
         }
     }
 
-    public void k(String var1) {
-        com.github.kill05.algobuildce.package_a.f.f var2 = com.github.kill05.algobuildce.package_a.f.f.getInstance();
+    public void load(String filePath) {
+        ABProgramIO programIO = ABProgramIO.getInstance();
 
         try {
-            JsonObject var9 = var2.readProgram(var1);
-            if (var9 != null) {
-                if (this.f != null) {
-                    for (com.github.kill05.algobuildce.package_a.c.a.j value : this.f) {
-                        value.a();
-                    }
+            JsonObject programJson = programIO.readProgram(filePath);
+            if (programJson == null) return;
+
+            if (this.f != null) {
+                for (com.github.kill05.algobuildce.package_a.c.a.j value : this.f) {
+                    value.a();
                 }
-
-                this.reset();
-                this.algobuild.b();
-                JsonObject var4 = var9;
-                ABProgram var3 = this;
-                JsonObject saveHistoryJson = var9.getAsJsonObject("saveHistory");
-                this.saveHistory.clear();
-                if (saveHistoryJson != null) {
-                    this.saveHistory.deserialize(saveHistoryJson);
-                }
-
-                if ((var9 = var9.getAsJsonObject("viewOptions")) != null) {
-                    this.viewOptions.deserializeOptions(var9);
-                }
-
-                JsonArray var10;
-                if ((var10 = var4.getAsJsonArray("codepool")) != null) {
-                    for (int var12 = 0; var12 < var10.size(); ++var12) {
-                        ABInstructionBlock var6;
-                        (var6 = ABInstructionBlock.deserialize(saveHistoryJson = var10.getAsJsonObject(var12))).a(saveHistoryJson, true);
-                        if (var6 instanceof q) {
-                            var3.a((q) var6);
-                        }
-                    }
-                }
-
-                this.j = false;
-                this.i = var1;
-
-                for (j value : this.f) {
-                    value.b(this);
-                }
-
             }
+
+            this.reset();
+            this.algobuild.b();
+            JsonObject var4 = programJson;
+            ABProgram var3 = this;
+            JsonObject saveHistoryJson = programJson.getAsJsonObject("saveHistory");
+            this.saveHistory.clear();
+            if (saveHistoryJson != null) {
+                this.saveHistory.deserialize(saveHistoryJson);
+            }
+
+            if ((programJson = programJson.getAsJsonObject("viewOptions")) != null) {
+                this.viewOptions.deserializeOptions(programJson);
+            }
+
+            JsonArray var10;
+            if ((var10 = var4.getAsJsonArray("codepool")) != null) {
+                for (int var12 = 0; var12 < var10.size(); ++var12) {
+                    ABInstructionBlock var6;
+                    (var6 = ABInstructionBlock.deserialize(saveHistoryJson = var10.getAsJsonObject(var12))).a(saveHistoryJson, true);
+                    if (var6 instanceof q) {
+                        var3.a((q) var6);
+                    }
+                }
+            }
+
+            this.j = false;
+            this.i = filePath;
+
+            for (j value : this.f) {
+                value.b(this);
+            }
+
+
         } catch (ABSerializationException var8) {
             JOptionPane.showMessageDialog(null, var8.getMessage());
         }

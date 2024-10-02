@@ -6,21 +6,21 @@ import javax.swing.JOptionPane;
 
 final class l implements ActionListener {
 
-    private final k a;
+    private final RegisterUserDialog a;
 
-    l(k var1) {
+    l(RegisterUserDialog var1) {
         super();
         this.a = var1;
     }
 
     @Override
     public void actionPerformed(ActionEvent var1) {
-        boolean var2 = k.a(this.a);
+        boolean var2 = RegisterUserDialog.a(this.a);
         String var3 = var2 ? "CONNESSIONE OK!" : "IMPOSSIBILE connettersi ad Internet.";
-        JOptionPane.showMessageDialog(k.b(this.a), var3, "TestInternet Connection", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(RegisterUserDialog.b(this.a), var3, "TestInternet Connection", JOptionPane.INFORMATION_MESSAGE);
 
-        k.c(this.a).setEnabled(var2);
-        k.d(this.a).setEnabled(var2);
-        k.e(this.a).setEnabled(var2);
+        RegisterUserDialog.c(this.a).setEnabled(var2);
+        RegisterUserDialog.d(this.a).setEnabled(var2);
+        RegisterUserDialog.e(this.a).setEnabled(var2);
     }
 }

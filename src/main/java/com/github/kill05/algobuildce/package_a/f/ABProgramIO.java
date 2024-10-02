@@ -13,7 +13,6 @@ import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -25,72 +24,76 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
-public final class f implements Runnable {
-    public static final String AB_UUID = "abuid";
-    private static f INSTANCE = null;
+public final class ABProgramIO implements Runnable {
 
-    private c encoder = null;
-    private c c = null;
+    public static final String AB_UUID_KEY = "abuid";
+    public static final String AB_USER_SERIAL_NUMBER_KEY = "abusn";
+    public static final String AB_USER_AUTH_NUMBER_KEY = "abuan";
+    public static final String FILE_CONTENT_NAME = "fc";
+    public static final String FILE_DATA_NAME = "fd";
+    private static ABProgramIO INSTANCE = null;
 
-    public static f getInstance() {
+    private KeyedEncoder encoder = null;
+    private KeyedEncoder decoder = null;
+
+    public static ABProgramIO getInstance() {
         if (INSTANCE == null) {
-            INSTANCE = new f();
+            INSTANCE = new ABProgramIO();
         }
 
         return INSTANCE;
     }
 
-    private f() {
+    private ABProgramIO() {
         new Thread(this).start();
     }
 
 
     @Override
     public void run() {
-        System.currentTimeMillis();
-        File var1 = new File(ABFiles.getCoreFolder(), new String((new BootModelCoreCharArrayFactory()).createArray()));
-        File var2 = new File(ABFiles.getCoreFolder(), new String((new WorkModelCoreCharArrayFactory()).createArray()));
-        this.c = new c(var1, 1);
-        this.encoder = new c(var2, 0);
-        System.currentTimeMillis();
+        //System.currentTimeMillis();
+        this.decoder = new KeyedEncoder(new File(ABFiles.getCoreFolder(), new String((new BootModelCoreCharArrayFactory()).createArray())), 1);
+        this.encoder = new KeyedEncoder(new File(ABFiles.getCoreFolder(), new String((new WorkModelCoreCharArrayFactory()).createArray())), 0);
+        //System.currentTimeMillis();
     }
 
-    @SuppressWarnings("ConstantValue")
     public void writeProgram(@NotNull String fileName, JsonObject jsonObject) throws ABSerializationException {
-        k kInstance = k.getInstance();
-        if (kInstance == null) {
+        ABUserData user = ABUserData.getInstance();
+
+        /*
+        if (user == null) {
             throw new ABSerializationException(Translator.translate("abpErrorConfigFile") + " system configuration NON LOADED");
         }
 
         if (fileName == null) {
             throw new ABSerializationException(Translator.translate("abpErrorWritingFile") + " file name is NULL");
-        }
+         */
 
         if (this.encoder == null) {
             throw new ABSerializationException(Translator.translate("abpErrorWritingFile") + " ENCODER not READY");
         }
 
-        JsonObject var4 = new JsonObject();
-        var4.put(AB_UUID, kInstance.e().toString());
-        String var5 = kInstance.b();
-        if (var5 != null) {
-            var4.put("abusn", var5);
+        JsonObject fdJson = new JsonObject();
+        fdJson.put(AB_UUID_KEY, user.getUserUuid().toString());
+        String username = user.getSerial();
+        if (username != null) {
+            fdJson.put(AB_USER_SERIAL_NUMBER_KEY, username);
         }
 
-        String var11 = kInstance.d();
+        String var11 = user.d();
         if (var11 != null) {
-            var4.put("abuan", var11);
+            fdJson.put(AB_USER_AUTH_NUMBER_KEY, var11);
         }
 
-        byte[] fdData = jsonObjectToBytes(var4);
+        byte[] fdData = jsonObjectToBytes(fdJson);
         byte[] fcData = jsonObjectToBytes(jsonObject);
 
         try (ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(new ABFileOutputStream(fileName)))) {
-            ZipEntry entry = new ZipEntry("fd");
+            ZipEntry entry = new ZipEntry(FILE_DATA_NAME);
             out.putNextEntry(entry);
             out.write(fdData);
 
-            ZipEntry var14 = new ZipEntry("fc");
+            ZipEntry var14 = new ZipEntry(FILE_CONTENT_NAME);
             out.putNextEntry(var14);
             fcData = this.encoder.a(fcData);
             out.write(fcData, 0, fcData.length);
@@ -105,42 +108,50 @@ public final class f implements Runnable {
             throw new ABSerializationException(Translator.translate("abpErrorReadingFile") + " NULL");
         }
 
-        if (this.c == null) {
+        if (this.decoder == null) {
             throw new ABSerializationException(Translator.translate("abpErrorReadingFile") + " DECODER not READY");
         }
 
         try (ZipInputStream zipIn = new ZipInputStream(new BufferedInputStream(new ABFileInputStream(filePath)))) {
             byte[] var5 = new byte['썐'];
             int var6 = 0;
-            String var7 = null;
+            String ownerSerial = null;
 
             while (true) {
-                ZipEntry var4;
+                ZipEntry zipEntry;
                 do {
-                    if ((var4 = zipIn.getNextEntry()) == null) {
+                    zipEntry = zipIn.getNextEntry();
+                    if (zipEntry == null) {
                         return var2;
                     }
 
-                    if (var4.getName().equals("fd")) {
-                        InputStreamReader reader = new InputStreamReader(zipIn);
-                        JsonObject jsonObject = new JsonObject(new JsonReader(reader));
-                        String userId = jsonObject.getAsString(AB_UUID, null);
-                        String var10 = jsonObject.getAsString("abuan", null);
-                        if ((var7 = jsonObject.getAsString("abusn", null)) != null) {
-                            var6 = k.a(var7);
-                        }
-
-                        if (userId == null) {
-                            throw new ABSerializationException(Translator.translate("abpErrorReadingFile") + " ID not present");
-                        }
-
-                        UUID var16 = UUID.fromString(userId);
-                        if (!k.getInstance().e().equals(var16) && var10 == null) {
-                            throw new ABSerializationException(Translator.translate("abpCannotReadOtherUserPrivateFile"));
-                        }
-
+                    if (!zipEntry.getName().equals(FILE_DATA_NAME)) {
+                        continue;
                     }
-                } while (!var4.getName().equals("fc"));
+
+                    // Don't close or else the zip stream is closed
+                    InputStreamReader reader = new InputStreamReader(zipIn);
+                    JsonObject jsonObject = new JsonObject(new JsonReader(reader));
+                    String ownerUuid = jsonObject.getAsString(AB_UUID_KEY, null);
+                    String ownerAuthNumber = jsonObject.getAsString(AB_USER_AUTH_NUMBER_KEY, null);
+                    ownerSerial = jsonObject.getAsString(AB_USER_SERIAL_NUMBER_KEY, null);
+
+                    //System.out.println(ownerUuid);
+                    //System.out.println(ownerAuthNumber);
+                    //System.out.println(ownerSerial);
+
+                    if (ownerUuid != null) {
+                        var6 = ABUserData.a(ownerSerial);
+                    }
+
+                    if (ownerUuid == null) {
+                        throw new ABSerializationException(Translator.translate("abpErrorReadingFile") + " ID not present");
+                    }
+
+                    if (!ABUserData.getInstance().getUserUuid().equals(UUID.fromString(ownerUuid)) && ownerAuthNumber == null) {
+                        throw new ABSerializationException(Translator.translate("abpCannotReadOtherUserPrivateFile"));
+                    }
+                } while (!zipEntry.getName().equals(FILE_CONTENT_NAME));
 
                 int var20 = 0;
 
@@ -153,27 +164,25 @@ public final class f implements Runnable {
 
                 var5 = Arrays.copyOf(var5, var20);
                 byte[] data;
-                if (var6 > 0 && var6 != k.getInstance().c()) {
-                    c var24 = new c(ABFiles.getCacheFolder(), 2, var7);
+                if (var6 > 0 && var6 != ABUserData.getInstance().c()) {
+                    KeyedEncoder var24 = new KeyedEncoder(ABFiles.getCacheFolder(), 2, ownerSerial);
                     data = var24.a(var5);
-                    ByteArrayInputStream var22 = new ByteArrayInputStream(data, 0, var24.b());
-                    InputStreamReader var26 = new InputStreamReader(var22, StandardCharsets.UTF_8);
+                    ByteArrayInputStream in = new ByteArrayInputStream(data, 0, var24.b());
+                    InputStreamReader var26 = new InputStreamReader(in, StandardCharsets.UTF_8);
                     JsonReader var13 = new JsonReader(var26);
                     var2 = new JsonObject(var13);
                 } else {
-                    data = this.c.a(var5);
-                    ByteArrayInputStream var25 = new ByteArrayInputStream(data, 0, this.c.b());
-                    InputStreamReader var23 = new InputStreamReader(var25, StandardCharsets.UTF_8);
+                    data = this.decoder.a(var5);
+                    ByteArrayInputStream in = new ByteArrayInputStream(data, 0, this.decoder.b());
+                    InputStreamReader var23 = new InputStreamReader(in, StandardCharsets.UTF_8);
                     JsonReader var21 = new JsonReader(var23);
                     var2 = new JsonObject(var21);
                 }
             }
-        } catch (ABSerializationException var11) {
-            throw var11;
-        } catch (Exception var12) {
-            System.out.println("Failed to read file.");
-            var12.printStackTrace();
-            throw new ABSerializationException(Translator.translate("abpErrorReadingFile") + filePath);
+        } catch (ABSerializationException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new ABSerializationException(Translator.translate("abpErrorReadingFile") + filePath, e);
         }
     }
 
@@ -199,7 +208,7 @@ public final class f implements Runnable {
         return baos.toByteArray();
     }
 
-    public byte[] b() {
-        return this.c.a();
+    public byte[] getDecoderKey() {
+        return this.decoder.getEncodedKey();
     }
 }

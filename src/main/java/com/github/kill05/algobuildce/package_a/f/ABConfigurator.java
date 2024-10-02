@@ -13,7 +13,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.UUID;
 
-public final class l {
+public final class ABConfigurator {
     private static int a = -1;
 
     public static int runFirstConfiguration() {
@@ -113,7 +113,7 @@ public final class l {
         UUID var5 = UUID.nameUUIDFromBytes(var1.getBytes(StandardCharsets.UTF_8));
         File var2 = new File(ABFiles.getCoreFolder(), new String((new BootModelCoreCharArrayFactory()).createArray()));
         File var3 = new File(ABFiles.getCoreFolder(), new String((new WorkModelCoreCharArrayFactory()).createArray()));
-        c.a(var0, var5, var2, var3);
+        KeyedEncoder.a(var0, var5, var2, var3);
         a(50);
         var2 = new File(ABFiles.getCoreFolder(), new String((new LoadModelCoreCharArrayFactory()).createArray()));
         a(var0, var5, var2);

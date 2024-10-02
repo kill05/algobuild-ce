@@ -5,6 +5,7 @@ import com.github.kill05.algobuildce.package_a.charfactory.TestModelCoreCharArra
 import com.github.kill05.algobuildce.package_a.charfactory.ToolModelCoreCharArrayFactory;
 import com.github.kill05.algobuildce.package_a.h.UserNameCharArrayFactory;
 import com.github.kill05.algobuildce.package_a.i.Translator;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -17,50 +18,53 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.net.ConnectException;
 import java.net.InetAddress;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.Scanner;
 import java.util.UUID;
 
-public final class k {
+public final class ABUserData {
 
-    private static k INSTANCE = null;
+    public static final String AB_VERSION = "AB0080";
+    public static final String KEY_GEN_URL = "https://algobuild.com/abkg/ab0080keygen.php";
 
-    private final char[] b;
-    private String c = null;
+    private static ABUserData INSTANCE = null;
+
+    private final char[] systemUsernameChars;
+    private String serial = null;
     private int d = 0;
     private UUID e;
     private UUID f;
     private String g = null;
-    private final String h = "https://algobuild.com/abkg/ab0080keygen.php";
 
-    public static k getInstance() {
+    @NotNull
+    public static ABUserData getInstance() {
         if (INSTANCE == null) {
-            INSTANCE = new k();
+            INSTANCE = new ABUserData();
         }
 
         return INSTANCE;
     }
 
-    private k() {
-        k var1 = this;
-        File var2 = new File(ABFiles.getCoreFolder(), new String((new LoadModelCoreCharArrayFactory()).createArray()));
+    private ABUserData() {
+        File loadModelCore = new File(ABFiles.getCoreFolder(), new String((new LoadModelCoreCharArrayFactory()).createArray()));
 
-        try {
-            DataInputStream var21;
-            byte var3 = (var21 = new DataInputStream(new FileInputStream(var2))).readByte();
-            byte var4 = var21.readByte();
-            byte var5 = var21.readByte();
-            byte var6 = var21.readByte();
-            long var12 = var21.readLong();
-            long var14 = var21.readLong();
-            var1.e = new UUID(var12, var14);
-            var12 = var21.readLong();
-            var14 = var21.readLong();
-            var1.f = new UUID(var12, var14);
-            UUID var22 = UUID.nameUUIDFromBytes(System.getProperties().getProperty(new String((new UserNameCharArrayFactory()).createArray())).getBytes(StandardCharsets.UTF_8));
+        String systemUsername = System.getProperties().getProperty(new String((new UserNameCharArrayFactory()).createArray()));
+        try (DataInputStream inputStream = new DataInputStream(Files.newInputStream(loadModelCore.toPath()))) {
+            byte var3 = inputStream.readByte();
+            byte var4 = inputStream.readByte();
+            byte var5 = inputStream.readByte();
+            byte var6 = inputStream.readByte();
+            long var12 = inputStream.readLong();
+            long var14 = inputStream.readLong();
+            this.e = new UUID(var12, var14);
+            var12 = inputStream.readLong();
+            var14 = inputStream.readLong();
+            this.f = new UUID(var12, var14);
+            UUID uuidFromSystemUsername = UUID.nameUUIDFromBytes(systemUsername.getBytes(StandardCharsets.UTF_8));
+
             if (var3 != -85) {
                 throw new e(Translator.translate("abpErrorConfigFile") + " b1 " + var3);
             }
@@ -77,49 +81,49 @@ public final class k {
                 throw new e(Translator.translate("abpErrorConfigFile") + " b4 " + var6);
             }
 
-            if (!var1.f.equals(var22)) {
+            if (!this.f.equals(uuidFromSystemUsername)) {
                 throw new e(Translator.translate("abpErrorConfigFile") + " UUID2");
             }
+
         } catch (IOException var19) {
             var19.printStackTrace();
         }
 
         this.g();
-        String var20 = System.getProperties().getProperty(new String((new UserNameCharArrayFactory()).createArray()));
-        this.b = new char[var20.length()];
+        this.systemUsernameChars = new char[systemUsername.length()];
 
-        for (int i = 0; i < var20.length(); ++i) {
-            this.b[i] = var20.charAt(i);
+        for (int i = 0; i < systemUsername.length(); ++i) {
+            this.systemUsernameChars[i] = systemUsername.charAt(i);
         }
 
         int i = this.h();
-        var20 = this.b("AB0080");
-        if (i <= 0 && var20 == null) {
+        String username = this.readUsername(AB_VERSION);
+        if (i <= 0 && username == null) {
             try {
-                this.d(this.h, "AB0080");
-            } catch (ABSerializationException var17) {
+                this.generateUsername(KEY_GEN_URL, AB_VERSION);
+            } catch (ABSerializationException ignored) {
             }
         }
 
-        if (i > 0 && var20 == null) {
+        if (i > 0 && username == null) {
             try {
-                if ((var20 = a(this.h, i, "AB0080")) != null) {
-                    this.c(var20, "AB0080");
+                if ((username = a(KEY_GEN_URL, i, AB_VERSION)) != null) {
+                    this.c(username, AB_VERSION);
                 } else {
-                    var20 = a(i, "AB0080");
+                    username = a(i, AB_VERSION);
                 }
             } catch (ABSerializationException var16) {
                 var16.printStackTrace();
             }
         }
 
-        if (i <= 0 && var20 != null) {
-            i = a(var20);
+        if (i <= 0 && username != null) {
+            i = a(username);
             this.a(i);
         }
 
-        if (this.c == null) {
-            this.c = var20;
+        if (this.serial == null) {
+            this.serial = username;
         }
 
         if (this.d == 0) {
@@ -129,21 +133,20 @@ public final class k {
     }
 
     private void g() {
-        File var1 = new File(ABFiles.getCoreFolder(), new String((new TestModelCoreCharArrayFactory()).createArray()));
+        File testModelCore = new File(ABFiles.getCoreFolder(), new String((new TestModelCoreCharArrayFactory()).createArray()));
 
-        try {
-            DataInputStream var13;
-            byte var2 = (var13 = new DataInputStream(new FileInputStream(var1))).readByte();
-            byte var3 = var13.readByte();
-            byte var4 = var13.readByte();
-            byte var5 = var13.readByte();
-            long var7 = var13.readLong();
-            long var9 = var13.readLong();
+        try (DataInputStream in = new DataInputStream(new FileInputStream(testModelCore))) {
+            byte var2 = in.readByte();
+            byte var3 = in.readByte();
+            byte var4 = in.readByte();
+            byte var5 = in.readByte();
+            long var7 = in.readLong();
+            long var9 = in.readLong();
             this.e = new UUID(var7, var9);
-            var7 = var13.readLong();
-            var9 = var13.readLong();
+            var7 = in.readLong();
+            var9 = in.readLong();
             this.f = new UUID(var7, var9);
-            UUID var6 = UUID.nameUUIDFromBytes(System.getProperties().getProperty(new String((new UserNameCharArrayFactory()).createArray())).getBytes(StandardCharsets.UTF_8));
+            UUID uuidFromUsername = UUID.nameUUIDFromBytes(System.getProperties().getProperty(new String((new UserNameCharArrayFactory()).createArray())).getBytes(StandardCharsets.UTF_8));
             if (var2 != -85) {
                 throw new e(Translator.translate("abpErrorConfigFile") + " b1 " + var2);
             }
@@ -160,79 +163,77 @@ public final class k {
                 throw new e(Translator.translate("abpErrorConfigFile") + " b4 " + var5);
             }
 
-            if (!this.f.equals(var6)) {
+            if (!this.f.equals(uuidFromUsername)) {
                 throw new e(Translator.translate("abpErrorConfigFile") + " UUID2");
             }
 
             int var14;
-            if ((var14 = var13.readInt()) > 0) {
+            if ((var14 = in.readInt()) > 0) {
                 byte[] var15 = new byte[var14];
 
                 int var17;
                 for (var17 = 0; var17 < var14; ++var17) {
-                    int var18 = var13.readInt() + 2 * var17 - 143;
+                    int var18 = in.readInt() + 2 * var17 - 143;
                     var15[var17] = (byte) var18;
                 }
 
                 this.g = new String(var15, StandardCharsets.UTF_8);
-                if ((var17 = var13.readInt()) > 0) {
+                if ((var17 = in.readInt()) > 0) {
                     byte[] var19 = new byte[var17];
 
                     for (var14 = 0; var14 < var17; ++var14) {
-                        int var16 = var13.readInt() + 2 * var14 - 143;
+                        int var16 = in.readInt() + 2 * var14 - 143;
                         var19[var14] = (byte) var16;
                     }
 
                     new String(var19, StandardCharsets.UTF_8);
                 }
             }
-        } catch (FileNotFoundException var11) {
-        } catch (IOException var12) {
+        } catch (IOException ignored) {
         }
 
     }
 
-    public void a(String var1, String var2) {
-        if (this.b(var1, var2)) {
-            this.g = var1;
+    public void a(String username, String var2) {
+        if (this.b(username, var2)) {
+            this.g = username;
         }
 
     }
 
     private boolean b(String var1, String var2) {
         boolean var3 = false;
-        File var4 = new File(ABFiles.getCoreFolder(), new String((new TestModelCoreCharArrayFactory()).createArray()));
+        File testModelFile = new File(ABFiles.getCoreFolder(), new String((new TestModelCoreCharArrayFactory()).createArray()));
 
-        try {
-            DataOutputStream var9;
-            (var9 = new DataOutputStream(new FileOutputStream(var4))).write(171);
-            var9.write(207);
-            var9.write(1);
-            var9.write(4);
-            var9.writeLong(this.e.getMostSignificantBits());
-            var9.writeLong(this.e.getLeastSignificantBits());
-            var9.writeLong(this.f.getMostSignificantBits());
-            var9.writeLong(this.f.getLeastSignificantBits());
+        try (DataOutputStream out = new DataOutputStream(Files.newOutputStream(testModelFile.toPath()))) {
+            out.write(171);
+            out.write(207);
+            out.write(1);
+            out.write(4);
+            out.writeLong(this.e.getMostSignificantBits());
+            out.writeLong(this.e.getLeastSignificantBits());
+            out.writeLong(this.f.getMostSignificantBits());
+            out.writeLong(this.f.getLeastSignificantBits());
             byte[] var8 = var1.getBytes(StandardCharsets.UTF_8);
-            var9.writeInt(var8.length);
+            out.writeInt(var8.length);
 
             int var5;
             for (var5 = 0; var5 < var8.length; ++var5) {
-                var9.writeInt(var8[var5] + 143 - 2 * var5);
+                out.writeInt(var8[var5] + 143 - 2 * var5);
             }
 
             var8 = var2.getBytes(StandardCharsets.UTF_8);
-            var9.writeInt(var8.length);
+            out.writeInt(var8.length);
 
             for (var5 = 0; var5 < var8.length; ++var5) {
-                var9.writeInt(var8[var5] + 143 - 2 * var5);
+                out.writeInt(var8[var5] + 143 - 2 * var5);
             }
 
             for (var5 = 0; var5 < 123; ++var5) {
-                var9.write((byte) ((int) (Math.random() * 256.0D)));
+                out.write((byte) ((int) (Math.random() * 256.0D)));
             }
 
-            var9.close();
+            out.close();
             var3 = true;
         } catch (IOException var7) {
             var7.printStackTrace();
@@ -277,22 +278,22 @@ public final class k {
     }
 
     private int h() {
-        File var1 = new File(ABFiles.getCoreFolder(), new String((new ToolModelCoreCharArrayFactory()).createArray()));
+        File toolModelCore = new File(ABFiles.getCoreFolder(), new String((new ToolModelCoreCharArrayFactory()).createArray()));
         int var2 = 0;
 
-        try {
-            DataInputStream var14 = new DataInputStream(new FileInputStream(var1));
-            byte var3 = var14.readByte();
-            byte var4 = var14.readByte();
-            byte var5 = var14.readByte();
-            byte var6 = var14.readByte();
-            long var8 = var14.readLong();
-            long var10 = var14.readLong();
+        try (DataInputStream in = new DataInputStream(Files.newInputStream(toolModelCore.toPath()))) {
+            byte var3 = in.readByte();
+            byte var4 = in.readByte();
+            byte var5 = in.readByte();
+            byte var6 = in.readByte();
+            long var8 = in.readLong();
+            long var10 = in.readLong();
             this.e = new UUID(var8, var10);
-            var8 = var14.readLong();
-            var10 = var14.readLong();
+            var8 = in.readLong();
+            var10 = in.readLong();
             this.f = new UUID(var8, var10);
-            UUID var7 = UUID.nameUUIDFromBytes(System.getProperties().getProperty(new String((new UserNameCharArrayFactory()).createArray())).getBytes(StandardCharsets.UTF_8));
+            UUID uuidFromSystemUsername = UUID.nameUUIDFromBytes(System.getProperties().getProperty(new String((new UserNameCharArrayFactory()).createArray())).getBytes(StandardCharsets.UTF_8));
+
             if (var3 != -85) {
                 throw new e(Translator.translate("abpErrorConfigFile") + " b1 " + var3);
             }
@@ -309,19 +310,19 @@ public final class k {
                 throw new e(Translator.translate("abpErrorConfigFile") + " b4 " + var6);
             }
 
-            if (!this.f.equals(var7)) {
+            if (!this.f.equals(uuidFromSystemUsername)) {
                 throw new e(Translator.translate("abpErrorConfigFile") + " UUID2");
             }
 
             int var15;
             for (var15 = 0; var15 < 7; ++var15) {
-                var14.readInt();
+                in.readInt();
             }
 
-            var2 = var14.readInt();
+            var2 = in.readInt();
 
             for (var15 = 0; var15 < 11; ++var15) {
-                var14.readInt();
+                in.readInt();
             }
         } catch (IOException var13) {
             var13.printStackTrace();
@@ -330,8 +331,8 @@ public final class k {
         return var2;
     }
 
-    public String b() {
-        return this.c;
+    public String getSerial() {
+        return this.serial;
     }
 
     public int c() {
@@ -342,7 +343,7 @@ public final class k {
         return this.g;
     }
 
-    public UUID e() {
+    public UUID getUserUuid() {
         return this.e;
     }
 
@@ -437,132 +438,135 @@ public final class k {
 
                         InputStream var26 = var23.getInputStream();
 
-                        while (true) {
-                            int var20;
-                            while ((var20 = var26.read()) != -1) {
-                                if (var20 != 10 && (var20 < 32 || var20 >= 128)) {
-                                    System.out.print('.');
-                                } else {
-                                    System.out.print((char) var20);
-                                }
+                        int var20;
+                        while ((var20 = var26.read()) != -1) {
+                            if (var20 != 10 && (var20 < 32 || var20 >= 128)) {
+                                System.out.print('.');
+                            } else {
+                                System.out.print((char) var20);
                             }
-
-                            var26.close();
-                            return var3;
                         }
+
+                        var26.close();
+                        return var3;
                     }
                     break;
                 }
-            } catch (MalformedURLException var17) {
-                throw new ABSerializationException(Translator.translate("abpErrorConfigFile"), var17);
-            } catch (ConnectException var18) {
-            } catch (IOException var19) {
-                throw new ABSerializationException(Translator.translate("abpErrorConfigFile"), var19);
+            } catch (ConnectException ignored) {
+            } catch (IOException e) {
+                throw new ABSerializationException(Translator.translate("abpErrorConfigFile"), e);
             }
         }
 
         return var3;
     }
 
-    private void c(String var1, String var2) throws ABSerializationException {
-        File var3;
-        if ((var3 = ABFiles.getABSecretFolder()).exists()) {
-            try {
-                File var9 = new File(var3, var2 + ".sn");
-                PrintStream var10;
-                if (!(var10 = new PrintStream(var9)).checkError() && var1 != null) {
-                    long var6 = 0L;
+    private void c(String username, String configFileName) throws ABSerializationException {
+        File secretFolder = ABFiles.getABSecretFolder();
 
-                    int var11;
-                    for (var11 = 0; var11 < this.b.length; ++var11) {
-                        var6 += this.b[var11];
-                    }
+        if (!secretFolder.exists()) {
+            return;
+        }
 
-                    for (var11 = 0; var11 < var1.length(); ++var11) {
-                        var6 += var1.charAt(var11);
-                    }
+        File file = new File(secretFolder, configFileName + ".sn");
 
-                    var10.print(var1);
-                    var10.print(' ');
-                    var10.println(var6);
+        try (PrintStream stream = new PrintStream(file)) {
+            if (!stream.checkError() && username != null) {
+                long var6 = 0L;
+
+                int var11;
+                for (var11 = 0; var11 < this.systemUsernameChars.length; ++var11) {
+                    var6 += this.systemUsernameChars[var11];
                 }
 
-                var10.close();
-            } catch (FileNotFoundException var8) {
-                throw new ABSerializationException(Translator.translate("abpErrorConfigFile"), var8);
+                for (var11 = 0; var11 < username.length(); ++var11) {
+                    var6 += username.charAt(var11);
+                }
+
+                stream.print(username);
+                stream.print(' ');
+                stream.println(var6);
             }
+        } catch (FileNotFoundException var8) {
+            throw new ABSerializationException(Translator.translate("abpErrorConfigFile"), var8);
         }
     }
 
-    private void d(String var1, String var2) throws ABSerializationException {
-        File var3;
-        if ((var3 = ABFiles.getABSecretFolder()).exists()) {
-            try {
-                var3 = new File(var3, var2 + ".sn");
-                PrintStream var11 = new PrintStream(var3);
-                if (!var11.checkError() && (var1 = e(var1, var2)) != null) {
-                    long var7 = 0L;
+    private void generateUsername(String url, String version) throws ABSerializationException {
+        File configFile = ABFiles.getABSecretFolder();
 
-                    int var10;
-                    for (var10 = 0; var10 < this.b.length; ++var10) {
-                        var7 += this.b[var10];
-                    }
+        if (!configFile.exists()) {
+            return;
+        }
 
-                    for (var10 = 0; var10 < var1.length(); ++var10) {
-                        var7 += var1.charAt(var10);
-                    }
+        try (PrintStream stream = new PrintStream(new File(configFile, version + ".sn"))) {
+            String username = doGenerateUsername(url, version);
 
-                    var11.print(var1);
-                    var11.print(' ');
-                    var11.println(var7);
-                    this.c = var1;
-                    this.d = a(var1);
-                    this.a(this.d);
-                }
-
-                var11.close();
-            } catch (FileNotFoundException var9) {
-                throw new ABSerializationException(Translator.translate("abpErrorConfigFile"), var9);
+            if (stream.checkError() || username == null) {
+                return;
             }
+
+            stream.print(username);
+            stream.print(' ');
+            stream.println(computeUsernameHash(username));
+
+            this.serial = username;
+            this.d = a(username);
+            this.a(this.d);
+        } catch (FileNotFoundException var9) {
+            throw new ABSerializationException(Translator.translate("abpErrorConfigFile"), var9);
         }
     }
 
-    private static String e(String var0, String var1) throws ABSerializationException {
-        String var2 = null;
-        String var3 = null;
-        int var4 = -1;
-        int var5 = -1;
-        long var6 = -1L;
+    private long computeUsernameHash(String username) {
+        long hash = 0L;
+
+        for (char character : this.systemUsernameChars) {
+            hash += character;
+        }
+
+        for (int i = 0; i < username.length(); ++i) {
+            hash += username.charAt(i);
+        }
+        return hash;
+    }
+
+    private static String doGenerateUsername(String url, String version) throws ABSerializationException {
+        String username = null;
+        String sessionId = null;
+        int x = -1;
+        int y = -1;
+        long k = -1L;
 
         try {
-            URLConnection var9;
-            (var9 = (new URL(var0)).openConnection()).setRequestProperty("Cookie", "abver=" + var1 + "; pass=1");
-            var9.connect();
+            URLConnection connection = new URL(url).openConnection();
+            connection.setRequestProperty("Cookie", "abver=" + version + "; pass=1");
+            connection.connect();
 
             int var8;
             String var10;
-            for (var8 = 1; (var10 = var9.getHeaderFieldKey(var8)) != null; ++var8) {
+            for (var8 = 1; (var10 = connection.getHeaderFieldKey(var8)) != null; ++var8) {
                 if (var10.equals("Set-Cookie")) {
                     String var11;
-                    if ((var11 = var9.getHeaderField(var8)).startsWith("PHPSESSID=")) {
-                        var3 = var11.substring(10, var11.indexOf(";"));
+                    if ((var11 = connection.getHeaderField(var8)).startsWith("PHPSESSID=")) {
+                        sessionId = var11.substring(10, var11.indexOf(";"));
                     }
 
                     if (var11.startsWith("x=")) {
-                        var4 = Integer.parseInt(var11.substring(2, var11.indexOf(";")));
+                        x = Integer.parseInt(var11.substring(2, var11.indexOf(";")));
                     }
 
                     if (var11.startsWith("y=")) {
-                        var5 = Integer.parseInt(var11.substring(2, var11.indexOf(";")));
+                        y = Integer.parseInt(var11.substring(2, var11.indexOf(";")));
                     }
 
                     if (var11.startsWith("k=")) {
-                        var6 = Integer.parseInt(var11.substring(2, var11.indexOf(";")));
+                        k = Integer.parseInt(var11.substring(2, var11.indexOf(";")));
                     }
                 }
             }
 
-            InputStream var15 = var9.getInputStream();
+            InputStream var15 = connection.getInputStream();
 
             while (true) {
                 int var18;
@@ -575,10 +579,10 @@ public final class k {
                 }
 
                 var15.close();
-                var8 = var4 + var5 * 10000 ^ 51627384;
-                if (var4 > 0 && var5 > 0 && var6 == -1L && var3 != null) {
+                var8 = x + y * 10000 ^ 51627384;
+                if (x > 0 && y > 0 && k == -1L && sessionId != null) {
                     URLConnection var17;
-                    (var17 = (new URL(var0)).openConnection()).setRequestProperty("Cookie", "PHPSESSID=" + var3 + "; abver=" + var1 + "; pass=2; k=" + var8 + ";");
+                    (var17 = (new URL(url)).openConnection()).setRequestProperty("Cookie", "PHPSESSID=" + sessionId + "; abver=" + version + "; pass=2; k=" + var8 + ";");
                     var17.connect();
 
                     String var16;
@@ -598,14 +602,12 @@ public final class k {
                             }
 
                             if (var12.startsWith("k=") && var12.indexOf(";") > 2) {
-                                var2 = var12.substring(2, var12.indexOf(";"));
+                                username = var12.substring(2, var12.indexOf(";"));
                             }
                         }
                     }
 
-                    InputStream var19 = var17.getInputStream();
-
-                    while (true) {
+                    try (InputStream var19 = var17.getInputStream()) {
                         int var20;
                         while ((var20 = var19.read()) != -1) {
                             if (var20 != 10 && (var20 < 32 || var20 >= 128)) {
@@ -614,65 +616,45 @@ public final class k {
                                 System.out.print((char) var20);
                             }
                         }
-
-                        var19.close();
-                        break;
                     }
                 }
 
-                return var2;
+                return username;
             }
         } catch (IOException var14) {
             throw new ABSerializationException(Translator.translate("abpErrorConfigFile"), var14);
         }
     }
 
-    private String b(String var1) {
-        String var2 = null;
-        File var15 = new File(ABFiles.getABSecretFolder(), var1 + ".sn");
+    private String readUsername(String version) {
+        File var15 = new File(ABFiles.getABSecretFolder(), version + ".sn");
 
-        try {
-            FileInputStream var16 = new FileInputStream(var15);
-            Scanner var3;
-            String var4 = (var3 = new Scanner(var16)).next();
-            long var7 = 0L;
+        try (Scanner scanner = new Scanner(Files.newInputStream(var15.toPath()))) {
+            String username = scanner.next();
+            long hash = computeUsernameHash(username);
+            long expectedHash = scanner.nextLong();
 
-            int var9;
-            for (var9 = 0; var9 < this.b.length; ++var9) {
-                var7 += this.b[var9];
-            }
-
-            for (var9 = 0; var9 < var4.length(); ++var9) {
-                var7 += var4.charAt(var9);
-            }
-
-            long var14 = var3.nextLong();
-            var3.close();
-            var16.close();
-            if (var7 != var14) {
+            if (hash != expectedHash) {
                 throw new ABSerializationException(Translator.translate("abpErrorConfigFile"));
             }
 
-            var2 = var4;
-        } catch (FileNotFoundException ignored) {
-        } catch (IOException var12) {
-            var12.printStackTrace();
-        } catch (Exception ignored) {
+            return username;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
-
-        return var2;
     }
 
     public static int a(String var0) {
         int var1 = 0;
-        boolean var2 = false;
+        boolean stop = false;
 
-        for (int var3 = var0.length() - 1; var3 >= 0 && !var2; --var3) {
-            char var4;
-            if ((var4 = var0.charAt(var3)) >= 'F' && var4 <= 'O') {
+        for (int i = var0.length() - 1; i >= 0 && !stop; --i) {
+            char var4 = var0.charAt(i);
+            if (var4 >= 'F' && var4 <= 'O') {
                 var1 = var1 * 10 + var4 - 70;
             } else {
-                var2 = true;
+                stop = true;
             }
         }
 

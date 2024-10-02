@@ -54,8 +54,8 @@ public final class b extends JDialog implements ActionListener, DocumentListener
       this.setLocation(var3);
       this.l = var2;
       this.m = var4;
-      this.okButton = AlgoBuild.d(Translator.translate("dialogButtonOK"));
-      this.cancelButton = AlgoBuild.d(Translator.translate("dialogButtonCancel"));
+      this.okButton = AlgoBuild.createButton(Translator.translate("dialogButtonOK"));
+      this.cancelButton = AlgoBuild.createButton(Translator.translate("dialogButtonCancel"));
       JPanel var5;
       (var5 = new JPanel()).setLayout(new GridLayout(5, 1, 10, 10));
       JLabel var8 = new JLabel(Translator.translate("abedDialogCallFuncCodename"));

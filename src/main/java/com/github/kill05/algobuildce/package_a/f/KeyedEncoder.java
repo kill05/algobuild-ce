@@ -10,43 +10,38 @@ import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.UUID;
 
-public final class c {
+public final class KeyedEncoder {
     private static final String a = "RSA";
     private static final String b = "RSA/ECB/PKCS1PADDING";
     private static final int c = 1024;
     private final int d = 11;
-    private boolean e = false;
-    private Key f = null;
-    private Cipher g = null;
-    private int h = -1;
+    private boolean loaded = false;
+    private Key key = null;
+    private Cipher cipher = null;
+    private int mode = -1;
     private final File i;
     private int j = 0;
-    private String k;
-    private String l = null;
+    private String tempName;
+    private String username = null;
 
-    public c(File var1, int var2) {
-        this.i = var1;
-        if (var2 == 0) {
-            this.h = var2;
-            this.c();
-        } else {
-            if (var2 == 1) {
-                this.h = var2;
-                this.c();
-            }
+    public KeyedEncoder(File file, int mode) {
+        this.i = file;
 
+        if (mode == 0 || mode == 1) {
+            this.mode = mode;
+            this.setup();
         }
     }
 
-    public c(File var1, int var2, String var3) {
+    public KeyedEncoder(File var1, int mode, String username) {
         this.i = var1;
-        this.h = 2;
-        this.k = "tmp-" + Integer.toString(com.github.kill05.algobuildce.package_a.f.k.a(var3), 9);
-        this.l = var3;
-        this.c();
+        this.mode = mode;
+        this.tempName = "tmp-" + Integer.toString(ABUserData.a(username), 9);
+        this.username = username;
+        this.setup();
     }
 
-    private void c() {
+    private void setup() {
         try {
             DataInputStream var2;
             byte var3;
@@ -61,7 +56,7 @@ public final class c {
             KeyFactory var15;
             UUID var24;
             UUID var25;
-            if (this.h == 0) {
+            if (this.mode == 0) {
                 var3 = (var2 = new DataInputStream(new FileInputStream(this.i))).readByte();
                 var4 = var2.readByte();
                 var5 = var2.readByte();
@@ -72,8 +67,8 @@ public final class c {
                 var8 = var2.readLong();
                 var10 = var2.readLong();
                 var24 = new UUID(var8, var10);
-                var9 = com.github.kill05.algobuildce.package_a.f.k.getInstance().e();
-                var25 = com.github.kill05.algobuildce.package_a.f.k.getInstance().f();
+                var9 = ABUserData.getInstance().getUserUuid();
+                var25 = ABUserData.getInstance().f();
                 var11 = new byte[(int) this.i.length() - 36];
                 var2.read(var11);
                 var2.close();
@@ -83,11 +78,11 @@ public final class c {
 
                 var15 = KeyFactory.getInstance(a);
                 PKCS8EncodedKeySpec var16 = new PKCS8EncodedKeySpec(var11);
-                this.f = var15.generatePrivate(var16);
+                this.key = var15.generatePrivate(var16);
                 this.markLoaded();
             }
 
-            if (this.h == 1) {
+            if (this.mode == 1) {
                 var3 = (var2 = new DataInputStream(new FileInputStream(this.i))).readByte();
                 var4 = var2.readByte();
                 var5 = var2.readByte();
@@ -98,8 +93,8 @@ public final class c {
                 var8 = var2.readLong();
                 var10 = var2.readLong();
                 var24 = new UUID(var8, var10);
-                var9 = com.github.kill05.algobuildce.package_a.f.k.getInstance().e();
-                var25 = com.github.kill05.algobuildce.package_a.f.k.getInstance().f();
+                var9 = ABUserData.getInstance().getUserUuid();
+                var25 = ABUserData.getInstance().f();
                 var11 = new byte[(int) this.i.length() - 36];
                 var2.read(var11);
                 var2.close();
@@ -109,30 +104,30 @@ public final class c {
 
                 var15 = KeyFactory.getInstance(a);
                 X509EncodedKeySpec var18 = new X509EncodedKeySpec(var11);
-                this.f = var15.generatePublic(var18);
+                this.key = var15.generatePublic(var18);
                 this.markLoaded();
             }
 
-            if (this.h == 2) {
+            if (this.mode == 2) {
                 File var17;
                 byte[] var19;
-                if ((var17 = new File(this.i, this.k)).exists()) {
+                if ((var17 = new File(this.i, this.tempName)).exists()) {
                     FileInputStream var21 = new FileInputStream(var17);
                     var19 = new byte[(int) var17.length()];
                     var21.read(var19);
                     var21.close();
-                } else if ((var19 = com.github.kill05.algobuildce.package_a.f.d.a(com.github.kill05.algobuildce.package_a.f.k.getInstance().b(), this.l)) != null && var19.length > 0) {
+                } else if ((var19 = UserRegisterer.a(ABUserData.getInstance().getSerial(), this.username)) != null && var19.length > 0) {
                     FileOutputStream var20;
                     (var20 = new FileOutputStream(var17)).write(var19);
                     var20.close();
                 } else {
-                    System.out.println("ERROR DOWNLOADING PUBLIC_EXTERNAL_KEY key: " + this.l);
+                    System.out.println("ERROR DOWNLOADING PUBLIC_EXTERNAL_KEY key: " + this.username);
                 }
 
                 if (var19 != null && var19.length > 0) {
                     KeyFactory var22 = KeyFactory.getInstance(a);
                     X509EncodedKeySpec var23 = new X509EncodedKeySpec(var19);
-                    this.f = var22.generatePublic(var23);
+                    this.key = var22.generatePublic(var23);
                     this.markLoaded();
                 }
             }
@@ -142,7 +137,7 @@ public final class c {
         }
 
         if (this.isLoaded()) {
-            if (this.h == 0) {
+            if (this.mode == 0) {
                 byte[] var1 = new byte[]{1, 1, 1};
                 this.a(var1);
             }
@@ -152,8 +147,8 @@ public final class c {
 
     }
 
-    public byte[] a() {
-        return this.f.getEncoded();
+    public byte[] getEncodedKey() {
+        return this.key.getEncoded();
     }
 
     public static void a(UUID var0, UUID var1, File var2, File var3) {
@@ -200,18 +195,18 @@ public final class c {
 
     private boolean isLoaded() {
         synchronized (this) {
-            return this.e;
+            return this.loaded;
         }
     }
 
     private void markLoaded() {
         synchronized (this) {
-            this.e = true;
+            this.loaded = true;
         }
     }
 
     public byte[] a(byte[] var1) {
-        if (this.h == -1) {
+        if (this.mode == -1) {
             return null;
         }
 
@@ -222,7 +217,7 @@ public final class c {
         int var3;
         int var4 = (var3 = c / 8) - this.d;
         int var2;
-        if (this.h == 0) {
+        if (this.mode == 0) {
             var2 = (var1.length + var4 - 1) / var4 * var3;
         } else {
             var2 = (var1.length + var3 - 1) / var3 * var3;
@@ -231,35 +226,35 @@ public final class c {
         byte[] var10 = new byte[var2];
 
         try {
-            if (this.g == null) {
-                this.g = Cipher.getInstance(b);
+            if (this.cipher == null) {
+                this.cipher = Cipher.getInstance(b);
             }
 
             int var5;
             int var6;
             int var7;
             int var8;
-            if (this.h == 0) {
-                this.g.init(1, this.f);
+            if (this.mode == 0) {
+                this.cipher.init(1, this.key);
                 var5 = var1.length;
                 var6 = 0;
                 var7 = Math.min(var5, var4);
 
                 for (var8 = 0; var5 > 0; var8 += var3) {
-                    var3 = this.g.doFinal(var1, var6, var7, var10, var8);
+                    var3 = this.cipher.doFinal(var1, var6, var7, var10, var8);
                     var6 += var4;
                     var7 = Math.min(var5 -= var4, var4);
                 }
 
                 this.j = var8;
             } else {
-                this.g.init(2, this.f);
+                this.cipher.init(2, this.key);
                 var5 = var1.length;
                 var6 = 0;
                 var7 = Math.min(var5, var3);
 
                 for (var8 = 0; var5 > 0; var8 += var4) {
-                    var4 = this.g.doFinal(var1, var6, var7, var10, var8);
+                    var4 = this.cipher.doFinal(var1, var6, var7, var10, var8);
                     var6 += var3;
                     var7 = Math.min(var5 -= var3, var3);
                 }

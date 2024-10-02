@@ -49,8 +49,8 @@ public final class c extends JDialog implements ActionListener, DocumentListener
       this.l = var2;
       this.k = var3;
       this.g = var2.j();
-      this.a = AlgoBuild.d(Translator.translate("dialogButtonOK"));
-      this.b = AlgoBuild.d(Translator.translate("dialogButtonCancel"));
+      this.a = AlgoBuild.createButton(Translator.translate("dialogButtonOK"));
+      this.b = AlgoBuild.createButton(Translator.translate("dialogButtonCancel"));
       this.setModal(true);
       JPanel var4;
       (var4 = new JPanel()).setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));

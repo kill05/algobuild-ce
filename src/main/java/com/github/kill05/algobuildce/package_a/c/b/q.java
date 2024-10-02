@@ -144,10 +144,9 @@ public final class q extends ABInstructionBlock {
     @Override
     public void removeInstruction(int index) {
         if (this.a != null) {
-            Iterator var3 = this.a.iterator();
 
-            while (var3.hasNext()) {
-                ((IInstructionPanel) var3.next()).a(index);
+            for (IInstructionPanel panel : this.a) {
+                panel.a(index);
             }
         }
 

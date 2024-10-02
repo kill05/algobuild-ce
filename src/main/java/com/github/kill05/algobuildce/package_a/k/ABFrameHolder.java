@@ -1,6 +1,7 @@
 package com.github.kill05.algobuildce.package_a.k;
 
 import com.github.kill05.algobuildce.package_a.f.ABFiles;
+import com.github.kill05.algobuildce.package_a.f.ABUserData;
 import com.github.kill05.algobuildce.package_a.i.ImageUtils;
 import com.github.kill05.algobuildce.package_a.i.Translator;
 
@@ -20,7 +21,7 @@ public class ABFrameHolder {
 
     private final ABFrame frame;
     private final ActionMap actionMap;
-    private JFileChooser c;
+    private JFileChooser fileChooser;
     private String d;
 
     private ABFrameHolder() {
@@ -48,7 +49,7 @@ public class ABFrameHolder {
         return INSTANCE;
     }
 
-    public final ABFrame b() {
+    public final ABFrame getFrame() {
         return this.frame;
     }
 
@@ -163,7 +164,7 @@ public class ABFrameHolder {
         var2 = "mnuAuthorRegistration";
         var3 = Translator.translate("mnuAuthorRegistration");
         n var24;
-        (var24 = new n(this, var3)).setEnabled(com.github.kill05.algobuildce.package_a.f.k.getInstance().d() == null);
+        (var24 = new n(this, var3)).setEnabled(ABUserData.getInstance().d() == null);
         var1.a(var2, var24);
         var2 = "mnuHelpOnline";
         var3 = Translator.translate("mnuHelpOnline");
@@ -266,8 +267,8 @@ public class ABFrameHolder {
         return var1;
     }
 
-    public final void a(String var1, boolean var2) {
-        this.actionMap.getAction(var1).setEnabled(var2);
+    public final void setActionEnabled(String action, boolean enabled) {
+        this.actionMap.getAction(action).setEnabled(enabled);
     }
 
     public final void c() {
@@ -291,50 +292,47 @@ public class ABFrameHolder {
 
     }
 
-    public final String e() {
-        String var1 = null;
-        if (this.c == null) {
+    public final String getSelectedFilePath() {
+        if (this.fileChooser == null) {
             this.d = ABFiles.getABFolder().getAbsolutePath();
-            this.c = new JFileChooser(this.d);
-            FileNameExtensionFilter var2 = new FileNameExtensionFilter("AlgoBuild files *.algobuild", new String[]{"algobuild"});
-            this.c.setFileFilter(var2);
-            this.c.setFileSelectionMode(0);
+            this.fileChooser = new JFileChooser(this.d);
+            this.fileChooser.setFileFilter(new FileNameExtensionFilter("AlgoBuild files *.algobuild", "algobuild"));
+            this.fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         }
 
-        if (this.c.showOpenDialog(this.frame) == 0) {
-            var1 = this.c.getSelectedFile().getAbsolutePath();
+        if (this.fileChooser.showOpenDialog(this.frame) == 0) {
+            return this.fileChooser.getSelectedFile().getAbsolutePath();
         }
 
-        return var1;
+        return null;
     }
 
     public final String a(String var1) {
         String var2 = null;
-        if (this.c == null) {
+        if (this.fileChooser == null) {
             this.d = ABFiles.getABFolder().getAbsolutePath();
-            this.c = new JFileChooser(this.d);
+            this.fileChooser = new JFileChooser(this.d);
             FileNameExtensionFilter var3 = new FileNameExtensionFilter("AlgoBuild files *.algobuild", "algobuild");
-            this.c.setFileFilter(var3);
-            this.c.setFileSelectionMode(0);
+            this.fileChooser.setFileFilter(var3);
+            this.fileChooser.setFileSelectionMode(0);
         }
 
         if (var1 != null) {
-            this.c.setSelectedFile(new File(var1));
+            this.fileChooser.setSelectedFile(new File(var1));
         }
 
-        if (this.c.showSaveDialog(this.frame) == 0) {
-            var1 = this.c.getSelectedFile().getName();
-            var2 = this.c.getSelectedFile().getAbsolutePath();
+        if (this.fileChooser.showSaveDialog(this.frame) == 0) {
+            var1 = this.fileChooser.getSelectedFile().getName();
+            var2 = this.fileChooser.getSelectedFile().getAbsolutePath();
             FileFilter var4;
-            if ((var4 = this.c.getFileFilter()) != null && var4 instanceof FileNameExtensionFilter) {
+            if ((var4 = this.fileChooser.getFileFilter()) != null && var4 instanceof FileNameExtensionFilter) {
                 String[] var5 = ((FileNameExtensionFilter)var4).getExtensions();
                 if (!var1.contains(".") && var5.length > 0 && var5[0] != null) {
                     var2 = var2 + "." + var5[0];
                 }
             }
 
-            String var6 = this.c.getSelectedFile().getParent();
-            this.d = var6;
+            this.d = this.fileChooser.getSelectedFile().getParent();
         }
 
         return var2;
@@ -424,11 +422,11 @@ public class ABFrameHolder {
 
     public final void p() {
         String var1;
-        if ((var1 = com.github.kill05.algobuildce.package_a.f.k.getInstance().d()) == null) {
+        if ((var1 = ABUserData.getInstance().d()) == null) {
             var1 = Translator.translate("authorNotRegistered");
         }
 
-        var1 = "AlgoBuild\n" + Translator.translate("infoVersion") + " 0" + ".85" + "\n" + Translator.translate("infoBuild") + " 00085_20200418_1930" + "\n(C) Paolo Santi 2011-2020" + "\n\n" + Translator.translate("authorRegisteredInfo") + "\n" + Translator.translate("infoSerial") + ": " + com.github.kill05.algobuildce.package_a.f.k.getInstance().b() + "\n" + Translator.translate("authorName") + ": " + var1;
+        var1 = "AlgoBuild\n" + Translator.translate("infoVersion") + " 0" + ".85" + "\n" + Translator.translate("infoBuild") + " 00085_20200418_1930" + "\n(C) Paolo Santi 2011-2020" + "\n\n" + Translator.translate("authorRegisteredInfo") + "\n" + Translator.translate("infoSerial") + ": " + ABUserData.getInstance().getSerial() + "\n" + Translator.translate("authorName") + ": " + var1;
         Object[] var2 = new Object[]{"OK", Translator.translate("infoWebSite")};
         if (JOptionPane.showOptionDialog(this.frame, var1, Translator.translate("infoAbout"), 0, 1, new ImageIcon(this.frame.getIconImage()), var2, var2[0]) == 1) {
             try {
@@ -461,7 +459,7 @@ public class ABFrameHolder {
     }
 
     public final void s() {
-        com.github.kill05.algobuildce.package_a.f.k var1 = com.github.kill05.algobuildce.package_a.f.k.getInstance();
+        ABUserData var1 = ABUserData.getInstance();
         if (this.frame != null && var1 != null) {
             String var2;
             String var5;

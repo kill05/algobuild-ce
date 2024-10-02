@@ -41,8 +41,8 @@ public final class a extends JDialog implements ActionListener, KeyListener, Doc
     private a(Window var1, Point var2) {
         super((Frame) var1, Translator.translate("abedDialogAssignTitle"), true);
         this.setLocation(var2);
-        this.okButton = AlgoBuild.d(Translator.translate("dialogButtonOK"));
-        this.cancelButton = AlgoBuild.d(Translator.translate("dialogButtonCancel"));
+        this.okButton = AlgoBuild.createButton(Translator.translate("dialogButtonOK"));
+        this.cancelButton = AlgoBuild.createButton(Translator.translate("dialogButtonCancel"));
         JTextArea var4;
         (var4 = new JTextArea(Translator.translate("abedDialogAssignLabel"))).setEditable(false);
         var4.setEnabled(true);
