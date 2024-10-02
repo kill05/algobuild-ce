@@ -5,9 +5,9 @@ import javax.swing.AbstractAction;
 
 final class l extends AbstractAction {
 
-    private final c a;
+    private final ABFrameHolder a;
 
-    l(c var1, String var2) {
+    l(ABFrameHolder var1, String var2) {
         super(var2);
         this.a = var1;
     }

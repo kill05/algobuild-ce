@@ -150,7 +150,7 @@ public class b extends n {
     @Override
     public JSONObject b(boolean var1) {
         JSONObject var5;
-        (var5 = super.b(var1)).b("callName", this.b);
+        (var5 = super.b(var1)).put("callName", this.b);
         int var2 = this.c.size();
 
         for (int var3 = 0; var3 < var2; ++var3) {
@@ -166,13 +166,13 @@ public class b extends n {
     @Override
     public void a(JSONObject var1, boolean var2) {
         super.a(var1, var2);
-        String var4 = var1.f("callName");
+        String var4 = var1.getAsString("callName");
         this.a(var4);
         this.c.removeAllElements();
         JSONArray var3;
-        if ((var3 = var1.d("actualParams")) != null) {
+        if ((var3 = var1.getAsJsonArray("actualParams")) != null) {
             for (int var5 = 0; var5 < var3.size(); ++var5) {
-                this.b(var3.d(var5));
+                this.b(var3.getAsString(var5));
             }
         }
 

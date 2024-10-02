@@ -1,13 +1,13 @@
 package com.github.kill05.algobuildce.package_a.j.b;
 
+import com.github.kill05.algobuildce.package_a.c.b.s;
+import com.github.kill05.algobuildce.package_a.c.b.t;
 import com.github.kill05.algobuildce.package_a.i.Translator;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPopupMenu;
 
 public class o extends n implements com.github.kill05.algobuildce.package_a.c.a.k {
     protected com.github.kill05.algobuildce.package_a.c.a.d i;
@@ -26,15 +26,16 @@ public class o extends n implements com.github.kill05.algobuildce.package_a.c.a.
 
     @Override
     public final boolean f() {
-        return this.i != null ? this.i.a() : false;
+        return this.i != null && this.i.a();
     }
 
     protected void b_() {
         if (this.j != null) {
             boolean var2 = false;
             com.github.kill05.algobuildce.package_a.c.a.d var3 = null;
-            if (this.b.a() != null) {
-                var3 = this.b.a().d();
+            com.github.kill05.algobuildce.package_a.c.a.c a = this.b.a();
+            if (a != null) {
+                var3 = a.d();
             }
 
             if (var3 == null) {
@@ -55,40 +56,42 @@ public class o extends n implements com.github.kill05.algobuildce.package_a.c.a.
     @Override
     protected final void b(Graphics var1) {
         com.github.kill05.algobuildce.package_a.c.a.d var2 = null;
-        if (this.b.a() != null) {
-            var2 = this.b.a().d();
+        com.github.kill05.algobuildce.package_a.c.a.c a = this.b.a();
+        if (a != null) {
+            var2 = a.d();
         }
 
         if (var2 == null) {
             if (!this.g && this.b.j() != this.i) {
-                var1.setColor(this.b.q().e());
+                var1.setColor(this.b.getViewOptions().getFillingColor());
             } else {
-                var1.setColor(this.b.q().g());
+                var1.setColor(this.b.getViewOptions().getFillingColorSelected());
             }
         } else if (var2 == this.i) {
-            var1.setColor(this.b.q().f());
+            var1.setColor(this.b.getViewOptions().getFillingColorRunning());
         } else {
-            var1.setColor(this.b.q().e());
+            var1.setColor(this.b.getViewOptions().getFillingColor());
         }
     }
 
     @Override
     protected final void c(Graphics var1) {
         com.github.kill05.algobuildce.package_a.c.a.d var2 = null;
-        if (this.b.a() != null) {
-            var2 = this.b.a().d();
+        com.github.kill05.algobuildce.package_a.c.a.c a = this.b.a();
+        if (a != null) {
+            var2 = a.d();
         }
 
         if (var2 == null) {
             if (!this.g && this.b.j() != this.i) {
-                var1.setColor(this.b.q().i());
+                var1.setColor(this.b.getViewOptions().getLineColor());
             } else {
-                var1.setColor(this.b.q().k());
+                var1.setColor(this.b.getViewOptions().getLineColorSelected());
             }
         } else if (var2 == this.i) {
-            var1.setColor(this.b.q().j());
+            var1.setColor(this.b.getViewOptions().getLineColorRunning());
         } else {
-            var1.setColor(this.b.q().i());
+            var1.setColor(this.b.getViewOptions().getLineColor());
         }
     }
 
@@ -97,17 +100,17 @@ public class o extends n implements com.github.kill05.algobuildce.package_a.c.a.
         com.github.kill05.algobuildce.package_a.c.a.c var3;
         if ((var3 = this.b.a()) == null) {
             if (!this.g && this.b.j() != this.i) {
-                var1.setColor(this.b.q().e());
+                var1.setColor(this.b.getViewOptions().getFillingColor());
             } else {
-                var1.setColor(this.b.q().g());
+                var1.setColor(this.b.getViewOptions().getFillingColorSelected());
             }
         } else {
             com.github.kill05.algobuildce.package_a.c.a.d var4 = var3.d();
             int var5 = var3.c();
             if (var4 == this.i && var5 == var2 && var4.a(var5)) {
-                var1.setColor(this.b.q().f());
+                var1.setColor(this.b.getViewOptions().getFillingColorRunning());
             } else {
-                var1.setColor(this.b.q().e());
+                var1.setColor(this.b.getViewOptions().getFillingColor());
             }
         }
     }
@@ -117,16 +120,16 @@ public class o extends n implements com.github.kill05.algobuildce.package_a.c.a.
         com.github.kill05.algobuildce.package_a.c.a.c var2;
         if ((var2 = this.b.a()) == null) {
             if (!this.g && this.b.j() != this.i) {
-                var1.setColor(this.b.q().i());
+                var1.setColor(this.b.getViewOptions().getLineColor());
             } else {
-                var1.setColor(this.b.q().k());
+                var1.setColor(this.b.getViewOptions().getLineColorSelected());
             }
         } else {
             com.github.kill05.algobuildce.package_a.c.a.d var3;
             if ((var3 = var2.d()) == this.i && var3.a(var2.c())) {
-                var1.setColor(this.b.q().j());
+                var1.setColor(this.b.getViewOptions().getLineColorRunning());
             } else {
-                var1.setColor(this.b.q().i());
+                var1.setColor(this.b.getViewOptions().getLineColor());
             }
         }
     }
@@ -205,7 +208,7 @@ public class o extends n implements com.github.kill05.algobuildce.package_a.c.a.
     @Override
     public void actionPerformed(ActionEvent var1) {
         String var7;
-        if ((var7 = var1.getActionCommand()) != null && var7.length() > 0) {
+        if ((var7 = var1.getActionCommand()) != null && !var7.isEmpty()) {
             if (var7.equals(Translator.translate("instructionModify"))) {
                 this.b.a(this.i);
                 this.a_();
@@ -218,23 +221,15 @@ public class o extends n implements com.github.kill05.algobuildce.package_a.c.a.
             }
 
             if (var7.equals(Translator.translate("instructionCut"))) {
-                o var8 = this;
                 String var2 = this.h();
 
                 try {
-                    com.github.kill05.algobuildce.package_a.g.b var3 = new com.github.kill05.algobuildce.package_a.g.b(var8.b, var2);
-                    var8.b.b(var8.i);
-                    var8.b.c(var2);
-                    var8.c.c().a((com.github.kill05.algobuildce.package_a.g.g) var3);
-                    return;
-                } catch (com.github.kill05.algobuildce.package_a.c.b.s var4) {
+                    com.github.kill05.algobuildce.package_a.g.b var3 = new com.github.kill05.algobuildce.package_a.g.b(this.b, var2);
+                    this.b.b(this.i);
+                    this.b.c(var2);
+                    this.c.c().a(var3);
+                } catch (s | NumberFormatException | t var4) {
                     var4.printStackTrace();
-                    return;
-                } catch (NumberFormatException var5) {
-                    var5.printStackTrace();
-                    return;
-                } catch (com.github.kill05.algobuildce.package_a.c.b.t var6) {
-                    var6.printStackTrace();
                 }
             }
         }

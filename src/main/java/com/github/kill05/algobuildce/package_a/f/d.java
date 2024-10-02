@@ -131,13 +131,13 @@ public final class d {
 
    public static String b(String var0, String var1) {
       String var2 = "AB0080";
-      int var3 = k.a().c();
-      byte[] var4 = f.a().b();
+      int var3 = k.getInstance().c();
+      byte[] var4 = f.getInstance().b();
       String var5 = null;
 
       try {
          if ((var5 = a("https://algobuild.com/abkg/ab0080keyusrreg.php", var2, var3, var0, var1, var4)) != null) {
-            k.a().a(var0, var5);
+            k.getInstance().a(var0, var5);
          }
       } catch (i var6) {
          JOptionPane.showMessageDialog(null, "IMPOSSIBILE REGISTRARE " + var0 + "   " + var1);

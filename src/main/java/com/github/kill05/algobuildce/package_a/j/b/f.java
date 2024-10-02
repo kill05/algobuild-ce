@@ -1,5 +1,6 @@
 package com.github.kill05.algobuildce.package_a.j.b;
 
+import com.github.kill05.algobuildce.package_a.i.ImageUtils;
 import com.github.kill05.algobuildce.package_a.i.Translator;
 import com.github.kill05.algobuildce.package_a.k.GlobalVariables;
 
@@ -29,8 +30,8 @@ public final class f extends n {
 
       int var3 = this.getWidth();
       int var4 = this.getHeight();
-      int var5 = (int)((double)this.b.q().h() * GlobalVariables.getFontZoomRatio());
-      int var6 = (int)((double)this.b.q().m() * GlobalVariables.getFontZoomRatio());
+      int var5 = (int)((double)this.b.getViewOptions().getLineWidth() * GlobalVariables.getFontZoomRatio());
+      int var6 = (int)((double)this.b.getViewOptions().m() * GlobalVariables.getFontZoomRatio());
       this.c(var1);
       if (this.g && var2 == null) {
          this.b(var1);
@@ -78,27 +79,27 @@ public final class f extends n {
       if (var2 == null) {
          JPopupMenu var4 = new JPopupMenu();
          JLabel var3;
-         (var3 = new JLabel(Translator.translate("instructionConnectorNewMsg"))).setIcon(com.github.kill05.algobuildce.package_a.i.b.a("imgs/new_instruction.gif"));
+         (var3 = new JLabel(Translator.translate("instructionConnectorNewMsg"))).setIcon(ImageUtils.loadImage("imgs/new_instruction.gif"));
          var4.insert(var3, 0);
          JMenuItem var5;
-         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewAssign"), com.github.kill05.algobuildce.package_a.i.b.a("imgs/assign_icon.gif"))).addActionListener(this);
+         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewAssign"), ImageUtils.loadImage("imgs/assign_icon.gif"))).addActionListener(this);
          var4.add(var5);
-         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewInput"), com.github.kill05.algobuildce.package_a.i.b.a("imgs/input_icon.gif"))).addActionListener(this);
+         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewInput"), ImageUtils.loadImage("imgs/input_icon.gif"))).addActionListener(this);
          var4.add(var5);
-         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewOutput"), com.github.kill05.algobuildce.package_a.i.b.a("imgs/output_icon.gif"))).addActionListener(this);
+         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewOutput"), ImageUtils.loadImage("imgs/output_icon.gif"))).addActionListener(this);
          var4.add(var5);
-         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewIf"), com.github.kill05.algobuildce.package_a.i.b.a("imgs/if_icon.gif"))).addActionListener(this);
+         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewIf"), ImageUtils.loadImage("imgs/if_icon.gif"))).addActionListener(this);
          var4.add(var5);
-         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewFor"), com.github.kill05.algobuildce.package_a.i.b.a("imgs/for_icon.gif"))).addActionListener(this);
+         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewFor"), ImageUtils.loadImage("imgs/for_icon.gif"))).addActionListener(this);
          var4.add(var5);
-         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewWhile"), com.github.kill05.algobuildce.package_a.i.b.a("imgs/while_icon.gif"))).addActionListener(this);
+         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewWhile"), ImageUtils.loadImage("imgs/while_icon.gif"))).addActionListener(this);
          var4.add(var5);
-         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewDoWhile"), com.github.kill05.algobuildce.package_a.i.b.a("imgs/dowhile_icon.gif"))).addActionListener(this);
+         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewDoWhile"), ImageUtils.loadImage("imgs/dowhile_icon.gif"))).addActionListener(this);
          var4.add(var5);
-         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewComment"), com.github.kill05.algobuildce.package_a.i.b.a("imgs/comment_icon.gif"))).addActionListener(this);
+         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewComment"), ImageUtils.loadImage("imgs/comment_icon.gif"))).addActionListener(this);
          var4.add(var5);
-         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewCall"), com.github.kill05.algobuildce.package_a.i.b.a("imgs/call_icon.gif"))).addActionListener(this);
-         if (this.b.h().c() <= 1) {
+         (var5 = new JMenuItem(Translator.translate("instructionConnectorNewCall"), ImageUtils.loadImage("imgs/call_icon.gif"))).addActionListener(this);
+         if (this.b.getAlgoBuild().c() <= 1) {
             var5.setEnabled(false);
          }
 

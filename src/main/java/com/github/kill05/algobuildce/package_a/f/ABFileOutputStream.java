@@ -4,11 +4,11 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public final class b extends FileOutputStream {
-    private String a = "AlgoBuild01.00\n";
+public final class ABFileOutputStream extends FileOutputStream {
+    private static final String a = "AlgoBuild01.00\n";
     private int b = 0;
 
-    public b(String var1) throws FileNotFoundException {
+    public ABFileOutputStream(String var1) throws FileNotFoundException {
         super(var1);
     }
 

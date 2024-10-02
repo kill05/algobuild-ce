@@ -1,8 +1,10 @@
 package com.github.kill05.algobuildce.package_a.a;
 
+import com.github.kill05.algobuildce.package_a.c.a.ViewOptions;
+import com.github.kill05.algobuildce.package_a.f.ABFiles;
 import com.github.kill05.algobuildce.package_a.i.Translator;
 import com.github.kill05.algobuildce.json.JSONObject;
-import com.github.kill05.algobuildce.json.g;
+import com.github.kill05.algobuildce.json.JsonWriter;
 import com.github.kill05.algobuildce.package_a.k.GlobalVariables;
 
 import java.awt.Color;
@@ -30,19 +32,19 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 public final class m extends JDialog implements ActionListener, ChangeListener {
-    private Frame a;
-    private JComboBox b;
-    private Font c;
-    private Font d;
-    private JSpinner e;
-    private JSpinner f;
-    private JSpinner g;
-    private JButton h;
-    private JButton i;
-    private JButton j;
-    private JButton k;
-    private JButton l;
-    private com.github.kill05.algobuildce.package_a.c.a.b m;
+    private final Frame a;
+    private final JComboBox<String> comboBox;
+    private final Font c;
+    private final Font d;
+    private final JSpinner e;
+    private final JSpinner f;
+    private final JSpinner g;
+    private final JButton h;
+    private final JButton i;
+    private final JButton j;
+    private final JButton k;
+    private final JButton l;
+    private final com.github.kill05.algobuildce.package_a.c.a.b m;
 
     public m(Frame var1, com.github.kill05.algobuildce.package_a.c.a.b var2) {
         super(var1, Translator.translate("fontDialogTitle"));
@@ -55,27 +57,27 @@ public final class m extends JDialog implements ActionListener, ChangeListener {
         this.setVisible(false);
         this.setLocation(100, 100);
         this.setResizable(false);
-        this.c = var2.q().b();
-        this.d = var2.q().c();
-        this.b = new JComboBox();
+        this.c = var2.getViewOptions().getCodeFont();
+        this.d = var2.getViewOptions().getConsoleFont();
+        this.comboBox = new JComboBox<>();
         String[] var7 = new String[]{"Dialog", "DialogInput", "Monospaced", "Serif", "SansSerif"};
         System.currentTimeMillis();
 
         for (int var3 = 0; var3 < 5; ++var3) {
-            if ((new Font(var7[var3], 0, 1)).canDisplayUpTo("abcdefghilmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789|!\"$%&/()=?'^[]@#<>,;.:_+-*/") < 0) {
-                this.b.addItem(var7[var3]);
+            if ((new Font(var7[var3], Font.PLAIN, 1)).canDisplayUpTo("abcdefghilmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789|!\"$%&/()=?'^[]@#<>,;.:_+-*/") < 0) {
+                this.comboBox.addItem(var7[var3]);
             }
         }
 
         try {
-            this.b.setSelectedItem(this.c.getName());
-        } catch (Exception var5) {
+            this.comboBox.setSelectedItem(this.c.getName());
+        } catch (Exception ignored) {
         }
 
-        Dimension var10 = this.b.getPreferredSize();
-        this.b.addActionListener(this);
-        this.b.setMaximumSize(var10);
-        this.b.setSelectedItem(this.c.getName());
+        Dimension var10 = this.comboBox.getPreferredSize();
+        this.comboBox.addActionListener(this);
+        this.comboBox.setMaximumSize(var10);
+        this.comboBox.setSelectedItem(this.c.getName());
         GridBagConstraints var4;
         (var4 = new GridBagConstraints()).anchor = 21;
         var4.weightx = 1.0D;
@@ -84,7 +86,7 @@ public final class m extends JDialog implements ActionListener, ChangeListener {
         var4.gridy = 0;
         this.add(new JLabel(Translator.translate("fontFace")), var4);
         var4.gridx = 1;
-        this.add(this.b, var4);
+        this.add(this.comboBox, var4);
         SpinnerNumberModel var8 = new SpinnerNumberModel((int) Math.round((double) this.c.getSize() / GlobalVariables.getFontZoomRatio()), 8, 50, 2);
         this.e = new JSpinner(var8);
         Dimension var9 = this.e.getPreferredSize();
@@ -109,7 +111,7 @@ public final class m extends JDialog implements ActionListener, ChangeListener {
         this.h = new JButton();
         this.h.setPreferredSize(var9);
         this.h.setMaximumSize(var9);
-        this.h.setBackground(this.m.q().d());
+        this.h.setBackground(this.m.getViewOptions().getBackgroundColor());
         this.h.addActionListener(this);
         var4.gridx = 0;
         var4.gridy = 3;
@@ -119,7 +121,7 @@ public final class m extends JDialog implements ActionListener, ChangeListener {
         this.i = new JButton();
         this.i.setPreferredSize(var9);
         this.i.setMaximumSize(var9);
-        this.i.setBackground(this.m.q().e());
+        this.i.setBackground(this.m.getViewOptions().getFillingColor());
         this.i.addActionListener(this);
         var4.gridx = 0;
         var4.gridy = 4;
@@ -129,7 +131,7 @@ public final class m extends JDialog implements ActionListener, ChangeListener {
         this.j = new JButton("LC");
         this.j.setPreferredSize(var9);
         this.j.setMaximumSize(var9);
-        this.j.setBackground(this.m.q().i());
+        this.j.setBackground(this.m.getViewOptions().getBackgroundColor());
         this.j.addActionListener(this);
         var4.gridx = 0;
         var4.gridy = 5;
@@ -141,7 +143,7 @@ public final class m extends JDialog implements ActionListener, ChangeListener {
         var10 = this.g.getPreferredSize();
         this.g.setMaximumSize(var10);
         this.g.addChangeListener(this);
-        this.g.setValue(var2.q().h());
+        this.g.setValue(var2.getViewOptions().getLineWidth());
         var4.gridx = 0;
         var4.gridy = 6;
         this.add(new JLabel(Translator.translate("lineSize")), var4);
@@ -173,49 +175,45 @@ public final class m extends JDialog implements ActionListener, ChangeListener {
         this.pack();
     }
 
-    public final void actionPerformed(ActionEvent var1) {
+    public void actionPerformed(ActionEvent var1) {
         Object var5;
-        if ((var5 = var1.getSource()) == this.b) {
+        if ((var5 = var1.getSource()) == this.comboBox) {
             this.b();
             this.a();
         } else {
             Color var6;
             if (var5 == this.h) {
-                if ((var6 = JColorChooser.showDialog(this.a, Translator.translate("btnBackgroundColor"), this.m.q().d())) != null) {
+                if ((var6 = JColorChooser.showDialog(this.a, Translator.translate("btnBackgroundColor"), this.m.getViewOptions().getBackgroundColor())) != null) {
                     this.h.setBackground(var6);
-                    this.m.q().a(var6);
+                    this.m.getViewOptions().setBackgroundColor(var6);
                     this.m.a(true);
-                    return;
                 }
             } else if (var5 == this.i) {
-                if ((var6 = JColorChooser.showDialog(this.a, Translator.translate("btnFillingColor"), this.m.q().e())) != null) {
+                if ((var6 = JColorChooser.showDialog(this.a, Translator.translate("btnFillingColor"), this.m.getViewOptions().getFillingColor())) != null) {
                     this.i.setBackground(var6);
-                    this.m.q().b(var6);
+                    this.m.getViewOptions().setFillingColor(var6);
                     this.m.a(true);
-                    return;
                 }
             } else if (var5 == this.j) {
-                if ((var6 = JColorChooser.showDialog(this.a, Translator.translate("btnPenColor"), this.m.q().i())) != null) {
+                if ((var6 = JColorChooser.showDialog(this.a, Translator.translate("btnPenColor"), this.m.getViewOptions().getLineColor())) != null) {
                     this.j.setBackground(var6);
-                    this.m.q().c(var6);
+                    this.m.getViewOptions().setLineColor(var6);
                     this.m.a(true);
-                    return;
                 }
             } else {
                 if (var5 == this.k) {
                     try {
-                        JSONObject var8 = this.m.q().n();
-                        JSONObject var2 = var8;
-                        String var9 = "ViewOptions.abopt";
-                        File var3 = com.github.kill05.algobuildce.package_a.f.j.c();
-                        File var11 = new File(var3, var9);
-                        FileWriter var12 = new FileWriter(var11);
-                        com.github.kill05.algobuildce.json.g var10;
-                        (var10 = new g(var12)).b();
-                        var10.a("opt");
-                        var10.a(var2);
-                        var10.a();
-                        var12.close();
+                        JSONObject optionsJson = this.m.getViewOptions().serialize();
+                        File var11 = new File(ABFiles.getABFolder(), "ViewOptions.abopt");
+
+                        try (FileWriter var12 = new FileWriter(var11)) {
+                            JsonWriter writer = new JsonWriter(var12);
+                            writer.start();
+                            writer.writeKey("opt");
+                            writer.writeValue(optionsJson);
+                            writer.end();
+                        }
+
                         return;
                     } catch (IOException var4) {
                         JOptionPane.showMessageDialog(this.a, Translator.translate("abpErrorWritingFile"), Translator.translate("abpErrorFileOperation"), 0);
@@ -224,15 +222,15 @@ public final class m extends JDialog implements ActionListener, ChangeListener {
                 }
 
                 if (var5 == this.l) {
-                    com.github.kill05.algobuildce.package_a.c.a.i var7;
-                    (var7 = this.m.q()).a();
-                    this.b.setSelectedItem(var7.b().getFontName());
-                    this.e.setValue((int) Math.round((double) var7.b().getSize() / GlobalVariables.getFontZoomRatio()));
-                    this.f.setValue((int) Math.round((double) var7.c().getSize() / GlobalVariables.getFontZoomRatio()));
-                    this.h.setBackground(var7.d());
-                    this.i.setBackground(var7.e());
-                    this.j.setBackground(var7.i());
-                    this.g.setValue(var7.h());
+                    ViewOptions var7;
+                    (var7 = this.m.getViewOptions()).a();
+                    this.comboBox.setSelectedItem(var7.getCodeFont().getFontName());
+                    this.e.setValue((int) Math.round((double) var7.getCodeFont().getSize() / GlobalVariables.getFontZoomRatio()));
+                    this.f.setValue((int) Math.round((double) var7.getConsoleFont().getSize() / GlobalVariables.getFontZoomRatio()));
+                    this.h.setBackground(var7.getBackgroundColor());
+                    this.i.setBackground(var7.getFillingColor());
+                    this.j.setBackground(var7.getBackgroundColor());
+                    this.g.setValue(var7.getLineWidth());
                     this.m.a(true);
                 }
             }
@@ -243,25 +241,25 @@ public final class m extends JDialog implements ActionListener, ChangeListener {
     private void a() {
         try {
             int var1 = (int) (Double.parseDouble(this.f.getValue().toString()) * GlobalVariables.getFontZoomRatio());
-            Font var3 = new Font((String) this.b.getSelectedItem(), 0, var1);
-            this.m.q().b(var3);
+            Font var3 = new Font((String) this.comboBox.getSelectedItem(), Font.PLAIN, var1);
+            this.m.getViewOptions().setConsoleFont(var3);
             this.m.a(true);
-        } catch (Exception var2) {
+        } catch (Exception ignored) {
         }
     }
 
     private void b() {
         try {
             int var1 = (int) (Double.parseDouble(this.e.getValue().toString()) * GlobalVariables.getFontZoomRatio());
-            Font var2 = new Font((String) this.b.getSelectedItem(), 0, var1);
-            this.m.q().a(var2);
-            this.m.q().b((var1 + 1) / 2);
+            Font var2 = new Font((String) this.comboBox.getSelectedItem(), Font.PLAIN, var1);
+            this.m.getViewOptions().setCodeFont(var2);
+            this.m.getViewOptions().b((var1 + 1) / 2);
             this.m.a(true);
         } catch (Exception ignored) {
         }
     }
 
-    public final void stateChanged(ChangeEvent var1) {
+    public void stateChanged(ChangeEvent var1) {
         Object var2;
         if ((var2 = var1.getSource()) == this.e) {
             this.b();
@@ -269,7 +267,7 @@ public final class m extends JDialog implements ActionListener, ChangeListener {
             this.a();
         } else {
             if (var2 == this.g) {
-                this.m.q().a(Integer.parseInt(this.g.getValue().toString()));
+                this.m.getViewOptions().setLineWidth(Integer.parseInt(this.g.getValue().toString()));
                 this.m.a(true);
             }
 

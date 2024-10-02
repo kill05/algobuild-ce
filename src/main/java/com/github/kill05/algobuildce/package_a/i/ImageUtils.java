@@ -1,17 +1,17 @@
 package com.github.kill05.algobuildce.package_a.i;
 
 import java.net.URL;
+import java.util.Objects;
 import javax.swing.ImageIcon;
 
-public final class b {
-    private static b a = new b();
+public final class ImageUtils {
 
-    public static ImageIcon a(String var0) {
+    public static ImageIcon loadImage(String var0) {
         ImageIcon var1 = null;
 
         try {
-            URL var4 = a.getClass().getClassLoader().getResource(var0);
-            var1 = new ImageIcon(var4);
+            URL url = ImageUtils.class.getClassLoader().getResource(var0);
+            var1 = new ImageIcon(Objects.requireNonNull(url));
         } catch (Exception var3) {
             var3.printStackTrace();
         }

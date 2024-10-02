@@ -3,18 +3,18 @@ package com.github.kill05.algobuildce.json;
 import java.io.IOException;
 import java.io.Writer;
 
-public final class g {
+public final class JsonWriter {
     private boolean a = false;
     private char b = 'i';
     private final JSONObject[] c = new JSONObject[200];
     private int d = 0;
     private final Writer e;
 
-    public g(Writer var1) {
+    public JsonWriter(Writer var1) {
         this.e = var1;
     }
 
-    private g b(String var1) {
+    private JsonWriter b(String var1) {
         if (var1 == null) {
             throw new JsonParseException("Null pointer");
         } else if (this.b != 'o' && this.b != 'a') {
@@ -39,7 +39,7 @@ public final class g {
         }
     }
 
-    private g a(char var1, char var2) {
+    private JsonWriter a(char var1, char var2) {
         if (this.b != 'k') {
             throw new JsonParseException("Misplaced endObject.");
         } else {
@@ -64,14 +64,16 @@ public final class g {
         }
     }
 
-    public g a() {
+    public JsonWriter end() {
         return this.a('k', '}');
     }
 
-    public g a(String var1) {
+    public JsonWriter writeKey(String var1) {
         if (var1 == null) {
             throw new JsonParseException("Null key.");
-        } else if (this.b == 'k') {
+        }
+
+        if (this.b == 'k') {
             try {
                 this.c[this.d - 1].c(var1, Boolean.TRUE);
                 if (this.a) {
@@ -91,7 +93,7 @@ public final class g {
         }
     }
 
-    public g b() {
+    public JsonWriter start() {
         if (this.b == 'i') {
             this.b = 'o';
         }
@@ -113,7 +115,7 @@ public final class g {
         }
     }
 
-    public g a(Object var1) {
+    public JsonWriter writeValue(Object var1) {
         return this.b(JSONObject.toJsonString(var1));
     }
 }

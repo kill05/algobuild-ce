@@ -1,5 +1,7 @@
 package com.github.kill05.algobuildce.package_a.f;
 
+import com.github.kill05.algobuildce.package_a.d.TestModelCoreCharArrayFactory;
+import com.github.kill05.algobuildce.package_a.h.UserNameCharArrayFactory;
 import com.github.kill05.algobuildce.package_a.i.Translator;
 
 import java.io.DataInputStream;
@@ -21,26 +23,28 @@ import java.util.Scanner;
 import java.util.UUID;
 
 public final class k {
-    private static k a = null;
-    private char[] b;
+
+    private static k INSTANCE = null;
+
+    private final char[] b;
     private String c = null;
     private int d = 0;
     private UUID e;
     private UUID f;
     private String g = null;
-    private String h = "https://algobuild.com/abkg/ab0080keygen.php";
+    private final String h = "https://algobuild.com/abkg/ab0080keygen.php";
 
-    public static k a() {
-        if (a == null) {
-            a = new k();
+    public static k getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new k();
         }
 
-        return a;
+        return INSTANCE;
     }
 
     private k() {
         k var1 = this;
-        File var2 = new File(j.e(), new String((new com.github.kill05.algobuildce.package_a.d.g()).b()));
+        File var2 = new File(ABFiles.getCoreFolder(), new String((new com.github.kill05.algobuildce.package_a.d.g()).createArray()));
 
         try {
             DataInputStream var21;
@@ -54,7 +58,7 @@ public final class k {
             var12 = var21.readLong();
             var14 = var21.readLong();
             var1.f = new UUID(var12, var14);
-            UUID var22 = UUID.nameUUIDFromBytes(System.getProperties().getProperty(new String((new com.github.kill05.algobuildce.package_a.h.b()).b())).getBytes(StandardCharsets.UTF_8));
+            UUID var22 = UUID.nameUUIDFromBytes(System.getProperties().getProperty(new String((new UserNameCharArrayFactory()).createArray())).getBytes(StandardCharsets.UTF_8));
             if (var3 != -85) {
                 throw new e(Translator.translate("abpErrorConfigFile") + " b1 " + var3);
             }
@@ -79,38 +83,37 @@ public final class k {
         }
 
         this.g();
-        String var20 = System.getProperties().getProperty(new String((new com.github.kill05.algobuildce.package_a.h.b()).b()));
+        String var20 = System.getProperties().getProperty(new String((new UserNameCharArrayFactory()).createArray()));
         this.b = new char[var20.length()];
 
-        int var23;
-        for (var23 = 0; var23 < var20.length(); ++var23) {
-            this.b[var23] = var20.charAt(var23);
+        for (int i = 0; i < var20.length(); ++i) {
+            this.b[i] = var20.charAt(i);
         }
 
-        var23 = this.h();
+        int i = this.h();
         var20 = this.b("AB0080");
-        if (var23 <= 0 && var20 == null) {
+        if (i <= 0 && var20 == null) {
             try {
                 this.d(this.h, "AB0080");
-            } catch (h var17) {
+            } catch (ABSerializationException var17) {
             }
         }
 
-        if (var23 > 0 && var20 == null) {
+        if (i > 0 && var20 == null) {
             try {
-                if ((var20 = a(this.h, var23, "AB0080")) != null) {
+                if ((var20 = a(this.h, i, "AB0080")) != null) {
                     this.c(var20, "AB0080");
                 } else {
-                    var20 = a(var23, "AB0080");
+                    var20 = a(i, "AB0080");
                 }
-            } catch (h var16) {
+            } catch (ABSerializationException var16) {
                 var16.printStackTrace();
             }
         }
 
-        if (var23 <= 0 && var20 != null) {
-            var23 = a(var20);
-            this.a(var23);
+        if (i <= 0 && var20 != null) {
+            i = a(var20);
+            this.a(i);
         }
 
         if (this.c == null) {
@@ -118,13 +121,13 @@ public final class k {
         }
 
         if (this.d == 0) {
-            this.d = var23;
+            this.d = i;
         }
 
     }
 
     private void g() {
-        File var1 = new File(j.e(), new String((new com.github.kill05.algobuildce.package_a.d.a()).b()));
+        File var1 = new File(ABFiles.getCoreFolder(), new String((new TestModelCoreCharArrayFactory()).createArray()));
 
         try {
             DataInputStream var13;
@@ -138,7 +141,7 @@ public final class k {
             var7 = var13.readLong();
             var9 = var13.readLong();
             this.f = new UUID(var7, var9);
-            UUID var6 = UUID.nameUUIDFromBytes(System.getProperties().getProperty(new String((new com.github.kill05.algobuildce.package_a.h.b()).b())).getBytes(StandardCharsets.UTF_8));
+            UUID var6 = UUID.nameUUIDFromBytes(System.getProperties().getProperty(new String((new UserNameCharArrayFactory()).createArray())).getBytes(StandardCharsets.UTF_8));
             if (var2 != -85) {
                 throw new e(Translator.translate("abpErrorConfigFile") + " b1 " + var2);
             }
@@ -169,7 +172,7 @@ public final class k {
                     var15[var17] = (byte) var18;
                 }
 
-                this.g = new String(var15, "UTF-8");
+                this.g = new String(var15, StandardCharsets.UTF_8);
                 if ((var17 = var13.readInt()) > 0) {
                     byte[] var19 = new byte[var17];
 
@@ -178,18 +181,16 @@ public final class k {
                         var19[var14] = (byte) var16;
                     }
 
-                    new String(var19, "UTF-8");
-                    return;
+                    new String(var19, StandardCharsets.UTF_8);
                 }
             }
         } catch (FileNotFoundException var11) {
-            return;
         } catch (IOException var12) {
         }
 
     }
 
-    public final void a(String var1, String var2) {
+    public void a(String var1, String var2) {
         if (this.b(var1, var2)) {
             this.g = var1;
         }
@@ -198,7 +199,7 @@ public final class k {
 
     private boolean b(String var1, String var2) {
         boolean var3 = false;
-        File var4 = new File(j.e(), new String((new com.github.kill05.algobuildce.package_a.d.a()).b()));
+        File var4 = new File(ABFiles.getCoreFolder(), new String((new TestModelCoreCharArrayFactory()).createArray()));
 
         try {
             DataOutputStream var9;
@@ -240,7 +241,7 @@ public final class k {
 
     private boolean a(int var1) {
         boolean var2 = false;
-        File var3 = new File(j.e(), new String((new com.github.kill05.algobuildce.package_a.d.f()).b()));
+        File var3 = new File(ABFiles.getCoreFolder(), new String((new com.github.kill05.algobuildce.package_a.d.f()).createArray()));
 
         try {
             DataOutputStream var7;
@@ -274,12 +275,12 @@ public final class k {
     }
 
     private int h() {
-        File var1 = new File(j.e(), new String((new com.github.kill05.algobuildce.package_a.d.f()).b()));
+        File var1 = new File(ABFiles.getCoreFolder(), new String((new com.github.kill05.algobuildce.package_a.d.f()).createArray()));
         int var2 = 0;
 
         try {
-            DataInputStream var14;
-            byte var3 = (var14 = new DataInputStream(new FileInputStream(var1))).readByte();
+            DataInputStream var14 = new DataInputStream(new FileInputStream(var1));
+            byte var3 = var14.readByte();
             byte var4 = var14.readByte();
             byte var5 = var14.readByte();
             byte var6 = var14.readByte();
@@ -289,7 +290,7 @@ public final class k {
             var8 = var14.readLong();
             var10 = var14.readLong();
             this.f = new UUID(var8, var10);
-            UUID var7 = UUID.nameUUIDFromBytes(System.getProperties().getProperty(new String((new com.github.kill05.algobuildce.package_a.h.b()).b())).getBytes(StandardCharsets.UTF_8));
+            UUID var7 = UUID.nameUUIDFromBytes(System.getProperties().getProperty(new String((new UserNameCharArrayFactory()).createArray())).getBytes(StandardCharsets.UTF_8));
             if (var3 != -85) {
                 throw new e(Translator.translate("abpErrorConfigFile") + " b1 " + var3);
             }
@@ -327,30 +328,29 @@ public final class k {
         return var2;
     }
 
-    public final String b() {
+    public String b() {
         return this.c;
     }
 
-    public final int c() {
+    public int c() {
         return this.d;
     }
 
-    public final String d() {
+    public String d() {
         return this.g;
     }
 
-    public final UUID e() {
+    public UUID e() {
         return this.e;
     }
 
-    public final UUID f() {
+    public UUID f() {
         return this.f;
     }
 
-    private static String a(String var0, int var1, String var2) {
+    private static String a(String var0, int var1, String var2) throws ABSerializationException {
         String var3 = null;
         String var4 = null;
-        var4 = null;
         int var5 = -1;
         int var6 = -1;
         long var7 = -1L;
@@ -452,19 +452,19 @@ public final class k {
                     break;
                 }
             } catch (MalformedURLException var17) {
-                throw new h(Translator.translate("abpErrorConfigFile"), var17);
+                throw new ABSerializationException(Translator.translate("abpErrorConfigFile"), var17);
             } catch (ConnectException var18) {
             } catch (IOException var19) {
-                throw new h(Translator.translate("abpErrorConfigFile"), var19);
+                throw new ABSerializationException(Translator.translate("abpErrorConfigFile"), var19);
             }
         }
 
         return var3;
     }
 
-    private void c(String var1, String var2) {
+    private void c(String var1, String var2) throws ABSerializationException {
         File var3;
-        if ((var3 = j.d()).exists()) {
+        if ((var3 = ABFiles.getABSecretFolder()).exists()) {
             try {
                 File var9 = new File(var3, var2 + ".sn");
                 PrintStream var10;
@@ -473,11 +473,11 @@ public final class k {
 
                     int var11;
                     for (var11 = 0; var11 < this.b.length; ++var11) {
-                        var6 += (long) this.b[var11];
+                        var6 += this.b[var11];
                     }
 
                     for (var11 = 0; var11 < var1.length(); ++var11) {
-                        var6 += (long) var1.charAt(var11);
+                        var6 += var1.charAt(var11);
                     }
 
                     var10.print(var1);
@@ -487,27 +487,27 @@ public final class k {
 
                 var10.close();
             } catch (FileNotFoundException var8) {
-                throw new h(Translator.translate("abpErrorConfigFile"), var8);
+                throw new ABSerializationException(Translator.translate("abpErrorConfigFile"), var8);
             }
         }
     }
 
-    private void d(String var1, String var2) {
+    private void d(String var1, String var2) throws ABSerializationException {
         File var3;
-        if ((var3 = j.d()).exists()) {
+        if ((var3 = ABFiles.getABSecretFolder()).exists()) {
             try {
                 var3 = new File(var3, var2 + ".sn");
-                PrintStream var11;
-                if (!(var11 = new PrintStream(var3)).checkError() && (var1 = e(var1, var2)) != null) {
+                PrintStream var11 = new PrintStream(var3);
+                if (!var11.checkError() && (var1 = e(var1, var2)) != null) {
                     long var7 = 0L;
 
                     int var10;
                     for (var10 = 0; var10 < this.b.length; ++var10) {
-                        var7 += (long) this.b[var10];
+                        var7 += this.b[var10];
                     }
 
                     for (var10 = 0; var10 < var1.length(); ++var10) {
-                        var7 += (long) var1.charAt(var10);
+                        var7 += var1.charAt(var10);
                     }
 
                     var11.print(var1);
@@ -520,12 +520,12 @@ public final class k {
 
                 var11.close();
             } catch (FileNotFoundException var9) {
-                throw new h(Translator.translate("abpErrorConfigFile"), var9);
+                throw new ABSerializationException(Translator.translate("abpErrorConfigFile"), var9);
             }
         }
     }
 
-    private static String e(String var0, String var1) {
+    private static String e(String var0, String var1) throws ABSerializationException {
         String var2 = null;
         String var3 = null;
         int var4 = -1;
@@ -555,7 +555,7 @@ public final class k {
                     }
 
                     if (var11.startsWith("k=")) {
-                        var6 = (long) Integer.parseInt(var11.substring(2, var11.indexOf(";")));
+                        var6 = Integer.parseInt(var11.substring(2, var11.indexOf(";")));
                     }
                 }
             }
@@ -620,16 +620,14 @@ public final class k {
 
                 return var2;
             }
-        } catch (MalformedURLException var13) {
-            throw new h(Translator.translate("abpErrorConfigFile"), var13);
         } catch (IOException var14) {
-            throw new h(Translator.translate("abpErrorConfigFile"), var14);
+            throw new ABSerializationException(Translator.translate("abpErrorConfigFile"), var14);
         }
     }
 
     private String b(String var1) {
         String var2 = null;
-        File var15 = new File(j.d(), var1 + ".sn");
+        File var15 = new File(ABFiles.getABSecretFolder(), var1 + ".sn");
 
         try {
             FileInputStream var16 = new FileInputStream(var15);
@@ -639,25 +637,25 @@ public final class k {
 
             int var9;
             for (var9 = 0; var9 < this.b.length; ++var9) {
-                var7 += (long) this.b[var9];
+                var7 += this.b[var9];
             }
 
             for (var9 = 0; var9 < var4.length(); ++var9) {
-                var7 += (long) var4.charAt(var9);
+                var7 += var4.charAt(var9);
             }
 
             long var14 = var3.nextLong();
             var3.close();
             var16.close();
             if (var7 != var14) {
-                throw new h(Translator.translate("abpErrorConfigFile"));
+                throw new ABSerializationException(Translator.translate("abpErrorConfigFile"));
             }
 
             var2 = var4;
-        } catch (FileNotFoundException var11) {
+        } catch (FileNotFoundException ignored) {
         } catch (IOException var12) {
             var12.printStackTrace();
-        } catch (Exception var13) {
+        } catch (Exception ignored) {
         }
 
         return var2;
@@ -682,8 +680,6 @@ public final class k {
     private static String a(int var0, String var1) {
         String var2 = null;
         if (var1.length() == 6) {
-            var1 = var1;
-
             for (int var4 = 0; var4 < 10; ++var4) {
                 char var3 = (char) (70 + var0 % 10);
                 var0 /= 10;

@@ -4,9 +4,9 @@ import javax.swing.*;
 
 final class t implements Runnable {
 
-    private final c a;
+    private final ABFrameHolder a;
 
-    t(c var1) {
+    t(ABFrameHolder var1) {
         super();
         this.a = var1;
     }

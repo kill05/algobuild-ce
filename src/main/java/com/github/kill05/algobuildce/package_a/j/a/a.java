@@ -1,8 +1,8 @@
 package com.github.kill05.algobuildce.package_a.j.a;
 
-import com.github.kill05.algobuildce.package_a.c.a.k;
 import com.github.kill05.algobuildce.package_a.c.b.q;
-import com.github.kill05.algobuildce.package_a.f.j;
+import com.github.kill05.algobuildce.package_a.f.ABFiles;
+import com.github.kill05.algobuildce.package_a.i.ImageUtils;
 import com.github.kill05.algobuildce.package_a.i.Translator;
 import com.github.kill05.algobuildce.package_a.j.b.C_subclass;
 import com.github.kill05.algobuildce.package_a.j.b.D_subclass;
@@ -13,7 +13,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
-import java.awt.datatransfer.ClipboardOwner;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -22,7 +21,6 @@ import java.io.IOException;
 import java.util.Vector;
 import javax.imageio.ImageIO;
 import javax.swing.Box;
-import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -37,39 +35,35 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public final class a extends JPanel implements ActionListener, ChangeListener {
-    protected com.github.kill05.algobuildce.package_a.c.a.b a;
+    com.github.kill05.algobuildce.package_a.c.a.b a;
     private g c;
-    protected JTabbedPane b;
+    JTabbedPane b;
     private int d = -1;
     private ABFrame e;
-    private com.github.kill05.algobuildce.package_a.i.a f;
-    private com.github.kill05.algobuildce.package_a.i.a g;
-    private D_subclass h;
-    private Vector i = new Vector();
+    private final D_subclass h;
+    private final Vector<com.github.kill05.algobuildce.package_a.j.b.c> i = new Vector<>();
 
     public a() {
         this.setLayout(new BorderLayout());
         this.h = new p();
-        ImageIcon var1 = com.github.kill05.algobuildce.package_a.i.b.a("imgs/logo2_arancio_small.png");
-        this.f = new com.github.kill05.algobuildce.package_a.i.a(var1);
-        var1 = com.github.kill05.algobuildce.package_a.i.b.a("imgs/logo2_arancio_small.png");
-        this.g = new com.github.kill05.algobuildce.package_a.i.a(var1);
+        ImageUtils.loadImage("imgs/logo2_arancio_small.png");
+        ImageUtils.loadImage("imgs/logo2_arancio_small.png");
         this.b = new JTabbedPane();
         this.add(this.b, "Center");
         this.b.addTab("+", new JPanel());
         this.b.addChangeListener(this);
     }
 
-    public final ABFrame a() {
+    public ABFrame a() {
         return this.e;
     }
 
-    public final void a(ABFrame var1) {
+    public void a(ABFrame var1) {
         this.e = var1;
     }
 
     @Override
-    public final void actionPerformed(ActionEvent var1) {
+    public void actionPerformed(ActionEvent var1) {
         if (var1.getSource() == null) {
             JPopupMenu var5 = new JPopupMenu();
             JMenuItem var6;
@@ -106,12 +100,12 @@ public final class a extends JPanel implements ActionListener, ChangeListener {
         }
     }
 
-    public final void a(com.github.kill05.algobuildce.package_a.c.a.d var1) {
+    public void a(com.github.kill05.algobuildce.package_a.c.a.d var1) {
         int var2 = this.b.getTabCount();
         String var3 = var1.b();
         com.github.kill05.algobuildce.package_a.j.b.c var4;
         (var4 = new com.github.kill05.algobuildce.package_a.j.b.c(this.a, this, var1)).setBackground(Color.YELLOW);
-        var1.a((k) var4);
+        var1.a(var4);
         var4.g();
         var4.setAlignmentX(0.5F);
         Box var5;
@@ -120,7 +114,7 @@ public final class a extends JPanel implements ActionListener, ChangeListener {
         (var11 = new JScrollPane(var5)).getHorizontalScrollBar().setUnitIncrement(15);
         var11.getVerticalScrollBar().setUnitIncrement(15);
         com.github.kill05.algobuildce.package_a.j.b.c var6 = new com.github.kill05.algobuildce.package_a.j.b.c(this.a, this, var1);
-        var1.a((k) var6);
+        var1.a(var6);
         var6.g();
         var6.setAlignmentX(0.5F);
         Box var8;
@@ -146,14 +140,14 @@ public final class a extends JPanel implements ActionListener, ChangeListener {
         this.updateUI();
     }
 
-    public final void b() {
+    public void b() {
         this.b.removeAll();
         this.d = -1;
         this.b.addTab("+", new JPanel());
     }
 
     @Override
-    public final void stateChanged(ChangeEvent var1) {
+    public void stateChanged(ChangeEvent var1) {
         int var7;
         if ((var7 = this.b.getSelectedIndex()) >= 0) {
             String var2 = this.b.getTitleAt(var7);
@@ -193,15 +187,15 @@ public final class a extends JPanel implements ActionListener, ChangeListener {
 
     }
 
-    public final void a(g var1) {
+    public void a(g var1) {
         this.c = var1;
     }
 
-    public final g c() {
+    public g c() {
         return this.c;
     }
 
-    public final void a(String var1, q var2) {
+    public void a(String var1, q var2) {
         int var3;
         if ((var3 = this.b.indexOfTab(var1)) >= 0) {
             this.b.setTitleAt(var3, var2.j());
@@ -209,7 +203,7 @@ public final class a extends JPanel implements ActionListener, ChangeListener {
 
     }
 
-    public final void b(com.github.kill05.algobuildce.package_a.c.a.d var1) {
+    public void b(com.github.kill05.algobuildce.package_a.c.a.d var1) {
         String var2 = ((q) var1).j();
         int var3 = this.b.indexOfTab(var2);
         this.d = 0;
@@ -221,7 +215,7 @@ public final class a extends JPanel implements ActionListener, ChangeListener {
 
     }
 
-    public final void d() {
+    public void d() {
         int var1 = this.b.getSelectedIndex();
         com.github.kill05.algobuildce.package_a.j.b.c var5 = (com.github.kill05.algobuildce.package_a.j.b.c) this.i.elementAt(var1);
         com.github.kill05.algobuildce.package_a.i.d var2 = new com.github.kill05.algobuildce.package_a.i.d(var5);
@@ -229,20 +223,20 @@ public final class a extends JPanel implements ActionListener, ChangeListener {
         int var4 = var5.getHeight();
         BufferedImage var7;
         Graphics2D var8;
-        (var8 = (var7 = new BufferedImage(var3, var4, 1)).createGraphics()).setFont(this.a.q().b());
+        (var8 = (var7 = new BufferedImage(var3, var4, 1)).createGraphics()).setFont(this.a.getViewOptions().getCodeFont());
         var2.a(var8, var5);
         var8.dispose();
         com.github.kill05.algobuildce.package_a.i.e var6 = new com.github.kill05.algobuildce.package_a.i.e(var7);
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(var6, (ClipboardOwner) null);
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(var6, null);
     }
 
-    public final void e() {
-        JFileChooser var1 = new JFileChooser(j.c().getAbsolutePath());
-        FileNameExtensionFilter var2 = new FileNameExtensionFilter("Immagine *.gif", new String[]{"gif"});
+    public void e() {
+        JFileChooser var1 = new JFileChooser(ABFiles.getABFolder().getAbsolutePath());
+        FileNameExtensionFilter var2 = new FileNameExtensionFilter("Immagine *.gif", "gif");
         var1.addChoosableFileFilter(var2);
-        var2 = new FileNameExtensionFilter("Immagine *.jpg", new String[]{"jpg"});
+        var2 = new FileNameExtensionFilter("Immagine *.jpg", "jpg");
         var1.addChoosableFileFilter(var2);
-        var2 = new FileNameExtensionFilter("Immagine *.png", new String[]{"png"});
+        var2 = new FileNameExtensionFilter("Immagine *.png", "png");
         var1.addChoosableFileFilter(var2);
         var1.setFileSelectionMode(0);
         var1.setFileFilter(var2);
@@ -264,14 +258,13 @@ public final class a extends JPanel implements ActionListener, ChangeListener {
             int var6 = var12.getHeight();
             BufferedImage var14;
             Graphics2D var15;
-            (var15 = (var14 = new BufferedImage(var5, var6, 1)).createGraphics()).setFont(this.a.q().b());
+            (var15 = (var14 = new BufferedImage(var5, var6, 1)).createGraphics()).setFont(this.a.getViewOptions().getCodeFont());
             var4.a(var15, var12);
             var15.dispose();
 
             try {
                 File var13 = new File(var11);
                 ImageIO.write(var14, var10, var13);
-                return;
             } catch (IOException var7) {
                 var7.printStackTrace();
             }

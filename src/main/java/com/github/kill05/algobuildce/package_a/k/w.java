@@ -4,9 +4,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 
 final class w extends AbstractAction {
-    private final c a;
+    private final ABFrameHolder a;
 
-    w(c var1, String var2) {
+    w(ABFrameHolder var1, String var2) {
         super(var2);
         this.a = var1;
     }

@@ -99,14 +99,14 @@ public final class j extends k {
    @Override
    public final JSONObject b(boolean var1) {
       JSONObject var2;
-      (var2 = super.b(var1)).b("lineSeparators", Integer.toString(this.b));
+      (var2 = super.b(var1)).put("lineSeparators", Integer.toString(this.b));
       return var2;
    }
 
    @Override
    public final void a(JSONObject var1, boolean var2) {
       super.a(var1, var2);
-      String var3 = var1.f("lineSeparators");
+      String var3 = var1.getAsString("lineSeparators");
       this.e(Integer.parseInt(var3));
    }
 

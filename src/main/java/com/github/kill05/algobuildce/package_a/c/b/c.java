@@ -74,7 +74,7 @@ public final class c extends b {
       JSONObject var2 = super.b(var1);
       System.out.println("getAsJSONObject RETURN VARIABLE " + this.d);
       if (this.d != null) {
-         var2.b("returnVariable", this.d);
+         var2.put("returnVariable", this.d);
       }
 
       return var2;
@@ -83,7 +83,7 @@ public final class c extends b {
    @Override
    public final void a(JSONObject var1, boolean var2) {
       super.a(var1, var2);
-      String var3 = var1.f("returnVariable");
+      String var3 = var1.getAsString("returnVariable");
       System.out.println("getAsJSONObject RETURN VARIABLE " + var3);
       if (var3 != null) {
          this.b(var3);

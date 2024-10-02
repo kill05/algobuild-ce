@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
 
-public final class f {
+public final class JsonReader {
     private long a;
     private boolean b;
     private long c;
@@ -13,7 +13,7 @@ public final class f {
     private final Reader f;
     private boolean g;
 
-    public f(Reader var1) {
+    public JsonReader(Reader var1) {
         this.f = var1.markSupported() ? var1 : new BufferedReader(var1);
         this.b = false;
         this.g = false;
@@ -23,7 +23,7 @@ public final class f {
         this.d = 1L;
     }
 
-    public void a() {
+    public void stepBack() {
         if (!this.g && this.c > 0L) {
             --this.c;
             --this.a;
@@ -42,8 +42,8 @@ public final class f {
         } else {
             try {
                 var1 = this.f.read();
-            } catch (IOException var2) {
-                throw new JsonParseException(var2);
+            } catch (IOException e) {
+                throw new JsonParseException(e);
             }
 
             if (var1 <= 0) {
@@ -94,7 +94,7 @@ public final class f {
             case '"':
             case '\'':
                 char var2 = var1;
-                f var5 = this;
+                JsonReader var5 = this;
                 StringBuilder var4 = new StringBuilder();
 
                 while (true) {
@@ -142,10 +142,10 @@ public final class f {
                     }
                 }
             case '[':
-                this.a();
+                this.stepBack();
                 return new JSONArray(this);
             case '{':
-                this.a();
+                this.stepBack();
                 return new JSONObject(this);
             default:
                 StringBuilder var7;
@@ -153,7 +153,7 @@ public final class f {
                     var7.append(var1);
                 }
 
-                this.a();
+                this.stepBack();
                 String var6 = var7.toString().trim();
                 if (var6.isEmpty()) {
                     throw this.throwJsonException("Missing value");

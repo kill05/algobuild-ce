@@ -2,16 +2,12 @@ package com.github.kill05.algobuildce.package_a.j.b;
 
 import com.github.kill05.algobuildce.package_a.k.GlobalVariables;
 
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 public class n extends JPanel implements ActionListener, MouseListener {
     protected com.github.kill05.algobuildce.package_a.c.a.b b;
@@ -30,7 +26,7 @@ public class n extends JPanel implements ActionListener, MouseListener {
         this.a(new Dimension(2 * this.e, 2 * this.f));
         this.addMouseListener(this);
         this.setToolTipText(null);
-        this.setFont(var1.q().b());
+        this.setFont(var1.getViewOptions().getCodeFont());
         this.setOpaque(false);
     }
 
@@ -114,33 +110,33 @@ public class n extends JPanel implements ActionListener, MouseListener {
 
     protected void b(Graphics var1) {
         if (this.g) {
-            var1.setColor(this.b.q().g());
+            var1.setColor(this.b.getViewOptions().getFillingColorSelected());
         } else {
-            var1.setColor(this.b.q().e());
+            var1.setColor(this.b.getViewOptions().getFillingColor());
         }
     }
 
     protected void c(Graphics var1) {
         if (this.g) {
-            var1.setColor(this.b.q().k());
+            var1.setColor(this.b.getViewOptions().getLineColorSelected());
         } else {
-            var1.setColor(this.b.q().i());
+            var1.setColor(this.b.getViewOptions().getLineColor());
         }
     }
 
     protected void a(Graphics var1, int var2) {
         if (this.g) {
-            var1.setColor(this.b.q().g());
+            var1.setColor(this.b.getViewOptions().getFillingColorSelected());
         } else {
-            var1.setColor(this.b.q().e());
+            var1.setColor(this.b.getViewOptions().getFillingColor());
         }
     }
 
     protected void d(Graphics var1) {
         if (this.g) {
-            var1.setColor(this.b.q().k());
+            var1.setColor(this.b.getViewOptions().getLineColorSelected());
         } else {
-            var1.setColor(this.b.q().i());
+            var1.setColor(this.b.getViewOptions().getLineColor());
         }
     }
 
@@ -155,8 +151,8 @@ public class n extends JPanel implements ActionListener, MouseListener {
     }
 
     public final void g() {
-        this.e = this.f = (this.b.q().b().getSize() + 1) / 2;
-        this.setFont(this.b.q().b());
+        this.e = this.f = (this.b.getViewOptions().getCodeFont().getSize() + 1) / 2;
+        this.setFont(this.b.getViewOptions().getCodeFont());
         if (this.h != null) {
             this.h.a(this);
         } else {
@@ -165,7 +161,7 @@ public class n extends JPanel implements ActionListener, MouseListener {
     }
 
     public void a(Graphics var1) {
-        ((Graphics2D) var1).setStroke(this.b.q().l());
+        ((Graphics2D) var1).setStroke(this.b.getViewOptions().getStroke());
         ((Graphics2D) var1).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
     }
 

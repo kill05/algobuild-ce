@@ -1,5 +1,6 @@
 package com.github.kill05.algobuildce.package_a.j.a;
 
+import com.github.kill05.algobuildce.package_a.i.ImageUtils;
 import com.github.kill05.algobuildce.package_a.i.Translator;
 
 import java.awt.BorderLayout;
@@ -26,8 +27,8 @@ public final class d extends JDialog implements ActionListener {
         Point var7;
         (var7 = MouseInfo.getPointerInfo().getLocation()).translate(15, 15);
         this.setLocation(var7);
-        ImageIcon var3 = com.github.kill05.algobuildce.package_a.i.b.a("imgs/run_icon.gif");
-        ImageIcon var4 = com.github.kill05.algobuildce.package_a.i.b.a("imgs/pause_icon.gif");
+        ImageIcon var3 = ImageUtils.loadImage("imgs/run_icon.gif");
+        ImageIcon var4 = ImageUtils.loadImage("imgs/pause_icon.gif");
         //ImageIcon[] var10000 = new ImageIcon[]{var3, var4};
         this.a = new JButton(var3);
         this.b = new JButton(var4);

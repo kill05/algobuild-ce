@@ -29,9 +29,9 @@ public final class ActionMap {
     }
 
     public class A extends AbstractAction {
-        c a;
+        ABFrameHolder a;
 
-        A(c var1, String var2) {
+        A(ABFrameHolder var1, String var2) {
             super(var2);
             this.a = var1;
         }

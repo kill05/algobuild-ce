@@ -54,13 +54,13 @@ public final class d extends n {
 
    public final JSONObject b(boolean var1) {
       JSONObject var2;
-      (var2 = super.b(var1)).b("label", this.b);
+      (var2 = super.b(var1)).put("label", this.b);
       return var2;
    }
 
    public final void a(JSONObject var1, boolean var2) {
       super.a(var1, var2);
-      String var3 = var1.f("label");
+      String var3 = var1.getAsString("label");
       this.a(var3);
    }
 

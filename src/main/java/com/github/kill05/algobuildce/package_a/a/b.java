@@ -260,7 +260,7 @@ public final class b extends JDialog implements ActionListener, DocumentListener
       var6.k = var6.l.l();
       System.out.println("add to combobox - START");
       var7 = 0;
-      Iterator<q> var11 = var2.h().a().iterator();
+      Iterator<q> var11 = var2.getAlgoBuild().a().iterator();
       var6.comboBox.removeAllItems();
 
       while(true) {

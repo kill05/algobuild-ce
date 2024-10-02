@@ -112,16 +112,16 @@ public final class l extends m {
             int var4;
             JSONObject var5;
             n var6;
-            if ((var3 = var1.d("0")) != null) {
+            if ((var3 = var1.getAsJsonArray("0")) != null) {
                 for (var4 = 0; var4 < var3.size(); ++var4) {
-                    (var6 = n.a(var5 = var3.c(var4))).a(var5, var2);
+                    (var6 = n.a(var5 = var3.getAsJsonObject(var4))).a(var5, var2);
                     this.c.a(var6);
                 }
             }
 
-            if ((var3 = var1.d("1")) != null) {
+            if ((var3 = var1.getAsJsonArray("1")) != null) {
                 for (var4 = 0; var4 < var3.size(); ++var4) {
-                    (var6 = n.a(var5 = var3.c(var4))).a(var5, var2);
+                    (var6 = n.a(var5 = var3.getAsJsonObject(var4))).a(var5, var2);
                     this.b.a(var6);
                 }
             }

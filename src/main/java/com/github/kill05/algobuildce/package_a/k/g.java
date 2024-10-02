@@ -6,9 +6,9 @@ import javax.swing.Icon;
 
 final class g extends AbstractAction {
    // $FF: synthetic field
-   private c a;
+   private ABFrameHolder a;
 
-   g(c var1, String var2, Icon var3) {
+   g(ABFrameHolder var1, String var2, Icon var3) {
       super(var2, var3);
       this.a = var1;
    }

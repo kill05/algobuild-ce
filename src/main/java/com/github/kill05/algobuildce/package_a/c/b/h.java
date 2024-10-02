@@ -111,7 +111,7 @@ public abstract class h extends n {
 
     public JSONObject b(boolean var1) {
         JSONObject var2;
-        (var2 = super.b(var1)).b("condition", this.c);
+        (var2 = super.b(var1)).put("condition", this.c);
         if (var1) {
             for (int var3 = 0; var3 < this.b.d(); ++var3) {
                 var2.a("body", (Object) this.b.c(var3).b(true));
@@ -123,7 +123,7 @@ public abstract class h extends n {
 
     public void a(JSONObject var1, boolean var2) {
         super.a(var1, var2);
-        String var3 = var1.f("condition");
+        String var3 = var1.getAsString("condition");
         this.c(var3);
         if (var2) {
             try {
@@ -133,11 +133,11 @@ public abstract class h extends n {
             }
 
             JSONArray var8;
-            if ((var8 = var1.d("body")) != null) {
+            if ((var8 = var1.getAsJsonArray("body")) != null) {
                 for (int var7 = 0; var7 < var8.size(); ++var7) {
                     JSONObject var4;
                     n var5;
-                    (var5 = n.a(var4 = var8.c(var7))).a(var4, var2);
+                    (var5 = n.a(var4 = var8.getAsJsonObject(var7))).a(var4, var2);
                     this.a(var5);
                 }
             }

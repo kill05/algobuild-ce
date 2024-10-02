@@ -19,35 +19,39 @@ public final class JSONArray implements Iterable<Object> {
         this.list = new ArrayList<>();
     }
 
-    public JSONArray(f var1) {
+    public JSONArray(JsonReader var1) {
         this();
         if (var1.b() != '[') {
             throw var1.throwJsonException("A JSONArray text must start with '['");
-        } else if (var1.b() != ']') {
-            var1.a();
+        }
 
-            while (true) {
-                if (var1.b() == ',') {
-                    var1.a();
-                    this.list.add(JSONObject.NULL);
-                } else {
-                    var1.a();
-                    this.list.add(var1.c());
-                }
+        if (var1.b() == ']') {
+            return;
+        }
 
-                switch (var1.b()) {
-                    case ',':
-                        if (var1.b() == ']') {
-                            return;
-                        }
+        var1.stepBack();
 
-                        var1.a();
-                        break;
-                    case ']':
+        while (true) {
+            if (var1.b() == ',') {
+                var1.stepBack();
+                this.list.add(JsonNull.INSTANCE);
+            } else {
+                var1.stepBack();
+                this.list.add(var1.c());
+            }
+
+            switch (var1.b()) {
+                case ',':
+                    if (var1.b() == ']') {
                         return;
-                    default:
-                        throw var1.throwJsonException("Expected a ',' or ']'");
-                }
+                    }
+
+                    var1.stepBack();
+                    break;
+                case ']':
+                    return;
+                default:
+                    throw var1.throwJsonException("Expected a ',' or ']'");
             }
         }
     }
@@ -68,10 +72,10 @@ public final class JSONArray implements Iterable<Object> {
             throw new JsonParseException("JSONArray initial value should be a string or collection or array.");
         }
 
-        int var2 = Array.getLength(var1);
+        int length = Array.getLength(var1);
 
-        for (int var3 = 0; var3 < var2; ++var3) {
-            this.a(JSONObject.encodeJson(Array.get(var1, var3)));
+        for (int i = 0; i < length; ++i) {
+            this.add(JSONObject.encodeJson(Array.get(var1, i)));
         }
     }
 
@@ -80,18 +84,19 @@ public final class JSONArray implements Iterable<Object> {
         return this.list.iterator();
     }
 
-    public Object a(int var1) {
-        Object var10000 = var1 >= 0 && var1 < this.list.size() ? this.list.get(var1) : null;
-        Object var2 = var10000;
-        if (var10000 == null) {
-            throw new JsonParseException("JSONArray[" + var1 + "] not found.");
-        } else {
-            return var2;
+    @NotNull
+    public Object get(int index) {
+        Object object = index >= 0 && index < this.list.size() ? this.list.get(index) : null;
+
+        if (object == null) {
+            throw new JsonParseException("JSONArray[" + index + "] not found.");
         }
+
+        return object;
     }
 
-    public int get(int var1) {
-        Object var2 = this.a(var1);
+    public int getAsInt(int var1) {
+        Object var2 = this.get(var1);
 
         try {
             return var2 instanceof Number ? ((Number) var2).intValue() : Integer.parseInt((String) var2);
@@ -100,50 +105,45 @@ public final class JSONArray implements Iterable<Object> {
         }
     }
 
-    public JSONObject c(int var1) {
-        Object var2;
-        if ((var2 = this.a(var1)) instanceof JSONObject) {
+    @NotNull
+    public JSONObject getAsJsonObject(int index) {
+        Object var2 = get(index);
+        if (var2 instanceof JSONObject) {
             return (JSONObject) var2;
-        } else {
-            throw new JsonParseException("JSONArray[" + var1 + "] is not a JSONObject.");
         }
+
+        throw new JsonParseException("JSONArray[" + index + "] is not a JSONObject.");
     }
 
-    public String d(int var1) {
-        Object var2;
-        if ((var2 = this.a(var1)) instanceof String) {
+    @NotNull
+    public String getAsString(int index) {
+        Object var2 = get(index);
+        if (var2 instanceof String) {
             return (String) var2;
-        } else {
-            throw new JsonParseException("JSONArray[" + var1 + "] not a string.");
         }
+
+        throw new JsonParseException("JSONArray[" + index + "] not a string.");
+    }
+
+    public JSONArray add(Object var1) {
+        this.list.add(var1);
+        return this;
     }
 
     public int size() {
         return this.list.size();
     }
 
-    public JSONArray add(int var1) {
-        this.a(var1);
-        return this;
-    }
 
-    public JSONArray a(Object var1) {
-        this.list.add(var1);
-        return this;
-    }
-
+    @Override
     public String toString() {
         try {
-            return this.f(0);
+            StringWriter var4;
+            synchronized ((var4 = new StringWriter()).getBuffer()) {
+                return this.write(var4, 0, 0).toString();
+            }
         } catch (Exception var1) {
             return null;
-        }
-    }
-
-    private String f(int var1) {
-        StringWriter var4;
-        synchronized ((var4 = new StringWriter()).getBuffer()) {
-            return this.write(var4, 0, 0).toString();
         }
     }
 

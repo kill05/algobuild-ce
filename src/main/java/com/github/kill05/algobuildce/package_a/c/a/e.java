@@ -27,7 +27,7 @@ public final class e {
          ((n)var1).a(false);
       }
 
-      this.a.b();
+      this.a.reset();
    }
 
    public final boolean b() {

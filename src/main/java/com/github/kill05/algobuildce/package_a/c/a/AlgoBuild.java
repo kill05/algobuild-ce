@@ -2,6 +2,7 @@ package com.github.kill05.algobuildce.package_a.c.a;
 
 import com.github.kill05.algobuildce.package_a.c.b.p;
 import com.github.kill05.algobuildce.package_a.c.b.q;
+import com.github.kill05.algobuildce.package_a.f.ABFiles;
 import com.github.kill05.algobuildce.package_a.f.l;
 import com.github.kill05.algobuildce.package_a.i.Translator;
 import com.github.kill05.algobuildce.package_a.k.B_innerclass;
@@ -116,12 +117,12 @@ public class AlgoBuild {
 
         do {
             ++var11;
-            if ((var3 = com.github.kill05.algobuildce.package_a.f.j.a()) != 0) {
+            if ((var3 = ABFiles.a()) != 0) {
                 String var10;
                 if (var3 == 1) {
                     var10 = Translator.translate("abpFirstRunQuestion");
                     if (JOptionPane.showConfirmDialog(null, var10, "AlgoBuild", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
-                        l.a();
+                        l.runFirstConfiguration();
                         var3 = -1;
                     } else {
                         System.exit(var3);
@@ -145,16 +146,16 @@ public class AlgoBuild {
             System.out.println("INVALID ZOOM RATIO: " + var0);
         }
 
-        UIDefaults var2;
-        Enumeration var3 = (var2 = UIManager.getLookAndFeelDefaults()).keys();
+        UIDefaults defaults = UIManager.getLookAndFeelDefaults();
+        Enumeration<Object> var3 = defaults.keys();
 
         while (var3.hasMoreElements()) {
             Object var4 = var3.nextElement();
             Object var5;
-            if ((var5 = var2.get(var4)) instanceof FontUIResource) {
+            if ((var5 = defaults.get(var4)) instanceof FontUIResource) {
                 FontUIResource var6 = (FontUIResource) var5;
                 var6 = new FontUIResource(var6.getName(), var6.getStyle(), (int) ((double) var6.getSize() * var0));
-                var2.put(var4, var6);
+                defaults.put(var4, var6);
             }
         }
 

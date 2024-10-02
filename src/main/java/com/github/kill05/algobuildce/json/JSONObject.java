@@ -1,6 +1,7 @@
 package com.github.kill05.algobuildce.json;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -19,13 +20,12 @@ import java.util.Map.Entry;
 public final class JSONObject {
 
     private final Map<String, Object> b;
-    public static final Object NULL = NullValue.INSTANCE;
 
     public JSONObject() {
         this.b = new HashMap<>();
     }
 
-    public JSONObject(f var1) {
+    public JSONObject(JsonReader var1) {
         this();
         if (var1.b() != '{') {
             throw var1.throwJsonException("A JSONObject text must begin with '{'");
@@ -38,7 +38,7 @@ public final class JSONObject {
                 case '}':
                     return;
                 default:
-                    var1.a();
+                    var1.stepBack();
                     String var3 = var1.c().toString();
                     if (var1.b() != ':') {
                         throw var1.throwJsonException("Expected a ':' after a key");
@@ -52,7 +52,7 @@ public final class JSONObject {
                                 return;
                             }
 
-                            var1.a();
+                            var1.stepBack();
                             break;
                         case '}':
                             return;
@@ -123,14 +123,14 @@ public final class JSONObject {
     public JSONObject a(String var1, Object var2) {
         checkFinite(var2);
         Object var3;
-        if ((var3 = this.c(var1)) == null) {
-            this.b(var1, (new JSONArray()).a(var2));
+        if ((var3 = this.getNullable(var1)) == null) {
+            this.put(var1, (new JSONArray()).add(var2));
         } else {
             if (!(var3 instanceof JSONArray)) {
                 throw new JsonParseException("JSONObject[" + var1 + "] is not a JSONArray.");
             }
 
-            this.b(var1, ((JSONArray) var3).a(var2));
+            this.put(var1, ((JSONArray) var3).add(var2));
         }
 
         return this;
@@ -142,7 +142,7 @@ public final class JSONObject {
             throw new JsonParseException("Null key.");
         }
 
-        Object var2 = this.c(key);
+        Object var2 = this.getNullable(key);
         if (var2 == null) {
             throw new JsonParseException("JSONObject[" + g(key) + "] not found.");
         }
@@ -204,59 +204,62 @@ public final class JSONObject {
         return var1;
     }
 
-    public Object c(String var1) {
-        return var1 == null ? null : this.b.get(var1);
+    @Nullable
+    public Object getNullable(String key) {
+        return key != null ? this.b.get(key) : null;
     }
 
-    public JSONArray d(String var1) {
-        Object var2;
-        return (var2 = this.c(var1)) instanceof JSONArray ? (JSONArray) var2 : null;
+    @Nullable
+    public JSONArray getAsJsonArray(String key) {
+        Object value = this.getNullable(key);
+        return (value instanceof JSONArray) ? (JSONArray) value : null;
     }
 
-    public JSONObject e(String var1) {
-        Object var2;
-        return (var2 = this.c(var1)) instanceof JSONObject ? (JSONObject) var2 : null;
+    @Nullable
+    public JSONObject getAsJsonObject(String key) {
+        Object var2 = getNullable(key);
+        return var2 instanceof JSONObject ? (JSONObject) var2 : null;
     }
 
-    public long a(String var1, long var2) {
+    public long getAsLong(String key, long def) {
         try {
-            return this.getAsLong(var1);
+            return this.getAsLong(key);
         } catch (Exception var4) {
-            return 0L;
+            return def;
         }
     }
 
-    public String f(String var1) {
-        return this.a(var1, "");
+    public String getAsString(String key) {
+        return this.getAsString(key, "");
     }
 
-    public String a(String var1, String var2) {
-        Object var3 = this.c(var1);
-        return NULL.equals(var3) ? var2 : var3.toString();
+    public String getAsString(String key, String def) {
+        Object value = this.getNullable(key);
+        return JsonNull.INSTANCE.equals(value) ? def : String.valueOf(key);
     }
 
-    public JSONObject b(String var1, Object var2) {
-        if (var1 == null) {
+    public JSONObject put(String key, Object value) {
+        if (key == null) {
             throw new NullPointerException("Null key.");
-        } else {
-            if (var2 != null) {
-                checkFinite(var2);
-                this.b.put(var1, var2);
-            } else {
-                this.b.remove(var1);
-            }
-
-            return this;
         }
+
+        if (value != null) {
+            checkFinite(value);
+            this.b.put(key, value);
+        } else {
+            this.b.remove(key);
+        }
+
+        return this;
     }
 
     public JSONObject c(String var1, Object var2) {
         if (var1 != null && var2 != null) {
-            if (this.c(var1) != null) {
+            if (this.getNullable(var1) != null) {
                 throw new JsonParseException("Duplicate key \"" + var1 + "\"");
             }
 
-            this.b(var1, var2);
+            this.put(var1, var2);
         }
 
         return this;
@@ -325,11 +328,10 @@ public final class JSONObject {
             }
 
             var1.write(34);
-            return var1;
         } else {
             var1.write("\"\"");
-            return var1;
         }
+        return var1;
     }
 
     public static Object h(String var0) {
@@ -340,7 +342,7 @@ public final class JSONObject {
         } else if (var0.equalsIgnoreCase("false")) {
             return Boolean.FALSE;
         } else if (var0.equalsIgnoreCase("null")) {
-            return NULL;
+            return JsonNull.INSTANCE;
         } else {
             char var1;
             if ((var1 = var0.charAt(0)) >= '0' && var1 <= '9' || var1 == '-') {
@@ -439,10 +441,10 @@ public final class JSONObject {
     public static Object encodeJson(Object object) {
         try {
             if (object == null) {
-                return NULL;
+                return JsonNull.INSTANCE;
             } else if (!(object instanceof JSONObject) &&
                     !(object instanceof JSONArray) &&
-                    !NULL.equals(object) &&
+                    !JsonNull.INSTANCE.equals(object) &&
                     !(object instanceof JSONSerializable) &&
                     !(object instanceof Byte) &&
                     !(object instanceof Character) &&

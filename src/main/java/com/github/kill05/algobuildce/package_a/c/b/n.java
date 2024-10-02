@@ -68,7 +68,7 @@ public abstract class n extends com.github.kill05.algobuildce.package_a.c.a.d {
 
    public JSONObject b(boolean var1) {
       JSONObject var2;
-      (var2 = new JSONObject()).b("abiid", this.g());
+      (var2 = new JSONObject()).put("abiid", this.g());
       return var2;
    }
 
@@ -76,7 +76,7 @@ public abstract class n extends com.github.kill05.algobuildce.package_a.c.a.d {
    }
 
    public static n a(JSONObject var0) {
-      String var2 = (String)var0.c("abiid");
+      String var2 = (String)var0.getNullable("abiid");
       Object var1 = null;
       if (var2.equals("ABIASS")) {
          var1 = new a();

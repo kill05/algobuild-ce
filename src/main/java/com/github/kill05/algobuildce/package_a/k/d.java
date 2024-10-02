@@ -6,9 +6,9 @@ import javax.swing.Icon;
 
 final class d extends AbstractAction {
 
-    private final c a;
+    private final ABFrameHolder a;
 
-    d(c var1, String var2, Icon var3) {
+    d(ABFrameHolder var1, String var2, Icon var3) {
         super(var2, var3);
         this.a = var1;
     }

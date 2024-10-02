@@ -2,6 +2,7 @@ package com.github.kill05.algobuildce.package_a.a;
 
 import com.github.kill05.algobuildce.package_a.c.a.AlgoBuild;
 import com.github.kill05.algobuildce.package_a.i.Translator;
+import com.github.kill05.algobuildce.package_a.k.ABFrameHolder;
 
 import java.awt.Dimension;
 import java.awt.Frame;
@@ -90,7 +91,7 @@ public final class k extends JDialog implements ActionListener {
             if (var5 != null && var5.length() > 0 && !var5.contains("'") && !var5.contains("\"") && var2 != null && var2.length() > 0 && !var2.contains("'") && !var2.contains("\"")) {
                 if (com.github.kill05.algobuildce.package_a.f.d.b(var5, var2) != null) {
                     JOptionPane.showMessageDialog(null, "REGISTRATO " + var5 + "   " + var2);
-                    com.github.kill05.algobuildce.package_a.k.c.a().a("mnuAuthorRegistration", false);
+                    ABFrameHolder.getInstance().a("mnuAuthorRegistration", false);
                 }
 
                 this.setVisible(false);
@@ -103,7 +104,7 @@ public final class k extends JDialog implements ActionListener {
     }
 
     public static void a() {
-        new k(com.github.kill05.algobuildce.package_a.k.c.a().b());
+        new k(ABFrameHolder.getInstance().b());
     }
 
     private static boolean checkConnection() {

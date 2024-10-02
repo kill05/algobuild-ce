@@ -37,7 +37,7 @@ public final class i extends o {
       int var8 = var2 - this.e;
       var1.drawLine(var2 / 2, 0, var2 / 2, 2 * this.f);
       var1.drawLine(var7, 1 * this.f, var2 / 2, 1 * this.f);
-      int var6 = this.b.q().m();
+      int var6 = this.b.getViewOptions().m();
       var1.drawLine(var2 / 2, 1 * this.f, var2 / 2 - var6, 1 * this.f - var6);
       var1.drawLine(var2 / 2, 1 * this.f, var2 / 2 - var6, 1 * this.f + var6);
       var1.drawLine(var7, 1 * this.f, var7, var3 - 2 * this.f);

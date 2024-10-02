@@ -1,5 +1,8 @@
 package com.github.kill05.algobuildce.package_a.f;
 
+import com.github.kill05.algobuildce.package_a.d.TestModelCoreCharArrayFactory;
+import com.github.kill05.algobuildce.package_a.h.UserNameCharArrayFactory;
+
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,13 +16,13 @@ import java.util.UUID;
 public final class l {
     private static int a = -1;
 
-    public static int a() {
+    public static int runFirstConfiguration() {
         if (a == -1) {
             a = 0;
             a(0);
             boolean var10000;
             File var0;
-            if ((var0 = j.c()).exists() && var0.isDirectory()) {
+            if ((var0 = ABFiles.getABFolder()).exists() && var0.isDirectory()) {
                 var10000 = true;
             } else {
                 var0.mkdirs();
@@ -47,7 +50,7 @@ public final class l {
             label88:
             {
                 if (a == 0) {
-                    if ((var0 = j.f()).exists() && var0.isDirectory()) {
+                    if ((var0 = ABFiles.getCacheFolder()).exists() && var0.isDirectory()) {
                         var10000 = true;
                     } else {
                         var0.mkdirs();
@@ -66,7 +69,7 @@ public final class l {
             label75:
             {
                 if (a == 0) {
-                    if ((var0 = j.e()).exists() && var0.isDirectory()) {
+                    if ((var0 = ABFiles.getCoreFolder()).exists() && var0.isDirectory()) {
                         var10000 = true;
                     } else {
                         var0.mkdirs();
@@ -90,7 +93,6 @@ public final class l {
             }
 
             if (a == 0) {
-                long var3 = 200L;
 
                 try {
                     Thread.sleep(200L);
@@ -106,23 +108,23 @@ public final class l {
 
     private static boolean b() {
         UUID var0 = UUID.randomUUID();
-        String var1 = System.getProperties().getProperty(new String((new com.github.kill05.algobuildce.package_a.h.b()).b()));
+        String var1 = System.getProperties().getProperty(new String((new UserNameCharArrayFactory()).createArray()));
 
         UUID var5 = UUID.nameUUIDFromBytes(var1.getBytes(StandardCharsets.UTF_8));
-        File var2 = new File(j.e(), new String((new com.github.kill05.algobuildce.package_a.d.e()).b()));
-        File var3 = new File(j.e(), new String((new com.github.kill05.algobuildce.package_a.d.d()).b()));
+        File var2 = new File(ABFiles.getCoreFolder(), new String((new com.github.kill05.algobuildce.package_a.d.e()).createArray()));
+        File var3 = new File(ABFiles.getCoreFolder(), new String((new com.github.kill05.algobuildce.package_a.d.d()).createArray()));
         c.a(var0, var5, var2, var3);
         a(50);
-        var2 = new File(j.e(), new String((new com.github.kill05.algobuildce.package_a.d.g()).b()));
+        var2 = new File(ABFiles.getCoreFolder(), new String((new com.github.kill05.algobuildce.package_a.d.g()).createArray()));
         a(var0, var5, var2);
         a(60);
-        var2 = new File(j.e(), new String((new com.github.kill05.algobuildce.package_a.d.b()).b()));
+        var2 = new File(ABFiles.getCoreFolder(), new String((new com.github.kill05.algobuildce.package_a.d.b()).createArray()));
         a(var0, var5, var2);
         a(70);
-        var2 = new File(j.e(), new String((new com.github.kill05.algobuildce.package_a.d.c()).b()));
+        var2 = new File(ABFiles.getCoreFolder(), new String((new com.github.kill05.algobuildce.package_a.d.c()).createArray()));
         a(var0, var5, var2);
         a(80);
-        var2 = new File(j.e(), new String((new com.github.kill05.algobuildce.package_a.d.a()).b()));
+        var2 = new File(ABFiles.getCoreFolder(), new String((new TestModelCoreCharArrayFactory()).createArray()));
         b(var0, var5, var2);
         a(100);
 
@@ -160,7 +162,7 @@ public final class l {
 
     private static boolean c() {
         boolean var0 = false;
-        File var1 = j.c();
+        File var1 = ABFiles.getABFolder();
         int var2 = (int) (Math.random() * 100000.0D);
         var1 = new File(var1, "tmp-test-" + var2);
         byte[] var7;
@@ -195,7 +197,7 @@ public final class l {
 
     private static boolean d() {
         File var0;
-        if ((var0 = j.d()).exists() && var0.isDirectory()) {
+        if ((var0 = ABFiles.getABSecretFolder()).exists() && var0.isDirectory()) {
             return true;
         } else {
             var0.mkdirs();

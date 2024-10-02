@@ -242,8 +242,8 @@ public final class q extends n {
     @Override
     public final JSONObject b(boolean var1) {
         JSONObject var2;
-        (var2 = super.b(var1)).b("codeType", Integer.toString(this.e));
-        var2.b("name", this.b);
+        (var2 = super.b(var1)).put("codeType", Integer.toString(this.e));
+        var2.put("name", this.b);
         int var3;
         int var4;
         if ((var3 = this.c.size()) > 0) {
@@ -264,7 +264,7 @@ public final class q extends n {
         }
 
         if (this.f != null && !this.f.isEmpty()) {
-            var2.b("returnExpr", this.f);
+            var2.put("returnExpr", this.f);
         }
 
         return var2;
@@ -274,13 +274,13 @@ public final class q extends n {
     public void a(JSONObject var1, boolean var2) {
         super.a(var1, var2);
         this.e = var1.getAsInt("codeType");
-        this.b = var1.f("name");
-        JSONArray var13 = var1.d("formalParams");
+        this.b = var1.getAsString("name");
+        JSONArray var13 = var1.getAsJsonArray("formalParams");
         this.c.clear();
 
         if (var13 != null) {
             for (int var4 = 0; var4 < var13.size(); ++var4) {
-                String var5 = var13.d(var4);
+                String var5 = var13.getAsString(var4);
                 if (var4 < this.c.size()) {
                     this.c.set(var4, var5);
                 } else {
@@ -292,12 +292,12 @@ public final class q extends n {
         }
 
         String var15;
-        if ((var15 = var1.f("returnExpr")) != null) {
+        if ((var15 = var1.getAsString("returnExpr")) != null) {
             this.f = var15;
         }
 
         if (var2) {
-            JSONArray var17 = var1.d("body");
+            JSONArray var17 = var1.getAsJsonArray("body");
 
             try {
                 this.d.j();
@@ -309,7 +309,7 @@ public final class q extends n {
                 for (int var10 = 0; var10 < var17.size(); ++var10) {
                     JSONObject var14;
                     n var16;
-                    (var16 = n.a(var14 = var17.c(var10))).a(var14, var2);
+                    (var16 = n.a(var14 = var17.getAsJsonObject(var10))).a(var14, var2);
                     this.a(var16);
                 }
             }

@@ -5,7 +5,7 @@ import javax.swing.AbstractAction;
 
 final class n extends AbstractAction {
 
-   n(c var1, String var2) {
+   n(ABFrameHolder var1, String var2) {
       super(var2);
    }
 

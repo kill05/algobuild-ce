@@ -1,10 +1,13 @@
 package com.github.kill05.algobuildce.package_a.c.a;
 
 import com.github.kill05.algobuildce.json.JSONArray;
+import com.github.kill05.algobuildce.json.JsonReader;
 import com.github.kill05.algobuildce.package_a.c.b.n;
 import com.github.kill05.algobuildce.package_a.c.b.p;
 import com.github.kill05.algobuildce.package_a.c.b.q;
 import com.github.kill05.algobuildce.json.JSONObject;
+import com.github.kill05.algobuildce.package_a.f.ABFiles;
+import com.github.kill05.algobuildce.package_a.f.ABSerializationException;
 
 import java.io.File;
 import java.io.FileReader;
@@ -19,7 +22,7 @@ import javax.swing.JOptionPane;
 
 public final class b {
     private Map a;
-    private final Stack b;
+    private final Stack<c> b;
     private final com.github.kill05.algobuildce.package_c.a c;
     private final AlgoBuild d;
     private final Stack<Map<String, Object>> stack;
@@ -28,57 +31,60 @@ public final class b {
     private d h;
     private String i;
     private boolean j;
-    private final i k;
+    private final ViewOptions viewOptions;
     private final f l;
     private String m = "";
     private int n = 0;
     private boolean o = false;
-    private final g p;
+    private final SaveHistory saveHistory;
 
     public c a() {
-        return this.b != null && !this.b.isEmpty() ? (c) this.b.peek() : null;
+        return this.b != null && !this.b.isEmpty() ? this.b.peek() : null;
     }
 
     public b() {
-        this.a = new TreeMap();
-        this.b = new Stack();
+        this.a = new TreeMap<>();
+        this.b = new Stack<>();
         this.c = new com.github.kill05.algobuildce.package_c.a();
         this.d = new AlgoBuild();
         this.stack = new Stack<>();
-        this.k = new i();
+        this.viewOptions = new ViewOptions();
 
         try {
-            i var1 = this.k;
             String var2 = "ViewOptions.abopt";
-            File var3 = com.github.kill05.algobuildce.package_a.f.j.c();
+            File var3 = ABFiles.getABFolder();
             File var5 = new File(var3, var2);
-            FileReader var8 = new FileReader(var5);
-            com.github.kill05.algobuildce.json.f var6 = new com.github.kill05.algobuildce.json.f(var8);
-            JSONObject var7 = (new JSONObject(var6)).e("opt");
-            var8.close();
-            var1.a(var7);
-        } catch (IOException var4) {
+
+            try (FileReader fileReader = new FileReader(var5)) {
+                JsonReader jsonReader = new JsonReader(fileReader);
+                JSONObject options = (new JSONObject(jsonReader)).getAsJsonObject("opt");
+
+                if (options != null) {
+                    this.viewOptions.deserializeOptions(options);
+                }
+            }
+        } catch (IOException ignored) {
         }
 
         this.l = new f();
-        this.p = new g();
+        this.saveHistory = new SaveHistory();
     }
 
-    public void b() {
+    public void reset() {
         this.b.clear();
         this.stack.clear();
         this.a.clear();
         this.m = "";
         this.n = 0;
         this.o = false;
-        this.p.c();
+        this.saveHistory.clear();
     }
 
     public Map<String, Object> c() {
         return this.stack.peek();
     }
 
-    public Stack d() {
+    public Stack<c> d() {
         return this.b;
     }
 
@@ -87,9 +93,9 @@ public final class b {
     }
 
     public void f() {
-        TreeMap var1 = new TreeMap();
-        this.stack.push(var1);
-        this.a = var1;
+        TreeMap<String, Object> map = new TreeMap<>();
+        this.stack.push(map);
+        this.a = map;
     }
 
     public void g() {
@@ -104,7 +110,7 @@ public final class b {
         }
     }
 
-    public AlgoBuild h() {
+    public AlgoBuild getAlgoBuild() {
         return this.d;
     }
 
@@ -142,10 +148,9 @@ public final class b {
     public void a(String var1, int var2) {
         q var4 = this.d.a(var1, var2);
         if (this.f != null) {
-            Iterator var3 = this.f.iterator();
 
-            while (var3.hasNext()) {
-                ((j) var3.next()).a(var4);
+            for (com.github.kill05.algobuildce.package_a.c.a.j value : this.f) {
+                value.a(var4);
             }
 
             var4.f();
@@ -157,10 +162,9 @@ public final class b {
     public void a(q var1) {
         var1 = this.d.a(var1);
         if (this.f != null) {
-            Iterator var3 = this.f.iterator();
 
-            while (var3.hasNext()) {
-                ((j) var3.next()).a(var1);
+            for (com.github.kill05.algobuildce.package_a.c.a.j value : this.f) {
+                value.a(var1);
             }
 
             var1.f();
@@ -177,10 +181,9 @@ public final class b {
             this.d.c(var1);
             this.a(true);
             if (this.f != null) {
-                Iterator var5 = this.f.iterator();
 
-                while (var5.hasNext()) {
-                    ((j) var5.next()).a(var1, var2);
+                for (com.github.kill05.algobuildce.package_a.c.a.j value : this.f) {
+                    value.a(var1, var2);
                 }
             }
         }
@@ -196,10 +199,9 @@ public final class b {
         this.d.b(var1);
         this.a(true);
         if (this.f != null) {
-            Iterator var3 = this.f.iterator();
 
-            while (var3.hasNext()) {
-                ((j) var3.next()).b(var2);
+            for (com.github.kill05.algobuildce.package_a.c.a.j value : this.f) {
+                value.b(var2);
             }
         }
 
@@ -285,7 +287,7 @@ public final class b {
     public void a(j var1) {
         if (var1 != null) {
             if (this.f == null) {
-                this.f = new Vector();
+                this.f = new Vector<>();
             }
 
             this.f.add(var1);
@@ -297,10 +299,9 @@ public final class b {
     public void l() {
         ++this.n;
         if (this.f != null) {
-            Iterator var2 = this.f.iterator();
 
-            while (var2.hasNext()) {
-                ((j) var2.next()).a(this.n);
+            for (com.github.kill05.algobuildce.package_a.c.a.j value : this.f) {
+                value.a(this.n);
             }
         }
 
@@ -311,10 +312,9 @@ public final class b {
         if (this.n >= 0) {
             --this.n;
             if (this.f != null) {
-                Iterator var2 = this.f.iterator();
 
-                while (var2.hasNext()) {
-                    ((j) var2.next()).a(this.n);
+                for (com.github.kill05.algobuildce.package_a.c.a.j value : this.f) {
+                    value.a(this.n);
                 }
             }
         }
@@ -323,25 +323,22 @@ public final class b {
 
     public String e(String var1) {
         String var2 = null;
-        if (this.f != null && this.f.size() != 0) {
-            Iterator var3 = this.f.iterator();
+        if (this.f != null && !this.f.isEmpty()) {
 
-            while (var3.hasNext()) {
-                if ((var2 = ((j) var3.next()).g(var1)) != null) {
+            for (com.github.kill05.algobuildce.package_a.c.a.j value : this.f) {
+                if ((var2 = value.g(var1)) != null) {
                     return var2;
                 }
             }
         }
 
-        return var2;
+        return null;
     }
 
     public void f(String var1) {
-        if (this.f != null && this.f.size() != 0) {
-            Iterator var3 = this.f.iterator();
+        if (this.f != null && !this.f.isEmpty()) {
 
-            while (var3.hasNext()) {
-                j var2 = (j) var3.next();
+            for (com.github.kill05.algobuildce.package_a.c.a.j var2 : this.f) {
                 if (this.o) {
                     var2.a(this.m);
                 }
@@ -362,10 +359,9 @@ public final class b {
 
     public void n() {
         if (this.f != null && this.f.size() != 0) {
-            Iterator var2 = this.f.iterator();
 
-            while (var2.hasNext()) {
-                ((j) var2.next()).b();
+            for (com.github.kill05.algobuildce.package_a.c.a.j value : this.f) {
+                value.b();
             }
         } else {
             System.out.println();
@@ -376,7 +372,7 @@ public final class b {
 
     public void g(String var1) {
         j var2;
-        if (this.f != null && this.f.size() != 0) {
+        if (this.f != null && !this.f.isEmpty()) {
             for (Iterator var3 = this.f.iterator(); var3.hasNext(); var2.b(var1)) {
                 var2 = (j) var3.next();
                 if (this.o) {
@@ -396,10 +392,9 @@ public final class b {
 
     public void h(String var1) {
         if (this.f != null && !this.f.isEmpty()) {
-            Iterator var3 = this.f.iterator();
 
-            while (var3.hasNext()) {
-                ((j) var3.next()).c(var1);
+            for (com.github.kill05.algobuildce.package_a.c.a.j value : this.f) {
+                value.c(var1);
             }
 
         } else {
@@ -421,28 +416,28 @@ public final class b {
     }
 
     private JSONObject t() {
-        JSONObject var1;
-        (var1 = new JSONObject()).b("abiid", "ABEENV");
+        JSONObject var1 = new JSONObject();
+        var1.put("abiid", "ABEENV");
 
         for (Object object : this.d.a()) {
             JSONObject var3 = ((q) object).b(true);
             var1.a("codepool", var3);
         }
 
-        var1.b("viewOptions", this.k.n());
-        var1.b("saveHistory", this.p.a());
+        var1.put("viewOptions", this.viewOptions.serialize());
+        var1.put("saveHistory", this.saveHistory.serialize());
         return var1;
     }
 
     public void j(String var1) {
-        com.github.kill05.algobuildce.package_a.f.f var2 = com.github.kill05.algobuildce.package_a.f.f.a();
-        String var3;
-        if ((var3 = com.github.kill05.algobuildce.package_a.f.k.a().d()) != null) {
-            String var4 = com.github.kill05.algobuildce.package_a.f.k.a().b();
+        com.github.kill05.algobuildce.package_a.f.f var2 = com.github.kill05.algobuildce.package_a.f.f.getInstance();
+        String author = com.github.kill05.algobuildce.package_a.f.k.getInstance().d();
+        if (author != null) {
+            String serial = com.github.kill05.algobuildce.package_a.f.k.getInstance().b();
             p var5 = this.d.d();
-            String var6 = var5.a() + "/" + var5.b();
-            File var9 = new File(var1);
-            this.p.a(var4, var3, var9.getName(), var6);
+            String sizeDescription = var5.a() + "/" + var5.b();
+            File file = new File(var1);
+            this.saveHistory.setActualSessionSave(serial, author, file.getName(), sizeDescription);
         }
 
         JSONObject var8 = this.t();
@@ -456,44 +451,42 @@ public final class b {
                 object.b(this);
             }
 
-        } catch (com.github.kill05.algobuildce.package_a.f.h var7) {
+        } catch (ABSerializationException var7) {
             JOptionPane.showMessageDialog(null, var7.getMessage());
         }
     }
 
     public void k(String var1) {
-        com.github.kill05.algobuildce.package_a.f.f var2 = com.github.kill05.algobuildce.package_a.f.f.a();
+        com.github.kill05.algobuildce.package_a.f.f var2 = com.github.kill05.algobuildce.package_a.f.f.getInstance();
 
         try {
-            JSONObject var9;
-            if ((var9 = var2.a(var1)) != null) {
+            JSONObject var9 = var2.a(var1);
+            if (var9 != null) {
                 if (this.f != null) {
-                    Iterator var5 = this.f.iterator();
-
-                    while (var5.hasNext()) {
-                        ((j) var5.next()).a();
+                    for (com.github.kill05.algobuildce.package_a.c.a.j value : this.f) {
+                        value.a();
                     }
                 }
 
-                this.b();
+                this.reset();
                 this.d.b();
                 JSONObject var4 = var9;
                 b var3 = this;
-                JSONObject var13 = var9.e("saveHistory");
-                this.p.c();
-                if (var13 != null) {
-                    this.p.a(var13);
+                JSONObject saveHistoryJson = var9.getAsJsonObject("saveHistory");
+                this.saveHistory.clear();
+                if (saveHistoryJson != null) {
+                    this.saveHistory.deserialize(saveHistoryJson);
                 }
 
-                if ((var9 = var9.e("viewOptions")) != null) {
-                    this.k.a(var9);
+                if ((var9 = var9.getAsJsonObject("viewOptions")) != null) {
+                    this.viewOptions.deserializeOptions(var9);
                 }
 
                 JSONArray var10;
-                if ((var10 = var4.d("codepool")) != null) {
+                if ((var10 = var4.getAsJsonArray("codepool")) != null) {
                     for (int var12 = 0; var12 < var10.size(); ++var12) {
                         n var6;
-                        (var6 = com.github.kill05.algobuildce.package_a.c.b.n.a(var13 = var10.c(var12))).a(var13, true);
+                        (var6 = com.github.kill05.algobuildce.package_a.c.b.n.a(saveHistoryJson = var10.getAsJsonObject(var12))).a(saveHistoryJson, true);
                         if (var6 instanceof q) {
                             var3.a((q) var6);
                         }
@@ -508,7 +501,7 @@ public final class b {
                 }
 
             }
-        } catch (com.github.kill05.algobuildce.package_a.f.h var8) {
+        } catch (ABSerializationException var8) {
             JOptionPane.showMessageDialog(null, var8.getMessage());
         }
 
@@ -524,10 +517,9 @@ public final class b {
 
     public void a(boolean var1) {
         this.j = var1;
-        Iterator var3 = this.f.iterator();
 
-        while (var3.hasNext()) {
-            ((j) var3.next()).b(this);
+        for (com.github.kill05.algobuildce.package_a.c.a.j value : this.f) {
+            value.b(this);
         }
 
         if (var1) {
@@ -539,8 +531,8 @@ public final class b {
 
     }
 
-    public i q() {
-        return this.k;
+    public ViewOptions getViewOptions() {
+        return this.viewOptions;
     }
 
     public f r() {
@@ -548,6 +540,6 @@ public final class b {
     }
 
     public String s() {
-        return this.p.b();
+        return this.saveHistory.b();
     }
 }

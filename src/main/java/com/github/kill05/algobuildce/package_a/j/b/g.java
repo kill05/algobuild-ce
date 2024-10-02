@@ -37,7 +37,7 @@ public final class g extends o {
       this.d(var1);
       var1.drawPolygon(var4, var5, 4);
       int var6 = this.e;
-      int var7 = this.b.q().m();
+      int var7 = this.b.getViewOptions().m();
       var1.drawLine(var6, this.f, var2 / 2, this.f);
       var1.drawLine(var2 / 2, this.f, var2 / 2 - var7, this.f - var7);
       var1.drawLine(var2 / 2, this.f, var2 / 2 - var7, this.f + var7);

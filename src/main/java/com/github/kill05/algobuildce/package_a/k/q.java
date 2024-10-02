@@ -11,7 +11,7 @@ import javax.swing.AbstractAction;
 
 final class q extends AbstractAction {
 
-    q(c var1, String var2) {
+    q(ABFrameHolder var1, String var2) {
         super(var2);
     }
 

@@ -46,7 +46,7 @@ public final class c extends o {
         int var8 = (int)var2.getHeight();
         int var4 = this.getWidth();
         int var5 = this.getHeight();
-        var1.setColor(this.b.q().d());
+        var1.setColor(this.b.getViewOptions().getBackgroundColor());
         var1.fillRect(0, 0, var4, var5);
         this.a(var1, 0);
         var1.fillOval(var3 / 2 - 10 * this.e, 1 * this.f, 20 * this.e, 4 * this.f - 1);

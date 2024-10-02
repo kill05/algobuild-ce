@@ -23,9 +23,9 @@ public final class B_subclass extends C_subclass {
         c var3;
         int var4 = (var3 = (c)var1).getWidth();
         int var5 = var3.getHeight();
-        var2.setColor(var3.b.q().d());
+        var2.setColor(var3.b.getViewOptions().getBackgroundColor());
         int var6 = this.f;
-        var2.setColor(var3.b.q().d());
+        var2.setColor(var3.b.getViewOptions().getBackgroundColor());
         var2.fillRect(0, 0, var4, var5);
         var3.a(var2, 2);
         var2.fillRect(var3.e, var3.f, var3.e, 6 * var3.f + var3.a.getHeight());

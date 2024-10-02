@@ -5,9 +5,9 @@ import java.awt.event.ActionEvent;
 
 class A_innerclass extends AbstractAction {
 
-    private final c a;
+    private final ABFrameHolder a;
 
-    A_innerclass(c var1, String var2) {
+    A_innerclass(ABFrameHolder var1, String var2) {
         super(var2);
         this.a = var1;
     }

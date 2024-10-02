@@ -5,11 +5,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 
-public final class a extends FileInputStream {
-    private final String a = "AlgoBuild01.00\n";
+public final class ABFileInputStream extends FileInputStream {
+    private static final String a = "AlgoBuild01.00\n";
     private int b = -1;
 
-    public a(String var1) throws FileNotFoundException {
+    public ABFileInputStream(String var1) throws FileNotFoundException {
         super(var1);
     }
 

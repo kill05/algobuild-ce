@@ -1,5 +1,6 @@
 package com.github.kill05.algobuildce.package_a.k;
 
+import com.github.kill05.algobuildce.package_a.i.ImageUtils;
 import com.github.kill05.algobuildce.package_a.j.a.g;
 
 import javax.swing.*;
@@ -9,7 +10,7 @@ import java.awt.event.WindowListener;
 import java.net.URL;
 
 public final class ABFrame extends JFrame implements WindowListener {
-    private c a;
+    private ABFrameHolder a;
     private g b;
     private JToolBar c = null;
 
@@ -49,13 +50,13 @@ public final class ABFrame extends JFrame implements WindowListener {
         }
 
         try {
-            ImageIcon var7 = com.github.kill05.algobuildce.package_a.i.b.a("imgs/AlgoBuildIcon.png");
+            ImageIcon var7 = ImageUtils.loadImage("imgs/AlgoBuildIcon.png");
             var1.setIconImage(var7.getImage());
         } catch (Exception var4) {
         }
     }
 
-    public void a(c var1) {
+    public void a(ABFrameHolder var1) {
         this.a = var1;
     }
 

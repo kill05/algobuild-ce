@@ -10,7 +10,7 @@ import java.net.URISyntaxException;
 import javax.swing.AbstractAction;
 
 final class r extends AbstractAction {
-   r(c var1, String var2) {
+   r(ABFrameHolder var1, String var2) {
       super(var2);
    }
 

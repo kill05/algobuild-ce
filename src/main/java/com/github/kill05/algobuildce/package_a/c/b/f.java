@@ -117,16 +117,16 @@ public final class f extends h {
 
    public final JSONObject b(boolean var1) {
       JSONObject var2;
-      (var2 = super.b(var1)).b("initialization", this.b);
-      var2.b("increment", this.c);
+      (var2 = super.b(var1)).put("initialization", this.b);
+      var2.put("increment", this.c);
       return var2;
    }
 
    public final void a(JSONObject var1, boolean var2) {
       super.a(var1, var2);
-      String var3 = var1.f("initialization");
+      String var3 = var1.getAsString("initialization");
       this.a(var3);
-      var3 = var1.f("increment");
+      var3 = var1.getAsString("increment");
       this.b(var3);
    }
 

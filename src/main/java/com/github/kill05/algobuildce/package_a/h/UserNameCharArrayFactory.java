@@ -1,13 +1,15 @@
 package com.github.kill05.algobuildce.package_a.h;
 
-public final class b extends com.github.kill05.algobuildce.package_a.e.a {
+import com.github.kill05.algobuildce.package_a.e.CharArrayFactory;
+
+public final class UserNameCharArrayFactory extends CharArrayFactory {
    @Override
-   protected final int a() {
+   protected final int getArrayLength() {
       return 9;
    }
 
    @Override
-   protected final char a(int var1) {
+   protected final char getCharAt(int var1) {
       char var2 = 0;
       switch(var1) {
       case 0:
