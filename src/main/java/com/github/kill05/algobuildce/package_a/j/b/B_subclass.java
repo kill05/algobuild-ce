@@ -23,20 +23,20 @@ public final class B_subclass extends C_subclass {
         c var3;
         int var4 = (var3 = (c)var1).getWidth();
         int var5 = var3.getHeight();
-        var2.setColor(var3.b.getViewOptions().getBackgroundColor());
+        var2.setColor(var3.program.getViewOptions().getBackgroundColor());
         int var6 = this.f;
-        var2.setColor(var3.b.getViewOptions().getBackgroundColor());
+        var2.setColor(var3.program.getViewOptions().getBackgroundColor());
         var2.fillRect(0, 0, var4, var5);
-        var3.a(var2, 2);
+        var3.setFillingColor(var2, 2);
         var2.fillRect(var3.e, var3.f, var3.e, 6 * var3.f + var3.a.getHeight());
-        var3.a(var2, 0);
+        var3.setFillingColor(var2, 0);
         var2.fillRect(var3.e, var3.f, var4, 3 * var3.f);
-        var1.d(var2);
+        var1.setLineColor(var2);
         var2.drawString(this.b, var3.e, var6);
         var6 += 3 * var1.f + var3.a.getHeight();
-        var3.a(var2, 1);
+        var3.setFillingColor(var2, 1);
         var2.fillRect(var3.e, var6 - 2 * var3.f, var4, 3 * var3.f);
-        var3.d(var2);
+        var3.setLineColor(var2);
         var2.drawString(this.c, var3.e, var6);
     }
 
@@ -45,7 +45,7 @@ public final class B_subclass extends C_subclass {
         q var2;
         int var3;
         c var5;
-        if ((var2 = (q)(var5 = (c)var1).i()).m() == 2) {
+        if ((var2 = (q)(var5 = (c)var1).getExecutable()).m() == 2) {
             this.b = "PROC " + var2.j() + "(";
 
             for(var3 = 0; var3 < var2.k(); ++var3) {

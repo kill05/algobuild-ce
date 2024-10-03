@@ -1,7 +1,7 @@
 package com.github.kill05.algobuildce.package_a.j.a;
 
-import com.github.kill05.algobuildce.package_a.a.m;
 import com.github.kill05.algobuildce.package_a.a.ExecutionOptionsDialogue;
+import com.github.kill05.algobuildce.package_a.a.m;
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.c.a.IProgramPanel;
@@ -29,7 +29,7 @@ public final class ABProgramPanel extends JPanel implements IProgramPanel, Actio
     private final double i = 0.75D;
     private final double j = 0.75D;
     private int k = -1;
-    private final a l;
+    private final ABFlowChartPanel flowChartPanel;
     private final c m;
     private final JScrollPane n;
     private final h o;
@@ -47,10 +47,10 @@ public final class ABProgramPanel extends JPanel implements IProgramPanel, Actio
         this.d = new Timer(1000, this);
         this.d.setInitialDelay(10);
         this.setLayout(new BorderLayout());
-        this.l = new a();
-        this.l.a(this);
+        this.flowChartPanel = new ABFlowChartPanel();
+        this.flowChartPanel.a(this);
         this.program.a(this);
-        this.program.a("main", 1);
+        this.program.createPage("main", 1);
         this.program.update(false);
         this.m = new c(this.program);
         this.n = new JScrollPane(this.m);
@@ -65,13 +65,13 @@ public final class ABProgramPanel extends JPanel implements IProgramPanel, Actio
     public void b(int var1) {
         this.getWidth();
         this.getHeight();
-        if (1 != this.k) {
+        if (this.k != var1) {
             this.removeAll();
             this.f = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
             this.g = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
             this.f.setDividerSize(this.h);
             this.g.setDividerSize(this.h);
-            this.f.setTopComponent(this.l);
+            this.f.setTopComponent(this.flowChartPanel);
             this.f.setBottomComponent(this.g);
             this.g.setLeftComponent(this.n);
             this.g.setRightComponent(this.p);
@@ -85,8 +85,8 @@ public final class ABProgramPanel extends JPanel implements IProgramPanel, Actio
 
     public void a(ABFrame var1) {
         this.q = var1;
-        if (this.l != null) {
-            this.l.a(var1);
+        if (this.flowChartPanel != null) {
+            this.flowChartPanel.setFrame(var1);
         }
 
     }
@@ -115,8 +115,8 @@ public final class ABProgramPanel extends JPanel implements IProgramPanel, Actio
                 this.frameHolder.setActionEnabled("execOptions", true);
             }
 
-            this.l.b.setSelectedIndex(0);
-            this.l.repaint();
+            this.flowChartPanel.tabbedPane.setSelectedIndex(0);
+            this.flowChartPanel.repaint();
         }
 
     }
@@ -239,12 +239,12 @@ public final class ABProgramPanel extends JPanel implements IProgramPanel, Actio
     @Override
     public void a(ABProgram var1) {
         this.program = var1;
-        this.l.a = var1;
+        this.flowChartPanel.program = var1;
     }
 
     @Override
     public void a(ABExecutable var1) {
-        this.l.a(var1);
+        this.flowChartPanel.a(var1);
     }
 
     @Override
@@ -268,15 +268,15 @@ public final class ABProgramPanel extends JPanel implements IProgramPanel, Actio
 
     public void h(String var1) {
         int var2;
-        if ((var2 = this.l.b.indexOfTab(var1)) >= 0) {
-            this.l.b.setSelectedIndex(var2);
+        if ((var2 = this.flowChartPanel.tabbedPane.indexOfTab(var1)) >= 0) {
+            this.flowChartPanel.tabbedPane.setSelectedIndex(var2);
         }
 
     }
 
     @Override
     public void a() {
-        this.l.b();
+        this.flowChartPanel.b();
     }
 
     @Override
@@ -331,7 +331,7 @@ public final class ABProgramPanel extends JPanel implements IProgramPanel, Actio
 
     @Override
     public void a(String var1, q var2) {
-        this.l.a(var1, var2);
+        this.flowChartPanel.a(var1, var2);
     }
 
     public void k() {
@@ -373,7 +373,6 @@ public final class ABProgramPanel extends JPanel implements IProgramPanel, Actio
             this.i();
             this.e = false;
         }
-
     }
 
     public void a(com.github.kill05.algobuildce.package_a.g.g var1) {
@@ -418,19 +417,25 @@ public final class ABProgramPanel extends JPanel implements IProgramPanel, Actio
 
     @Override
     public void b(ABExecutable var1) {
-        this.l.b(var1);
+        this.flowChartPanel.b(var1);
     }
 
     public void q() {
-        this.l.d();
+        this.flowChartPanel.d();
     }
 
     public void r() {
-        this.l.e();
+        this.flowChartPanel.e();
     }
 
-    public void s() {
-        String var1 = this.program.s();
-        JOptionPane.showMessageDialog(this.q, var1, Translator.translate("mnuHistoryInfo"), JOptionPane.INFORMATION_MESSAGE);
+    public void showHistoryDialog() {
+        String history = this.program.getHistoryString();
+        JOptionPane.showMessageDialog(this.q, history, Translator.translate("mnuHistoryInfo"), JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        System.out.println("a");
     }
 }

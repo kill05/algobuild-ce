@@ -23,9 +23,9 @@ public final class y extends C_subclass {
     public final void a(ABBasePanel var1, Graphics var2) {
         int var3 = var1.getWidth();
         var1.getHeight();
-        var1.b(var2);
+        var1.setFillingColor(var2);
         var2.fillRect(0, 0, var3, this.e);
-        var1.c(var2);
+        var1.setLineColor(var2);
         var3 = this.f;
         var2.drawString(this.j, 0, var3);
 
@@ -40,7 +40,7 @@ public final class y extends C_subclass {
     public final void a(ABBasePanel var1) {
         k var2;
         FontMetrics var4 = (var2 = (k) var1).getFontMetrics(var1.getFont());
-        String var3 = ((com.github.kill05.algobuildce.package_a.c.b.k) var2.i).k();
+        String var3 = ((com.github.kill05.algobuildce.package_a.c.b.k) var2.executable).k();
         this.i = var4.charsWidth(this.j.toCharArray(), 0, this.j.length());
         this.b = var3.split("\\n");
         this.c = new int[this.b.length];

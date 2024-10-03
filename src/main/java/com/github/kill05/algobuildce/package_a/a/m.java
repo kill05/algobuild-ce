@@ -144,7 +144,7 @@ public final class m extends JDialog implements ActionListener, ChangeListener {
         var10 = this.g.getPreferredSize();
         this.g.setMaximumSize(var10);
         this.g.addChangeListener(this);
-        this.g.setValue(var2.getViewOptions().getLineWidth());
+        this.g.setValue(var2.getViewOptions().getLineStroke());
         var4.gridx = 0;
         var4.gridy = 6;
         this.add(new JLabel(Translator.translate("lineSize")), var4);
@@ -224,14 +224,14 @@ public final class m extends JDialog implements ActionListener, ChangeListener {
 
                 if (var5 == this.l) {
                     ViewOptions var7;
-                    (var7 = this.m.getViewOptions()).a();
+                    (var7 = this.m.getViewOptions()).setDefaults();
                     this.comboBox.setSelectedItem(var7.getCodeFont().getFontName());
                     this.e.setValue((int) Math.round((double) var7.getCodeFont().getSize() / GlobalVariables.getFontZoomRatio()));
                     this.f.setValue((int) Math.round((double) var7.getConsoleFont().getSize() / GlobalVariables.getFontZoomRatio()));
                     this.h.setBackground(var7.getBackgroundColor());
                     this.i.setBackground(var7.getFillingColor());
                     this.j.setBackground(var7.getBackgroundColor());
-                    this.g.setValue(var7.getLineWidth());
+                    this.g.setValue(var7.getLineStroke());
                     this.m.update(true);
                 }
             }
@@ -268,7 +268,7 @@ public final class m extends JDialog implements ActionListener, ChangeListener {
             this.a();
         } else {
             if (var2 == this.g) {
-                this.m.getViewOptions().setLineWidth(Integer.parseInt(this.g.getValue().toString()));
+                this.m.getViewOptions().setLineStroke(Integer.parseInt(this.g.getValue().toString()));
                 this.m.update(true);
             }
 

@@ -5,6 +5,7 @@ import com.github.kill05.algobuildce.package_a.c.a.ABExecutionFragment;
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.c.b.q;
 import com.github.kill05.algobuildce.package_a.i.Translator;
+import com.github.kill05.algobuildce.package_a.j.a.ABFlowChartPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,7 +23,7 @@ public final class c extends ABInstructionPanel {
         this.m = var1;
     }
 
-    public c(ABProgram var1, com.github.kill05.algobuildce.package_a.j.a.a var2, ABExecutable var3) {
+    public c(ABProgram var1, ABFlowChartPanel var2, ABExecutable var3) {
         super(var1, var2, var3);
         this.a(var3);
         this.setOpaque(true);
@@ -40,19 +41,19 @@ public final class c extends ABInstructionPanel {
         }
     }
 
-    public void a(Graphics var1) {
-        super.a(var1);
-        this.i.b();
+    public void drawPanel(Graphics var1) {
+        super.drawPanel(var1);
+        this.executable.b();
         Dimension var2;
         int var3 = (int)(var2 = this.getPreferredSize()).getWidth();
         int var8 = (int)var2.getHeight();
         int var4 = this.getWidth();
         int var5 = this.getHeight();
-        var1.setColor(this.b.getViewOptions().getBackgroundColor());
+        var1.setColor(this.program.getViewOptions().getBackgroundColor());
         var1.fillRect(0, 0, var4, var5);
-        this.a(var1, 0);
+        this.setFillingColor(var1, 0);
         var1.fillOval(var3 / 2 - 10 * this.e, this.f, 20 * this.e, 4 * this.f - 1);
-        this.d(var1);
+        this.setLineColor(var1);
         String var9 = this.k;
         FontMetrics var10 = var1.getFontMetrics();
         var1.drawOval(var3 / 2 - 10 * this.e, this.f, 20 * this.e, 4 * this.f - 1);
@@ -63,9 +64,9 @@ public final class c extends ABInstructionPanel {
         var7 = var3 / 2 - var7;
         var11 += 3 * this.f;
         var1.drawString(var9, var7, var11);
-        this.a(var1, 1);
+        this.setFillingColor(var1, 1);
         var1.fillOval(var3 / 2 - 10 * this.e, var8 - 5 * this.f, 20 * this.e, 4 * this.f - 1);
-        this.d(var1);
+        this.setLineColor(var1);
         var9 = this.l;
         var1.drawLine(var3 / 2, var8 - 6 * this.f, var3 / 2, var8 - 5 * this.f);
         var1.drawOval(var3 / 2 - 10 * this.e, var8 - 5 * this.f, 20 * this.e, 4 * this.f);
@@ -79,7 +80,7 @@ public final class c extends ABInstructionPanel {
     public void a() {
         com.github.kill05.algobuildce.package_a.c.b.q var1;
         int var2;
-        if ((var1 = (com.github.kill05.algobuildce.package_a.c.b.q)this.i).m() == 2) {
+        if ((var1 = (com.github.kill05.algobuildce.package_a.c.b.q)this.executable).m() == 2) {
             this.k = "PROC " + var1.j() + "(";
 
             for(var2 = 0; var2 < var1.k(); ++var2) {
@@ -147,9 +148,9 @@ public final class c extends ABInstructionPanel {
     public void a(ABExecutable var1, boolean var2) {
         super.a(var1, var2);
         ABExecutionFragment var3;
-        if (!var2 && (var3 = this.b.getNextFragment()) != null && var3.d() == this.i && var3.c() == 0) {
-            String var4 = ((q)this.i).j();
-            this.c.c().h(var4);
+        if (!var2 && (var3 = this.program.getNextFragment()) != null && var3.d() == this.executable && var3.c() == 0) {
+            String var4 = ((q)this.executable).j();
+            this.flowChartPanel.c().h(var4);
         }
 
     }
@@ -158,15 +159,15 @@ public final class c extends ABInstructionPanel {
     protected void b_() {
         ABExecutable var1 = null;
         ABExecutionFragment var2;
-        if ((var2 = this.b.getNextFragment()) != null) {
-            var1 = this.b.getNextFragment().d();
+        if ((var2 = this.program.getNextFragment()) != null) {
+            var1 = this.program.getNextFragment().d();
         }
 
         if (var1 == null) {
-            if (this.b.j() != this.i || this.j == null) {
+            if (this.program.j() != this.executable || this.j == null) {
                 return;
             }
-        } else if (var1 == this.i && var2.c() == 1) {
+        } else if (var1 == this.executable && var2.c() == 1) {
             this.scrollRectToVisible(this.m);
             return;
         }
@@ -176,7 +177,7 @@ public final class c extends ABInstructionPanel {
 
     @Override
     public void a(MouseEvent var1) {
-        if (((q)this.i).m() != 1) {
+        if (((q)this.executable).m() != 1) {
             JPopupMenu var2 = new JPopupMenu();
             JMenuItem var3;
             (var3 = new JMenuItem(Translator.translate("instructionModify"))).addActionListener(this);
@@ -194,21 +195,21 @@ public final class c extends ABInstructionPanel {
     @Override
     public void actionPerformed(ActionEvent var1) {
         String var2;
-        if ((var2 = var1.getActionCommand()) != null && var2.length() > 0) {
+        if ((var2 = var1.getActionCommand()) != null && !var2.isEmpty()) {
             if (var2.equals(Translator.translate("instructionModify"))) {
                 this.modifyInstruction();
                 return;
             }
 
             if (var2.equals(Translator.translate("codeDuplicate"))) {
-                JOptionPane.showMessageDialog(this.c.a(), "TO DO!");
+                JOptionPane.showMessageDialog(this.flowChartPanel.getFrame(), "TO DO!");
                 return;
             }
 
             if (var2.equals(Translator.translate("codeDelete"))) {
-                com.github.kill05.algobuildce.package_a.g.c var3 = new com.github.kill05.algobuildce.package_a.g.c(this.b, (q)this.i);
-                this.b.b(((q)this.i).j());
-                this.c.c().a(var3);
+                com.github.kill05.algobuildce.package_a.g.c var3 = new com.github.kill05.algobuildce.package_a.g.c(this.program, (q)this.executable);
+                this.program.b(((q)this.executable).j());
+                this.flowChartPanel.c().a(var3);
             }
         }
 
@@ -216,14 +217,14 @@ public final class c extends ABInstructionPanel {
 
     @Override
     protected void modifyInstruction() {
-        if (((q)this.i).m() != 1) {
-            com.github.kill05.algobuildce.package_a.g.d var1 = new com.github.kill05.algobuildce.package_a.g.d(this.b, (q)this.i);
-            if (com.github.kill05.algobuildce.package_a.a.c.a(this.c.a(), (q)this.i, this.b)) {
-                this.c.c().a(var1);
-                this.b.update(true);
+        if (((q)this.executable).m() != 1) {
+            com.github.kill05.algobuildce.package_a.g.d var1 = new com.github.kill05.algobuildce.package_a.g.d(this.program, (q)this.executable);
+            if (com.github.kill05.algobuildce.package_a.a.c.a(this.flowChartPanel.getFrame(), (q)this.executable, this.program)) {
+                this.flowChartPanel.c().a(var1);
+                this.program.update(true);
             }
 
-            this.b.a((ABExecutable)null);
+            this.program.a((ABExecutable)null);
         }
 
     }

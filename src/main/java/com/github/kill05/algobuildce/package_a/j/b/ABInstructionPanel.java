@@ -8,6 +8,7 @@ import com.github.kill05.algobuildce.package_a.c.b.*;
 import com.github.kill05.algobuildce.package_a.c.b.s;
 import com.github.kill05.algobuildce.package_a.c.b.t;
 import com.github.kill05.algobuildce.package_a.i.Translator;
+import com.github.kill05.algobuildce.package_a.j.a.ABFlowChartPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,39 +16,40 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 
 public class ABInstructionPanel extends ABBasePanel implements IInstructionPanel {
-    protected ABExecutable i;
+
+    protected ABExecutable executable;
     protected Rectangle j;
 
-    public ABInstructionPanel(ABProgram var1, com.github.kill05.algobuildce.package_a.j.a.a var2, ABExecutable var3) {
+    public ABInstructionPanel(ABProgram var1, ABFlowChartPanel var2, ABExecutable var3) {
         super(var1, var2);
-        this.i = var3;
+        this.executable = var3;
         this.setToolTipText("clic Modifica / Copia / Taglia");
     }
 
     @Override
     public final void a(ABExecutable var1) {
-        this.i = var1;
+        this.executable = var1;
     }
 
     @Override
     public final boolean f() {
-        return this.i != null && this.i.a();
+        return this.executable != null && this.executable.a();
     }
 
     protected void b_() {
         if (this.j != null) {
             boolean var2 = false;
             ABExecutable var3 = null;
-            ABExecutionFragment a = this.b.getNextFragment();
+            ABExecutionFragment a = this.program.getNextFragment();
             if (a != null) {
                 var3 = a.d();
             }
 
             if (var3 == null) {
-                if (this.b.j() == this.i) {
+                if (this.program.j() == this.executable) {
                     var2 = true;
                 }
-            } else if (var3 == this.i) {
+            } else if (var3 == this.executable) {
                 var2 = true;
             }
 
@@ -59,85 +61,90 @@ public class ABInstructionPanel extends ABBasePanel implements IInstructionPanel
     }
 
     @Override
-    protected final void b(Graphics var1) {
+    protected final void setFillingColor(Graphics var1) {
         ABExecutable var2 = null;
-        ABExecutionFragment a = this.b.getNextFragment();
+        ABExecutionFragment a = this.program.getNextFragment();
         if (a != null) {
             var2 = a.d();
         }
 
         if (var2 == null) {
-            if (!this.g && this.b.j() != this.i) {
-                var1.setColor(this.b.getViewOptions().getFillingColor());
+            if (!this.isHovered && this.program.j() != this.executable) {
+                var1.setColor(this.program.getViewOptions().getFillingColor());
             } else {
-                var1.setColor(this.b.getViewOptions().getFillingColorSelected());
+                var1.setColor(this.program.getViewOptions().getFillingColorSelected());
             }
-        } else if (var2 == this.i) {
-            var1.setColor(this.b.getViewOptions().getFillingColorRunning());
+        } else if (var2 == this.executable) {
+            var1.setColor(this.program.getViewOptions().getFillingColorRunning());
         } else {
-            var1.setColor(this.b.getViewOptions().getFillingColor());
+            var1.setColor(this.program.getViewOptions().getFillingColor());
         }
     }
 
     @Override
-    protected final void c(Graphics var1) {
-        ABExecutable var2 = null;
-        ABExecutionFragment a = this.b.getNextFragment();
-        if (a != null) {
-            var2 = a.d();
-        }
-
-        if (var2 == null) {
-            if (!this.g && this.b.j() != this.i) {
-                var1.setColor(this.b.getViewOptions().getLineColor());
-            } else {
-                var1.setColor(this.b.getViewOptions().getLineColorSelected());
-            }
-        } else if (var2 == this.i) {
-            var1.setColor(this.b.getViewOptions().getLineColorRunning());
-        } else {
-            var1.setColor(this.b.getViewOptions().getLineColor());
-        }
-    }
-
-    @Override
-    protected final void a(Graphics var1, int var2) {
+    protected final void setFillingColor(Graphics var1, int var2) {
         ABExecutionFragment var3;
-        if ((var3 = this.b.getNextFragment()) == null) {
-            if (!this.g && this.b.j() != this.i) {
-                var1.setColor(this.b.getViewOptions().getFillingColor());
+        if ((var3 = this.program.getNextFragment()) == null) {
+            if (!this.isHovered && this.program.j() != this.executable) {
+                var1.setColor(this.program.getViewOptions().getFillingColor());
             } else {
-                var1.setColor(this.b.getViewOptions().getFillingColorSelected());
+                var1.setColor(this.program.getViewOptions().getFillingColorSelected());
             }
         } else {
             ABExecutable var4 = var3.d();
             int var5 = var3.c();
-            if (var4 == this.i && var5 == var2 && var4.a(var5)) {
-                var1.setColor(this.b.getViewOptions().getFillingColorRunning());
+            if (var4 == this.executable && var5 == var2 && var4.a(var5)) {
+                var1.setColor(this.program.getViewOptions().getFillingColorRunning());
             } else {
-                var1.setColor(this.b.getViewOptions().getFillingColor());
+                var1.setColor(this.program.getViewOptions().getFillingColor());
             }
         }
     }
 
     @Override
-    protected final void d(Graphics var1) {
+    protected final void setLineColor(Graphics var1) {
         ABExecutionFragment var2;
-        if ((var2 = this.b.getNextFragment()) == null) {
-            if (!this.g && this.b.j() != this.i) {
-                var1.setColor(this.b.getViewOptions().getLineColor());
+        if ((var2 = this.program.getNextFragment()) == null) {
+            if (!this.isHovered && this.program.j() != this.executable) {
+                var1.setColor(this.program.getViewOptions().getLineColor());
             } else {
-                var1.setColor(this.b.getViewOptions().getLineColorSelected());
+                var1.setColor(this.program.getViewOptions().getLineColorSelected());
             }
         } else {
-            ABExecutable var3;
-            if ((var3 = var2.d()) == this.i && var3.a(var2.c())) {
-                var1.setColor(this.b.getViewOptions().getLineColorRunning());
+            ABExecutable var3 = var2.d();
+            if ((var3) == this.executable && var3.a(var2.c())) {
+                var1.setColor(this.program.getViewOptions().getLineColorRunning());
             } else {
-                var1.setColor(this.b.getViewOptions().getLineColor());
+                var1.setColor(this.program.getViewOptions().getLineColor());
             }
         }
     }
+
+    /*
+    @Override
+    protected final void setLineColor1(Graphics var1) {
+        ABExecutable var2 = null;
+        ABExecutionFragment a = this.program.getNextFragment();
+        if (a != null) {
+            var2 = a.d();
+        }
+
+        if (var2 == null) {
+            if (!this.isHovered && this.program.j() != this.i) {
+                var1.setColor(this.program.getViewOptions().getLineColor());
+            } else {
+                var1.setColor(this.program.getViewOptions().getLineColorSelected());
+            }
+        } else if (var2 == this.i) {
+            var1.setColor(this.program.getViewOptions().getLineColorRunning());
+        } else {
+            var1.setColor(this.program.getViewOptions().getLineColor());
+        }
+    }
+
+     */
+
+
 
     @Override
     public void a(ABExecutable var1, boolean var2) {
@@ -153,25 +160,25 @@ public class ABInstructionPanel extends ABBasePanel implements IInstructionPanel
 
     public final ABInstructionPanel b(ABExecutable var1) {
         if (var1 instanceof ABAssignInstructionBlock) {
-            return new a(this.b, this.c, var1);
+            return new a(this.program, this.flowChartPanel, var1);
         } else if (var1 instanceof ABOutputBlock) {
-            return new l(this.b, this.c, var1);
+            return new l(this.program, this.flowChartPanel, var1);
         } else if (var1 instanceof ABInputBlock) {
-            return new k(this.b, this.c, var1);
+            return new k(this.program, this.flowChartPanel, var1);
         } else if (var1 instanceof ABForBlock) {
-            return new h(this.b, this.c, var1);
+            return new h(this.program, this.flowChartPanel, var1);
         } else if (var1 instanceof ABWhileBlock) {
-            return new i(this.b, this.c, var1);
+            return new WhileBlockPanel(this.program, this.flowChartPanel, var1);
         } else if (var1 instanceof ABDoWhileBlock) {
-            return new g(this.b, this.c, var1);
+            return new g(this.program, this.flowChartPanel, var1);
         } else if (var1 instanceof ABIfBlock) {
-            return new m(this.b, this.c, var1);
+            return new m(this.program, this.flowChartPanel, var1);
         } else if (var1 instanceof com.github.kill05.algobuildce.package_a.c.b.o) {
-            return new e(this.b, this.c, var1);
+            return new e(this.program, this.flowChartPanel, var1);
         } else if (var1 instanceof ABCommentBlock) {
-            return new d(this.b, this.c, var1);
+            return new d(this.program, this.flowChartPanel, var1);
         } else {
-            return var1 instanceof ABBaseCallInstructionBlock ? new b(this.b, this.c, var1) : null;
+            return var1 instanceof ABBaseCallInstructionBlock ? new b(this.program, this.flowChartPanel, var1) : null;
         }
     }
 
@@ -189,11 +196,11 @@ public class ABInstructionPanel extends ABBasePanel implements IInstructionPanel
 
     public final String h() {
         ABInstructionPanel parent = this;
-        while (parent.i == null) {
+        while (parent.executable == null) {
             parent = (ABInstructionPanel) this.getParent();
         }
 
-        return parent.i.c();
+        return parent.executable.c();
     }
 
     @Override
@@ -215,13 +222,13 @@ public class ABInstructionPanel extends ABBasePanel implements IInstructionPanel
         String var7;
         if ((var7 = var1.getActionCommand()) != null && !var7.isEmpty()) {
             if (var7.equals(Translator.translate("instructionModify"))) {
-                this.b.a(this.i);
+                this.program.a(this.executable);
                 this.modifyInstruction();
                 return;
             }
 
             if (var7.equals(Translator.translate("instructionCopy"))) {
-                this.b.b(this.i);
+                this.program.b(this.executable);
                 return;
             }
 
@@ -229,10 +236,10 @@ public class ABInstructionPanel extends ABBasePanel implements IInstructionPanel
                 String var2 = this.h();
 
                 try {
-                    com.github.kill05.algobuildce.package_a.g.b var3 = new com.github.kill05.algobuildce.package_a.g.b(this.b, var2);
-                    this.b.b(this.i);
-                    this.b.c(var2);
-                    this.c.c().a(var3);
+                    com.github.kill05.algobuildce.package_a.g.b var3 = new com.github.kill05.algobuildce.package_a.g.b(this.program, var2);
+                    this.program.b(this.executable);
+                    this.program.c(var2);
+                    this.flowChartPanel.c().a(var3);
                 } catch (s | NumberFormatException | t var4) {
                     var4.printStackTrace();
                 }
@@ -249,7 +256,7 @@ public class ABInstructionPanel extends ABBasePanel implements IInstructionPanel
         this.j = var1;
     }
 
-    public final ABExecutable i() {
-        return this.i;
+    public final ABExecutable getExecutable() {
+        return this.executable;
     }
 }

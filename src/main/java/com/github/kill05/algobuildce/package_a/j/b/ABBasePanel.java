@@ -1,6 +1,7 @@
 package com.github.kill05.algobuildce.package_a.j.b;
 
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
+import com.github.kill05.algobuildce.package_a.j.a.ABFlowChartPanel;
 import com.github.kill05.algobuildce.package_a.k.GlobalVariables;
 
 import javax.swing.*;
@@ -12,29 +13,29 @@ import java.awt.event.MouseListener;
 
 public class ABBasePanel extends JPanel implements ActionListener, MouseListener {
 
-    protected ABProgram b;
-    protected com.github.kill05.algobuildce.package_a.j.a.a c;
+    protected ABProgram program;
+    protected ABFlowChartPanel flowChartPanel;
     protected boolean d = false;
     protected int e = (int) (6.0D * GlobalVariables.getFontZoomRatio());
     protected int f = (int) (6.0D * GlobalVariables.getFontZoomRatio());
     private int a = -1;
-    protected boolean g = false;
+    protected boolean isHovered = false;
     C_subclass h;
 
-    public ABBasePanel(ABProgram var1, com.github.kill05.algobuildce.package_a.j.a.a var2) {
-        this.b = var1;
-        this.c = var2;
+    public ABBasePanel(ABProgram program, ABFlowChartPanel flowChartPanel) {
+        this.program = program;
+        this.flowChartPanel = flowChartPanel;
         this.setLayout(null);
         this.a(new Dimension(2 * this.e, 2 * this.f));
         this.addMouseListener(this);
         this.setToolTipText(null);
-        this.setFont(var1.getViewOptions().getCodeFont());
+        this.setFont(program.getViewOptions().getCodeFont());
         this.setOpaque(false);
     }
 
     public final void a(ABBasePanel var1, int var2) {
-        var1.add(this, 0);
-        this.a = 0;
+        var1.add(this, var2);
+        this.a = var2;
     }
 
     public int b() {
@@ -72,13 +73,13 @@ public class ABBasePanel extends JPanel implements ActionListener, MouseListener
 
     @Override
     public void mouseEntered(MouseEvent var1) {
-        this.g = true;
+        this.isHovered = true;
         this.repaint();
     }
 
     @Override
     public void mouseExited(MouseEvent var1) {
-        this.g = false;
+        this.isHovered = false;
         this.repaint();
     }
 
@@ -110,51 +111,54 @@ public class ABBasePanel extends JPanel implements ActionListener, MouseListener
         return false;
     }
 
-    protected void b(Graphics var1) {
-        if (this.g) {
-            var1.setColor(this.b.getViewOptions().getFillingColorSelected());
+    protected void setFillingColor(Graphics var1) {
+        if (this.isHovered) {
+            var1.setColor(this.program.getViewOptions().getFillingColorSelected());
         } else {
-            var1.setColor(this.b.getViewOptions().getFillingColor());
+            var1.setColor(this.program.getViewOptions().getFillingColor());
         }
     }
 
-    protected void c(Graphics var1) {
-        if (this.g) {
-            var1.setColor(this.b.getViewOptions().getLineColorSelected());
+    /*
+    protected void setLineColor1(Graphics var1) {
+        if (this.isHovered) {
+            var1.setColor(this.program.getViewOptions().getLineColorSelected());
         } else {
-            var1.setColor(this.b.getViewOptions().getLineColor());
+            var1.setColor(this.program.getViewOptions().getLineColor());
+        }
+    }
+     */
+
+    protected void setFillingColor(Graphics var1, int var2) {
+        if (this.isHovered) {
+            var1.setColor(this.program.getViewOptions().getFillingColorSelected());
+        } else {
+            var1.setColor(this.program.getViewOptions().getFillingColor());
         }
     }
 
-    protected void a(Graphics var1, int var2) {
-        if (this.g) {
-            var1.setColor(this.b.getViewOptions().getFillingColorSelected());
+    protected void setLineColor(Graphics var1) {
+        if (this.isHovered) {
+            var1.setColor(this.program.getViewOptions().getLineColorSelected());
         } else {
-            var1.setColor(this.b.getViewOptions().getFillingColor());
-        }
-    }
-
-    protected void d(Graphics var1) {
-        if (this.g) {
-            var1.setColor(this.b.getViewOptions().getLineColorSelected());
-        } else {
-            var1.setColor(this.b.getViewOptions().getLineColor());
+            var1.setColor(this.program.getViewOptions().getLineColor());
         }
     }
 
     @Override
     protected void paintComponent(Graphics var1) {
         super.paintComponent(var1);
+
         if (this.h != null) {
             this.h.a(this, var1);
         } else {
-            this.a(var1);
+            this.drawPanel(var1);
         }
     }
 
     public final void g() {
-        this.e = this.f = (this.b.getViewOptions().getCodeFont().getSize() + 1) / 2;
-        this.setFont(this.b.getViewOptions().getCodeFont());
+        this.e = this.f = (this.program.getViewOptions().getCodeFont().getSize() + 1) / 2;
+        this.setFont(this.program.getViewOptions().getCodeFont());
         if (this.h != null) {
             this.h.a(this);
         } else {
@@ -162,8 +166,8 @@ public class ABBasePanel extends JPanel implements ActionListener, MouseListener
         }
     }
 
-    public void a(Graphics var1) {
-        ((Graphics2D) var1).setStroke(this.b.getViewOptions().getStroke());
+    public void drawPanel(Graphics var1) {
+        ((Graphics2D) var1).setStroke(this.program.getViewOptions().getStroke());
         ((Graphics2D) var1).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
     }
 

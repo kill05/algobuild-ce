@@ -1,14 +1,13 @@
 package com.github.kill05.algobuildce.package_a.c.b;
 
 import com.github.kill05.algobuildce.json.JsonArray;
+import com.github.kill05.algobuildce.json.JsonObject;
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutionFragment;
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.c.a.IInstructionPanel;
-import com.github.kill05.algobuildce.json.JsonObject;
 import com.github.kill05.algobuildce.package_a.f.ABBlockDataHolder;
 import com.github.kill05.algobuildce.package_c.ABInstructionException;
 
-import java.util.Iterator;
 import java.util.Vector;
 
 public final class q extends ABInstructionBlock {
@@ -110,10 +109,9 @@ public final class q extends ABInstructionBlock {
         instruction.a(this, var2);
         this.body.addInstruction(instruction);
         if (this.a != null) {
-            Iterator var4 = this.a.iterator();
 
-            while (var4.hasNext()) {
-                ((IInstructionPanel) var4.next()).a(instruction, var2);
+            for (IInstructionPanel iInstructionPanel : this.a) {
+                iInstructionPanel.a(instruction, var2);
             }
 
             instruction.f();
@@ -127,10 +125,9 @@ public final class q extends ABInstructionBlock {
             this.body.addInstruction(instruction, index);
             instruction.a(this, index);
             if (this.a != null) {
-                Iterator var4 = this.a.iterator();
 
-                while (var4.hasNext()) {
-                    ((IInstructionPanel) var4.next()).a(instruction, index);
+                for (IInstructionPanel iInstructionPanel : this.a) {
+                    iInstructionPanel.a(instruction, index);
                 }
 
                 instruction.f();
@@ -229,8 +226,8 @@ public final class q extends ABInstructionBlock {
         if (var2 != null) {
             String[] var4 = var2.split("\\n");
 
-            for (int var3 = 0; var3 < var4.length; ++var3) {
-                this.b(var4[var3]);
+            for (String s : var4) {
+                this.b(s);
             }
         }
 

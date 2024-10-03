@@ -4,6 +4,7 @@ import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.c.b.ABIfBlock;
 import com.github.kill05.algobuildce.package_a.c.b.ABInstructionBlock;
+import com.github.kill05.algobuildce.package_a.j.a.ABFlowChartPanel;
 
 import java.awt.Dimension;
 import java.awt.FontMetrics;
@@ -21,7 +22,7 @@ public final class m extends ABInstructionPanel {
     private int p;
     private int q;
 
-    public m(ABProgram var1, com.github.kill05.algobuildce.package_a.j.a.a var2, ABExecutable var3) {
+    public m(ABProgram var1, ABFlowChartPanel var2, ABExecutable var3) {
         super(var1, var2, var3);
         this.a(var3);
         ABIfBlock var4 = (ABIfBlock) var3;
@@ -35,7 +36,7 @@ public final class m extends ABInstructionPanel {
     }
 
     @Override
-    public void a(Graphics var1) {
+    public void drawPanel(Graphics var1) {
         int var2 = this.getWidth();
         int var3 = this.getHeight();
         int var4 = this.q;
@@ -56,9 +57,9 @@ public final class m extends ABInstructionPanel {
         this.k.getSize();
         int[] var8 = new int[]{var2 / 2 - this.p / 2, var2 / 2, var2 / 2 + this.p / 2, var2 / 2};
         int[] var9 = new int[]{this.q / 2, 0, this.q / 2, this.q};
-        this.a(var1, 0);
+        this.setFillingColor(var1, 0);
         var1.fillPolygon(var8, var9, 4);
-        this.d(var1);
+        this.setLineColor(var1);
         var1.drawPolygon(var8, var9, 4);
         var1.drawLine(var7 / 2, this.q / 2, var2 / 2 - this.p / 2, this.q / 2);
         var1.drawLine(var7 / 2, this.q / 2, var7 / 2, var4);
@@ -86,7 +87,7 @@ public final class m extends ABInstructionPanel {
         this.a.g();
         this.k.g();
         FontMetrics var1 = this.getFontMetrics(this.getFont());
-        String var2 = this.i.b();
+        String var2 = this.executable.b();
         this.l = var2.split("\\n");
         this.m = new int[this.l.length];
         this.n = 0;
@@ -151,12 +152,12 @@ public final class m extends ABInstructionPanel {
 
     @Override
     protected void modifyInstruction() {
-        com.github.kill05.algobuildce.package_a.g.e var1 = new com.github.kill05.algobuildce.package_a.g.e((ABInstructionBlock) this.i);
-        if (com.github.kill05.algobuildce.package_a.a.i.a(this.c.a(), (ABIfBlock) this.i)) {
-            this.c.c().a(var1);
-            this.b.update(true);
+        com.github.kill05.algobuildce.package_a.g.e var1 = new com.github.kill05.algobuildce.package_a.g.e((ABInstructionBlock) this.executable);
+        if (com.github.kill05.algobuildce.package_a.a.i.a(this.flowChartPanel.getFrame(), (ABIfBlock) this.executable)) {
+            this.flowChartPanel.c().a(var1);
+            this.program.update(true);
         }
 
-        this.b.a((ABExecutable) null);
+        this.program.a((ABExecutable) null);
     }
 }

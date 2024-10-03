@@ -29,9 +29,9 @@ public class ABFrameHolder {
     private ABFrameHolder() {
         this.frame = new ABFrame();
 
-        Dimension var1 = Toolkit.getDefaultToolkit().getScreenSize();
-        this.frame.setSize((int) (var1.getWidth() * 0.9), (int) (var1.getHeight() * 0.65));
-        this.frame.setLocation((int) (var1.getWidth() * 0.05), (int) (var1.getHeight() * 0.05));
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        this.frame.setSize((int) (screenSize.getWidth() * 0.9), (int) (screenSize.getHeight() * 0.65));
+        this.frame.setLocation((int) (screenSize.getWidth() * 0.05), (int) (screenSize.getHeight() * 0.05));
         this.actionMap = this.createActionMap();
         this.frame.setJMenuBar(this.createMenuBar());
         this.frame.setToolBar(this.createToolBar());
@@ -278,7 +278,7 @@ public class ABFrameHolder {
     }
 
     public final void reset() {
-        if (!this.frame.hasMainPanel() || this.frame.getProgramPanel().e()) {
+        if (!this.frame.hasProgramPanel() || this.frame.getProgramPanel().e()) {
             this.frame.setProgramPanel(new ABProgramPanel(this));
             this.actionMap.getAction("execInstruction").setEnabled(true);
             this.actionMap.getAction("execOptions").setEnabled(true);
@@ -288,11 +288,11 @@ public class ABFrameHolder {
     }
 
     public final void d() {
-        if (!this.frame.hasMainPanel()) {
+        if (!this.frame.hasProgramPanel()) {
             this.frame.setProgramPanel(new ABProgramPanel(this));
         }
 
-        if (this.frame.hasMainPanel()) {
+        if (this.frame.hasProgramPanel()) {
             this.frame.getProgramPanel().c();
         }
 
@@ -338,14 +338,14 @@ public class ABFrameHolder {
     }
 
     public final void f() {
-        if (this.frame.hasMainPanel()) {
+        if (this.frame.hasProgramPanel()) {
             this.frame.getProgramPanel().f();
         }
 
     }
 
     public final void g() {
-        if (this.frame.hasMainPanel()) {
+        if (this.frame.hasProgramPanel()) {
             this.frame.getProgramPanel().g();
         }
 
@@ -353,7 +353,7 @@ public class ABFrameHolder {
 
     public final void onClose() {
         boolean close = true;
-        if (this.frame.hasMainPanel() && !this.frame.getProgramPanel().e()) {
+        if (this.frame.hasProgramPanel() && !this.frame.getProgramPanel().e()) {
             close = JOptionPane.showConfirmDialog(this.frame, Translator.translate("modifiedSaveQuestion"), "AlgoBuild", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) == 0;
         }
 
@@ -364,49 +364,49 @@ public class ABFrameHolder {
     }
 
     public final void i() {
-        if (this.frame.hasMainPanel()) {
+        if (this.frame.hasProgramPanel()) {
             this.frame.getProgramPanel().h();
         }
 
     }
 
     public final void j() {
-        if (this.frame.hasMainPanel()) {
+        if (this.frame.hasProgramPanel()) {
             this.frame.getProgramPanel().i();
         }
 
     }
 
     public final void k() {
-        if (this.frame.hasMainPanel()) {
+        if (this.frame.hasProgramPanel()) {
             this.frame.getProgramPanel().j();
         }
 
     }
 
     public final void l() {
-        if (this.frame.hasMainPanel()) {
+        if (this.frame.hasProgramPanel()) {
             this.frame.getProgramPanel().k();
         }
 
     }
 
     public final void m() {
-        if (this.frame.hasMainPanel()) {
+        if (this.frame.hasProgramPanel()) {
             this.frame.getProgramPanel().l();
         }
 
     }
 
     public final void n() {
-        if (this.frame.hasMainPanel()) {
+        if (this.frame.hasProgramPanel()) {
             this.frame.getProgramPanel().o();
         }
 
     }
 
     public final void o() {
-        if (this.frame.hasMainPanel()) {
+        if (this.frame.hasProgramPanel()) {
             this.frame.getProgramPanel().p();
         }
 
@@ -486,33 +486,32 @@ public class ABFrameHolder {
     }
 
     public final void s() {
-        ABUserData var1 = ABUserData.getInstance();
-        if (this.frame != null && var1 != null) {
-            String var2;
-            String var5;
-            if ((var5 = var1.getAuthUsername()) == null) {
-                var5 = Translator.translate("authorNotRegistered");
-                var2 = Translator.translate("authorCodeRequestToRegister");
-            } else {
-                var2 = Translator.translate("authorCodeRequestToRegisterOther");
-            }
+        ABUserData userData = ABUserData.getInstance();
+        if (this.frame == null) return;
 
-            var5 = Translator.translate("authorName") + ": " + var5 + "\n\n" + var2;
-            Object[] var6 = new Object[]{"OK", Translator.translate("authorCodeRequestInfo")};
-            if (JOptionPane.showOptionDialog(this.frame, var5, Translator.translate("authorInfo"), JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon(this.frame.getIconImage()), var6, var6[0]) == 1) {
-                try {
-                    Desktop.getDesktop().browse(new URI(Translator.translate("authorCodeRequestPage")));
-                } catch (IOException | URISyntaxException var3) {
-                    var3.printStackTrace();
-                }
-            }
+        String var2;
+        String username = userData.getAuthUsername();
+        if (username == null) {
+            username = Translator.translate("authorNotRegistered");
+            var2 = Translator.translate("authorCodeRequestToRegister");
+        } else {
+            var2 = Translator.translate("authorCodeRequestToRegisterOther");
         }
 
+        username = Translator.translate("authorName") + ": " + username + "\n\n" + var2;
+        Object[] var6 = new Object[]{"OK", Translator.translate("authorCodeRequestInfo")};
+        if (JOptionPane.showOptionDialog(this.frame, username, Translator.translate("authorInfo"), JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon(this.frame.getIconImage()), var6, var6[0]) == 1) {
+            try {
+                Desktop.getDesktop().browse(new URI(Translator.translate("authorCodeRequestPage")));
+            } catch (IOException | URISyntaxException var3) {
+                var3.printStackTrace();
+            }
+        }
     }
 
     public final void t() {
         if (this.frame != null) {
-            this.frame.getProgramPanel().s();
+            this.frame.getProgramPanel().showHistoryDialog();
         }
 
     }

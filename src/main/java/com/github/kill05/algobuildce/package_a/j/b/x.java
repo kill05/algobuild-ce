@@ -24,12 +24,12 @@ public final class x extends C_subclass {
    public final void a(ABBasePanel var1, Graphics var2) {
       int var3 = var1.getWidth();
       var1.getHeight();
-      Dimension var4 = ((i)var1).d().getMinimumSize();
-      var1.a((Graphics)var2, 0);
+      Dimension var4 = ((WhileBlockPanel)var1).d().getMinimumSize();
+      var1.setFillingColor((Graphics)var2, 0);
       var2.fillRect(0, 0, var3, this.e);
-      var1.a((Graphics)var2, 1);
+      var1.setFillingColor((Graphics)var2, 1);
       var2.fillRect(0, this.e, var1.e, (int)((double)(4 * var1.f) + var4.getHeight()));
-      var1.c(var2);
+      var1.setLineColor(var2);
       int var5 = this.f;
       var2.drawString(this.j, 0, var5);
 
@@ -39,17 +39,17 @@ public final class x extends C_subclass {
       }
 
       var5 = (int)((double)(var5 + var1.f) + var4.getHeight());
-      var1.a((Graphics)var2, 1);
+      var1.setFillingColor((Graphics)var2, 1);
       var2.fillRect(0, var5 - 2 * var1.f, var3, 3 * var1.f);
-      var1.c(var2);
+      var1.setLineColor(var2);
       var2.drawString(this.k, 0, var5);
    }
 
    @Override
    public final void a(ABBasePanel var1) {
-      i var2;
-      FontMetrics var4 = (var2 = (i)var1).getFontMetrics(var1.getFont());
-      String var3 = var2.i.b();
+      WhileBlockPanel var2;
+      FontMetrics var4 = (var2 = (WhileBlockPanel)var1).getFontMetrics(var1.getFont());
+      String var3 = var2.executable.b();
       this.i = var4.charsWidth(this.j.toCharArray(), 0, this.j.length());
       this.b = var3.split("\\n");
       this.c = new int[this.b.length];

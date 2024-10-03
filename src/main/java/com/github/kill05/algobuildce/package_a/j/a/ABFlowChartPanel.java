@@ -11,62 +11,59 @@ import com.github.kill05.algobuildce.package_a.j.b.D_subclass;
 import com.github.kill05.algobuildce.package_a.j.b.p;
 import com.github.kill05.algobuildce.package_a.k.ABFrame;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Toolkit;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Vector;
-import javax.imageio.ImageIO;
-import javax.swing.Box;
-import javax.swing.JFileChooser;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-import javax.swing.JTabbedPane;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import javax.swing.filechooser.FileFilter;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
-public final class a extends JPanel implements ActionListener, ChangeListener {
-    ABProgram a;
+public final class ABFlowChartPanel extends JPanel implements ActionListener, ChangeListener {
+
+    ABProgram program;
     private ABProgramPanel c;
-    JTabbedPane b;
+    JTabbedPane tabbedPane;
     private int d = -1;
-    private ABFrame e;
+    private ABFrame frame;
     private final D_subclass h;
     private final Vector<com.github.kill05.algobuildce.package_a.j.b.c> i = new Vector<>();
 
-    public a() {
+    public ABFlowChartPanel() {
         this.setLayout(new BorderLayout());
         this.h = new p();
         ImageUtils.loadImage("imgs/logo2_arancio_small.png");
         ImageUtils.loadImage("imgs/logo2_arancio_small.png");
-        this.b = new JTabbedPane();
-        this.add(this.b, "Center");
-        this.b.addTab("+", new JPanel());
-        this.b.addChangeListener(this);
-    }
-
-    public ABFrame a() {
-        return this.e;
-    }
-
-    public void a(ABFrame var1) {
-        this.e = var1;
+        this.tabbedPane = new JTabbedPane();
+        this.add(this.tabbedPane, "Center");
+        this.tabbedPane.addTab("+", new JPanel());
+        this.tabbedPane.addChangeListener(this);
     }
 
     @Override
-    public void actionPerformed(ActionEvent var1) {
-        if (var1.getSource() == null) {
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g); //todo: find correct spot to paint
+        //g.drawImage(ImageUtils.loadImage("imgs/background.jpg").getImage(), getX(), getY(), getWidth(), getHeight(), this);
+    }
+
+    public ABFrame getFrame() {
+        return this.frame;
+    }
+
+    public void setFrame(ABFrame frame) {
+        this.frame = frame;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent event) {
+        /*
+        if (event.getSource() == null) {
             JPopupMenu var5 = new JPopupMenu();
             JMenuItem var6;
             (var6 = new JMenuItem(Translator.translate("instructionConnectorNewMsg"))).setEnabled(false);
@@ -78,35 +75,37 @@ public final class a extends JPanel implements ActionListener, ChangeListener {
             var5.add(var3);
             var5.show(this, this.getX(), this.getY()); //todo: figure out why getX and getY were called on 'null'
         } else {
-            String var2;
-            String var4;
-            if ((var4 = var1.getActionCommand()) != null && var4.equals(Translator.translate("abvfcAddCodePopupNewProcedure"))) {
-                var2 = JOptionPane.showInputDialog(this, Translator.translate("abvfcAddCodeNewProcedureNameMsg"));
-                if (this.a.a(var2) == null) {
-                    this.a.a(var2, 2);
-                } else {
-                    JOptionPane.showMessageDialog(this, Translator.translate("abvfcAddCodeNameAlreadyPresentMsg"), Translator.translate("abvfcAddCodePopupNewMsg"), 0);
-                }
+         */
+
+        String var2;
+        String var4;
+        if ((var4 = event.getActionCommand()) != null && var4.equals(Translator.translate("abvfcAddCodePopupNewProcedure"))) {
+            var2 = JOptionPane.showInputDialog(this, Translator.translate("abvfcAddCodeNewProcedureNameMsg"));
+            if (this.program.a(var2) == null) {
+                this.program.createPage(var2, 2);
             } else {
-                if (var4 != null && var4.equals(Translator.translate("abvfcAddCodePopupNewFunction"))) {
-                    var2 = JOptionPane.showInputDialog(this, Translator.translate("abvfcAddCodeNewFunctionNameMsg"));
-                    if (this.a.a(var2) == null) {
-                        this.a.a(var2, 3);
-                        return;
-                    }
-
-                    JOptionPane.showMessageDialog(this, Translator.translate("abvfcAddCodeNameAlreadyPresentMsg"), Translator.translate("abvfcAddCodePopupNewMsg"), 0);
+                JOptionPane.showMessageDialog(this, Translator.translate("abvfcAddCodeNameAlreadyPresentMsg"), Translator.translate("abvfcAddCodePopupNewMsg"), 0);
+            }
+        } else {
+            if (var4 != null && var4.equals(Translator.translate("abvfcAddCodePopupNewFunction"))) {
+                var2 = JOptionPane.showInputDialog(this, Translator.translate("abvfcAddCodeNewFunctionNameMsg"));
+                if (this.program.a(var2) == null) {
+                    this.program.createPage(var2, 3);
+                    return;
                 }
 
+                JOptionPane.showMessageDialog(this, Translator.translate("abvfcAddCodeNameAlreadyPresentMsg"), Translator.translate("abvfcAddCodePopupNewMsg"), 0);
             }
+
         }
+
     }
 
     public void a(ABExecutable var1) {
-        int var2 = this.b.getTabCount();
+        int var2 = this.tabbedPane.getTabCount();
         String var3 = var1.b();
         com.github.kill05.algobuildce.package_a.j.b.c var4;
-        (var4 = new com.github.kill05.algobuildce.package_a.j.b.c(this.a, this, var1)).setBackground(Color.YELLOW);
+        (var4 = new com.github.kill05.algobuildce.package_a.j.b.c(this.program, this, var1)).setBackground(Color.YELLOW);
         var1.a(var4);
         var4.g();
         var4.setAlignmentX(0.5F);
@@ -115,7 +114,7 @@ public final class a extends JPanel implements ActionListener, ChangeListener {
         JScrollPane var11;
         (var11 = new JScrollPane(var5)).getHorizontalScrollBar().setUnitIncrement(15);
         var11.getVerticalScrollBar().setUnitIncrement(15);
-        com.github.kill05.algobuildce.package_a.j.b.c var6 = new com.github.kill05.algobuildce.package_a.j.b.c(this.a, this, var1);
+        com.github.kill05.algobuildce.package_a.j.b.c var6 = new com.github.kill05.algobuildce.package_a.j.b.c(this.program, this, var1);
         var1.a(var6);
         var6.g();
         var6.setAlignmentX(0.5F);
@@ -130,11 +129,11 @@ public final class a extends JPanel implements ActionListener, ChangeListener {
         (var10 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, var11, var9)).setResizeWeight(0.5D);
         var10.setDividerSize(4);
         if (var2 == 0) {
-            this.b.addTab(var3, var10);
+            this.tabbedPane.addTab(var3, var10);
             this.i.add(var4);
         } else {
-            this.b.insertTab(var3, null, var10, null, var2 - 1);
-            this.b.setSelectedIndex(var2 - 1);
+            this.tabbedPane.insertTab(var3, null, var10, null, var2 - 1);
+            this.tabbedPane.setSelectedIndex(var2 - 1);
             this.i.add(var2 - 1, var4);
         }
 
@@ -143,16 +142,16 @@ public final class a extends JPanel implements ActionListener, ChangeListener {
     }
 
     public void b() {
-        this.b.removeAll();
+        this.tabbedPane.removeAll();
         this.d = -1;
-        this.b.addTab("+", new JPanel());
+        this.tabbedPane.addTab("+", new JPanel());
     }
 
     @Override
     public void stateChanged(ChangeEvent var1) {
         int var7;
-        if ((var7 = this.b.getSelectedIndex()) >= 0) {
-            String var2 = this.b.getTitleAt(var7);
+        if ((var7 = this.tabbedPane.getSelectedIndex()) >= 0) {
+            String var2 = this.tabbedPane.getTitleAt(var7);
             if (this.d >= 0 && var2.equals("+")) {
                 this.d = -1;
                 boolean var3 = false;
@@ -163,20 +162,20 @@ public final class a extends JPanel implements ActionListener, ChangeListener {
                         var4 = "newCode" + var5;
                     }
 
-                    if (this.a.a(var4) == null) {
-                        this.a.a(var4, 2);
+                    if (this.program.a(var4) == null) {
+                        this.program.createPage(var4, 2);
                         var3 = true;
                     }
                 }
 
                 q var9;
-                if (var3 && (var9 = this.a.a(var4)).m() != 1) {
-                    if (!com.github.kill05.algobuildce.package_a.a.c.a(this.e, var9, this.a)) {
+                if (var3 && (var9 = this.program.a(var4)).m() != 1) {
+                    if (!com.github.kill05.algobuildce.package_a.a.c.a(this.frame, var9, this.program)) {
                         this.d = 0;
-                        this.b.setSelectedIndex(0);
-                        this.a.b(var4);
+                        this.tabbedPane.setSelectedIndex(0);
+                        this.program.b(var4);
                     } else {
-                        com.github.kill05.algobuildce.package_a.g.a var8 = new com.github.kill05.algobuildce.package_a.g.a(this.a, var9);
+                        com.github.kill05.algobuildce.package_a.g.a var8 = new com.github.kill05.algobuildce.package_a.g.a(this.program, var9);
                         this.c.a(var8);
                     }
                 }
@@ -199,33 +198,33 @@ public final class a extends JPanel implements ActionListener, ChangeListener {
 
     public void a(String var1, q var2) {
         int var3;
-        if ((var3 = this.b.indexOfTab(var1)) >= 0) {
-            this.b.setTitleAt(var3, var2.j());
+        if ((var3 = this.tabbedPane.indexOfTab(var1)) >= 0) {
+            this.tabbedPane.setTitleAt(var3, var2.j());
         }
 
     }
 
     public void b(ABExecutable var1) {
         String var2 = ((q) var1).j();
-        int var3 = this.b.indexOfTab(var2);
+        int var3 = this.tabbedPane.indexOfTab(var2);
         this.d = 0;
-        this.b.setSelectedIndex(0);
+        this.tabbedPane.setSelectedIndex(0);
         if (var3 >= 0) {
-            this.b.remove(var3);
+            this.tabbedPane.remove(var3);
             this.i.remove(var3);
         }
 
     }
 
     public void d() {
-        int var1 = this.b.getSelectedIndex();
+        int var1 = this.tabbedPane.getSelectedIndex();
         com.github.kill05.algobuildce.package_a.j.b.c var5 = (com.github.kill05.algobuildce.package_a.j.b.c) this.i.elementAt(var1);
         com.github.kill05.algobuildce.package_a.i.d var2 = new com.github.kill05.algobuildce.package_a.i.d(var5);
         int var3 = var5.getWidth();
         int var4 = var5.getHeight();
         BufferedImage var7;
         Graphics2D var8;
-        (var8 = (var7 = new BufferedImage(var3, var4, 1)).createGraphics()).setFont(this.a.getViewOptions().getCodeFont());
+        (var8 = (var7 = new BufferedImage(var3, var4, 1)).createGraphics()).setFont(this.program.getViewOptions().getCodeFont());
         var2.a(var8, var5);
         var8.dispose();
         com.github.kill05.algobuildce.package_a.i.e var6 = new com.github.kill05.algobuildce.package_a.i.e(var7);
@@ -242,7 +241,7 @@ public final class a extends JPanel implements ActionListener, ChangeListener {
         var1.addChoosableFileFilter(var2);
         var1.setFileSelectionMode(0);
         var1.setFileFilter(var2);
-        if (var1.showSaveDialog(this.e) == 0) {
+        if (var1.showSaveDialog(this.frame) == 0) {
             String var11 = var1.getSelectedFile().getAbsolutePath();
             FileFilter var8;
             if ((var8 = var1.getFileFilter()) != null && var8 instanceof FileNameExtensionFilter) {
@@ -253,14 +252,14 @@ public final class a extends JPanel implements ActionListener, ChangeListener {
             }
 
             String var10 = var11.substring(var11.lastIndexOf(46) + 1);
-            int var3 = this.b.getSelectedIndex();
+            int var3 = this.tabbedPane.getSelectedIndex();
             com.github.kill05.algobuildce.package_a.j.b.c var12 = (com.github.kill05.algobuildce.package_a.j.b.c) this.i.elementAt(var3);
             com.github.kill05.algobuildce.package_a.i.d var4 = new com.github.kill05.algobuildce.package_a.i.d(var12);
             int var5 = var12.getWidth();
             int var6 = var12.getHeight();
             BufferedImage var14;
             Graphics2D var15;
-            (var15 = (var14 = new BufferedImage(var5, var6, 1)).createGraphics()).setFont(this.a.getViewOptions().getCodeFont());
+            (var15 = (var14 = new BufferedImage(var5, var6, 1)).createGraphics()).setFont(this.program.getViewOptions().getCodeFont());
             var4.a(var15, var12);
             var15.dispose();
 

@@ -5,6 +5,7 @@ import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.c.b.ABInstructionBlock;
 import com.github.kill05.algobuildce.package_a.c.b.ABCommentBlock;
 import com.github.kill05.algobuildce.package_a.g.e;
+import com.github.kill05.algobuildce.package_a.j.a.ABFlowChartPanel;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
@@ -17,21 +18,21 @@ public final class d extends ABInstructionPanel {
     private int n;
     private int o;
 
-    public d(ABProgram var1, com.github.kill05.algobuildce.package_a.j.a.a var2, ABExecutable var3) {
+    public d(ABProgram var1, ABFlowChartPanel var2, ABExecutable var3) {
         super(var1, var2, var3);
         var3.a(this);
         this.g();
     }
 
     @Override
-    public void a(Graphics var1) {
+    public void drawPanel(Graphics var1) {
         int var2 = this.getWidth();
         int var3 = this.getHeight();
         int[] var4 = new int[]{var2 / 2 - this.n / 2, var2 / 2 + this.n / 2 - 2 * this.e, var2 / 2 + this.n / 2, var2 / 2 + this.n / 2, var2 / 2 - this.n / 2};
         int[] var5 = new int[]{this.f, this.f, this.f + 2 * this.f, this.f + this.o, this.f + this.o};
-        this.b(var1);
+        this.setFillingColor(var1);
         var1.fillPolygon(var4, var5, 5);
-        this.c(var1);
+        this.setLineColor(var1);
         var1.drawPolygon(var4, var5, 5);
         var1.drawLine(var2 / 2 + this.n / 2 - 2 * this.e, this.f, var2 / 2 + this.n / 2 - 2 * this.e, 3 * this.f);
         var1.drawLine(var2 / 2 + this.n / 2 - 2 * this.e, 3 * this.f, var2 / 2 + this.n / 2, 3 * this.f);
@@ -48,7 +49,7 @@ public final class d extends ABInstructionPanel {
 
     @Override
     public void a() {
-        String var1 = this.i.b();
+        String var1 = this.executable.b();
         FontMetrics var2 = this.getFontMetrics(this.getFont());
         this.a = var1.split("\\n");
         this.k = new int[this.a.length];
@@ -70,13 +71,13 @@ public final class d extends ABInstructionPanel {
 
     @Override
     protected void modifyInstruction() {
-        e var1 = new com.github.kill05.algobuildce.package_a.g.e((ABInstructionBlock) this.i);
-        if (com.github.kill05.algobuildce.package_a.a.d.a(this.c.a(), (ABCommentBlock) this.i)) {
-            this.c.c().a(var1);
-            this.b.update(true);
+        e var1 = new com.github.kill05.algobuildce.package_a.g.e((ABInstructionBlock) this.executable);
+        if (com.github.kill05.algobuildce.package_a.a.d.a(this.flowChartPanel.getFrame(), (ABCommentBlock) this.executable)) {
+            this.flowChartPanel.c().a(var1);
+            this.program.update(true);
         }
 
-        this.b.a((ABExecutable) null);
+        this.program.a((ABExecutable) null);
     }
 }
 

@@ -2,8 +2,8 @@ package com.github.kill05.algobuildce.package_a.j.b;
 
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
-import com.github.kill05.algobuildce.package_a.c.b.ABDoWhileBlock;
 import com.github.kill05.algobuildce.package_a.c.b.ABInstructionBlock;
+import com.github.kill05.algobuildce.package_a.c.b.ABWhileBlock;
 import com.github.kill05.algobuildce.package_a.j.a.ABFlowChartPanel;
 
 import java.awt.Dimension;
@@ -12,7 +12,8 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 
-public final class g extends ABInstructionPanel {
+public final class WhileBlockPanel extends ABInstructionPanel {
+
     private final e a;
     private String[] k;
     private int[] l;
@@ -21,7 +22,7 @@ public final class g extends ABInstructionPanel {
     private int o;
     private int p;
 
-    public g(ABProgram var1, ABFlowChartPanel var2, ABExecutable var3) {
+    public WhileBlockPanel(ABProgram var1, ABFlowChartPanel var2, ABExecutable var3) {
         super(var1, var2, var3);
         this.a(var3);
         this.a = new e(var1, var2, null);
@@ -29,40 +30,42 @@ public final class g extends ABInstructionPanel {
         this.g();
     }
 
-    @Override
     public void drawPanel(Graphics var1) {
         int var2 = this.getWidth();
         int var3 = this.getHeight();
-        this.setLineColor(var1);
-        var1.drawString("do", var2 / 2 + 2, 2 * this.f - 2);
-        var1.drawLine(var2 / 2, 0, var2 / 2, 2 * this.f);
-        int[] var4 = new int[]{var2 / 2 - this.n / 2, var2 / 2, var2 / 2 + this.n / 2, var2 / 2};
-        int[] var5 = new int[]{var3 - (this.o / 2 + 2 * this.f), var3 - (this.o + 2 * this.f), var3 - (this.o / 2 + 2 * this.f), var3 - 2 * this.f};
-        this.setFillingColor(var1, 1);
+        int[] var4 = new int[]{var2 / 2 - this.o / 2, var2 / 2, var2 / 2 + this.o / 2, var2 / 2};
+        int[] var5 = new int[]{this.p / 2 + 2 * this.f, 2 * this.f, this.p / 2 + 2 * this.f, this.p + 2 * this.f};
+        this.setFillingColor(var1, 0);
         var1.fillPolygon(var4, var5, 4);
         this.setLineColor(var1);
         var1.drawPolygon(var4, var5, 4);
-        int var6 = this.e;
-        int var7 = this.program.getViewOptions().m();
-        var1.drawLine(var6, this.f, var2 / 2, this.f);
-        var1.drawLine(var2 / 2, this.f, var2 / 2 - var7, this.f - var7);
-        var1.drawLine(var2 / 2, this.f, var2 / 2 - var7, this.f + var7);
-        var1.drawLine(var6, this.f, var6, var3 - (this.o / 2 + 2 * this.f));
-        var1.drawLine(var6, var3 - (this.o / 2 + 2 * this.f), var2 / 2 - this.n / 2, var3 - (this.o / 2 + 2 * this.f));
-        var1.drawLine(var2 / 2, var3 - 2 * this.f, var2 / 2, var3);
-        var6 = var3 - this.p - 2 * this.f;
+        this.setLineColor(var1);
+        int var7 = this.e;
+        int var8 = var2 - this.e;
+        var1.drawLine(var2 / 2, 0, var2 / 2, 2 * this.f);
+        var1.drawLine(var7, this.f, var2 / 2, this.f);
+        int var6 = this.program.getViewOptions().m();
+        var1.drawLine(var2 / 2, this.f, var2 / 2 - var6, this.f - var6);
+        var1.drawLine(var2 / 2, this.f, var2 / 2 - var6, this.f + var6);
+        var1.drawLine(var7, this.f, var7, var3 - 2 * this.f);
+        var1.drawLine(var7, var3 - 2 * this.f, var2 / 2, var3 - 2 * this.f);
+        var1.drawLine(var2 / 2, var3 - 2 * this.f, var2 / 2, var3 - 3 * this.f);
+        var1.drawLine(var2 / 2, this.p + 4 * this.f, var2 / 2, this.p + 2 * this.f);
+        var1.drawLine(var2 / 2 + this.o / 2, this.p / 2 + 2 * this.f, var8, this.p / 2 + 2 * this.f);
+        var1.drawLine(var8, this.p / 2 + 2 * this.f, var8, var3 - this.f);
+        var1.drawLine(var8, var3 - this.f, var2 / 2, var3 - this.f);
+        var1.drawLine(var2 / 2, var3 - this.f, var2 / 2, var3);
+        var3 = this.n;
 
         for (var7 = 0; var7 < this.k.length; ++var7) {
-            var1.drawString(this.k[var7], var2 / 2 - this.l[var7] / 2, var6);
-            var6 += 2 * this.f;
+            var1.drawString(this.k[var7], var2 / 2 - this.l[var7] / 2, var3);
+            var3 += 2 * this.f;
         }
 
-        var6 = var1.getFontMetrics().charsWidth("T".toCharArray(), 0, 1);
-        var1.drawString("F", var2 / 2 + 2, var3 - 2);
-        var1.drawString("T", var2 / 2 - this.n / 2 - var6 + 2, var3 - (this.o / 2 + 2 * this.f) - 2);
+        var1.drawString("F", var2 / 2 + this.o / 2 + 2, this.p / 2 + 2 * this.f - 2);
+        var1.drawString("T", var2 / 2 + 2, this.p + 4 * this.f - 2);
     }
 
-    @Override
     public void a() {
         this.a.g();
         FontMetrics var1 = this.getFontMetrics(this.getFont());
@@ -79,27 +82,28 @@ public final class g extends ABInstructionPanel {
 
         var12 = ((int) Math.ceil((double) this.m / (double) (2 * this.e)) << 1) * this.e;
         int var3 = (this.k.length << 1) * this.f;
-        this.o = var3 + var12 / 2;
-        this.n = this.o << 1;
+        this.p = var3 + var12 / 2;
+        this.o = this.p << 1;
         Rectangle2D var10 = var1.getStringBounds(this.k[0], this.getGraphics());
-        this.p = (int) ((double) (this.o / 2 + var3 / 2 - this.f) + var10.getHeight() / 2.0D + var10.getY());
+        this.n = (int) ((double) (this.p / 2 - var3 / 2 + 3 * this.f) - var10.getHeight() / 2.0D - var10.getY());
         int var11 = 2 * this.e;
         int var5 = 2 * this.e;
-        int var6 = 2 * this.f;
-        int var7 = 2 * this.f;
+        int var6 = 4 * this.f;
+        int var7 = 3 * this.f;
+        int var4 = this.p + var6;
         Dimension var8 = this.a.getSize();
-        int var9 = this.n;
+        int var9 = this.o;
         if (var8.getWidth() > (double) var9) {
             var9 = (int) var8.getWidth();
         }
 
-        this.a(new Dimension(var11 + var9 + var5, (int) ((double) (this.o + var6 + var7) + var8.getHeight())));
+        Dimension var13 = new Dimension(var11 + var9 + var5, (int) ((double) (this.p + var6 + var7) + var8.getHeight()));
+        this.a(var13);
         var11 = (int) ((double) var11 + ((double) var9 - var8.getWidth()) / 2.0D);
-        this.a.setLocation(var11, var6);
-        this.j = new Rectangle(this.getWidth() / 2 - var12 / 2, this.getHeight() - this.p, var12, var3);
+        this.a.setLocation(var11, var4);
+        this.j = new Rectangle(this.getWidth() / 2 - var12 / 2, this.n, var12, var3);
     }
 
-    @Override
     public void a(ABExecutable var1, int var2) {
         ABInstructionPanel var3 = this.b(var1);
         this.a.a(var3, var2);
@@ -110,25 +114,26 @@ public final class g extends ABInstructionPanel {
 
         var1.a(var3);
         this.g();
-        this.revalidate();
         this.d = true;
         this.a(this.d);
+        this.revalidate();
     }
 
-    @Override
     public void a(int var1) {
         this.a.b(var1);
         this.g();
         this.a(true);
-        this.invalidate();
+        this.revalidate();
     }
 
     @Override
     protected void modifyInstruction() {
         com.github.kill05.algobuildce.package_a.g.e var1 = new com.github.kill05.algobuildce.package_a.g.e((ABInstructionBlock) this.executable);
-        com.github.kill05.algobuildce.package_a.a.f.a(this.flowChartPanel.getFrame(), (ABDoWhileBlock) this.executable);
-        this.flowChartPanel.c().a(var1);
-        this.program.update(true);
+        if (com.github.kill05.algobuildce.package_a.a.j.a(this.flowChartPanel.getFrame(), (ABWhileBlock) this.executable)) {
+            this.flowChartPanel.c().a(var1);
+            this.program.update(true);
+        }
+
         this.program.a((ABExecutable) null);
     }
 

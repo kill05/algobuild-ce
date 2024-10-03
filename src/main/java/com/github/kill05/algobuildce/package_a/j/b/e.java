@@ -2,13 +2,14 @@ package com.github.kill05.algobuildce.package_a.j.b;
 
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
+import com.github.kill05.algobuildce.package_a.j.a.ABFlowChartPanel;
 
 import java.awt.Component;
 import java.awt.Dimension;
 
 public final class e extends ABInstructionPanel {
 
-    public e(ABProgram var1, com.github.kill05.algobuildce.package_a.j.a.a var2, ABExecutable var3) {
+    public e(ABProgram var1, ABFlowChartPanel var2, ABExecutable var3) {
         super(var1, var2, var3);
         this.a(var3);
         this.setLayout(null);
@@ -61,7 +62,7 @@ public final class e extends ABInstructionPanel {
 
     public void a(ABInstructionPanel var1, int var2) {
         if (var1 != null) {
-            f var3 = new f(this.b, this.c);
+            f var3 = new f(this.program, this.flowChartPanel);
             this.add(var3, var2 << 1);
             this.add(var1, (var2 << 1) + 1);
             if (this.h != null) {

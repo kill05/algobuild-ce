@@ -11,23 +11,22 @@ public final class t extends C_subclass {
     }
 
     @Override
-    public final void a(ABBasePanel var1, Graphics var2) {
+    public void a(ABBasePanel var1, Graphics var2) {
     }
 
     @Override
-    public final void a(ABBasePanel var1) {
+    public void a(ABBasePanel var1) {
         e var6 = (e) var1;
-        Dimension var2 = new Dimension(2 * var6.e, 0 * var6.f);
-        Component[] var3 = var6.getComponents();
+        Dimension var2 = new Dimension(2 * var6.e, 0);
+        Component[] components = var6.getComponents();
 
-        int var4;
-        for (var4 = 0; var4 < var3.length; ++var4) {
-            if (var3[var4] instanceof ABBasePanel) {
-                ((ABBasePanel) var3[var4]).g();
+        for (Component value : components) {
+            if (value instanceof ABBasePanel) {
+                ((ABBasePanel) value).g();
             }
 
             Dimension var5;
-            if ((var5 = var3[var4].getMinimumSize()).width > var2.width) {
+            if ((var5 = value.getMinimumSize()).width > var2.width) {
                 var2.width = var5.width;
             }
 
@@ -35,12 +34,12 @@ public final class t extends C_subclass {
         }
 
         var6.a(var2);
-        var4 = 0;
+        int i = 0;
 
-        for (int var8 = 0; var8 < var3.length; ++var8) {
-            Dimension var7 = var3[var8].getMinimumSize();
-            var3[var8].setLocation(0, var4);
-            var4 = (int) ((double) var4 + var7.getHeight());
+        for (Component component : components) {
+            Dimension dim = component.getMinimumSize();
+            component.setLocation(0, i);
+            i = (int) ((double) i + dim.getHeight());
         }
 
     }

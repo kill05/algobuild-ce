@@ -25,9 +25,9 @@ public final class r extends C_subclass {
    public final void a(ABBasePanel var1, Graphics var2) {
       int var3 = var1.getWidth();
       var1.getHeight();
-      var1.b(var2);
+      var1.setFillingColor(var2);
       var2.fillRect(0, 0, var3, this.e);
-      var1.c(var2);
+      var1.setLineColor(var2);
       var3 = this.f;
       var2.drawString(this.j, 0, var3);
 
@@ -43,7 +43,7 @@ public final class r extends C_subclass {
       FontMetrics var7 = (var2 = (b)var1).getFontMetrics(var1.getFont());
       this.i = var7.charsWidth(this.j.toCharArray(), 0, this.j.length());
       ABBaseCallInstructionBlock var3;
-      Vector var4 = (var3 = (ABBaseCallInstructionBlock)var2.i).k();
+      Vector var4 = (var3 = (ABBaseCallInstructionBlock)var2.executable).k();
       String var8 = var3.j() + "(";
       int var5 = var4.size();
 
@@ -58,7 +58,7 @@ public final class r extends C_subclass {
 
       var8 = var8 + ")";
       String var9;
-      if (var2.i instanceof com.github.kill05.algobuildce.package_a.c.b.c && (var9 = ((com.github.kill05.algobuildce.package_a.c.b.c)var2.i).l()) != null && var9.length() > 0) {
+      if (var2.executable instanceof com.github.kill05.algobuildce.package_a.c.b.c && (var9 = ((com.github.kill05.algobuildce.package_a.c.b.c)var2.executable).l()) != null && var9.length() > 0) {
          var8 = var9 + " = " + var8;
       }
 

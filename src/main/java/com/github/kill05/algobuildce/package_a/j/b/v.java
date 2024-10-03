@@ -25,17 +25,17 @@ public final class v extends C_subclass {
       int var3 = var1.getWidth();
       var1.getHeight();
       Dimension var4 = ((g)var1).d().getMinimumSize();
-      var1.a(var2, 2);
+      var1.setFillingColor(var2, 2);
       var2.fillRect(0, 0, var3, 3 * var1.f);
       var2.fillRect(0, 0, var1.e, (int)(var4.getHeight() + (double)this.e + (double)(3 * var1.f)));
-      var1.c(var2);
+      var1.setLineColor(var2);
       int var5 = this.f;
       var2.drawString(this.j, 0, var5);
       var5 = (int)((double)(var5 + var1.f) + var4.getHeight());
-      var1.a(var2, 1);
+      var1.setFillingColor(var2, 1);
       var2.fillRect(0, var5, var3, this.e);
       var5 += 2 * var1.f;
-      var1.d(var2);
+      var1.setLineColor(var2);
       var2.drawString(this.k, 0, var5);
 
       for(var3 = 0; var3 < this.b.length; ++var3) {
@@ -49,7 +49,7 @@ public final class v extends C_subclass {
    public void a(ABBasePanel var1) {
       g var2;
       FontMetrics var4 = (var2 = (g)var1).getFontMetrics(var1.getFont());
-      String var3 = var2.i.b();
+      String var3 = var2.executable.b();
       this.i = var4.charsWidth(this.k.toCharArray(), 0, this.k.length());
       this.b = var3.split("\\n");
       this.c = new int[this.b.length];

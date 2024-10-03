@@ -53,7 +53,7 @@ public final class SaveHistory {
         return "ABESaveHistory [saveHistory=" + this.entries + ", actualSessionSave=" + this.actualSessionSave + "]";
     }
 
-    public String b() {
+    public String getDisplayString() {
         String var1 = null;
         (new SimpleDateFormat()).applyPattern("yyyy-MM-dd HH:mm:ss");
         if (this.actualSessionSave != null) {

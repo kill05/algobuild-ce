@@ -24,7 +24,7 @@ public final class p extends D_subclass {
             return new v(this, this);
         } else if (var1 instanceof h) {
             return new w(this, this);
-        } else if (var1 instanceof i) {
+        } else if (var1 instanceof WhileBlockPanel) {
             return new x(this, this);
         } else {
             return var1 instanceof m ? new A_subclass(this, this) : null;

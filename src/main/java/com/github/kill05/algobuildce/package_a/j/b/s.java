@@ -22,9 +22,9 @@ public final class s extends C_subclass {
    public final void a(ABBasePanel var1, Graphics var2) {
       int var3 = var1.getWidth();
       var1.getHeight();
-      var1.b(var2);
+      var1.setFillingColor(var2);
       var2.fillRect(0, 0, var3, this.e);
-      var1.c(var2);
+      var1.setLineColor(var2);
       var3 = this.f;
 
       for(int var4 = 0; var4 < this.b.length; ++var4) {
@@ -38,7 +38,7 @@ public final class s extends C_subclass {
    public final void a(ABBasePanel var1) {
       d var2;
       FontMetrics var4 = (var2 = (d)var1).getFontMetrics(var1.getFont());
-      String var3 = var2.i.b();
+      String var3 = var2.executable.b();
       this.i = var4.charsWidth(this.j.toCharArray(), 0, this.j.length());
       this.b = var3.split("\\n");
       this.c = new int[this.b.length];

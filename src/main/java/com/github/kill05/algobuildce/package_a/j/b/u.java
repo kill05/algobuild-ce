@@ -17,15 +17,15 @@ public final class u extends C_subclass {
         int var3 = var1.getWidth();
         int var4 = var1.getHeight();
         ABExecutable var5 = null;
-        if (var1.b.getNextFragment() != null) {
-            var5 = var1.b.getNextFragment().d();
+        if (var1.program.getNextFragment() != null) {
+            var5 = var1.program.getNextFragment().d();
         }
 
-        var1.c(var2);
-        if (var1.g && var5 == null) {
-            var1.b(var2);
+        var1.setLineColor(var2);
+        if (var1.isHovered && var5 == null) {
+            var1.setFillingColor(var2);
             var2.fillRect(0, 0, var3 - 1, var4 - 1);
-            var1.c(var2);
+            var1.setLineColor(var2);
             var2.drawRect(0, 0, var3 - 1, var4 - 1);
             String var8 = " * * * ";
             Rectangle2D var9;

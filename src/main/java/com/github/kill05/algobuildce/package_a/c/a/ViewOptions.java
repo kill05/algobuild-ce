@@ -16,7 +16,7 @@ public final class ViewOptions {
     private Color fillingColor;
     private Color fillingColorRunning;
     private Color fillingColorSelected;
-    private int lineWidth;
+    private int lineStroke;
     private Color lineColor;
     private Color lineColorRunning;
     private Color lineColorSelected;
@@ -24,17 +24,17 @@ public final class ViewOptions {
     private int l;
 
     public ViewOptions() {
-        this.a();
+        this.setDefaults();
     }
 
-    public void a() {
+    public void setDefaults() {
         this.codeFont = new Font("SansSerif", Font.PLAIN, (int) (12.0D * GlobalVariables.getFontZoomRatio()));
         this.consoleFont = new Font("SansSerif", Font.PLAIN, (int) (12.0D * GlobalVariables.getFontZoomRatio()));
         this.backgroundColor = Color.WHITE;
         this.fillingColor = Color.WHITE;
         this.fillingColorRunning = Color.GREEN;
         this.fillingColorSelected = new Color(235, 235, 255);
-        this.lineWidth = 1;
+        this.lineStroke = 1;
         this.lineColor = Color.BLACK;
         this.lineColorRunning = Color.BLACK;
         this.lineColorSelected = Color.DARK_GRAY;
@@ -82,13 +82,13 @@ public final class ViewOptions {
         return this.fillingColorSelected;
     }
 
-    public int getLineWidth() {
-        return this.lineWidth;
+    public int getLineStroke() {
+        return this.lineStroke;
     }
 
-    public void setLineWidth(int lineWidth) {
-        if (lineWidth > 0) {
-            this.lineWidth = lineWidth;
+    public void setLineStroke(int lineStroke) {
+        if (lineStroke > 0) {
+            this.lineStroke = lineStroke;
             this.updateLineStroke();
         }
     }
@@ -114,7 +114,7 @@ public final class ViewOptions {
     }
 
     private void updateLineStroke() {
-        this.stroke = new BasicStroke((float) ((double) this.lineWidth * GlobalVariables.getFontZoomRatio()), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
+        this.stroke = new BasicStroke((float) ((double) this.lineStroke * GlobalVariables.getFontZoomRatio()), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
     }
 
     public int m() {
@@ -137,7 +137,7 @@ public final class ViewOptions {
         jsonObject.put("fillingColor", serializeColor(this.fillingColor));
         jsonObject.put("fillingColorRunning", serializeColor(this.fillingColorRunning));
         jsonObject.put("fillingColorSelected", serializeColor(this.fillingColorSelected));
-        jsonObject.put("lineWidth", this.lineWidth);
+        jsonObject.put("lineWidth", this.lineStroke);
         jsonObject.put("lineColor", serializeColor(this.lineColor));
         jsonObject.put("lineColorRunning", serializeColor(this.lineColorRunning));
         jsonObject.put("lineColorSelected", serializeColor(this.lineColorSelected));
@@ -155,7 +155,7 @@ public final class ViewOptions {
             fillingColorRunning = deserializeColor(jsonObject.getAsArray("fillingColorRunning"));
             fillingColorSelected = deserializeColor(jsonObject.getAsArray("fillingColorSelected"));
 
-            this.setLineWidth(jsonObject.getAsInt("lineWidth"));
+            this.setLineStroke(jsonObject.getAsInt("lineWidth"));
             lineColor = deserializeColor(jsonObject.getAsArray("lineColor"));
             lineColorRunning = deserializeColor(jsonObject.getAsArray("lineColorRunning"));
             lineColorSelected = deserializeColor(jsonObject.getAsArray("lineColorSelected"));

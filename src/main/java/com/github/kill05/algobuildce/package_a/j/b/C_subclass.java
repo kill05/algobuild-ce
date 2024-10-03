@@ -4,7 +4,8 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 public abstract class C_subclass {
-    private D_subclass b;
+
+    private final D_subclass b;
     protected ABBasePanel a;
 
     public C_subclass(D_subclass var1) {

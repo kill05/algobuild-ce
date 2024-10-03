@@ -1,26 +1,22 @@
 package com.github.kill05.algobuildce.package_a.c.a;
 
 import com.github.kill05.algobuildce.json.JsonArray;
+import com.github.kill05.algobuildce.json.JsonObject;
 import com.github.kill05.algobuildce.json.JsonReader;
 import com.github.kill05.algobuildce.package_a.c.b.ABInstructionBlock;
 import com.github.kill05.algobuildce.package_a.c.b.p;
 import com.github.kill05.algobuildce.package_a.c.b.q;
-import com.github.kill05.algobuildce.json.JsonObject;
 import com.github.kill05.algobuildce.package_a.f.ABFiles;
-import com.github.kill05.algobuildce.package_a.f.ABSerializationException;
 import com.github.kill05.algobuildce.package_a.f.ABProgramIO;
+import com.github.kill05.algobuildce.package_a.f.ABSerializationException;
 import com.github.kill05.algobuildce.package_a.f.ABUserData;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Stack;
-import java.util.TreeMap;
-import java.util.Vector;
+import java.util.*;
 import java.util.Map.Entry;
-import javax.swing.JOptionPane;
 
 public final class ABProgram {
     private Map<String, Object> a;
@@ -147,7 +143,7 @@ public final class ABProgram {
 
     }
 
-    public void a(String var1, int var2) {
+    public void createPage(String var1, int var2) {
         q var4 = this.algobuild.a(var1, var2);
         if (this.f != null) {
 
@@ -541,7 +537,7 @@ public final class ABProgram {
         return this.executionOptions;
     }
 
-    public String s() {
-        return this.saveHistory.b();
+    public String getHistoryString() {
+        return this.saveHistory.getDisplayString();
     }
 }

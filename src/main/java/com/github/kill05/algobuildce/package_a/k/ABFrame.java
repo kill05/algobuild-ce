@@ -33,7 +33,6 @@ public final class ABFrame extends JFrame implements WindowListener {
     }
 
     public ABFrame() {
-        ABFrame var1 = this;
         this.addWindowListener(this);
         JLabel label = new JLabel();
         label.setBackground(GlobalVariables.color);
@@ -52,13 +51,13 @@ public final class ABFrame extends JFrame implements WindowListener {
 
         try {
             ImageIcon var7 = ImageUtils.loadImage("imgs/AlgoBuildIcon.png");
-            var1.setIconImage(var7.getImage());
+            this.setIconImage(var7.getImage());
         } catch (Exception ignored) {
         }
     }
 
-    public void setFrameHolder(ABFrameHolder var1) {
-        this.frameHolder = var1;
+    public void setFrameHolder(ABFrameHolder holder) {
+        this.frameHolder = holder;
     }
 
     @Override
@@ -108,7 +107,7 @@ public final class ABFrame extends JFrame implements WindowListener {
         return this.programPanel;
     }
 
-    public boolean hasMainPanel() {
+    public boolean hasProgramPanel() {
         return this.programPanel != null;
     }
 }

@@ -26,9 +26,9 @@ public final class z extends C_subclass {
     public void a(ABBasePanel var1, Graphics var2) {
         int var3 = var1.getWidth();
         var1.getHeight();
-        var1.b(var2);
+        var1.setFillingColor(var2);
         var2.fillRect(0, 0, var3, this.e);
-        var1.c(var2);
+        var1.setLineColor(var2);
         var3 = this.f;
         var2.drawString(this.j, 0, var3);
 
@@ -43,7 +43,7 @@ public final class z extends C_subclass {
     public void a(ABBasePanel var1) {
         l var2;
         int var3;
-        if ((var3 = ((ABOutputBlock) (var2 = (l) var1).i).j()) == 0) {
+        if ((var3 = ((ABOutputBlock) (var2 = (l) var1).executable).j()) == 0) {
             this.j = "OUT ";
         } else if (var3 == 1) {
             this.j = "OUTLN ";
@@ -52,7 +52,7 @@ public final class z extends C_subclass {
         }
 
         FontMetrics var4 = var2.getFontMetrics(var1.getFont());
-        String var5 = ((com.github.kill05.algobuildce.package_a.c.b.k) var2.i).k();
+        String var5 = ((com.github.kill05.algobuildce.package_a.c.b.k) var2.executable).k();
         this.i = var4.charsWidth(this.j.toCharArray(), 0, this.j.length());
         this.b = var5.split("\\n");
         this.c = new int[this.b.length];

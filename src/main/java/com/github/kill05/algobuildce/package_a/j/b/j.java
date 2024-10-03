@@ -2,6 +2,7 @@ package com.github.kill05.algobuildce.package_a.j.b;
 
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
+import com.github.kill05.algobuildce.package_a.j.a.ABFlowChartPanel;
 
 import java.awt.Dimension;
 import java.awt.FontMetrics;
@@ -20,7 +21,7 @@ public class j extends ABInstructionPanel {
     private int p;
     private String q = "I/O";
 
-    public j(ABProgram var1, com.github.kill05.algobuildce.package_a.j.a.a var2, ABExecutable var3) {
+    public j(ABProgram var1, ABFlowChartPanel var2, ABExecutable var3) {
         super(var1, var2, var3);
         this.a(var3);
         this.g();
@@ -31,21 +32,21 @@ public class j extends ABInstructionPanel {
     }
 
     @Override
-    public final void a(Graphics var1) {
+    public final void drawPanel(Graphics var1) {
         int width = this.getWidth();
         int height = this.getHeight();
         int[] var4 = new int[]{width / 2 - this.o, width / 2 + this.n, width / 2 + this.o, width / 2 - this.n};
         int[] var5 = new int[]{this.f, this.f, this.f + this.p, this.f + this.p};
-        this.b(var1);
+        this.setFillingColor(var1);
         var1.fillPolygon(var4, var5, 4);
-        this.c(var1);
+        this.setLineColor(var1);
         var1.drawPolygon(var4, var5, 4);
         var1.drawLine(width / 2, 0, width / 2, this.f);
         var1.drawLine(width / 2, height - this.f, width / 2, height);
         String var6 = this.q;
         int var7 = this.f + this.p;
         int var8 = width / 2 - this.n + this.e;
-        var1.drawString(var6, var8 + this.b.getViewOptions().getLineWidth(), var7 - this.b.getViewOptions().getLineWidth());
+        var1.drawString(var6, var8 + this.program.getViewOptions().getLineStroke(), var7 - this.program.getViewOptions().getLineStroke());
         var7 = this.m;
 
         for (var8 = 0; var8 < this.a.length; ++var8) {
@@ -57,7 +58,7 @@ public class j extends ABInstructionPanel {
 
     @Override
     public void a() {
-        String var1 = ((com.github.kill05.algobuildce.package_a.c.b.k) this.i).k();
+        String var1 = ((com.github.kill05.algobuildce.package_a.c.b.k) this.executable).k();
         this.a = var1.split("\\n");
         this.k = new int[this.a.length];
         FontMetrics var4 = this.getFontMetrics(this.getFont());
