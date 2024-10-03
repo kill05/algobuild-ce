@@ -5,9 +5,9 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 public final class Translator {
-    private static ResourceBundle a = null;
-    private static ResourceBundle b = null;
-    private static ResourceBundle c = null;
+    private static ResourceBundle italian = null;
+    private static ResourceBundle english = null;
+    private static ResourceBundle activeLanguage = null;
     private static Locale locale;
 
     public static Locale getLocale() {
@@ -21,8 +21,8 @@ public final class Translator {
     public static void setLocale(Locale locale) {
         if (locale != null && !locale.equals(Translator.locale)) {
             Translator.locale = locale;
-            if (c != null) {
-                c = null;
+            if (activeLanguage != null) {
+                activeLanguage = null;
             }
         }
 
@@ -31,23 +31,23 @@ public final class Translator {
     public static String translate(String translationKey) {
         String var1;
         try {
-            if (b == null) {
-                (b = ResourceBundle.getBundle("AlgoBuildMsg", Locale.ENGLISH)).getString("mnuFileExit");
+            if (english == null) {
+                (english = ResourceBundle.getBundle("AlgoBuildMsg", Locale.ENGLISH)).getString("mnuFileExit");
             }
 
-            if (a == null) {
-                (a = ResourceBundle.getBundle("AlgoBuildMsg", Locale.ITALIAN)).getString("mnuFileExit");
+            if (italian == null) {
+                (italian = ResourceBundle.getBundle("AlgoBuildMsg", Locale.ITALIAN)).getString("mnuFileExit");
             }
 
-            if (c == null) {
+            if (activeLanguage == null) {
                 if (getLocale().getLanguage().equals(Locale.ITALIAN.getLanguage())) {
-                    c = a;
+                    activeLanguage = italian;
                 } else {
-                    c = b;
+                    activeLanguage = english;
                 }
             }
 
-            var1 = c.getString(translationKey);
+            var1 = activeLanguage.getString(translationKey);
         } catch (MissingResourceException var2) {
             var1 = translationKey + " TO TRANSLATE";
             System.err.println(var1);

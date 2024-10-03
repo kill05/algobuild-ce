@@ -15,6 +15,6 @@ final class d extends AbstractAction {
 
     @Override
     public void actionPerformed(ActionEvent var1) {
-        this.a.c();
+        this.a.reset();
     }
 }

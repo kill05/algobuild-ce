@@ -38,7 +38,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public final class a extends JPanel implements ActionListener, ChangeListener {
     ABProgram a;
-    private g c;
+    private ABProgramPanel c;
     JTabbedPane b;
     private int d = -1;
     private ABFrame e;
@@ -189,11 +189,11 @@ public final class a extends JPanel implements ActionListener, ChangeListener {
 
     }
 
-    public void a(g var1) {
+    public void a(ABProgramPanel var1) {
         this.c = var1;
     }
 
-    public g c() {
+    public ABProgramPanel c() {
         return this.c;
     }
 

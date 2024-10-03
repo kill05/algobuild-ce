@@ -28,7 +28,7 @@ public final class ABProgram {
     private final com.github.kill05.algobuildce.package_c.a c;
     private final AlgoBuild algobuild;
     private final Stack<Map<String, Object>> stack;
-    private Vector<j> f = null;
+    private Vector<IProgramPanel> f = null;
     private ABExecutable g;
     private ABExecutable h;
     private String i;
@@ -133,10 +133,10 @@ public final class ABProgram {
             var1 = "    VAR: " + var1 + " |";
         }
 
-        j var6;
+        IProgramPanel var6;
         if (this.f != null && this.f.size() != 0) {
             for (var4 = this.f.iterator(); var4.hasNext(); var6.f(var2)) {
-                var6 = (j) var4.next();
+                var6 = (IProgramPanel) var4.next();
                 if (var1.length() > 0) {
                     var6.d(var1);
                 }
@@ -151,7 +151,7 @@ public final class ABProgram {
         q var4 = this.algobuild.a(var1, var2);
         if (this.f != null) {
 
-            for (com.github.kill05.algobuildce.package_a.c.a.j value : this.f) {
+            for (IProgramPanel value : this.f) {
                 value.a(var4);
             }
 
@@ -165,7 +165,7 @@ public final class ABProgram {
         var1 = this.algobuild.a(var1);
         if (this.f != null) {
 
-            for (com.github.kill05.algobuildce.package_a.c.a.j value : this.f) {
+            for (IProgramPanel value : this.f) {
                 value.a(var1);
             }
 
@@ -184,7 +184,7 @@ public final class ABProgram {
             this.update(true);
             if (this.f != null) {
 
-                for (com.github.kill05.algobuildce.package_a.c.a.j value : this.f) {
+                for (IProgramPanel value : this.f) {
                     value.a(var1, var2);
                 }
             }
@@ -202,7 +202,7 @@ public final class ABProgram {
         this.update(true);
         if (this.f != null) {
 
-            for (com.github.kill05.algobuildce.package_a.c.a.j value : this.f) {
+            for (IProgramPanel value : this.f) {
                 value.b(var2);
             }
         }
@@ -286,7 +286,7 @@ public final class ABProgram {
         this.h = var1;
     }
 
-    public void a(j var1) {
+    public void a(IProgramPanel var1) {
         if (var1 != null) {
             if (this.f == null) {
                 this.f = new Vector<>();
@@ -302,7 +302,7 @@ public final class ABProgram {
         ++this.n;
         if (this.f != null) {
 
-            for (com.github.kill05.algobuildce.package_a.c.a.j value : this.f) {
+            for (IProgramPanel value : this.f) {
                 value.a(this.n);
             }
         }
@@ -315,7 +315,7 @@ public final class ABProgram {
             --this.n;
             if (this.f != null) {
 
-                for (com.github.kill05.algobuildce.package_a.c.a.j value : this.f) {
+                for (IProgramPanel value : this.f) {
                     value.a(this.n);
                 }
             }
@@ -327,7 +327,7 @@ public final class ABProgram {
         String var2 = null;
         if (this.f != null && !this.f.isEmpty()) {
 
-            for (com.github.kill05.algobuildce.package_a.c.a.j value : this.f) {
+            for (IProgramPanel value : this.f) {
                 if ((var2 = value.g(var1)) != null) {
                     return var2;
                 }
@@ -340,7 +340,7 @@ public final class ABProgram {
     public void f(String var1) {
         if (this.f != null && !this.f.isEmpty()) {
 
-            for (com.github.kill05.algobuildce.package_a.c.a.j var2 : this.f) {
+            for (IProgramPanel var2 : this.f) {
                 if (this.o) {
                     var2.a(this.m);
                 }
@@ -362,7 +362,7 @@ public final class ABProgram {
     public void n() {
         if (this.f != null && this.f.size() != 0) {
 
-            for (com.github.kill05.algobuildce.package_a.c.a.j value : this.f) {
+            for (IProgramPanel value : this.f) {
                 value.b();
             }
         } else {
@@ -373,10 +373,10 @@ public final class ABProgram {
     }
 
     public void g(String var1) {
-        j var2;
+        IProgramPanel var2;
         if (this.f != null && !this.f.isEmpty()) {
-            for (Iterator<com.github.kill05.algobuildce.package_a.c.a.j> var3 = this.f.iterator(); var3.hasNext(); var2.b(var1)) {
-                var2 = (j) var3.next();
+            for (Iterator<IProgramPanel> var3 = this.f.iterator(); var3.hasNext(); var2.b(var1)) {
+                var2 = (IProgramPanel) var3.next();
                 if (this.o) {
                     var2.a(this.m);
                 }
@@ -395,7 +395,7 @@ public final class ABProgram {
     public void h(String var1) {
         if (this.f != null && !this.f.isEmpty()) {
 
-            for (com.github.kill05.algobuildce.package_a.c.a.j value : this.f) {
+            for (IProgramPanel value : this.f) {
                 value.c(var1);
             }
 
@@ -407,7 +407,7 @@ public final class ABProgram {
     public void i(String var1) {
         if (this.f != null && !this.f.isEmpty()) {
 
-            for (com.github.kill05.algobuildce.package_a.c.a.j value : this.f) {
+            for (IProgramPanel value : this.f) {
                 value.e(var1);
             }
 
@@ -448,7 +448,7 @@ public final class ABProgram {
             this.j = false;
             this.i = filePath;
 
-            for (j object : this.f) {
+            for (IProgramPanel object : this.f) {
                 object.b(this);
             }
 
@@ -465,7 +465,7 @@ public final class ABProgram {
             if (programJson == null) return;
 
             if (this.f != null) {
-                for (com.github.kill05.algobuildce.package_a.c.a.j value : this.f) {
+                for (IProgramPanel value : this.f) {
                     value.a();
                 }
             }
@@ -498,7 +498,7 @@ public final class ABProgram {
             this.j = false;
             this.i = filePath;
 
-            for (j value : this.f) {
+            for (IProgramPanel value : this.f) {
                 value.b(this);
             }
 
@@ -520,7 +520,7 @@ public final class ABProgram {
     public void update(boolean var1) {
         this.j = var1;
 
-        for (com.github.kill05.algobuildce.package_a.c.a.j value : this.f) {
+        for (IProgramPanel value : this.f) {
             value.b(this);
         }
 

@@ -2,7 +2,7 @@ package com.github.kill05.algobuildce.package_a.c.a;
 
 import com.github.kill05.algobuildce.package_a.c.b.q;
 
-public interface j {
+public interface IProgramPanel {
    void a(ABProgram var1);
 
    void a(ABExecutable var1);

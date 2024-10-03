@@ -14,6 +14,6 @@ final class x extends AbstractAction {
 
     @Override
     public void actionPerformed(ActionEvent var1) {
-        this.a.h();
+        this.a.onClose();
     }
 }

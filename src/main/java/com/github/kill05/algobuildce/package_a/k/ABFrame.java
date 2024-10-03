@@ -1,7 +1,7 @@
 package com.github.kill05.algobuildce.package_a.k;
 
 import com.github.kill05.algobuildce.package_a.i.ImageUtils;
-import com.github.kill05.algobuildce.package_a.j.a.g;
+import com.github.kill05.algobuildce.package_a.j.a.ABProgramPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,23 +10,24 @@ import java.awt.event.WindowListener;
 import java.net.URL;
 
 public final class ABFrame extends JFrame implements WindowListener {
-    private ABFrameHolder a;
-    private g b;
-    private JToolBar c = null;
+
+    private ABFrameHolder frameHolder;
+    private ABProgramPanel programPanel;
+    private JToolBar toolBar = null;
 
     @Override
     public void setJMenuBar(JMenuBar var1) {
         super.setJMenuBar(var1);
     }
 
-    public void a(JToolBar var1) {
-        if (this.c != null) {
-            this.remove(this.c);
+    public void setToolBar(JToolBar toolBar) {
+        if (this.toolBar != null) {
+            this.remove(this.toolBar);
         }
 
-        this.c = var1;
-        if (var1 != null) {
-            this.add(var1, "First");
+        this.toolBar = toolBar;
+        if (toolBar != null) {
+            this.add(toolBar, "First");
         }
 
     }
@@ -34,30 +35,30 @@ public final class ABFrame extends JFrame implements WindowListener {
     public ABFrame() {
         ABFrame var1 = this;
         this.addWindowListener(this);
-        JLabel var2;
-        (var2 = new JLabel()).setBackground(GlobalVariables.color);
-        var2.setOpaque(true);
-        var2.setHorizontalAlignment(0);
-        var2.setLayout(new BorderLayout());
-        this.setContentPane(var2);
-        this.setDefaultCloseOperation(0);
+        JLabel label = new JLabel();
+        label.setBackground(GlobalVariables.color);
+        label.setOpaque(true);
+        label.setHorizontalAlignment(SwingConstants.CENTER);
+        label.setLayout(new BorderLayout());
+        this.setContentPane(label);
+        this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
         try {
             URL var3 = ClassLoader.getSystemClassLoader().getResource("imgs/logo2_arancio_small.png");
             Image var6 = Toolkit.getDefaultToolkit().getImage(var3);
-            var2.setIcon(new ImageIcon(var6));
-        } catch (Exception var5) {
+            label.setIcon(new ImageIcon(var6));
+        } catch (Exception ignored) {
         }
 
         try {
             ImageIcon var7 = ImageUtils.loadImage("imgs/AlgoBuildIcon.png");
             var1.setIconImage(var7.getImage());
-        } catch (Exception var4) {
+        } catch (Exception ignored) {
         }
     }
 
-    public void a(ABFrameHolder var1) {
-        this.a = var1;
+    public void setFrameHolder(ABFrameHolder var1) {
+        this.frameHolder = var1;
     }
 
     @Override
@@ -70,7 +71,7 @@ public final class ABFrame extends JFrame implements WindowListener {
 
     @Override
     public void windowClosing(WindowEvent var1) {
-        this.a.h();
+        this.frameHolder.onClose();
     }
 
     @Override
@@ -89,26 +90,26 @@ public final class ABFrame extends JFrame implements WindowListener {
     public void windowOpened(WindowEvent var1) {
     }
 
-    public void a(g var1) {
-        JComponent var2 = (JComponent) this.getContentPane();
-        if (this.b != null) {
-            var2.remove(this.b);
+    public void setProgramPanel(ABProgramPanel programPanel) {
+        JComponent contentPane = (JComponent) this.getContentPane();
+        if (this.programPanel != null) {
+            contentPane.remove(this.programPanel);
         }
 
-        this.b = var1;
-        var2.add(var1, "Center");
-        var1.a(this);
-        var2.doLayout();
-        var2.updateUI();
-        var1.b(1);
+        this.programPanel = programPanel;
+        contentPane.add(programPanel, "Center");
+        programPanel.a(this);
+        contentPane.doLayout();
+        contentPane.updateUI();
+        programPanel.b(1);
     }
 
-    public g a() {
-        return this.b;
+    public ABProgramPanel getProgramPanel() {
+        return this.programPanel;
     }
 
-    public boolean b() {
-        return this.b != null;
+    public boolean hasMainPanel() {
+        return this.programPanel != null;
     }
 }
 
