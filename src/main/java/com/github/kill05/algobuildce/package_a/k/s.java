@@ -14,6 +14,6 @@ final class s extends AbstractAction {
 
     @Override
     public void actionPerformed(ActionEvent var1) {
-        this.a.p();
+        this.a.showAboutDialog();
     }
 }

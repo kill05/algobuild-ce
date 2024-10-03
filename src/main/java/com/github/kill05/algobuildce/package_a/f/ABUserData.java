@@ -37,7 +37,7 @@ public final class ABUserData {
     private int d = 0;
     private UUID e;
     private UUID f;
-    private String g = null;
+    private String authUsername = null;
 
     @NotNull
     public static ABUserData getInstance() {
@@ -177,7 +177,7 @@ public final class ABUserData {
                     var15[var17] = (byte) var18;
                 }
 
-                this.g = new String(var15, StandardCharsets.UTF_8);
+                this.authUsername = new String(var15, StandardCharsets.UTF_8);
                 if ((var17 = in.readInt()) > 0) {
                     byte[] var19 = new byte[var17];
 
@@ -196,7 +196,7 @@ public final class ABUserData {
 
     public void a(String username, String var2) {
         if (this.b(username, var2)) {
-            this.g = username;
+            this.authUsername = username;
         }
 
     }
@@ -339,8 +339,8 @@ public final class ABUserData {
         return this.d;
     }
 
-    public String d() {
-        return this.g;
+    public String getAuthUsername() {
+        return this.authUsername;
     }
 
     public UUID getUserUuid() {

@@ -1,5 +1,6 @@
 package com.github.kill05.algobuildce.package_a.k;
 
+import com.github.kill05.algobuildce.package_a.c.a.AlgoBuild;
 import com.github.kill05.algobuildce.package_a.f.ABFiles;
 import com.github.kill05.algobuildce.package_a.f.ABUserData;
 import com.github.kill05.algobuildce.package_a.i.ImageUtils;
@@ -169,7 +170,7 @@ public class ABFrameHolder {
         var2 = "mnuAuthorRegistration";
         var3 = Translator.translate("mnuAuthorRegistration");
         n var24;
-        (var24 = new n(this, var3)).setEnabled(ABUserData.getInstance().d() == null);
+        (var24 = new n(this, var3)).setEnabled(ABUserData.getInstance().getAuthUsername() == null);
         var1.putAction(var2, var24);
         var2 = "mnuHelpOnline";
         var3 = Translator.translate("mnuHelpOnline");
@@ -439,15 +440,26 @@ public class ABFrameHolder {
         });
     }
 
-    public final void p() {
-        String var1;
-        if ((var1 = ABUserData.getInstance().d()) == null) {
-            var1 = Translator.translate("authorNotRegistered");
+    public final void showAboutDialog() {
+        String authName = ABUserData.getInstance().getAuthUsername();
+        if (authName == null) {
+            authName = Translator.translate("authorNotRegistered");
         }
 
-        var1 = "AlgoBuild\n" + Translator.translate("infoVersion") + " 0" + ".85" + "\n" + Translator.translate("infoBuild") + " 00085_20200418_1930" + "\n(C) Paolo Santi 2011-2020" + "\n\n" + Translator.translate("authorRegisteredInfo") + "\n" + Translator.translate("infoSerial") + ": " + ABUserData.getInstance().getSerial() + "\n" + Translator.translate("authorName") + ": " + var1;
-        Object[] var2 = new Object[]{"OK", Translator.translate("infoWebSite")};
-        if (JOptionPane.showOptionDialog(this.frame, var1, Translator.translate("infoAbout"), 0, 1, new ImageIcon(this.frame.getIconImage()), var2, var2[0]) == 1) {
+        String info = "AlgoBuild - Community Edition\n" +
+                Translator.translate("infoVersion") + " 0.85_" + AlgoBuild.CE_VERSION + "\n" +
+                Translator.translate("infoBuild") + " 00085_20200418_1930\n" +
+                "(C) Paolo Santi 2011-2020\n\n" +
+
+                Translator.translate("authorRegisteredInfo") + "\n" +
+                Translator.translate("infoSerial") + ": " + ABUserData.getInstance().getSerial() + "\n" +
+                Translator.translate("authorName") + ": " + authName;
+
+        Object[] options = new Object[]{"OK", Translator.translate("infoWebSite")};
+        ImageIcon icon = new ImageIcon(this.frame.getIconImage());
+
+        if (JOptionPane.showOptionDialog(this.frame, info, Translator.translate("infoAbout"),
+                JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, icon, options, options[0]) == 1) {
             try {
                 Desktop.getDesktop().browse(new URI(Translator.translate("infoWebURL")));
             } catch (IOException | URISyntaxException e) {
@@ -478,7 +490,7 @@ public class ABFrameHolder {
         if (this.frame != null && var1 != null) {
             String var2;
             String var5;
-            if ((var5 = var1.d()) == null) {
+            if ((var5 = var1.getAuthUsername()) == null) {
                 var5 = Translator.translate("authorNotRegistered");
                 var2 = Translator.translate("authorCodeRequestToRegister");
             } else {

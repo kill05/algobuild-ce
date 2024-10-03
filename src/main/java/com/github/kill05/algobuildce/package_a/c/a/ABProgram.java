@@ -432,7 +432,7 @@ public final class ABProgram {
 
     public void saveProgram(String filePath) {
         ABProgramIO var2 = ABProgramIO.getInstance();
-        String author = ABUserData.getInstance().d();
+        String author = ABUserData.getInstance().getAuthUsername();
         if (author != null) {
             String serial = ABUserData.getInstance().getSerial();
             p var5 = this.algobuild.d();

@@ -25,6 +25,8 @@ import javax.swing.plaf.FontUIResource;
 
 public class AlgoBuild {
 
+    public static final String CE_VERSION = "1.0";
+
     private final Map<String, q> map;
 
     public AlgoBuild() {

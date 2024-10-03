@@ -27,8 +27,8 @@ import java.util.zip.ZipOutputStream;
 public final class ABProgramIO implements Runnable {
 
     public static final String AB_UUID_KEY = "abuid";
-    public static final String AB_USER_SERIAL_NUMBER_KEY = "abusn";
-    public static final String AB_USER_AUTH_NUMBER_KEY = "abuan";
+    public static final String AB_SERIAL_NUMBER_KEY = "abusn";
+    public static final String AB_AUTH_USERNAME = "abuan";
     public static final String FILE_CONTENT_NAME = "fc";
     public static final String FILE_DATA_NAME = "fd";
     private static ABProgramIO INSTANCE = null;
@@ -77,12 +77,12 @@ public final class ABProgramIO implements Runnable {
         fdJson.put(AB_UUID_KEY, user.getUserUuid().toString());
         String username = user.getSerial();
         if (username != null) {
-            fdJson.put(AB_USER_SERIAL_NUMBER_KEY, username);
+            fdJson.put(AB_SERIAL_NUMBER_KEY, username);
         }
 
-        String var11 = user.d();
-        if (var11 != null) {
-            fdJson.put(AB_USER_AUTH_NUMBER_KEY, var11);
+        String authUsername = user.getAuthUsername();
+        if (authUsername != null) {
+            fdJson.put(AB_AUTH_USERNAME, authUsername);
         }
 
         byte[] fdData = jsonObjectToBytes(fdJson);
@@ -133,8 +133,8 @@ public final class ABProgramIO implements Runnable {
                     InputStreamReader reader = new InputStreamReader(zipIn);
                     JsonObject jsonObject = new JsonObject(new JsonReader(reader));
                     String ownerUuid = jsonObject.getAsString(AB_UUID_KEY, null);
-                    String ownerAuthNumber = jsonObject.getAsString(AB_USER_AUTH_NUMBER_KEY, null);
-                    ownerSerial = jsonObject.getAsString(AB_USER_SERIAL_NUMBER_KEY, null);
+                    String ownerAuthNumber = jsonObject.getAsString(AB_AUTH_USERNAME, null);
+                    ownerSerial = jsonObject.getAsString(AB_SERIAL_NUMBER_KEY, null);
 
                     //System.out.println(ownerUuid);
                     //System.out.println(ownerAuthNumber);
