@@ -6,7 +6,7 @@ import com.github.kill05.algobuildce.package_a.c.b.s;
 import com.github.kill05.algobuildce.package_a.c.b.*;
 import com.github.kill05.algobuildce.package_a.i.ImageUtils;
 import com.github.kill05.algobuildce.package_a.i.Translator;
-import com.github.kill05.algobuildce.package_a.j.a.ABFlowChartPanel;
+import com.github.kill05.algobuildce.package_a.j.a.ABTabbedProgramPanel;
 import com.github.kill05.algobuildce.package_a.k.GlobalVariables;
 
 import javax.swing.*;
@@ -17,9 +17,9 @@ import java.awt.geom.Rectangle2D;
 
 public final class f extends ABBasePanel {
 
-    public f(ABProgram var1, ABFlowChartPanel var2) {
+    public f(ABProgram var1, ABTabbedProgramPanel var2) {
         super(var1, var2);
-        this.a(new Dimension(6 * this.e, 2 * this.f));
+        this.forceSize(new Dimension(6 * this.centerX, 2 * this.centerY));
         this.setLocation(10, 10);
         this.setToolTipText("clic Nuovo.../Incolla");
     }
@@ -46,7 +46,7 @@ public final class f extends ABBasePanel {
             var5 = (int) ((var8 = var1.getFontMetrics().getStringBounds(var7, var1)).getWidth() / 2.0D);
             var4 = (int) Math.round(-var8.getHeight() / 2.0D - var8.getY());
             var3 = var3 / 2 - var5;
-            var4 += this.f;
+            var4 += this.centerY;
             var1.drawString(var7, var3, var4);
         } else {
             var1.drawLine(var3 / 2, 0, var3 / 2, var4);
@@ -345,7 +345,7 @@ public final class f extends ABBasePanel {
 
     @Override
     public void a() {
-        new Dimension(2 * this.e, 0);
-        this.a(new Dimension(6 * this.e, 2 * this.f));
+        new Dimension(2 * this.centerX, 0);
+        this.forceSize(new Dimension(6 * this.centerX, 2 * this.centerY));
     }
 }

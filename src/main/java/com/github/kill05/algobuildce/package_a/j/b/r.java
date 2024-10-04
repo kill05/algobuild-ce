@@ -33,7 +33,7 @@ public final class r extends C_subclass {
 
       for(int var4 = 0; var4 < this.b.length; ++var4) {
          var2.drawString(this.b[var4], this.i, var3);
-         var3 += 2 * var1.f;
+         var3 += 2 * var1.centerY;
       }
 
    }
@@ -65,17 +65,17 @@ public final class r extends C_subclass {
       this.b = var8.split("\\n");
       this.c = new int[this.b.length];
       this.d = 0;
-      this.e = ((this.b.length << 1) + 1) * var2.f;
-      this.f = 2 * var2.f;
+      this.e = ((this.b.length << 1) + 1) * var2.centerY;
+      this.f = 2 * var2.centerY;
 
       for(var6 = 0; var6 < this.b.length; ++var6) {
          this.c[var6] = var7.charsWidth(this.b[var6].toCharArray(), 0, this.b[var6].length());
          this.d = Math.max(this.d, this.i + this.c[var6]);
       }
 
-      this.g = ((int)Math.ceil((double)this.d / (double)(2 * var2.e)) << 1) * var2.e;
-      this.h = ((this.b.length << 1) + 1) * var2.f;
+      this.g = ((int)Math.ceil((double)this.d / (double)(2 * var2.centerX)) << 1) * var2.centerX;
+      this.h = ((this.b.length << 1) + 1) * var2.centerY;
       Dimension var10 = new Dimension(this.g, this.h);
-      var2.a(var10);
+      var2.forceSize(var10);
    }
 }

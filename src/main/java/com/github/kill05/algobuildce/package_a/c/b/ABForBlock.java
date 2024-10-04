@@ -23,7 +23,8 @@ public final class ABForBlock extends h {
         this.c = null;
     }
 
-    public String b() {
+    @Override
+    public String getDisplayName() {
         return this.b + "; " + this.l() + "; " + this.c;
     }
 
@@ -45,6 +46,7 @@ public final class ABForBlock extends h {
         this.a(true);
     }
 
+    @Override
     public int a(ABProgram var1, int var2) {
         com.github.kill05.algobuildce.package_c.l var3;
         String var8;
@@ -99,7 +101,7 @@ public final class ABForBlock extends h {
     }
 
     @Override
-    protected String getName() {
+    protected String getId() {
         return "ABIFOR";
     }
 
@@ -111,6 +113,7 @@ public final class ABForBlock extends h {
         return var1;
     }
 
+    @Override
     public void a(ABBlockDataHolder var1) {
         super.a(var1);
         String var2 = var1.getData("initialization");
@@ -119,6 +122,7 @@ public final class ABForBlock extends h {
         this.b(var2);
     }
 
+    @Override
     public JsonObject b(boolean var1) {
         JsonObject var2;
         (var2 = super.b(var1)).put("initialization", this.b);
@@ -126,6 +130,7 @@ public final class ABForBlock extends h {
         return var2;
     }
 
+    @Override
     public void a(JsonObject var1, boolean var2) {
         super.a(var1, var2);
         String var3 = var1.getAsString("initialization");
@@ -134,6 +139,7 @@ public final class ABForBlock extends h {
         this.b(var3);
     }
 
+    @Override
     public ABExecutable copy() {
         ABForBlock var1 = new ABForBlock(this.b, this.l(), this.c);
 
@@ -151,6 +157,7 @@ public final class ABForBlock extends h {
         return var1;
     }
 
+    @Override
     public boolean b(int var1) {
         return var1 == 0 || var1 == 3;
     }

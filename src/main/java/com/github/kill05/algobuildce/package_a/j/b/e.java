@@ -2,14 +2,14 @@ package com.github.kill05.algobuildce.package_a.j.b;
 
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
-import com.github.kill05.algobuildce.package_a.j.a.ABFlowChartPanel;
+import com.github.kill05.algobuildce.package_a.j.a.ABTabbedProgramPanel;
 
 import java.awt.Component;
 import java.awt.Dimension;
 
 public final class e extends ABInstructionPanel {
 
-    public e(ABProgram var1, ABFlowChartPanel var2, ABExecutable var3) {
+    public e(ABProgram var1, ABTabbedProgramPanel var2, ABExecutable var3) {
         super(var1, var2, var3);
         this.a(var3);
         this.setLayout(null);
@@ -31,7 +31,7 @@ public final class e extends ABInstructionPanel {
 
     @Override
     public void a() {
-        Dimension var1 = new Dimension(2 * this.e, 0);
+        Dimension var1 = new Dimension(2 * this.centerX, 0);
         Component[] var2 = this.getComponents();
 
         int var3;
@@ -48,7 +48,7 @@ public final class e extends ABInstructionPanel {
             var1.height += var4.height;
         }
 
-        this.a(var1);
+        this.forceSize(var1);
         var3 = 0;
 
         for (int var7 = 0; var7 < var2.length; ++var7) {

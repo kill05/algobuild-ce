@@ -26,7 +26,7 @@ public abstract class h extends ABInstructionBlock {
         this.a(true);
     }
 
-    public String b() {
+    public String getDisplayName() {
         return this.c;
     }
 

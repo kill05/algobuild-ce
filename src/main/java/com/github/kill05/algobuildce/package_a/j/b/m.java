@@ -4,7 +4,7 @@ import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.c.b.ABIfBlock;
 import com.github.kill05.algobuildce.package_a.c.b.ABInstructionBlock;
-import com.github.kill05.algobuildce.package_a.j.a.ABFlowChartPanel;
+import com.github.kill05.algobuildce.package_a.j.a.ABTabbedProgramPanel;
 
 import java.awt.Dimension;
 import java.awt.FontMetrics;
@@ -22,7 +22,7 @@ public final class m extends ABInstructionPanel {
     private int p;
     private int q;
 
-    public m(ABProgram var1, ABFlowChartPanel var2, ABExecutable var3) {
+    public m(ABProgram var1, ABTabbedProgramPanel var2, ABExecutable var3) {
         super(var1, var2, var3);
         this.a(var3);
         ABIfBlock var4 = (ABIfBlock) var3;
@@ -65,16 +65,16 @@ public final class m extends ABInstructionPanel {
         var1.drawLine(var7 / 2, this.q / 2, var7 / 2, var4);
         var1.drawLine(var2 / 2 + this.p / 2, this.q / 2, var2 - var7 / 2, this.q / 2);
         var1.drawLine(var2 - var7 / 2, this.q / 2, var2 - var7 / 2, var4);
-        var1.drawLine(var7 / 2, (int) ((double) (this.q / 2) + var5.getHeight() + (double) this.f), var7 / 2, var3 - this.f);
-        var1.drawLine(var7 / 2, var3 - this.f, var2 / 2, var3 - this.f);
-        var1.drawLine(var2 - var7 / 2, (int) ((double) (this.q / 2) + var6.getHeight() + (double) this.f), var2 - var7 / 2, var3 - this.f);
-        var1.drawLine(var2 - var7 / 2, var3 - this.f, var2 / 2, var3 - this.f);
-        var1.drawLine(var2 / 2, var3 - this.f, var2 / 2, var3);
+        var1.drawLine(var7 / 2, (int) ((double) (this.q / 2) + var5.getHeight() + (double) this.centerY), var7 / 2, var3 - this.centerY);
+        var1.drawLine(var7 / 2, var3 - this.centerY, var2 / 2, var3 - this.centerY);
+        var1.drawLine(var2 - var7 / 2, (int) ((double) (this.q / 2) + var6.getHeight() + (double) this.centerY), var2 - var7 / 2, var3 - this.centerY);
+        var1.drawLine(var2 - var7 / 2, var3 - this.centerY, var2 / 2, var3 - this.centerY);
+        var1.drawLine(var2 / 2, var3 - this.centerY, var2 / 2, var3);
         var3 = this.o;
 
         for (var4 = 0; var4 < this.l.length; ++var4) {
             var1.drawString(this.l[var4], var2 / 2 - this.m[var4] / 2, var3);
-            var3 += 2 * this.f;
+            var3 += 2 * this.centerY;
         }
 
         var4 = var1.getFontMetrics().charsWidth("F".toCharArray(), 0, 1);
@@ -87,7 +87,7 @@ public final class m extends ABInstructionPanel {
         this.a.g();
         this.k.g();
         FontMetrics var1 = this.getFontMetrics(this.getFont());
-        String var2 = this.executable.b();
+        String var2 = this.executable.getDisplayName();
         this.l = var2.split("\\n");
         this.m = new int[this.l.length];
         this.n = 0;
@@ -98,15 +98,15 @@ public final class m extends ABInstructionPanel {
             this.n = Math.max(this.n, this.m[var14]);
         }
 
-        var14 = ((int) Math.ceil((double) this.n / (double) (2 * this.e)) << 1) * this.e;
-        int var3 = (this.l.length << 1) * this.f;
+        var14 = ((int) Math.ceil((double) this.n / (double) (2 * this.centerX)) << 1) * this.centerX;
+        int var3 = (this.l.length << 1) * this.centerY;
         this.q = var3 + var14 / 2;
         this.p = this.q << 1;
         Rectangle2D var12 = var1.getStringBounds(this.l[0], this.getGraphics());
-        this.o = (int) ((double) (this.q / 2 - var3 / 2 + this.f) - var12.getHeight() / 2.0D - var12.getY());
-        int var5 = this.e;
-        int var6 = this.e;
-        int var13 = 2 * this.f;
+        this.o = (int) ((double) (this.q / 2 - var3 / 2 + this.centerY) - var12.getHeight() / 2.0D - var12.getY());
+        int var5 = this.centerX;
+        int var6 = this.centerX;
+        int var13 = 2 * this.centerY;
         int var4 = this.q;
         Dimension var7 = this.a.getSize();
         Dimension var8 = this.k.getSize();
@@ -125,7 +125,7 @@ public final class m extends ABInstructionPanel {
             var9 = var10;
         }
 
-        this.a(new Dimension(var5 + var9 + var6 + var10, this.q + var13 + var11));
+        this.forceSize(new Dimension(var5 + var9 + var6 + var10, this.q + var13 + var11));
         var13 = (int) (((double) var10 - var7.getWidth()) / 2.0D);
         this.a.setLocation(var13, var4);
         var13 = (int) ((double) (var5 + var9 + var6 + var10 / 2) - var8.getWidth() / 2.0D);

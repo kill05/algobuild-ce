@@ -29,7 +29,7 @@ public final class ABProgramPanel extends JPanel implements IProgramPanel, Actio
     private final double i = 0.75D;
     private final double j = 0.75D;
     private int k = -1;
-    private final ABFlowChartPanel flowChartPanel;
+    private final ABTabbedProgramPanel flowChartPanel;
     private final c m;
     private final JScrollPane n;
     private final h o;
@@ -47,7 +47,7 @@ public final class ABProgramPanel extends JPanel implements IProgramPanel, Actio
         this.d = new Timer(1000, this);
         this.d.setInitialDelay(10);
         this.setLayout(new BorderLayout());
-        this.flowChartPanel = new ABFlowChartPanel();
+        this.flowChartPanel = new ABTabbedProgramPanel();
         this.flowChartPanel.a(this);
         this.program.a(this);
         this.program.createPage("main", 1);

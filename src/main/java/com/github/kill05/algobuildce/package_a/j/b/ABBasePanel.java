@@ -1,8 +1,9 @@
 package com.github.kill05.algobuildce.package_a.j.b;
 
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
-import com.github.kill05.algobuildce.package_a.j.a.ABFlowChartPanel;
+import com.github.kill05.algobuildce.package_a.j.a.ABTabbedProgramPanel;
 import com.github.kill05.algobuildce.package_a.k.GlobalVariables;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,19 +15,19 @@ import java.awt.event.MouseListener;
 public class ABBasePanel extends JPanel implements ActionListener, MouseListener {
 
     protected ABProgram program;
-    protected ABFlowChartPanel flowChartPanel;
+    protected ABTabbedProgramPanel flowChartPanel;
     protected boolean d = false;
-    protected int e = (int) (6.0D * GlobalVariables.getFontZoomRatio());
-    protected int f = (int) (6.0D * GlobalVariables.getFontZoomRatio());
+    protected int centerX = (int) (6.0D * GlobalVariables.getFontZoomRatio());
+    protected int centerY = (int) (6.0D * GlobalVariables.getFontZoomRatio());
     private int a = -1;
     protected boolean isHovered = false;
     C_subclass h;
 
-    public ABBasePanel(ABProgram program, ABFlowChartPanel flowChartPanel) {
+    public ABBasePanel(ABProgram program, ABTabbedProgramPanel flowChartPanel) {
         this.program = program;
         this.flowChartPanel = flowChartPanel;
         this.setLayout(null);
-        this.a(new Dimension(2 * this.e, 2 * this.f));
+        this.forceSize(new Dimension(2 * this.centerX, 2 * this.centerY));
         this.addMouseListener(this);
         this.setToolTipText(null);
         this.setFont(program.getViewOptions().getCodeFont());
@@ -46,11 +47,11 @@ public class ABBasePanel extends JPanel implements ActionListener, MouseListener
         return "ABVFC_BasePanel ";
     }
 
-    public final void a(Dimension var1) {
-        this.setPreferredSize(var1);
-        this.setMinimumSize(var1);
-        this.setMaximumSize(var1);
-        this.setSize(var1);
+    public void forceSize(@Nullable Dimension size) {
+        this.setPreferredSize(size);
+        this.setMinimumSize(size);
+        this.setMaximumSize(size);
+        if (size != null) this.setSize(size);
     }
 
     protected final void a(boolean var1) {
@@ -157,7 +158,7 @@ public class ABBasePanel extends JPanel implements ActionListener, MouseListener
     }
 
     public final void g() {
-        this.e = this.f = (this.program.getViewOptions().getCodeFont().getSize() + 1) / 2;
+        this.centerX = this.centerY = (this.program.getViewOptions().getCodeFont().getSize() + 1) / 2;
         this.setFont(this.program.getViewOptions().getCodeFont());
         if (this.h != null) {
             this.h.a(this);

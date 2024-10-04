@@ -44,13 +44,13 @@ public final class A_subclass extends C_subclass {
         var2.fillRect(0, 0, var3, this.e);
         var1.setFillingColor(var2, 1);
         if (var6) {
-            var2.fillRect(0, this.e + var4.height, var3, 3 * var1.f);
-            var2.fillRect(0, this.e + var4.height + var5.height + 3 * var1.f, var3, 3 * var1.f);
-            var2.fillRect(0, this.e, var1.e, this.e + var4.height + var5.height + 6 * var1.f);
+            var2.fillRect(0, this.e + var4.height, var3, 3 * var1.centerY);
+            var2.fillRect(0, this.e + var4.height + var5.height + 3 * var1.centerY, var3, 3 * var1.centerY);
+            var2.fillRect(0, this.e, var1.centerX, this.e + var4.height + var5.height + 6 * var1.centerY);
         } else {
-            var2.fillRect(0, this.e + var4.height, var3, var1.f);
-            var2.fillRect(0, this.e + var4.height + var5.height + var1.f, var3, 3 * var1.f);
-            var2.fillRect(0, this.e, var1.e, this.e + var4.height + var5.height + 4 * var1.f);
+            var2.fillRect(0, this.e + var4.height, var3, var1.centerY);
+            var2.fillRect(0, this.e + var4.height + var5.height + var1.centerY, var3, 3 * var1.centerY);
+            var2.fillRect(0, this.e, var1.centerX, this.e + var4.height + var5.height + 4 * var1.centerY);
         }
 
         var1.setLineColor(var2);
@@ -59,16 +59,16 @@ public final class A_subclass extends C_subclass {
 
         for(var3 = 0; var3 < this.b.length; ++var3) {
             var2.drawString(this.b[var3], this.i, var7);
-            var7 += 2 * var1.f;
+            var7 += 2 * var1.centerY;
         }
 
-        var7 = (int)((double)(var7 + var1.f) + var4.getHeight());
+        var7 = (int)((double)(var7 + var1.centerY) + var4.getHeight());
         var1.setLineColor(var2);
         if (var6) {
             var2.drawString(ELSE, 0, var7);
-            var7 += 3 * var1.f;
+            var7 += 3 * var1.centerY;
         } else {
-            var7 += var1.f;
+            var7 += var1.centerY;
         }
 
         var7 = (int)((double)var7 + var5.getHeight());
@@ -79,46 +79,46 @@ public final class A_subclass extends C_subclass {
     public void a(ABBasePanel var1) {
         m var2;
         FontMetrics var7 = (var2 = (m)var1).getFontMetrics(var1.getFont());
-        String var3 = var2.executable.b();
+        String var3 = var2.executable.getDisplayName();
         this.i = var7.charsWidth(this.IF.toCharArray(), 0, this.IF.length());
         this.b = var3.split("\\n");
         this.c = new int[this.b.length];
         this.d = 0;
-        this.e = ((this.b.length << 1) + 1) * var2.f;
-        this.f = 2 * var2.f;
+        this.e = ((this.b.length << 1) + 1) * var2.centerY;
+        this.f = 2 * var2.centerY;
 
         for(int var9 = 0; var9 < this.b.length; ++var9) {
             this.c[var9] = var7.charsWidth(this.b[var9].toCharArray(), 0, this.b[var9].length());
             this.d = Math.max(this.d, this.i + this.c[var9]);
         }
 
-        this.g = ((int)Math.ceil((double)this.d / (double)(2 * var2.e)) << 1) * var2.e;
-        this.h = ((this.b.length << 1) + 1) * var2.f;
+        this.g = ((int)Math.ceil((double)this.d / (double)(2 * var2.centerX)) << 1) * var2.centerX;
+        this.h = ((this.b.length << 1) + 1) * var2.centerY;
         Dimension var10 = new Dimension(this.g, this.h);
         var2.e().g();
         Dimension var8 = var2.e().getMinimumSize();
         var2.d().g();
         Dimension var4 = var2.d().getMinimumSize();
-        var10.width = Math.max(var10.width, var8.width + 2 * var2.e) + 2 * var2.e;
+        var10.width = Math.max(var10.width, var8.width + 2 * var2.centerX) + 2 * var2.centerX;
         var10.height += var8.height;
-        var10.width = Math.max(var10.width, var4.width + 2 * var2.e) + 2 * var2.e;
+        var10.width = Math.max(var10.width, var4.width + 2 * var2.centerX) + 2 * var2.centerX;
         var10.height += var4.height;
         int var11 = 0;
 
         try {
             if (var2.d().getExecutable().getInstructionAmount() > 0) {
-                var10.height += 6 * var2.f;
-                var11 = 3 * var2.f;
+                var10.height += 6 * var2.centerY;
+                var11 = 3 * var2.centerY;
             } else {
-                var10.height += 4 * var2.f;
-                var11 = var2.f;
+                var10.height += 4 * var2.centerY;
+                var11 = var2.centerY;
             }
         } catch (r var6) {
             var6.printStackTrace();
         }
 
-        var2.a(var10);
-        int var5 = 2 * var2.e;
+        var2.forceSize(var10);
+        int var5 = 2 * var2.centerX;
         var2.e().setLocation(var5, this.e);
         var2.d().setLocation(var5, (int)((double)this.e + var8.getHeight() + (double)var11));
         var2.revalidate();

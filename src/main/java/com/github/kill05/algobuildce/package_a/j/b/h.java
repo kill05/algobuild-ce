@@ -4,7 +4,7 @@ import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.c.b.ABForBlock;
 import com.github.kill05.algobuildce.package_a.c.b.ABInstructionBlock;
-import com.github.kill05.algobuildce.package_a.j.a.ABFlowChartPanel;
+import com.github.kill05.algobuildce.package_a.j.a.ABTabbedProgramPanel;
 
 import java.awt.Dimension;
 import java.awt.FontMetrics;
@@ -22,7 +22,7 @@ public final class h extends ABInstructionPanel {
     private int p;
     private int q;
 
-    public h(ABProgram var1, ABFlowChartPanel var2, ABExecutable var3) {
+    public h(ABProgram var1, ABTabbedProgramPanel var2, ABExecutable var3) {
         super(var1, var2, var3);
         this.a(var3);
         this.a = new e(var1, var2, null);
@@ -35,50 +35,50 @@ public final class h extends ABInstructionPanel {
         int var2 = this.getWidth();
         int var3 = this.getHeight();
         int[] var4 = new int[]{var2 / 2 - this.o, var2 / 2 - this.p, var2 / 2 + this.p, var2 / 2 + this.o, var2 / 2 + this.p, var2 / 2 - this.p};
-        int[] var5 = new int[]{this.q / 2 + 2 * this.f, 2 * this.f, 2 * this.f, this.q / 2 + 2 * this.f, this.q + 2 * this.f, this.q + 2 * this.f};
+        int[] var5 = new int[]{this.q / 2 + 2 * this.centerY, 2 * this.centerY, 2 * this.centerY, this.q / 2 + 2 * this.centerY, this.q + 2 * this.centerY, this.q + 2 * this.centerY};
         this.setFillingColor(var1);
         var1.fillPolygon(var4, var5, 6);
         this.setLineColor(var1);
         var1.drawPolygon(var4, var5, 6);
         this.setLineColor(var1);
-        int var7 = this.e;
-        int var8 = var2 - this.e;
-        var1.drawLine(var2 / 2, 0, var2 / 2, 2 * this.f);
-        var1.drawLine(var7, this.f, var2 / 2, this.f);
+        int var7 = this.centerX;
+        int var8 = var2 - this.centerX;
+        var1.drawLine(var2 / 2, 0, var2 / 2, 2 * this.centerY);
+        var1.drawLine(var7, this.centerY, var2 / 2, this.centerY);
         int var6 = this.program.getViewOptions().m();
-        var1.drawLine(var2 / 2, this.f, var2 / 2 - var6, this.f - var6);
-        var1.drawLine(var2 / 2, this.f, var2 / 2 - var6, this.f + var6);
-        var1.drawLine(var7, this.f, var7, var3 - 2 * this.f);
-        var1.drawLine(var7, var3 - 2 * this.f, var2 / 2, var3 - 2 * this.f);
-        var1.drawLine(var2 / 2, var3 - 2 * this.f, var2 / 2, var3 - 3 * this.f);
-        var1.drawLine(var2 / 2, this.q + 4 * this.f, var2 / 2, this.q + 2 * this.f);
-        var1.drawLine(var2 / 2 + this.o, this.q / 2 + 2 * this.f, var8, this.q / 2 + 2 * this.f);
-        var1.drawLine(var8, this.q / 2 + 2 * this.f, var8, var3 - this.f);
-        var1.drawLine(var8, var3 - this.f, var2 / 2, var3 - this.f);
-        var1.drawLine(var2 / 2, var3 - this.f, var2 / 2, var3);
-        if (this.executable.b() != null) {
+        var1.drawLine(var2 / 2, this.centerY, var2 / 2 - var6, this.centerY - var6);
+        var1.drawLine(var2 / 2, this.centerY, var2 / 2 - var6, this.centerY + var6);
+        var1.drawLine(var7, this.centerY, var7, var3 - 2 * this.centerY);
+        var1.drawLine(var7, var3 - 2 * this.centerY, var2 / 2, var3 - 2 * this.centerY);
+        var1.drawLine(var2 / 2, var3 - 2 * this.centerY, var2 / 2, var3 - 3 * this.centerY);
+        var1.drawLine(var2 / 2, this.q + 4 * this.centerY, var2 / 2, this.q + 2 * this.centerY);
+        var1.drawLine(var2 / 2 + this.o, this.q / 2 + 2 * this.centerY, var8, this.q / 2 + 2 * this.centerY);
+        var1.drawLine(var8, this.q / 2 + 2 * this.centerY, var8, var3 - this.centerY);
+        var1.drawLine(var8, var3 - this.centerY, var2 / 2, var3 - this.centerY);
+        var1.drawLine(var2 / 2, var3 - this.centerY, var2 / 2, var3);
+        if (this.executable.getDisplayName() != null) {
             var3 = this.n;
 
             for (var7 = 0; var7 < this.k.length; ++var7) {
                 var1.drawString(this.k[var7], var2 / 2 - this.l[var7] / 2, var3);
-                var3 += 2 * this.f;
+                var3 += 2 * this.centerY;
             }
         }
 
-        var1.drawString("F", var2 / 2 + this.o + 2, this.q / 2 + 2 * this.f - 2);
-        var1.drawString("T", var2 / 2 + 2, this.q + 4 * this.f - 2);
+        var1.drawString("F", var2 / 2 + this.o + 2, this.q / 2 + 2 * this.centerY - 2);
+        var1.drawString("T", var2 / 2 + 2, this.q + 4 * this.centerY - 2);
     }
 
     @Override
     public void a() {
-        String var1 = this.executable.b();
+        String var1 = this.executable.getDisplayName();
         this.a.g();
         FontMetrics var2 = this.getFontMetrics(this.getFont());
         this.k = var1.split("\\\\n");
         this.l = new int[this.k.length];
         this.m = 0;
         Rectangle2D var9 = var2.getStringBounds(this.k[0], this.getGraphics());
-        this.n = (int) ((double) (4 * this.f) - var9.getHeight() / 2.0D - var9.getY());
+        this.n = (int) ((double) (4 * this.centerY) - var9.getHeight() / 2.0D - var9.getY());
 
         int var10;
         for (var10 = 0; var10 < this.k.length; ++var10) {
@@ -86,14 +86,14 @@ public final class h extends ABInstructionPanel {
             this.m = Math.max(this.m, this.l[var10]);
         }
 
-        var10 = (2 + ((int) Math.ceil((double) this.m / (double) (2 * this.e)) << 1)) * this.e;
-        this.q = (this.k.length + 1 << 1) * this.f;
+        var10 = (2 + ((int) Math.ceil((double) this.m / (double) (2 * this.centerX)) << 1)) * this.centerX;
+        this.q = (this.k.length + 1 << 1) * this.centerY;
         this.p = var10 / 2;
         this.o = this.p + this.q / 2;
-        int var11 = 2 * this.e;
-        int var4 = 2 * this.e;
-        int var5 = 4 * this.f;
-        int var6 = 3 * this.f;
+        int var11 = 2 * this.centerX;
+        int var4 = 2 * this.centerX;
+        int var5 = 4 * this.centerY;
+        int var6 = 3 * this.centerY;
         int var3 = this.q + var5;
         Dimension var7 = this.a.getSize();
         int var8 = this.o << 1;
@@ -101,10 +101,10 @@ public final class h extends ABInstructionPanel {
             var8 = (int) var7.getWidth();
         }
 
-        this.a(new Dimension(var11 + var8 + var4, (int) ((double) (this.q + var5 + var6) + var7.getHeight())));
+        this.forceSize(new Dimension(var11 + var8 + var4, (int) ((double) (this.q + var5 + var6) + var7.getHeight())));
         var11 = (int) ((double) var11 + ((double) var8 - var7.getWidth()) / 2.0D);
         this.a.setLocation(var11, var3);
-        this.j = new Rectangle(this.getWidth() / 2 - var10 / 2, 2 * this.f, var10, (this.k.length + 1 << 1) * this.f);
+        this.j = new Rectangle(this.getWidth() / 2 - var10 / 2, 2 * this.centerY, var10, (this.k.length + 1 << 1) * this.centerY);
     }
 
     @Override

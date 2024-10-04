@@ -8,7 +8,7 @@ import com.github.kill05.algobuildce.package_a.c.b.*;
 import com.github.kill05.algobuildce.package_a.c.b.s;
 import com.github.kill05.algobuildce.package_a.c.b.t;
 import com.github.kill05.algobuildce.package_a.i.Translator;
-import com.github.kill05.algobuildce.package_a.j.a.ABFlowChartPanel;
+import com.github.kill05.algobuildce.package_a.j.a.ABTabbedProgramPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +20,7 @@ public class ABInstructionPanel extends ABBasePanel implements IInstructionPanel
     protected ABExecutable executable;
     protected Rectangle j;
 
-    public ABInstructionPanel(ABProgram var1, ABFlowChartPanel var2, ABExecutable var3) {
+    public ABInstructionPanel(ABProgram var1, ABTabbedProgramPanel var2, ABExecutable var3) {
         super(var1, var2);
         this.executable = var3;
         this.setToolTipText("clic Modifica / Copia / Taglia");

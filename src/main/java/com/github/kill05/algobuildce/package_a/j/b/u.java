@@ -32,7 +32,7 @@ public final class u extends C_subclass {
             int var6 = (int) ((var9 = var2.getFontMetrics().getStringBounds(var8, var2)).getWidth() / 2.0D);
             int var10 = (int) Math.round(-var9.getHeight() / 2.0D - var9.getY());
             var3 = var3 / 2 - var6;
-            int var7 = 1 * var1.f + var10;
+            int var7 = 1 * var1.centerY + var10;
             var2.drawString(var8, var3, var7);
         } else {
             var2.drawLine(0, 0, 0, var4);
@@ -41,6 +41,6 @@ public final class u extends C_subclass {
 
     @Override
     public final void a(ABBasePanel var1) {
-        var1.a(new Dimension(10 * var1.e, 1 * var1.f));
+        var1.forceSize(new Dimension(10 * var1.centerX, 1 * var1.centerY));
     }
 }

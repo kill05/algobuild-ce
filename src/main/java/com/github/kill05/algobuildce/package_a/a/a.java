@@ -160,7 +160,7 @@ public final class a extends JDialog implements ActionListener, KeyListener, Doc
         }
 
         a var6;
-        (var6 = g).e = var1.b();
+        (var6 = g).e = var1.getDisplayName();
         var6.d = var6.e;
         var6.f = var1;
         Dimension var7 = Toolkit.getDefaultToolkit().getScreenSize();

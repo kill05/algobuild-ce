@@ -17,7 +17,7 @@ public final class t extends C_subclass {
     @Override
     public void a(ABBasePanel var1) {
         e var6 = (e) var1;
-        Dimension var2 = new Dimension(2 * var6.e, 0);
+        Dimension var2 = new Dimension(2 * var6.centerX, 0);
         Component[] components = var6.getComponents();
 
         for (Component value : components) {
@@ -33,7 +33,7 @@ public final class t extends C_subclass {
             var2.height += var5.height;
         }
 
-        var6.a(var2);
+        var6.forceSize(var2);
         int i = 0;
 
         for (Component component : components) {

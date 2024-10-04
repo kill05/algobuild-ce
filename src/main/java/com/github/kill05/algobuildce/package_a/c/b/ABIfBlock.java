@@ -159,7 +159,7 @@ public final class ABIfBlock extends ABSelectionBlockBase {
     }
 
     @Override
-    protected String getName() {
+    protected String getId() {
         return "ABIIF_";
     }
 

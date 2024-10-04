@@ -6,10 +6,12 @@ import com.github.kill05.algobuildce.package_a.c.b.q;
 import com.github.kill05.algobuildce.package_a.f.ABFiles;
 import com.github.kill05.algobuildce.package_a.i.ImageUtils;
 import com.github.kill05.algobuildce.package_a.i.Translator;
+import com.github.kill05.algobuildce.package_a.j.b.ABFlowChartPanel;
 import com.github.kill05.algobuildce.package_a.j.b.C_subclass;
 import com.github.kill05.algobuildce.package_a.j.b.D_subclass;
 import com.github.kill05.algobuildce.package_a.j.b.p;
 import com.github.kill05.algobuildce.package_a.k.ABFrame;
+import org.jetbrains.annotations.Nullable;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -25,7 +27,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Vector;
 
-public final class ABFlowChartPanel extends JPanel implements ActionListener, ChangeListener {
+public final class ABTabbedProgramPanel extends JPanel implements ActionListener, ChangeListener {
 
     ABProgram program;
     private ABProgramPanel c;
@@ -33,9 +35,9 @@ public final class ABFlowChartPanel extends JPanel implements ActionListener, Ch
     private int d = -1;
     private ABFrame frame;
     private final D_subclass h;
-    private final Vector<com.github.kill05.algobuildce.package_a.j.b.c> i = new Vector<>();
+    private final Vector<ABFlowChartPanel> i = new Vector<>();
 
-    public ABFlowChartPanel() {
+    public ABTabbedProgramPanel() {
         this.setLayout(new BorderLayout());
         this.h = new p();
         ImageUtils.loadImage("imgs/logo2_arancio_small.png");
@@ -44,12 +46,6 @@ public final class ABFlowChartPanel extends JPanel implements ActionListener, Ch
         this.add(this.tabbedPane, "Center");
         this.tabbedPane.addTab("+", new JPanel());
         this.tabbedPane.addChangeListener(this);
-    }
-
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g); //todo: find correct spot to paint
-        //g.drawImage(ImageUtils.loadImage("imgs/background.jpg").getImage(), getX(), getY(), getWidth(), getHeight(), this);
     }
 
     public ABFrame getFrame() {
@@ -73,7 +69,7 @@ public final class ABFlowChartPanel extends JPanel implements ActionListener, Ch
             var5.add(var3);
             (var3 = new JMenuItem(Translator.translate("abvfcAddCodePopupNewFunction"))).addActionListener(this);
             var5.add(var3);
-            var5.show(this, this.getX(), this.getY()); //todo: figure out why getX and getY were called on 'null'
+            var5.show(this, this.getX(), this.getY());
         } else {
          */
 
@@ -101,43 +97,61 @@ public final class ABFlowChartPanel extends JPanel implements ActionListener, Ch
 
     }
 
-    public void a(ABExecutable var1) {
-        int var2 = this.tabbedPane.getTabCount();
-        String var3 = var1.b();
-        com.github.kill05.algobuildce.package_a.j.b.c var4;
-        (var4 = new com.github.kill05.algobuildce.package_a.j.b.c(this.program, this, var1)).setBackground(Color.YELLOW);
-        var1.a(var4);
-        var4.g();
-        var4.setAlignmentX(0.5F);
-        Box var5;
-        (var5 = Box.createVerticalBox()).add(var4);
-        JScrollPane var11;
-        (var11 = new JScrollPane(var5)).getHorizontalScrollBar().setUnitIncrement(15);
-        var11.getVerticalScrollBar().setUnitIncrement(15);
-        com.github.kill05.algobuildce.package_a.j.b.c var6 = new com.github.kill05.algobuildce.package_a.j.b.c(this.program, this, var1);
-        var1.a(var6);
-        var6.g();
-        var6.setAlignmentX(0.5F);
-        Box var8;
-        (var8 = Box.createVerticalBox()).add(var6);
-        JScrollPane var9 = new JScrollPane(var8);
-        var11.getHorizontalScrollBar().setUnitIncrement(15);
-        var11.getVerticalScrollBar().setUnitIncrement(15);
-        C_subclass var7 = this.h.a(var6);
-        var6.a(var7);
-        JSplitPane var10;
-        (var10 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, var11, var9)).setResizeWeight(0.5D);
-        var10.setDividerSize(4);
-        if (var2 == 0) {
-            this.tabbedPane.addTab(var3, var10);
-            this.i.add(var4);
+    public void a(ABExecutable executable) {
+        int tabCount = this.tabbedPane.getTabCount();
+        String name = executable.getDisplayName();
+
+        // Left
+        ABFlowChartPanel leftPanel = new ABFlowChartPanel(this.program, this, executable) {
+            @Override
+            public void forceSize(@Nullable Dimension size) {
+                setPreferredSize(size);
+                if (size != null) setSize(size);
+            }
+        };
+
+        executable.a(leftPanel);
+        leftPanel.g();
+        leftPanel.setAlignmentX(0.5F);
+        leftPanel.setLayout(new BorderLayout()); // Set layout to fill the entire box
+        leftPanel.setBackground(Color.YELLOW);
+
+        Box leftBox = Box.createVerticalBox();
+        leftBox.add(leftPanel);
+
+        JScrollPane leftScrollPane = new JScrollPane(leftBox);
+        leftScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        leftScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+
+        // Right
+        ABFlowChartPanel rightPane = new ABFlowChartPanel(this.program, this, executable);
+        executable.a(rightPane);
+        rightPane.g();
+        rightPane.setAlignmentX(0.5F);
+
+        Box rightBox = Box.createVerticalBox();
+        rightBox.add(rightPane, BorderLayout.CENTER);
+
+        JScrollPane rightScrollPane = new JScrollPane(rightBox);
+        leftScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        leftScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+
+        C_subclass var7 = this.h.a(rightPane);
+        rightPane.a(var7);
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftScrollPane, rightScrollPane);
+        splitPane.setResizeWeight(0.5D);
+        splitPane.setDividerSize(4);
+
+        if (tabCount == 0) {
+            this.tabbedPane.addTab(name, splitPane);
+            this.i.add(leftPanel);
         } else {
-            this.tabbedPane.insertTab(var3, null, var10, null, var2 - 1);
-            this.tabbedPane.setSelectedIndex(var2 - 1);
-            this.i.add(var2 - 1, var4);
+            this.tabbedPane.insertTab(name, null, splitPane, null, tabCount - 1);
+            this.tabbedPane.setSelectedIndex(tabCount - 1);
+            this.i.add(tabCount - 1, leftPanel);
         }
 
-        var4.revalidate();
+        leftPanel.revalidate();
         this.updateUI();
     }
 
@@ -218,7 +232,7 @@ public final class ABFlowChartPanel extends JPanel implements ActionListener, Ch
 
     public void d() {
         int var1 = this.tabbedPane.getSelectedIndex();
-        com.github.kill05.algobuildce.package_a.j.b.c var5 = (com.github.kill05.algobuildce.package_a.j.b.c) this.i.elementAt(var1);
+        ABFlowChartPanel var5 = (ABFlowChartPanel) this.i.elementAt(var1);
         com.github.kill05.algobuildce.package_a.i.d var2 = new com.github.kill05.algobuildce.package_a.i.d(var5);
         int var3 = var5.getWidth();
         int var4 = var5.getHeight();
@@ -253,7 +267,7 @@ public final class ABFlowChartPanel extends JPanel implements ActionListener, Ch
 
             String var10 = var11.substring(var11.lastIndexOf(46) + 1);
             int var3 = this.tabbedPane.getSelectedIndex();
-            com.github.kill05.algobuildce.package_a.j.b.c var12 = (com.github.kill05.algobuildce.package_a.j.b.c) this.i.elementAt(var3);
+            ABFlowChartPanel var12 = (ABFlowChartPanel) this.i.elementAt(var3);
             com.github.kill05.algobuildce.package_a.i.d var4 = new com.github.kill05.algobuildce.package_a.i.d(var12);
             int var5 = var12.getWidth();
             int var6 = var12.getHeight();

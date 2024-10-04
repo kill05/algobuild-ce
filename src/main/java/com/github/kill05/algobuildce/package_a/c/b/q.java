@@ -170,7 +170,7 @@ public final class q extends ABInstructionBlock {
     }
 
     @Override
-    public String b() {
+    public String getDisplayName() {
         return this.name;
     }
 
@@ -318,7 +318,7 @@ public final class q extends ABInstructionBlock {
     }
 
     @Override
-    protected String getName() {
+    protected String getId() {
         return "ABRCOD";
     }
 

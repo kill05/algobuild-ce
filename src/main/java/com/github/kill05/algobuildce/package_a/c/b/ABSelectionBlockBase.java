@@ -21,7 +21,7 @@ public abstract class ABSelectionBlockBase extends ABInstructionBlock {
     }
 
     @Override
-    public final String b() {
+    public final String getDisplayName() {
         return this.condition;
     }
 

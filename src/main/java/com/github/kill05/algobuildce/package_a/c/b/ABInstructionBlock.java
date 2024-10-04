@@ -47,18 +47,18 @@ public abstract class ABInstructionBlock extends ABExecutable {
     }
 
     @Override
-    public String b() {
+    public String getDisplayName() {
         return null;
     }
 
-    protected String getName() {
+    protected String getId() {
         return null;
     }
 
     public ABBlockDataHolder h() {
         ABBlockDataHolder var1;
         (var1 = new ABBlockDataHolder()).putData("path", this.c());
-        var1.putData("abiid", this.getName());
+        var1.putData("abiid", this.getId());
         return var1;
     }
 
@@ -67,7 +67,7 @@ public abstract class ABInstructionBlock extends ABExecutable {
 
     public JsonObject b(boolean var1) {
         JsonObject var2;
-        (var2 = new JsonObject()).put("abiid", this.getName());
+        (var2 = new JsonObject()).put("abiid", this.getId());
         return var2;
     }
 

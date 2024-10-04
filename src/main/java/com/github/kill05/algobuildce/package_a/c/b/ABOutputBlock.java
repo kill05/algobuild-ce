@@ -119,7 +119,7 @@ public final class ABOutputBlock extends k {
     }
 
     @Override
-    protected final String getName() {
+    protected final String getId() {
         return "ABIOUT";
     }
 }

@@ -26,7 +26,7 @@ public abstract class ABExecutable {
         return false;
     }
 
-    public abstract String b();
+    public abstract String getDisplayName();
 
     public abstract String c();
 

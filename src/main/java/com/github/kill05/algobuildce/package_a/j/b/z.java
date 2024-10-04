@@ -34,7 +34,7 @@ public final class z extends C_subclass {
 
         for (int var4 = 0; var4 < this.b.length; ++var4) {
             var2.drawString(this.b[var4], this.i, var3);
-            var3 += 2 * var1.f;
+            var3 += 2 * var1.centerY;
         }
 
     }
@@ -57,18 +57,18 @@ public final class z extends C_subclass {
         this.b = var5.split("\\n");
         this.c = new int[this.b.length];
         this.d = 0;
-        this.e = ((this.b.length << 1) + 1) * var2.f;
-        this.f = 2 * var2.f;
+        this.e = ((this.b.length << 1) + 1) * var2.centerY;
+        this.f = 2 * var2.centerY;
 
         for (var3 = 0; var3 < this.b.length; ++var3) {
             this.c[var3] = var4.charsWidth(this.b[var3].toCharArray(), 0, this.b[var3].length());
             this.d = Math.max(this.d, this.i + this.c[var3]);
         }
 
-        this.g = ((int) Math.ceil((double) this.d / (double) (2 * var2.e)) << 1) * var2.e;
-        this.h = ((this.b.length << 1) + 1) * var2.f;
+        this.g = ((int) Math.ceil((double) this.d / (double) (2 * var2.centerX)) << 1) * var2.centerX;
+        this.h = ((this.b.length << 1) + 1) * var2.centerY;
         Dimension var6 = new Dimension(this.g, this.h);
-        var2.a(var6);
+        var2.forceSize(var6);
         this.a(new Rectangle(this.d, this.e));
     }
 }

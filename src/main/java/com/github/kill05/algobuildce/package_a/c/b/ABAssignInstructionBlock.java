@@ -20,7 +20,7 @@ public final class ABAssignInstructionBlock extends ABInstructionBlock {
     }
 
     @Override
-    public String b() {
+    public String getDisplayName() {
         return this.b;
     }
 
@@ -58,7 +58,7 @@ public final class ABAssignInstructionBlock extends ABInstructionBlock {
     }
 
     @Override
-    protected String getName() {
+    protected String getId() {
         return "ABIASS";
     }
 

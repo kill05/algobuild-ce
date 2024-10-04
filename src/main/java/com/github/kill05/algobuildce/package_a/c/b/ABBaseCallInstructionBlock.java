@@ -112,7 +112,7 @@ public class ABBaseCallInstructionBlock extends ABInstructionBlock {
     }
 
     @Override
-    protected final String getName() {
+    protected final String getId() {
         return "ABICAL";
     }
 

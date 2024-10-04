@@ -8,7 +8,7 @@ public final class p extends D_subclass {
             return new q(this, this);
         } else if (var1 instanceof b) {
             return new r(this, this);
-        } else if (var1 instanceof c) {
+        } else if (var1 instanceof ABFlowChartPanel) {
             return new B_subclass(this, this);
         } else if (var1 instanceof d) {
             return new s(this, this);
