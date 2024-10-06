@@ -30,7 +30,7 @@ public final class ViewOptions {
     public void setDefaults() {
         this.codeFont = new Font("SansSerif", Font.PLAIN, (int) (12.0D * GlobalVariables.getFontZoomRatio()));
         this.consoleFont = new Font("SansSerif", Font.PLAIN, (int) (12.0D * GlobalVariables.getFontZoomRatio()));
-        this.backgroundColor = Color.WHITE;
+        this.backgroundColor = new Color(255, 255, 255, 0xBF);
         this.fillingColor = Color.WHITE;
         this.fillingColorRunning = Color.GREEN;
         this.fillingColorSelected = new Color(235, 235, 255);

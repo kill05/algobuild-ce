@@ -4,7 +4,6 @@ import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutionFragment;
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.c.b.q;
-import com.github.kill05.algobuildce.package_a.i.ImageUtils;
 import com.github.kill05.algobuildce.package_a.i.Translator;
 import com.github.kill05.algobuildce.package_a.j.a.ABTabbedProgramPanel;
 
@@ -19,7 +18,6 @@ public class ABFlowChartPanel extends ABInstructionPanel {
     e a;
     private String startText;
     private String endText;
-
     private Rectangle m;
 
     public void a(Rectangle var1) {
@@ -29,7 +27,6 @@ public class ABFlowChartPanel extends ABInstructionPanel {
     public ABFlowChartPanel(ABProgram program, ABTabbedProgramPanel tabbedPanel, ABExecutable executable) {
         super(program, tabbedPanel, executable);
         this.a(executable);
-        this.setOpaque(true);
         this.a = new e(program, tabbedPanel, null);
         this.add(this.a);
         this.a.g();
@@ -42,19 +39,21 @@ public class ABFlowChartPanel extends ABInstructionPanel {
         } else {
             this.setToolTipText("clic Modifica / Copia / Taglia");
         }
+
+        this.setOpaque(false);
     }
 
     @Override
     public void drawPanel(Graphics g) {
         super.drawPanel(g);
 
-        g.drawImage(ImageUtils.loadImage("imgs/background.jpg").getImage(), 0, 0, getWidth(), getHeight(), this);
-
         Dimension prefSize = this.getPreferredSize();
         int prefWidth = (int) prefSize.getWidth();
         int prefHeight = (int) prefSize.getHeight();
-        //g.setColor(this.program.getViewOptions().getBackgroundColor());
-        //g.fillRect(0, 0, this.getWidth(), this.getHeight());
+
+        g.setColor(this.program.getViewOptions().getBackgroundColor());
+        g.fillRect(0, 0, this.getWidth(), this.getHeight());
+
         this.setFillingColor(g, 0);
         g.fillOval(prefWidth / 2 - 10 * this.centerX, this.centerY, 20 * this.centerX, 4 * this.centerY - 1);
         this.setLineColor(g);

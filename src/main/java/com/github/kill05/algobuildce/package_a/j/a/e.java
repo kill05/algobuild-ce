@@ -4,16 +4,16 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 
 final class e extends AbstractAction {
-    private d a;
+    private VariableInputDialog a;
 
-    e(d var1) {
+    e(VariableInputDialog var1) {
         super();
         this.a = var1;
     }
 
     @Override
     public void actionPerformed(ActionEvent var1) {
-        d.a(this.a, null);
+        VariableInputDialog.a(this.a, null);
         this.a.setVisible(false);
     }
 }

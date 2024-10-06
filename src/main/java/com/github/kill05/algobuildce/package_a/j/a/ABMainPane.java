@@ -286,7 +286,7 @@ public final class ABMainPane extends JPanel implements IProgramPanel, ActionLis
 
     @Override
     public String g(String var1) {
-        if ((var1 = (new d(this.abFrame, var1)).a()) == null) {
+        if ((var1 = (new VariableInputDialog(this.abFrame, var1)).a()) == null) {
             this.e = true;
             var1 = "execPause";
         }

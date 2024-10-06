@@ -3,7 +3,7 @@ package com.github.kill05.algobuildce.package_a.j.b;
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.j.a.ABTabbedProgramPanel;
 import com.github.kill05.algobuildce.package_a.k.GlobalVariables;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
@@ -47,11 +47,11 @@ public class ABBasePanel extends JPanel implements ActionListener, MouseListener
         return "ABVFC_BasePanel ";
     }
 
-    public void forceSize(@Nullable Dimension size) {
+    public void forceSize(@NotNull Dimension size) {
         this.setPreferredSize(size);
         this.setMinimumSize(size);
         this.setMaximumSize(size);
-        if (size != null) this.setSize(size);
+        this.setSize(size);
     }
 
     protected final void a(boolean var1) {
@@ -147,13 +147,13 @@ public class ABBasePanel extends JPanel implements ActionListener, MouseListener
     }
 
     @Override
-    protected void paintComponent(Graphics var1) {
-        super.paintComponent(var1);
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
 
         if (this.h != null) {
-            this.h.a(this, var1);
+            this.h.a(this, g);
         } else {
-            this.drawPanel(var1);
+            this.drawPanel(g);
         }
     }
 

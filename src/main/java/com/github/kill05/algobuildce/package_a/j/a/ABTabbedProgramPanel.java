@@ -11,7 +11,7 @@ import com.github.kill05.algobuildce.package_a.j.b.C_subclass;
 import com.github.kill05.algobuildce.package_a.j.b.D_subclass;
 import com.github.kill05.algobuildce.package_a.j.b.p;
 import com.github.kill05.algobuildce.package_a.k.ABFrame;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -80,7 +80,7 @@ public final class ABTabbedProgramPanel extends JPanel implements ActionListener
             if (this.program.a(var2) == null) {
                 this.program.createPage(var2, 2);
             } else {
-                JOptionPane.showMessageDialog(this, Translator.translate("abvfcAddCodeNameAlreadyPresentMsg"), Translator.translate("abvfcAddCodePopupNewMsg"), 0);
+                JOptionPane.showMessageDialog(this, Translator.translate("abvfcAddCodeNameAlreadyPresentMsg"), Translator.translate("abvfcAddCodePopupNewMsg"), JOptionPane.ERROR_MESSAGE);
             }
         } else {
             if (var4 != null && var4.equals(Translator.translate("abvfcAddCodePopupNewFunction"))) {
@@ -90,7 +90,7 @@ public final class ABTabbedProgramPanel extends JPanel implements ActionListener
                     return;
                 }
 
-                JOptionPane.showMessageDialog(this, Translator.translate("abvfcAddCodeNameAlreadyPresentMsg"), Translator.translate("abvfcAddCodePopupNewMsg"), 0);
+                JOptionPane.showMessageDialog(this, Translator.translate("abvfcAddCodeNameAlreadyPresentMsg"), Translator.translate("abvfcAddCodePopupNewMsg"), JOptionPane.ERROR_MESSAGE);
             }
 
         }
@@ -102,21 +102,24 @@ public final class ABTabbedProgramPanel extends JPanel implements ActionListener
         String name = executable.getDisplayName();
 
         // Left
-        ABFlowChartPanel leftPanel = new ABFlowChartPanel(this.program, this, executable) {
-            @Override
-            public void forceSize(@Nullable Dimension size) {
-                setPreferredSize(size);
-                if (size != null) setSize(size);
-            }
-        };
+        ABFlowChartPanel leftPanel = new ABFlowChartPanel(this.program, this, executable);
 
         executable.a(leftPanel);
         leftPanel.g();
-        leftPanel.setAlignmentX(0.5F);
-        leftPanel.setLayout(new BorderLayout()); // Set layout to fill the entire box
-        leftPanel.setBackground(Color.YELLOW);
+        leftPanel.setAlignmentX(0.5f);
+        leftPanel.setAlignmentY(0.0f);
+        //leftPanel.setLayout(new BorderLayout());
+        //leftPanel.setBackground(Color.YELLOW);
 
-        Box leftBox = Box.createVerticalBox();
+        //Box leftBox = Box.createVerticalBox();
+        JPanel leftBox = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(ImageUtils.loadImage("imgs/background.jpg").getImage(), 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        leftBox.setLayout(new BoxLayout(leftBox, BoxLayout.Y_AXIS));
         leftBox.add(leftPanel);
 
         JScrollPane leftScrollPane = new JScrollPane(leftBox);
@@ -232,7 +235,7 @@ public final class ABTabbedProgramPanel extends JPanel implements ActionListener
 
     public void d() {
         int var1 = this.tabbedPane.getSelectedIndex();
-        ABFlowChartPanel var5 = (ABFlowChartPanel) this.i.elementAt(var1);
+        ABFlowChartPanel var5 = this.i.elementAt(var1);
         com.github.kill05.algobuildce.package_a.i.d var2 = new com.github.kill05.algobuildce.package_a.i.d(var5);
         int var3 = var5.getWidth();
         int var4 = var5.getHeight();
@@ -246,19 +249,11 @@ public final class ABTabbedProgramPanel extends JPanel implements ActionListener
     }
 
     public void e() {
-        JFileChooser var1 = new JFileChooser(ABFiles.getABFolder().getAbsolutePath());
-        FileNameExtensionFilter var2 = new FileNameExtensionFilter("Immagine *.gif", "gif");
-        var1.addChoosableFileFilter(var2);
-        var2 = new FileNameExtensionFilter("Immagine *.jpg", "jpg");
-        var1.addChoosableFileFilter(var2);
-        var2 = new FileNameExtensionFilter("Immagine *.png", "png");
-        var1.addChoosableFileFilter(var2);
-        var1.setFileSelectionMode(0);
-        var1.setFileFilter(var2);
-        if (var1.showSaveDialog(this.frame) == 0) {
-            String var11 = var1.getSelectedFile().getAbsolutePath();
+        JFileChooser fileChooser = createFileChooser();
+        if (fileChooser.showSaveDialog(this.frame) == 0) {
+            String var11 = fileChooser.getSelectedFile().getAbsolutePath();
             FileFilter var8;
-            if ((var8 = var1.getFileFilter()) != null && var8 instanceof FileNameExtensionFilter) {
+            if ((var8 = fileChooser.getFileFilter()) != null && var8 instanceof FileNameExtensionFilter) {
                 String[] var9 = ((FileNameExtensionFilter) var8).getExtensions();
                 if (!var11.contains(".") && var9.length > 0 && var9[0] != null) {
                     var11 = var11 + "." + var9[0];
@@ -267,7 +262,7 @@ public final class ABTabbedProgramPanel extends JPanel implements ActionListener
 
             String var10 = var11.substring(var11.lastIndexOf(46) + 1);
             int var3 = this.tabbedPane.getSelectedIndex();
-            ABFlowChartPanel var12 = (ABFlowChartPanel) this.i.elementAt(var3);
+            ABFlowChartPanel var12 = this.i.elementAt(var3);
             com.github.kill05.algobuildce.package_a.i.d var4 = new com.github.kill05.algobuildce.package_a.i.d(var12);
             int var5 = var12.getWidth();
             int var6 = var12.getHeight();
@@ -285,5 +280,18 @@ public final class ABTabbedProgramPanel extends JPanel implements ActionListener
             }
         }
 
+    }
+
+    private static @NotNull JFileChooser createFileChooser() {
+        JFileChooser var1 = new JFileChooser(ABFiles.getABFolder().getAbsolutePath());
+        FileNameExtensionFilter var2 = new FileNameExtensionFilter("Immagine *.gif", "gif");
+        var1.addChoosableFileFilter(var2);
+        var2 = new FileNameExtensionFilter("Immagine *.jpg", "jpg");
+        var1.addChoosableFileFilter(var2);
+        var2 = new FileNameExtensionFilter("Immagine *.png", "png");
+        var1.addChoosableFileFilter(var2);
+        var1.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        var1.setFileFilter(var2);
+        return var1;
     }
 }

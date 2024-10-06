@@ -16,22 +16,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public final class d extends JDialog implements ActionListener {
-    private JButton a;
-    private JButton b;
+public final class VariableInputDialog extends JDialog implements ActionListener {
+
+    private JButton runButton;
+    private JButton pauseButton;
     private JTextField c = new JTextField();
     private String d = null;
 
-    public d(Window var1, String var2) {
+    public VariableInputDialog(Window var1, String var2) {
         super((Frame) var1, Translator.translate("abvDialogInputVariable"), true);
         Point var7;
         (var7 = MouseInfo.getPointerInfo().getLocation()).translate(15, 15);
         this.setLocation(var7);
-        ImageIcon var3 = ImageUtils.loadImage("imgs/run_icon.gif");
-        ImageIcon var4 = ImageUtils.loadImage("imgs/pause_icon.gif");
-        //ImageIcon[] var10000 = new ImageIcon[]{var3, var4};
-        this.a = new JButton(var3);
-        this.b = new JButton(var4);
+        ImageIcon runIcon = ImageUtils.loadImage("imgs/run_icon.gif");
+        ImageIcon pauseIcon = ImageUtils.loadImage("imgs/pause_icon.gif");
+        //ImageIcon[] var10000 = new ImageIcon[]{runIcon, pauseIcon};
+        this.runButton = new JButton(runIcon);
+        this.pauseButton = new JButton(pauseIcon);
         JPanel var10;
         (var10 = new JPanel()).setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         var10.setLayout(new BorderLayout(10, 10));
@@ -39,16 +40,16 @@ public final class d extends JDialog implements ActionListener {
         (var12 = new JPanel()).setLayout(new GridLayout(1, 2, 10, 10));
         this.c.setText("CIAOCIAOCIAOCIAOCIAO");
         var10.add(this.c);
-        this.a.addActionListener(this);
-        this.b.addActionListener(this);
+        this.runButton.addActionListener(this);
+        this.pauseButton.addActionListener(this);
         e var5 = new e(this);
         f var6 = new f(this);
         this.c.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(27, 0), var5);
         this.c.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(120, 0), var6);
         var10.add(new JLabel(var2), "North");
         var10.add(this.c, "Center");
-        var12.add(this.a);
-        var12.add(this.b);
+        var12.add(this.runButton);
+        var12.add(this.pauseButton);
         var10.add(var12, "South");
         this.setContentPane(var10);
         this.setResizable(false);
@@ -68,17 +69,17 @@ public final class d extends JDialog implements ActionListener {
         }
 
         this.setLocation(var7);
-        this.getRootPane().setDefaultButton(this.a);
+        this.getRootPane().setDefaultButton(this.runButton);
         this.setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent var1) {
-        if (var1.getSource() == this.a) {
+        if (var1.getSource() == this.runButton) {
             this.d = this.c.getText();
             this.setVisible(false);
         } else {
-            if (var1.getSource() == this.b) {
+            if (var1.getSource() == this.pauseButton) {
                 this.d = null;
                 this.setVisible(false);
             }
@@ -91,12 +92,12 @@ public final class d extends JDialog implements ActionListener {
     }
 
     // $FF: synthetic method
-    static void a(d var0, String var1) {
+    static void a(VariableInputDialog var0, String var1) {
         var0.d = var1;
     }
 
     // $FF: synthetic method
-    static JTextField a(d var0) {
+    static JTextField a(VariableInputDialog var0) {
         return var0.c;
     }
 }
