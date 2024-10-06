@@ -8,7 +8,7 @@ import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.f.ABBlockDataHolder;
 import com.github.kill05.algobuildce.package_c.f;
 
-public final class c extends ABBaseCallInstructionBlock {
+public final class c extends ABBaseCallBlock {
     private String d;
 
     public c(String var1) {

@@ -30,7 +30,7 @@ import java.util.Vector;
 public final class ABTabbedProgramPanel extends JPanel implements ActionListener, ChangeListener {
 
     ABProgram program;
-    private ABProgramPanel c;
+    private ABMainPane c;
     JTabbedPane tabbedPane;
     private int d = -1;
     private ABFrame frame;
@@ -202,11 +202,11 @@ public final class ABTabbedProgramPanel extends JPanel implements ActionListener
 
     }
 
-    public void a(ABProgramPanel var1) {
+    public void a(ABMainPane var1) {
         this.c = var1;
     }
 
-    public ABProgramPanel c() {
+    public ABMainPane c() {
         return this.c;
     }
 

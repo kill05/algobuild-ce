@@ -1,6 +1,6 @@
 package com.github.kill05.algobuildce.package_a.j.b;
 
-import com.github.kill05.algobuildce.package_a.c.b.ABBaseCallInstructionBlock;
+import com.github.kill05.algobuildce.package_a.c.b.ABBaseCallBlock;
 
 import java.awt.Dimension;
 import java.awt.FontMetrics;
@@ -42,9 +42,9 @@ public final class r extends C_subclass {
       b var2;
       FontMetrics var7 = (var2 = (b)var1).getFontMetrics(var1.getFont());
       this.i = var7.charsWidth(this.j.toCharArray(), 0, this.j.length());
-      ABBaseCallInstructionBlock var3;
-      Vector var4 = (var3 = (ABBaseCallInstructionBlock)var2.executable).k();
-      String var8 = var3.j() + "(";
+      ABBaseCallBlock var3;
+      Vector var4 = (var3 = (ABBaseCallBlock)var2.executable).getParameters();
+      String var8 = var3.getCallName() + "(";
       int var5 = var4.size();
 
       int var6;

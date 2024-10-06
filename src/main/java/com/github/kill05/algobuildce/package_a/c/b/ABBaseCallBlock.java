@@ -11,25 +11,25 @@ import com.github.kill05.algobuildce.package_c.ABInstructionException;
 import java.util.Map;
 import java.util.Vector;
 
-public class ABBaseCallInstructionBlock extends ABInstructionBlock {
+public class ABBaseCallBlock extends ABInstructionBlock {
     String callName;
     Vector<String> parameters;
 
-    public ABBaseCallInstructionBlock(String var1) {
+    public ABBaseCallBlock(String var1) {
         this.callName = var1;
         this.parameters = new Vector<>();
     }
 
-    public ABBaseCallInstructionBlock(String var1, Vector<String> var2) {
+    public ABBaseCallBlock(String var1, Vector<String> var2) {
         this.callName = var1;
         this.parameters = var2;
     }
 
-    public ABBaseCallInstructionBlock() {
-        this((String) null);
+    public ABBaseCallBlock() {
+        this(null);
     }
 
-    public final String j() {
+    public final String getCallName() {
         return this.callName;
     }
 
@@ -38,7 +38,7 @@ public class ABBaseCallInstructionBlock extends ABInstructionBlock {
         this.a(true);
     }
 
-    public final Vector<String> k() {
+    public final Vector<String> getParameters() {
         return this.parameters;
     }
 
@@ -185,7 +185,7 @@ public class ABBaseCallInstructionBlock extends ABInstructionBlock {
     @SuppressWarnings("unchecked")
     @Override
     public ABExecutable copy() {
-        return new ABBaseCallInstructionBlock(this.callName, (Vector<String>) this.parameters.clone());
+        return new ABBaseCallBlock(this.callName, (Vector<String>) this.parameters.clone());
     }
 
     @Override

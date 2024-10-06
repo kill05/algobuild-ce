@@ -3,7 +3,7 @@ package com.github.kill05.algobuildce.package_a.j.b;
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutionFragment;
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
-import com.github.kill05.algobuildce.package_a.c.b.ABBaseCallInstructionBlock;
+import com.github.kill05.algobuildce.package_a.c.b.ABBaseCallBlock;
 import com.github.kill05.algobuildce.package_a.c.b.c;
 import com.github.kill05.algobuildce.package_a.c.b.ABInstructionBlock;
 import com.github.kill05.algobuildce.package_a.g.e;
@@ -14,6 +14,7 @@ import java.awt.geom.Rectangle2D;
 import java.util.Vector;
 
 public final class b extends ABInstructionPanel {
+
     private int a;
     private int k;
     private int l;
@@ -44,23 +45,23 @@ public final class b extends ABInstructionPanel {
 
     @Override
     public void a() {
-        ABBaseCallInstructionBlock var1;
-        Vector var2 = (var1 = (ABBaseCallInstructionBlock) this.executable).k();
-        this.n = var1.j() + "(";
+        ABBaseCallBlock callBlock = (ABBaseCallBlock) this.executable;
+        Vector<String> params = callBlock.getParameters();
+        this.n = callBlock.getCallName() + "(";
         FontMetrics var5 = this.getFontMetrics(this.getFont());
-        int var3 = var2.size();
+        int var3 = params.size();
 
         for (int var4 = 0; var4 < var3; ++var4) {
             if (var4 == 0) {
-                this.n = this.n + var2.elementAt(var4);
+                this.n = this.n + params.elementAt(var4);
             } else {
-                this.n = this.n + ", " + var2.elementAt(var4);
+                this.n = this.n + ", " + params.elementAt(var4);
             }
         }
 
         this.n = this.n + ")";
         String var6;
-        if (this.executable instanceof c && (var6 = ((c) this.executable).l()) != null && var6.length() > 0) {
+        if (this.executable instanceof c && (var6 = ((c) this.executable).l()) != null && !var6.isEmpty()) {
             this.n = var6 + " = " + this.n;
         }
 

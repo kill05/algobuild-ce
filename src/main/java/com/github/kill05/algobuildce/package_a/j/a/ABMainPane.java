@@ -16,7 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Stack;
 
-public final class ABProgramPanel extends JPanel implements IProgramPanel, ActionListener {
+public final class ABMainPane extends JPanel implements IProgramPanel, ActionListener {
 
     private final ABFrameHolder frameHolder;
     private ABProgram program;
@@ -30,17 +30,17 @@ public final class ABProgramPanel extends JPanel implements IProgramPanel, Actio
     private final double j = 0.75D;
     private int k = -1;
     private final ABTabbedProgramPanel flowChartPanel;
-    private final c m;
+    private final ABConsole m;
     private final JScrollPane n;
     private final h o;
     private final JScrollPane p;
-    private ABFrame q;
+    private ABFrame abFrame;
     private m r;
-    private ExecutionOptionsDialogue s;
+    private ExecutionOptionsDialogue executionOptionsDialogue;
     private final Stack<com.github.kill05.algobuildce.package_a.g.g> t;
     private final Stack<com.github.kill05.algobuildce.package_a.g.g> u;
 
-    public ABProgramPanel(ABFrameHolder frameHolder) {
+    public ABMainPane(ABFrameHolder frameHolder) {
         this.frameHolder = frameHolder;
         this.program = new ABProgram();
         this.c = new com.github.kill05.algobuildce.package_a.c.a.e(this.program);
@@ -52,7 +52,7 @@ public final class ABProgramPanel extends JPanel implements IProgramPanel, Actio
         this.program.a(this);
         this.program.createPage("main", 1);
         this.program.update(false);
-        this.m = new c(this.program);
+        this.m = new ABConsole(this.program);
         this.n = new JScrollPane(this.m);
         this.o = new h();
         this.p = new JScrollPane(this.o);
@@ -84,7 +84,7 @@ public final class ABProgramPanel extends JPanel implements IProgramPanel, Actio
     }
 
     public void a(ABFrame var1) {
-        this.q = var1;
+        this.abFrame = var1;
         if (this.flowChartPanel != null) {
             this.flowChartPanel.setFrame(var1);
         }
@@ -261,7 +261,7 @@ public final class ABProgramPanel extends JPanel implements IProgramPanel, Actio
                 this.d.setInitialDelay(var2);
             }
 
-            this.q.setTitle(var1.o());
+            this.abFrame.setTitle(var1.o());
         } catch (Exception ignored) {
         }
     }
@@ -286,7 +286,7 @@ public final class ABProgramPanel extends JPanel implements IProgramPanel, Actio
 
     @Override
     public String g(String var1) {
-        if ((var1 = (new d(this.q, var1)).a()) == null) {
+        if ((var1 = (new d(this.abFrame, var1)).a()) == null) {
             this.e = true;
             var1 = "execPause";
         }
@@ -336,7 +336,7 @@ public final class ABProgramPanel extends JPanel implements IProgramPanel, Actio
 
     public void k() {
         if (this.r == null) {
-            this.r = new m(this.q, this.program);
+            this.r = new m(this.abFrame, this.program);
         }
 
         this.r.setVisible(!this.r.isVisible());
@@ -344,11 +344,11 @@ public final class ABProgramPanel extends JPanel implements IProgramPanel, Actio
     }
 
     public void l() {
-        if (this.s == null) {
-            this.s = new ExecutionOptionsDialogue(this.q, this.program);
+        if (this.executionOptionsDialogue == null) {
+            this.executionOptionsDialogue = new ExecutionOptionsDialogue(this.abFrame, this.program);
         }
 
-        this.s.setVisible(!this.s.isVisible());
+        this.executionOptionsDialogue.setVisible(!this.executionOptionsDialogue.isVisible());
 
     }
 
@@ -430,7 +430,7 @@ public final class ABProgramPanel extends JPanel implements IProgramPanel, Actio
 
     public void showHistoryDialog() {
         String history = this.program.getHistoryString();
-        JOptionPane.showMessageDialog(this.q, history, Translator.translate("mnuHistoryInfo"), JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this.abFrame, history, Translator.translate("mnuHistoryInfo"), JOptionPane.INFORMATION_MESSAGE);
     }
 
     @Override

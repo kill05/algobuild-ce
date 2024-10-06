@@ -178,7 +178,7 @@ public class ABInstructionPanel extends ABBasePanel implements IInstructionPanel
         } else if (var1 instanceof ABCommentBlock) {
             return new d(this.program, this.flowChartPanel, var1);
         } else {
-            return var1 instanceof ABBaseCallInstructionBlock ? new b(this.program, this.flowChartPanel, var1) : null;
+            return var1 instanceof ABBaseCallBlock ? new b(this.program, this.flowChartPanel, var1) : null;
         }
     }
 

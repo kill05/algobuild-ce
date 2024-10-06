@@ -124,7 +124,7 @@ public final class b extends JDialog implements ActionListener, DocumentListener
          String[] var5;
          if (var4 == this.okButton) {
             var5 = this.f.getText().split("\n");
-            (var2 = this.l.k()).clear();
+            (var2 = this.l.getParameters()).clear();
 
             for(var3 = 0; var3 < var5.length; ++var3) {
                var2.add(var5[var3]);
@@ -143,7 +143,7 @@ public final class b extends JDialog implements ActionListener, DocumentListener
          } else {
             if (var4 == this.cancelButton) {
                var5 = this.i.split("\n");
-               (var2 = this.l.k()).clear();
+               (var2 = this.l.getParameters()).clear();
 
                for(var3 = 0; var3 < var5.length; ++var3) {
                   var2.add(var5[var3]);
@@ -213,7 +213,7 @@ public final class b extends JDialog implements ActionListener, DocumentListener
       if ((var6 = var1.getDocument()) == this.f.getDocument() && !(var2 = this.f.getText()).equals(this.h)) {
          String[] var3 = var2.split("\n");
          Vector var4;
-         (var4 = this.l.k()).clear();
+         (var4 = this.l.getParameters()).clear();
 
          for(int var5 = 0; var5 < var3.length; ++var5) {
             var4.add(var3[var5]);
@@ -248,15 +248,15 @@ public final class b extends JDialog implements ActionListener, DocumentListener
       var6.i = "";
 
       int var7;
-      for(var7 = 0; var7 < var6.l.k().size(); ++var7) {
+      for(var7 = 0; var7 < var6.l.getParameters().size(); ++var7) {
          if (var7 > 0) {
-            var6.i = var6.i + "\n" + (String)var6.l.k().get(var7);
+            var6.i = var6.i + "\n" + (String)var6.l.getParameters().get(var7);
          } else {
-            var6.i = (String)var6.l.k().get(var7);
+            var6.i = (String)var6.l.getParameters().get(var7);
          }
       }
 
-      var6.j = var6.l.j();
+      var6.j = var6.l.getCallName();
       var6.h = var6.i;
       var6.k = var6.l.l();
       System.out.println("add to combobox - START");

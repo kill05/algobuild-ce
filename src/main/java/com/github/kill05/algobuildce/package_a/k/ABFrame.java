@@ -1,7 +1,7 @@
 package com.github.kill05.algobuildce.package_a.k;
 
 import com.github.kill05.algobuildce.package_a.i.ImageUtils;
-import com.github.kill05.algobuildce.package_a.j.a.ABProgramPanel;
+import com.github.kill05.algobuildce.package_a.j.a.ABMainPane;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +12,7 @@ import java.net.URL;
 public final class ABFrame extends JFrame implements WindowListener {
 
     private ABFrameHolder frameHolder;
-    private ABProgramPanel programPanel;
+    private ABMainPane programPanel;
     private JToolBar toolBar = null;
 
     @Override
@@ -89,7 +89,7 @@ public final class ABFrame extends JFrame implements WindowListener {
     public void windowOpened(WindowEvent var1) {
     }
 
-    public void setProgramPanel(ABProgramPanel programPanel) {
+    public void setProgramPanel(ABMainPane programPanel) {
         JComponent contentPane = (JComponent) this.getContentPane();
         if (this.programPanel != null) {
             contentPane.remove(this.programPanel);
@@ -103,7 +103,7 @@ public final class ABFrame extends JFrame implements WindowListener {
         programPanel.b(1);
     }
 
-    public ABProgramPanel getProgramPanel() {
+    public ABMainPane getProgramPanel() {
         return this.programPanel;
     }
 

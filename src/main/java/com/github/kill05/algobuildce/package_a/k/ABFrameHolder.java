@@ -5,7 +5,7 @@ import com.github.kill05.algobuildce.package_a.f.ABFiles;
 import com.github.kill05.algobuildce.package_a.f.ABUserData;
 import com.github.kill05.algobuildce.package_a.i.ImageUtils;
 import com.github.kill05.algobuildce.package_a.i.Translator;
-import com.github.kill05.algobuildce.package_a.j.a.ABProgramPanel;
+import com.github.kill05.algobuildce.package_a.j.a.ABMainPane;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
@@ -36,7 +36,7 @@ public class ABFrameHolder {
         this.frame.setJMenuBar(this.createMenuBar());
         this.frame.setToolBar(this.createToolBar());
         this.frame.setVisible(true);
-        this.frame.setProgramPanel(new ABProgramPanel(this));
+        this.frame.setProgramPanel(new ABMainPane(this));
         this.actionMap.getAction("mnuFileSaveAs").setEnabled(true);
         this.actionMap.getAction("execInstruction").setEnabled(true);
         this.actionMap.getAction("execOptions").setEnabled(true);
@@ -279,7 +279,7 @@ public class ABFrameHolder {
 
     public final void reset() {
         if (!this.frame.hasProgramPanel() || this.frame.getProgramPanel().e()) {
-            this.frame.setProgramPanel(new ABProgramPanel(this));
+            this.frame.setProgramPanel(new ABMainPane(this));
             this.actionMap.getAction("execInstruction").setEnabled(true);
             this.actionMap.getAction("execOptions").setEnabled(true);
             this.frame.setTitle("");
@@ -289,7 +289,7 @@ public class ABFrameHolder {
 
     public final void d() {
         if (!this.frame.hasProgramPanel()) {
-            this.frame.setProgramPanel(new ABProgramPanel(this));
+            this.frame.setProgramPanel(new ABMainPane(this));
         }
 
         if (this.frame.hasProgramPanel()) {
@@ -470,7 +470,7 @@ public class ABFrameHolder {
     }
 
     public final void q() {
-        ABProgramPanel var1;
+        ABMainPane var1;
         if (this.frame != null && (var1 = this.frame.getProgramPanel()) != null) {
             var1.q();
         }
@@ -478,7 +478,7 @@ public class ABFrameHolder {
     }
 
     public final void r() {
-        ABProgramPanel var1;
+        ABMainPane var1;
         if (this.frame != null && (var1 = this.frame.getProgramPanel()) != null) {
             var1.r();
         }
