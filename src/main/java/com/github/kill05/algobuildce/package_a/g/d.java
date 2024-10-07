@@ -1,7 +1,7 @@
 package com.github.kill05.algobuildce.package_a.g;
 
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
-import com.github.kill05.algobuildce.package_a.c.b.q;
+import com.github.kill05.algobuildce.package_a.c.blocks.q;
 import com.github.kill05.algobuildce.package_a.f.ABBlockDataHolder;
 
 public final class d extends g {

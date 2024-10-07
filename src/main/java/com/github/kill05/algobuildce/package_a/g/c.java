@@ -1,7 +1,7 @@
 package com.github.kill05.algobuildce.package_a.g;
 
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
-import com.github.kill05.algobuildce.package_a.c.b.q;
+import com.github.kill05.algobuildce.package_a.c.blocks.q;
 
 public final class c extends g {
 

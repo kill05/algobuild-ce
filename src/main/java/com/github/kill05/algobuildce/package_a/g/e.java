@@ -1,6 +1,6 @@
 package com.github.kill05.algobuildce.package_a.g;
 
-import com.github.kill05.algobuildce.package_a.c.b.ABInstructionBlock;
+import com.github.kill05.algobuildce.package_a.c.blocks.ABInstructionBlock;
 import com.github.kill05.algobuildce.package_a.f.ABBlockDataHolder;
 
 public final class e extends g {

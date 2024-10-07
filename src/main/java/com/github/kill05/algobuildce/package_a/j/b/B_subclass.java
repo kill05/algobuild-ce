@@ -1,6 +1,6 @@
 package com.github.kill05.algobuildce.package_a.j.b;
 
-import com.github.kill05.algobuildce.package_a.c.b.q;
+import com.github.kill05.algobuildce.package_a.c.blocks.q;
 import java.awt.Dimension;
 import java.awt.FontMetrics;
 import java.awt.Graphics;

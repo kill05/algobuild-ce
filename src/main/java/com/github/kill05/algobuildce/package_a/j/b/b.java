@@ -3,9 +3,9 @@ package com.github.kill05.algobuildce.package_a.j.b;
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutionFragment;
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
-import com.github.kill05.algobuildce.package_a.c.b.ABBaseCallBlock;
-import com.github.kill05.algobuildce.package_a.c.b.c;
-import com.github.kill05.algobuildce.package_a.c.b.ABInstructionBlock;
+import com.github.kill05.algobuildce.package_a.c.blocks.ABBaseCallBlock;
+import com.github.kill05.algobuildce.package_a.c.blocks.c;
+import com.github.kill05.algobuildce.package_a.c.blocks.ABInstructionBlock;
 import com.github.kill05.algobuildce.package_a.g.e;
 import com.github.kill05.algobuildce.package_a.j.a.ABTabbedProgramPanel;
 
@@ -91,7 +91,7 @@ public final class b extends ABInstructionPanel {
     @Override
     protected void modifyInstruction() {
         e var1 = new e((ABInstructionBlock) this.executable);
-        if (com.github.kill05.algobuildce.package_a.a.b.a(this.flowChartPanel.getFrame(), (c) this.executable, this.program)) {
+        if (com.github.kill05.algobuildce.package_a.dialogs.b.a(this.flowChartPanel.getFrame(), (c) this.executable, this.program)) {
             this.flowChartPanel.c().a(var1);
             this.program.update(true);
         }

@@ -2,8 +2,8 @@ package com.github.kill05.algobuildce.package_a.j.b;
 
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
-import com.github.kill05.algobuildce.package_a.c.b.ABDoWhileBlock;
-import com.github.kill05.algobuildce.package_a.c.b.ABInstructionBlock;
+import com.github.kill05.algobuildce.package_a.c.blocks.ABDoWhileBlock;
+import com.github.kill05.algobuildce.package_a.c.blocks.ABInstructionBlock;
 import com.github.kill05.algobuildce.package_a.j.a.ABTabbedProgramPanel;
 
 import java.awt.Dimension;
@@ -126,7 +126,7 @@ public final class g extends ABInstructionPanel {
     @Override
     protected void modifyInstruction() {
         com.github.kill05.algobuildce.package_a.g.e var1 = new com.github.kill05.algobuildce.package_a.g.e((ABInstructionBlock) this.executable);
-        com.github.kill05.algobuildce.package_a.a.f.a(this.flowChartPanel.getFrame(), (ABDoWhileBlock) this.executable);
+        com.github.kill05.algobuildce.package_a.dialogs.f.a(this.flowChartPanel.getFrame(), (ABDoWhileBlock) this.executable);
         this.flowChartPanel.c().a(var1);
         this.program.update(true);
         this.program.a((ABExecutable) null);

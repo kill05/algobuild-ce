@@ -2,12 +2,12 @@ package com.github.kill05.algobuildce.package_a.j.b;
 
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
-import com.github.kill05.algobuildce.package_a.c.b.s;
-import com.github.kill05.algobuildce.package_a.c.b.*;
+import com.github.kill05.algobuildce.package_a.c.blocks.s;
+import com.github.kill05.algobuildce.package_a.c.blocks.*;
 import com.github.kill05.algobuildce.package_a.i.ImageUtils;
 import com.github.kill05.algobuildce.package_a.i.Translator;
 import com.github.kill05.algobuildce.package_a.j.a.ABTabbedProgramPanel;
-import com.github.kill05.algobuildce.package_a.k.GlobalVariables;
+import com.github.kill05.algobuildce.frame.GlobalVariables;
 
 import javax.swing.*;
 import java.awt.*;
@@ -175,7 +175,7 @@ public final class f extends ABBasePanel {
                                     ABAssignInstructionBlock var26 = new ABAssignInstructionBlock("");
                                     var13.program.a(var19, var5, var26);
                                     var13.program.a(var26);
-                                    if (!com.github.kill05.algobuildce.package_a.a.a.a(var13.flowChartPanel.getFrame(), var26)) {
+                                    if (!com.github.kill05.algobuildce.package_a.dialogs.a.a(var13.flowChartPanel.getFrame(), var26)) {
                                         var13.program.c(var3);
                                         var13.program.update(var6);
                                     } else {
@@ -191,7 +191,7 @@ public final class f extends ABBasePanel {
                                     ABInputBlock var25 = new ABInputBlock("");
                                     var13.program.a(var19, var5, var25);
                                     var13.program.a(var25);
-                                    if (!com.github.kill05.algobuildce.package_a.a.g.a(var13.flowChartPanel.getFrame(), var25)) {
+                                    if (!com.github.kill05.algobuildce.package_a.dialogs.g.a(var13.flowChartPanel.getFrame(), var25)) {
                                         var13.program.c(var3);
                                         var13.program.update(var6);
                                     } else {
@@ -207,7 +207,7 @@ public final class f extends ABBasePanel {
                                     ABOutputBlock var24 = new ABOutputBlock("");
                                     var13.program.a(var19, var5, var24);
                                     var13.program.a(var24);
-                                    if (!com.github.kill05.algobuildce.package_a.a.h.a(var13.flowChartPanel.getFrame(), var24) && var24.j() == 0) {
+                                    if (!com.github.kill05.algobuildce.package_a.dialogs.h.a(var13.flowChartPanel.getFrame(), var24) && var24.j() == 0) {
                                         var13.program.c(var3);
                                         var13.program.update(var6);
                                     } else {
@@ -223,7 +223,7 @@ public final class f extends ABBasePanel {
                                     ABIfBlock var22 = new ABIfBlock("");
                                     var13.program.a(var19, var5, var22);
                                     var13.program.a(var22);
-                                    if (!com.github.kill05.algobuildce.package_a.a.i.a(var13.flowChartPanel.getFrame(), var22)) {
+                                    if (!com.github.kill05.algobuildce.package_a.dialogs.i.a(var13.flowChartPanel.getFrame(), var22)) {
                                         var13.program.c(var3);
                                         var13.program.update(var6);
                                     } else {
@@ -239,7 +239,7 @@ public final class f extends ABBasePanel {
                                     ABForBlock var21 = new ABForBlock("", "", "");
                                     var13.program.a(var19, var5, var21);
                                     var13.program.a(var21);
-                                    if (!com.github.kill05.algobuildce.package_a.a.e.a(var13.flowChartPanel.getFrame(), var21)) {
+                                    if (!com.github.kill05.algobuildce.package_a.dialogs.e.a(var13.flowChartPanel.getFrame(), var21)) {
                                         var13.program.c(var3);
                                         var13.program.update(var6);
                                     } else {
@@ -255,7 +255,7 @@ public final class f extends ABBasePanel {
                                     ABWhileBlock var20 = new ABWhileBlock("");
                                     var13.program.a(var19, var5, var20);
                                     var13.program.a(var20);
-                                    if (!com.github.kill05.algobuildce.package_a.a.j.a(var13.flowChartPanel.getFrame(), var20)) {
+                                    if (!com.github.kill05.algobuildce.package_a.dialogs.j.a(var13.flowChartPanel.getFrame(), var20)) {
                                         var13.program.c(var3);
                                         var13.program.update(var6);
                                     } else {
@@ -271,7 +271,7 @@ public final class f extends ABBasePanel {
                                     ABDoWhileBlock var18 = new ABDoWhileBlock("");
                                     var13.program.a(var19, var5, var18);
                                     var13.program.a(var18);
-                                    if (!com.github.kill05.algobuildce.package_a.a.f.a(var13.flowChartPanel.getFrame(), var18)) {
+                                    if (!com.github.kill05.algobuildce.package_a.dialogs.f.a(var13.flowChartPanel.getFrame(), var18)) {
                                         var13.program.c(var3);
                                         var13.program.update(var6);
                                     } else {
@@ -287,7 +287,7 @@ public final class f extends ABBasePanel {
                                     ABCommentBlock var16 = new ABCommentBlock("");
                                     var13.program.a(var19, var5, var16);
                                     var13.program.a(var16);
-                                    if (!com.github.kill05.algobuildce.package_a.a.d.a(var13.flowChartPanel.getFrame(), var16)) {
+                                    if (!com.github.kill05.algobuildce.package_a.dialogs.d.a(var13.flowChartPanel.getFrame(), var16)) {
                                         var13.program.c(var3);
                                         var13.program.update(var6);
                                     } else {
@@ -300,10 +300,10 @@ public final class f extends ABBasePanel {
                                 }
 
                                 if (var2.equals(Translator.translate("instructionConnectorNewCall"))) {
-                                    com.github.kill05.algobuildce.package_a.c.b.c var14 = new com.github.kill05.algobuildce.package_a.c.b.c("test");
+                                    com.github.kill05.algobuildce.package_a.c.blocks.c var14 = new com.github.kill05.algobuildce.package_a.c.blocks.c("test");
                                     var13.program.a(var19, var5, var14);
                                     var13.program.a(var14);
-                                    if (!com.github.kill05.algobuildce.package_a.a.b.a(var13.flowChartPanel.getFrame(), var14, var13.program)) {
+                                    if (!com.github.kill05.algobuildce.package_a.dialogs.b.a(var13.flowChartPanel.getFrame(), var14, var13.program)) {
                                         var13.program.c(var3);
                                         var13.program.update(var6);
                                     } else {

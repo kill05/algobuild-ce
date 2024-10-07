@@ -1,14 +1,14 @@
 package com.github.kill05.algobuildce.package_a.j.a;
 
-import com.github.kill05.algobuildce.package_a.a.ExecutionOptionsDialogue;
-import com.github.kill05.algobuildce.package_a.a.m;
+import com.github.kill05.algobuildce.package_a.dialogs.ExecutionOptionsDialogue;
+import com.github.kill05.algobuildce.package_a.dialogs.m;
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.c.a.IProgramPanel;
-import com.github.kill05.algobuildce.package_a.c.b.q;
+import com.github.kill05.algobuildce.package_a.c.blocks.q;
 import com.github.kill05.algobuildce.package_a.i.Translator;
-import com.github.kill05.algobuildce.package_a.k.ABFrame;
-import com.github.kill05.algobuildce.package_a.k.ABFrameHolder;
+import com.github.kill05.algobuildce.frame.ABFrame;
+import com.github.kill05.algobuildce.frame.ABFrameHolder;
 
 import javax.swing.*;
 import java.awt.*;

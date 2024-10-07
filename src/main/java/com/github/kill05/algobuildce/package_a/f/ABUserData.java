@@ -3,7 +3,7 @@ package com.github.kill05.algobuildce.package_a.f;
 import com.github.kill05.algobuildce.package_a.charfactory.LoadModelCoreCharArrayFactory;
 import com.github.kill05.algobuildce.package_a.charfactory.TestModelCoreCharArrayFactory;
 import com.github.kill05.algobuildce.package_a.charfactory.ToolModelCoreCharArrayFactory;
-import com.github.kill05.algobuildce.package_a.h.UserNameCharArrayFactory;
+import com.github.kill05.algobuildce.package_a.charfactory.UserNameCharArrayFactory;
 import com.github.kill05.algobuildce.package_a.i.Translator;
 import org.jetbrains.annotations.NotNull;
 

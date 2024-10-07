@@ -1,6 +1,6 @@
 package com.github.kill05.algobuildce.package_a.j.b;
 
-import com.github.kill05.algobuildce.package_a.c.b.ABOutputBlock;
+import com.github.kill05.algobuildce.package_a.c.blocks.ABOutputBlock;
 
 import java.awt.Dimension;
 import java.awt.FontMetrics;
@@ -52,7 +52,7 @@ public final class z extends C_subclass {
         }
 
         FontMetrics var4 = var2.getFontMetrics(var1.getFont());
-        String var5 = ((com.github.kill05.algobuildce.package_a.c.b.k) var2.executable).k();
+        String var5 = ((com.github.kill05.algobuildce.package_a.c.blocks.k) var2.executable).k();
         this.i = var4.charsWidth(this.j.toCharArray(), 0, this.j.length());
         this.b = var5.split("\\n");
         this.c = new int[this.b.length];

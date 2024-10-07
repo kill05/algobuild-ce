@@ -40,7 +40,7 @@ public final class y extends C_subclass {
     public final void a(ABBasePanel var1) {
         k var2;
         FontMetrics var4 = (var2 = (k) var1).getFontMetrics(var1.getFont());
-        String var3 = ((com.github.kill05.algobuildce.package_a.c.b.k) var2.executable).k();
+        String var3 = ((com.github.kill05.algobuildce.package_a.c.blocks.k) var2.executable).k();
         this.i = var4.charsWidth(this.j.toCharArray(), 0, this.j.length());
         this.b = var3.split("\\n");
         this.c = new int[this.b.length];

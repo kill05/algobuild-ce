@@ -1,6 +1,6 @@
 package com.github.kill05.algobuildce.package_a.c.a;
 
-import com.github.kill05.algobuildce.package_a.c.b.q;
+import com.github.kill05.algobuildce.package_a.c.blocks.q;
 
 public interface IProgramPanel {
    void a(ABProgram var1);

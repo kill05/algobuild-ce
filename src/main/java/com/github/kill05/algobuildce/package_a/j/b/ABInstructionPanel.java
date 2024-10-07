@@ -4,9 +4,9 @@ import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutionFragment;
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.c.a.IInstructionPanel;
-import com.github.kill05.algobuildce.package_a.c.b.*;
-import com.github.kill05.algobuildce.package_a.c.b.s;
-import com.github.kill05.algobuildce.package_a.c.b.t;
+import com.github.kill05.algobuildce.package_a.c.blocks.*;
+import com.github.kill05.algobuildce.package_a.c.blocks.s;
+import com.github.kill05.algobuildce.package_a.c.blocks.t;
 import com.github.kill05.algobuildce.package_a.i.Translator;
 import com.github.kill05.algobuildce.package_a.j.a.ABTabbedProgramPanel;
 
@@ -173,7 +173,7 @@ public class ABInstructionPanel extends ABBasePanel implements IInstructionPanel
             return new g(this.program, this.flowChartPanel, var1);
         } else if (var1 instanceof ABIfBlock) {
             return new m(this.program, this.flowChartPanel, var1);
-        } else if (var1 instanceof com.github.kill05.algobuildce.package_a.c.b.o) {
+        } else if (var1 instanceof com.github.kill05.algobuildce.package_a.c.blocks.o) {
             return new e(this.program, this.flowChartPanel, var1);
         } else if (var1 instanceof ABCommentBlock) {
             return new d(this.program, this.flowChartPanel, var1);

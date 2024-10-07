@@ -2,8 +2,8 @@ package com.github.kill05.algobuildce.package_a.j.b;
 
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
-import com.github.kill05.algobuildce.package_a.c.b.ABAssignInstructionBlock;
-import com.github.kill05.algobuildce.package_a.c.b.ABInstructionBlock;
+import com.github.kill05.algobuildce.package_a.c.blocks.ABAssignInstructionBlock;
+import com.github.kill05.algobuildce.package_a.c.blocks.ABInstructionBlock;
 import com.github.kill05.algobuildce.package_a.g.e;
 import com.github.kill05.algobuildce.package_a.j.a.ABTabbedProgramPanel;
 
@@ -77,7 +77,7 @@ public final class a extends ABInstructionPanel {
     @Override
     protected void modifyInstruction() {
         e var1 = new e((ABInstructionBlock) this.executable);
-        if (com.github.kill05.algobuildce.package_a.a.a.a(this.flowChartPanel.getFrame(), (ABAssignInstructionBlock) this.executable)) {
+        if (com.github.kill05.algobuildce.package_a.dialogs.a.a(this.flowChartPanel.getFrame(), (ABAssignInstructionBlock) this.executable)) {
             this.flowChartPanel.c().a(var1);
             this.program.update(true);
         }

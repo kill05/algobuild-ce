@@ -2,7 +2,7 @@ package com.github.kill05.algobuildce.package_a.j.b;
 
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
 import com.github.kill05.algobuildce.package_a.j.a.ABTabbedProgramPanel;
-import com.github.kill05.algobuildce.package_a.k.GlobalVariables;
+import com.github.kill05.algobuildce.frame.GlobalVariables;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;

@@ -3,7 +3,7 @@ package com.github.kill05.algobuildce.package_a.j.b;
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutionFragment;
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
-import com.github.kill05.algobuildce.package_a.c.b.q;
+import com.github.kill05.algobuildce.package_a.c.blocks.q;
 import com.github.kill05.algobuildce.package_a.i.Translator;
 import com.github.kill05.algobuildce.package_a.j.a.ABTabbedProgramPanel;
 
@@ -34,7 +34,7 @@ public class ABFlowChartPanel extends ABInstructionPanel {
         this.a(this.d);
         this.revalidate();
         int var4;
-        if ((var4 = ((com.github.kill05.algobuildce.package_a.c.b.q) executable).m()) != 3 && var4 != 2) {
+        if ((var4 = ((com.github.kill05.algobuildce.package_a.c.blocks.q) executable).m()) != 3 && var4 != 2) {
             this.setToolTipText(null);
         } else {
             this.setToolTipText("clic Modifica / Copia / Taglia");
@@ -84,9 +84,9 @@ public class ABFlowChartPanel extends ABInstructionPanel {
 
     @Override
     public void a() {
-        com.github.kill05.algobuildce.package_a.c.b.q var1;
+        com.github.kill05.algobuildce.package_a.c.blocks.q var1;
         int var2;
-        if ((var1 = (com.github.kill05.algobuildce.package_a.c.b.q) this.executable).m() == 2) {
+        if ((var1 = (com.github.kill05.algobuildce.package_a.c.blocks.q) this.executable).m() == 2) {
             this.startText = "PROC " + var1.j() + "(";
 
             for (var2 = 0; var2 < var1.k(); ++var2) {
@@ -228,7 +228,7 @@ public class ABFlowChartPanel extends ABInstructionPanel {
     protected void modifyInstruction() {
         if (((q) this.executable).m() != 1) {
             com.github.kill05.algobuildce.package_a.g.d var1 = new com.github.kill05.algobuildce.package_a.g.d(this.program, (q) this.executable);
-            if (com.github.kill05.algobuildce.package_a.a.c.a(this.flowChartPanel.getFrame(), (q) this.executable, this.program)) {
+            if (com.github.kill05.algobuildce.package_a.dialogs.c.a(this.flowChartPanel.getFrame(), (q) this.executable, this.program)) {
                 this.flowChartPanel.c().a(var1);
                 this.program.update(true);
             }

@@ -1,14 +1,14 @@
 package com.github.kill05.algobuildce.package_a.c.a;
 
-import com.github.kill05.algobuildce.package_a.c.b.p;
-import com.github.kill05.algobuildce.package_a.c.b.q;
+import com.github.kill05.algobuildce.package_a.c.blocks.p;
+import com.github.kill05.algobuildce.package_a.c.blocks.q;
 import com.github.kill05.algobuildce.package_a.f.ABFiles;
 import com.github.kill05.algobuildce.package_a.f.ABProgramIO;
 import com.github.kill05.algobuildce.package_a.f.ABUserData;
 import com.github.kill05.algobuildce.package_a.f.ABConfigurator;
 import com.github.kill05.algobuildce.package_a.i.Translator;
-import com.github.kill05.algobuildce.package_a.k.ABFrameHolder;
-import com.github.kill05.algobuildce.package_a.k.GlobalVariables;
+import com.github.kill05.algobuildce.frame.ABFrameHolder;
+import com.github.kill05.algobuildce.frame.GlobalVariables;
 
 import java.awt.Toolkit;
 import java.util.Collection;

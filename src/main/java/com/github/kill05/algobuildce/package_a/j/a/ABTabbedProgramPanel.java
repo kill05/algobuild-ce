@@ -2,7 +2,7 @@ package com.github.kill05.algobuildce.package_a.j.a;
 
 import com.github.kill05.algobuildce.package_a.c.a.ABExecutable;
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
-import com.github.kill05.algobuildce.package_a.c.b.q;
+import com.github.kill05.algobuildce.package_a.c.blocks.q;
 import com.github.kill05.algobuildce.package_a.f.ABFiles;
 import com.github.kill05.algobuildce.package_a.i.ImageUtils;
 import com.github.kill05.algobuildce.package_a.i.Translator;
@@ -10,7 +10,7 @@ import com.github.kill05.algobuildce.package_a.j.b.ABFlowChartPanel;
 import com.github.kill05.algobuildce.package_a.j.b.C_subclass;
 import com.github.kill05.algobuildce.package_a.j.b.D_subclass;
 import com.github.kill05.algobuildce.package_a.j.b.p;
-import com.github.kill05.algobuildce.package_a.k.ABFrame;
+import com.github.kill05.algobuildce.frame.ABFrame;
 import org.jetbrains.annotations.NotNull;
 
 import javax.imageio.ImageIO;
@@ -185,7 +185,7 @@ public final class ABTabbedProgramPanel extends JPanel implements ActionListener
 
                 q var9;
                 if (var3 && (var9 = this.program.a(var4)).m() != 1) {
-                    if (!com.github.kill05.algobuildce.package_a.a.c.a(this.frame, var9, this.program)) {
+                    if (!com.github.kill05.algobuildce.package_a.dialogs.c.a(this.frame, var9, this.program)) {
                         this.d = 0;
                         this.tabbedPane.setSelectedIndex(0);
                         this.program.b(var4);

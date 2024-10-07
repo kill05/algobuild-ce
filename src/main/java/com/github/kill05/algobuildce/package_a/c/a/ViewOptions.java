@@ -2,7 +2,7 @@ package com.github.kill05.algobuildce.package_a.c.a;
 
 import com.github.kill05.algobuildce.json.JsonArray;
 import com.github.kill05.algobuildce.json.JsonObject;
-import com.github.kill05.algobuildce.package_a.k.GlobalVariables;
+import com.github.kill05.algobuildce.frame.GlobalVariables;
 
 import java.awt.BasicStroke;
 import java.awt.Color;

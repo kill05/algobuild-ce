@@ -58,7 +58,7 @@ public class j extends ABInstructionPanel {
 
     @Override
     public void a() {
-        String var1 = ((com.github.kill05.algobuildce.package_a.c.b.k) this.executable).k();
+        String var1 = ((com.github.kill05.algobuildce.package_a.c.blocks.k) this.executable).k();
         this.a = var1.split("\\n");
         this.k = new int[this.a.length];
         FontMetrics var4 = this.getFontMetrics(this.getFont());

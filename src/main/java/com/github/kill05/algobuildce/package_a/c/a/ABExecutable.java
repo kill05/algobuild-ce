@@ -1,9 +1,9 @@
 package com.github.kill05.algobuildce.package_a.c.a;
 
-import com.github.kill05.algobuildce.package_a.c.b.ABInstructionBlock;
-import com.github.kill05.algobuildce.package_a.c.b.r;
-import com.github.kill05.algobuildce.package_a.c.b.s;
-import com.github.kill05.algobuildce.package_a.c.b.t;
+import com.github.kill05.algobuildce.package_a.c.blocks.ABInstructionBlock;
+import com.github.kill05.algobuildce.package_a.c.blocks.r;
+import com.github.kill05.algobuildce.package_a.c.blocks.s;
+import com.github.kill05.algobuildce.package_a.c.blocks.t;
 
 import java.util.Vector;
 

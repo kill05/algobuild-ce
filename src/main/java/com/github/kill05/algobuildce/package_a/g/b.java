@@ -1,9 +1,9 @@
 package com.github.kill05.algobuildce.package_a.g;
 
 import com.github.kill05.algobuildce.package_a.c.a.ABProgram;
-import com.github.kill05.algobuildce.package_a.c.b.ABInstructionBlock;
-import com.github.kill05.algobuildce.package_a.c.b.s;
-import com.github.kill05.algobuildce.package_a.c.b.t;
+import com.github.kill05.algobuildce.package_a.c.blocks.ABInstructionBlock;
+import com.github.kill05.algobuildce.package_a.c.blocks.s;
+import com.github.kill05.algobuildce.package_a.c.blocks.t;
 
 public final class b extends g {
    private ABProgram a;

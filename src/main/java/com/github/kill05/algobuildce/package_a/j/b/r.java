@@ -1,6 +1,6 @@
 package com.github.kill05.algobuildce.package_a.j.b;
 
-import com.github.kill05.algobuildce.package_a.c.b.ABBaseCallBlock;
+import com.github.kill05.algobuildce.package_a.c.blocks.ABBaseCallBlock;
 
 import java.awt.Dimension;
 import java.awt.FontMetrics;
@@ -58,7 +58,7 @@ public final class r extends C_subclass {
 
       var8 = var8 + ")";
       String var9;
-      if (var2.executable instanceof com.github.kill05.algobuildce.package_a.c.b.c && (var9 = ((com.github.kill05.algobuildce.package_a.c.b.c)var2.executable).l()) != null && var9.length() > 0) {
+      if (var2.executable instanceof com.github.kill05.algobuildce.package_a.c.blocks.c && (var9 = ((com.github.kill05.algobuildce.package_a.c.blocks.c)var2.executable).l()) != null && var9.length() > 0) {
          var8 = var9 + " = " + var8;
       }
 

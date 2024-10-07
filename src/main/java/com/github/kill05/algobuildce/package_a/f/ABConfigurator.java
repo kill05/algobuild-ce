@@ -1,7 +1,7 @@
 package com.github.kill05.algobuildce.package_a.f;
 
 import com.github.kill05.algobuildce.package_a.charfactory.*;
-import com.github.kill05.algobuildce.package_a.h.UserNameCharArrayFactory;
+import com.github.kill05.algobuildce.package_a.charfactory.UserNameCharArrayFactory;
 
 import java.io.DataOutputStream;
 import java.io.File;

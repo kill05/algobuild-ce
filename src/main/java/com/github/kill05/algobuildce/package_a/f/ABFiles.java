@@ -1,5 +1,7 @@
 package com.github.kill05.algobuildce.package_a.f;
 
+import com.github.kill05.algobuildce.package_a.charfactory.CoreCharArrayFactory;
+import com.github.kill05.algobuildce.package_a.charfactory.SecretFolderCharArrayFactory;
 import com.github.kill05.algobuildce.package_a.charfactory.*;
 
 import java.io.File;
@@ -10,8 +12,8 @@ public final class ABFiles {
     public static final String USER_NAME = System.getProperties().getProperty("user.name");
 
     public static final String AB_FOLDER_NAME = "AlgoBuild";
-    public static final String AB_SECRET_FOLDER_NAME = ".algobuild";
-    public static final String CORE_FOLDER_NAME = "core";
+    public static final String AB_SECRET_FOLDER_NAME = new String(new SecretFolderCharArrayFactory().createArray());
+    public static final String CORE_FOLDER_NAME = new String(new CoreCharArrayFactory().createArray());
     public static final String CACHE_FOLDER_NAME = "algbcache";
     public static final String USER_HOME_PATH = System.getProperties().getProperty("user.home");
 
