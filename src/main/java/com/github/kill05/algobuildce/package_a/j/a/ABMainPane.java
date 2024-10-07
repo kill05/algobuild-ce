@@ -432,10 +432,4 @@ public final class ABMainPane extends JPanel implements IProgramPanel, ActionLis
         String history = this.program.getHistoryString();
         JOptionPane.showMessageDialog(this.abFrame, history, Translator.translate("mnuHistoryInfo"), JOptionPane.INFORMATION_MESSAGE);
     }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        System.out.println("a");
-    }
 }
