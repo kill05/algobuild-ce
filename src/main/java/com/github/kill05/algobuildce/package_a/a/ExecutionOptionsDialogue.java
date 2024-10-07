@@ -93,7 +93,7 @@ public final class ExecutionOptionsDialogue extends JDialog implements ActionLis
 
     public class ClockSpeedSpinnerModel implements SpinnerModel {
 
-        private int value = 1000;
+        private int value = program.getExecutionOptions().getClockSpeed();
 
         @Override
         public Object getValue() {
