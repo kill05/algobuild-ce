@@ -108,8 +108,6 @@ public final class ABTabbedProgramPanel extends JPanel implements ActionListener
         leftPanel.g();
         leftPanel.setAlignmentX(0.5f);
         leftPanel.setAlignmentY(0.0f);
-        //leftPanel.setLayout(new BorderLayout());
-        //leftPanel.setBackground(Color.YELLOW);
 
         //Box leftBox = Box.createVerticalBox();
         JPanel leftBox = new JPanel() {
