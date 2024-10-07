@@ -3,8 +3,8 @@ package com.github.kill05.algobuildce.package_a.c.a;
 public final class ExecutionOptions {
 
     private boolean trace = true;
-    private boolean step = true;
-    private int clockSpeed = 500;
+    private boolean step = false;
+    private int clockSpeed = 1;
 
     public boolean isTraceEnabled() {
         return this.trace;
