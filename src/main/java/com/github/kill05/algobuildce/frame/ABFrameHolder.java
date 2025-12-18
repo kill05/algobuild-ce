@@ -450,7 +450,8 @@ public class ABFrameHolder {
         String info = "AlgoBuild - Community Edition\n" +
                 Translator.translate("infoVersion") + " 0.85_" + AlgoBuild.CE_VERSION + "\n" +
                 Translator.translate("infoBuild") + " 00085_20200418_1930\n" +
-                "(C) Paolo Santi 2011-2020\n\n" +
+                "(C) Paolo Santi 2011-2020\n" +
+                "(C) Bicienz 2024-2025\n\n" +
 
                 Translator.translate("authorRegisteredInfo") + "\n" +
                 Translator.translate("infoSerial") + ": " + ABUserData.getInstance().getSerial() + "\n" +
